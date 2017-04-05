@@ -12,10 +12,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void testMethod(){
-<<<<<<< HEAD
         int i = 6;
-=======
-        int i = 4;
->>>>>>> refs/remotes/origin/master
+
     }
 }
