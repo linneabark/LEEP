@@ -1,4 +1,6 @@
 package com.example.linneabark.test;
+import android.support.v7.app.AppCompatActivity;
+
 import static java.lang.System.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -8,13 +10,13 @@ import java.util.Date;
  * Created by Eli on 2017-04-06.
  */
 
-public class TimeLogModel {
+public class TimeLogModel extends AppCompatActivity {
 
+    Date currentDate = new Date();
 
-   Date currentDate = new Date();
+   public TimeLogModel(Date date){
 
-   public void addDate(){
-
+       String thisDate = currentDate.toString();
 
    }
 
