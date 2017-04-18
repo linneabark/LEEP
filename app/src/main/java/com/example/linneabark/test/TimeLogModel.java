@@ -1,21 +1,36 @@
 package com.example.linneabark.test;
+import android.support.v7.app.AppCompatActivity;
+
 import static java.lang.System.*;
+
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.text.DateFormat;
 
 /**
  * Created by Eli on 2017-04-06.
  */
 
-public class TimeLogModel {
+public class TimeLogModel extends TimeLog {
+
+    static Date currentDate = new Date();
+
+   public TimeLogModel(){
 
 
-   Date currentDate = new Date();
 
-   public void addDate(){
+   }
 
+   static String time(){
 
+       Date currentDate = new Date();
+
+       DateFormat df = new SimpleDateFormat("HH:mm:ss");
+       String outText = df.format(currentDate);
+
+       return outText;
    }
 
     /*private void getTime() {
