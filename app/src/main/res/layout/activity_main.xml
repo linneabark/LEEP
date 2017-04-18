@@ -2,63 +2,17 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tickingClock_txt"
+    android:id="@+id/fragment_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.linneabark.test.MainActivity">
-
-    <TextView
-        android:id="@+id/clock_txt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Clock"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="194dp"
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
+    
+    <!--<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp" />
+        android:id="@+id/fragment_container"></RelativeLayout>
+    !-->
 
-    <Button
-        android:id="@+id/startActivity_button"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
-        android:text="START ACTIVITY"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/stopActivity_button"
-        android:layout_marginStart="125dp"
-        android:layout_marginEnd="125dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="98dp"
-        tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="98dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="125dp"
-        android:layout_marginRight="125dp"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
-        android:id="@+id/stopActivity_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="18dp"
-        android:text="STOP ACTIVITY"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clock_txt"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
 </android.support.constraint.ConstraintLayout>
 

@@ -1,5 +1,9 @@
 package com.example.linneabark.test;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,37 +17,48 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(final Menu menu){
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
         return true;
 
+
+
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        Fragment nextFrag = new Fragment();
         switch (item.getItemId()){
             case R.id.settings_id:
-                setContentView(R.layout.settings_view);
-                return true;
+                nextFrag = new Settings();
+                break;
             case R.id.statistics_id:
-                setContentView(R.layout.statistics_view);
-                return true;
+                nextFrag = new Statistics();
+                break;
             case R.id.timelog_id:
-                setContentView(R.layout.activity_main);
-                return true;
-
+                nextFrag = new TimeLog();
+                break;
         }
-        return super.onOptionsItemSelected(item);
+        transaction.add(R.id.fragment_container, nextFrag);
+        transaction.commit();
+        return true;
     }
+
+
 }
