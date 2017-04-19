@@ -26,8 +26,9 @@ public class Settings extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        return rootView;
+        /*View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        return rootView;*/
+        return null;
     }
 
 

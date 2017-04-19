@@ -9,11 +9,7 @@
         android:title="Settings"
         app:showAsAction="always"
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-                />
+        />
 
     <item
         android:id="@+id/timelog_id"
