@@ -1,6 +1,10 @@
 package com.example.linneabark.test;
 
 import android.content.Context;
+<<<<<<< HEAD
+=======
+import android.os.Bundle;
+>>>>>>> origin/master
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -10,6 +14,11 @@ import android.view.View;
  */
 
 public class SettingsView extends View {
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/master
     public SettingsView(Context context) {
         super(context);
         init(null,0);

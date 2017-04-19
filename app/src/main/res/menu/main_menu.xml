@@ -9,7 +9,10 @@
         android:title="Settings"
         app:showAsAction="always"
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
                 />
 
     <item
