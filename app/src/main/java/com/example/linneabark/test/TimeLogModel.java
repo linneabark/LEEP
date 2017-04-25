@@ -35,7 +35,7 @@ public class TimeLogModel extends TimeLog {
 
     Time nTime;
     Handler handler;
-    Runnable r;
+    Runnable run;
 
 
     public TimeLogModel(){
