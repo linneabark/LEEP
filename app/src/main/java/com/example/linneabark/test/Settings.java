@@ -9,14 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends ListFragment {
+public class Settings extends Fragment {
 
+   // private static ListView list_View;
+    private static String[] settings = new String[] {"Categories", "Quotes", "Timer", "Help"};
 
     public Settings() {
         // Required empty public constructor
@@ -26,9 +29,7 @@ public class Settings extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        /*View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        return rootView;*/
-        return null;
+       return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
 
