@@ -5,4 +5,5 @@ package com.example.linneabark.test;
  */
 
 public class QuoteClass {
+
 }
