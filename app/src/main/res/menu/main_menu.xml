@@ -8,23 +8,18 @@
         android:id="@+id/settings_id"
         android:title="Settings"
         app:showAsAction="always"
-
         />
 
     <item
         android:id="@+id/timelog_id"
         android:title="Time Log"
         app:showAsAction="always"
-
-
-        />
+    />
 
     <item
         android:id="@+id/statistics_id"
         android:title="Statistics"
         app:showAsAction="always"
-
-
     />
 
 
