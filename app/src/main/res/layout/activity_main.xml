@@ -17,7 +17,6 @@
     <com.example.linneabark.test.SettingsView
         android:layout_width="138dp"
         android:layout_height="495dp"
-        android:text="Eli är bäst!"
          />
 
 </android.support.constraint.ConstraintLayout>
