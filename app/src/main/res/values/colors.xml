@@ -3,4 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- STARTPAGE !-->
+    <color name="colorStartPage">#31c4d4</color>
+
+    <!-- TIMELOG !-->
+    <color name="colorTimeLogPage">#4bf185</color>
+
+    <!-- STATISTICS !-->
+
+    <!-- SETTINGS !-->
+
 </resources>
