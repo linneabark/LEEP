@@ -26,9 +26,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       /* ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0000ff")));*/
-
 
     }
 
