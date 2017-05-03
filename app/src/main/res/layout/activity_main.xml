@@ -14,10 +14,27 @@
         android:id="@+id/fragment_container"></RelativeLayout>
     !-->
 
-    <com.example.linneabark.test.SettingsView
-        android:layout_width="138dp"
-        android:layout_height="495dp"
-         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/LinearLayout1"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/welcome_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:text="Welcome to LEEP!"
+            android:textColor="#000000"
+            android:textSize="40sp" />
+    </LinearLayout>
+
+
+
 
 </android.support.constraint.ConstraintLayout>
 

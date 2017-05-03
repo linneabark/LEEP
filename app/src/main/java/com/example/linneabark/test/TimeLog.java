@@ -1,6 +1,9 @@
 package com.example.linneabark.test;
 
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -16,6 +19,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static com.example.linneabark.test.R.id.list;
 
 
 /**
@@ -23,13 +27,16 @@ import java.util.Date;
  */
 public class TimeLog extends Fragment {
 
-    private TextView time_txt;
     private Thread chronoThread;
+    TextView time_txt;
+    public static int numberOfThreads = 0;
+
+    private long tlStartTime;
+    private long tlStopTime;
 
     public TimeLog() {
         // Required empty public constructor
     }
-
 
 
     @Override
@@ -39,7 +46,7 @@ public class TimeLog extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
-        //trying to make clock with therads
+        //trying to make clock with threads
 
         // Inflate the layout for this fragment
 
@@ -53,35 +60,60 @@ public class TimeLog extends Fragment {
             public void onClick(View v) {
 
                 chronoThread = new Thread(ch);
-                chronoThread.start();
-                ch.start();
+
+                System.out.println(chronoThread.isAlive());
+
+                if(!chronoThread.isAlive()) {
+
+                    tlStartTime = System.currentTimeMillis();
+
+                    chronoThread.start();
+                    ch.start();
+
+                    String a = "hej";
+                    String b = "beh";
+
+                    //SavedData.list.add(SaveDate.calculateTimeToString(tlStartTime),(a),(b));
+
+                    numberOfThreads++;
+                }
             }
         });
 
         stopClock.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
-                ch.stop();
+
+                System.out.println(chronoThread.isAlive());
+
+                if(chronoThread.isAlive()) {
+
+                    tlStopTime = System.currentTimeMillis();
+                    ch.stop();
+                    numberOfThreads--;
+                }
+
             }
         });
 
 
         return rootView;
 
+
     }
 
-   public void updateTimerText(final String time){
-       System.out.println(time);
-       getActivity().runOnUiThread(new Runnable(){
+
+    public void updateTimerText(final String time) {
+        getActivity().runOnUiThread(new Runnable() {
             @Override
-            public void run(){
+            public void run() {
+
                 time_txt.setText(time);
+                System.out.println(time);
+                System.out.println(numberOfThreads);
             }
         });
-       //time_txt.setText(time);
+    }
 
-
-
-   }
 
 
 

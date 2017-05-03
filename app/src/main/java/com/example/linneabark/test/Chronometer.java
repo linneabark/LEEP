@@ -1,5 +1,6 @@
 package com.example.linneabark.test;
 
+import android.app.FragmentManager;
 import android.content.Context;
 
 /**
@@ -14,7 +15,6 @@ public class Chronometer implements Runnable {
 
     private TimeLog timeLog;
     private long tlStartTime;
-
     private boolean tlIsRunning;
 
     public Chronometer(TimeLog timeLog){
@@ -30,28 +30,29 @@ public class Chronometer implements Runnable {
     public void stop(){
         tlIsRunning = false;
 
+
     }
 
     private long oldTime;
 
+
     @Override
-    public void run(){
+    public void run() {
         oldTime = 0;
-        while(tlIsRunning){
+        while (tlIsRunning) {
 
             long since = System.currentTimeMillis() - tlStartTime;
             int seconds = (int) ((since / 1000) % 60);
             int minutes = (int) ((since / MILLIS_TO_MINUTES) % 60);
             int hours = (int) ((since / MILLIS_TO_HOURS) % 24);
 
-            if(oldTime != seconds) {
+            if (oldTime != seconds) {
 
                 oldTime = seconds;
 
                 timeLog.updateTimerText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+
+
             }
-
         }
-    }
-
-}
+    }}
