@@ -6,14 +6,14 @@
 
     <item
         android:id="@+id/settings_id"
-        android:title="Settings"
+        android:title="@string/str_settings"
         app:showAsAction="always"
 
         />
 
     <item
         android:id="@+id/timelog_id"
-        android:title="Time Log"
+        android:title="@string/str_timeLog"
         app:showAsAction="always"
 
 
@@ -22,7 +22,7 @@
 
     <item
         android:id="@+id/statistics_id"
-        android:title="Statistics"
+        android:title="@string/str_statistics"
         app:showAsAction="always"
 
 
