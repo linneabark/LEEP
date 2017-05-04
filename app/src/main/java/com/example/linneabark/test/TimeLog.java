@@ -76,7 +76,7 @@ public class TimeLog extends Fragment {
                     String a = "hej";
                     String b = "beh";
 
-                    //SavedData.list.add(SaveDate.calculateTimeToString(tlStartTime),(a),(b));
+
 
                     numberOfThreads++;
                     startListeningToClock();
