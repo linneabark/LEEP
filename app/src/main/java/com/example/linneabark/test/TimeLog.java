@@ -7,17 +7,18 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import java.util.Timer;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimerTask;
 
 
 import static com.example.linneabark.test.R.id.list;
@@ -28,15 +29,10 @@ import static com.example.linneabark.test.R.id.list;
  */
 public class TimeLog extends Fragment {
 
-    private Thread chronoThread;
     TextView time_txt;
-    public static int numberOfThreads = 0;
 
-    private long tlStartTime;
-    private long tlStopTime;
-    private Chronometer ch;
 
-    private String oldTime;
+    private Time time;
     public TimeLog() {
         // Required empty public constructor
     }
@@ -54,86 +50,41 @@ public class TimeLog extends Fragment {
         // Inflate the layout for this fragment
 
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
-        Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
+        final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-
-        ch = Chronometer.getInstance();
+        time = Time.getInstance(this);
+        updateText(time.toString());
 
         startClock.setOnClickListener(new OnClickListener() {
+            @Override
             public void onClick(View v) {
-
-                chronoThread = new Thread(ch);
-
-                System.out.println(chronoThread.isAlive());
-
-                if(!chronoThread.isAlive()) {
-
-                    tlStartTime = System.currentTimeMillis();
-
-                    chronoThread.start();
-                    ch.start();
-
-                    String a = "hej";
-                    String b = "beh";
-
-
-
-                    numberOfThreads++;
-                    startListeningToClock();
-                }
+                time.startTimer();
             }
         });
 
         stopClock.setOnClickListener(new OnClickListener() {
+            @Override
             public void onClick(View v) {
-
-                System.out.println(chronoThread.isAlive());
-
-                if(chronoThread.isAlive()) {
-
-                    tlStopTime = System.currentTimeMillis();
-                    ch.stop();
-                    numberOfThreads--;
-                }
-
+                time.stopTimer();
             }
         });
 
-        startListeningToClock();
         return rootView;
 
 
     }
 
-    public void startListeningToClock(){
+
+
+    public void updateText(final String text){
         getActivity().runOnUiThread(new Runnable() {
             public void run(){
-                oldTime = "0";
-                if(ch.isRunning()){
-                    String time = ch.getTime();
-                    if(time != null) {
-                        if (!oldTime.equals(time)) {
-                            System.out.println(time);
-                            time_txt.setText(time);
-                        }
-                        oldTime = time;
-                    }
-                }
+                time_txt.setText(text);
             }
         });
     }
 
-    public void updateTimerText(final String time) {
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
-                time_txt.setText(time);
-                System.out.println(time);
-                System.out.println(numberOfThreads);
-            }
-        });
-    }
 
 
 

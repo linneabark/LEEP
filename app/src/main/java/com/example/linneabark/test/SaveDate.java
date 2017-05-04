@@ -4,8 +4,6 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.example.linneabark.test.Chronometer.MILLIS_TO_HOURS;
-import static com.example.linneabark.test.Chronometer.MILLIS_TO_MINUTES;
 
 /**
  * Created by Eli on 2017-05-03.
