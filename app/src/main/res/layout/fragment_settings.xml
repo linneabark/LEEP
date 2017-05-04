@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:andoroid="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.linneabark.test.Settings"
-    android:background="#15ff00"
+    android:background="@color/plainWhite"
     android:id="@+id/list">
 
 

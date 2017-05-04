@@ -1,6 +1,9 @@
 package com.example.linneabark.test;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
+    private TimeLog timeLog = new TimeLog();
 
 
     @Override
@@ -22,8 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu){
@@ -33,17 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
 
-
     }
 
 
-
-
-    private void testMethod(){
-        int i = 6;
-
-
-    }
 
 
     @Override
@@ -59,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new Statistics();
                 break;
             case R.id.timelog_id:
+                /*if(timeLog == null) {
+                    timeLog = new TimeLog();
+                }
+                nextFrag = timeLog;*/
                 nextFrag = new TimeLog();
                 break;
         }
