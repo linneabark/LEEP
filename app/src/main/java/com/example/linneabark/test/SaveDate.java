@@ -16,8 +16,8 @@ public class SaveDate {
     public SaveDate(){
     }
 
-    final static long MILLIS_TO_MINUTES = 60000;
-    final static long MILLIS_TO_HOURS = 3600000;
+    private final static long MILLIS_TO_MINUTES = 60000;
+    private final static long MILLIS_TO_HOURS = 3600000;
 
     public static String calculateTimeToString(long curTimeMillis){
 

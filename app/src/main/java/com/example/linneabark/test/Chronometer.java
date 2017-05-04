@@ -13,12 +13,21 @@ public class Chronometer implements Runnable {
     public static final long MILLIS_TO_HOURS = 3600000;
 
 
-    private TimeLog timeLog;
+   // private TimeLog timeLog;
     private long tlStartTime;
     private boolean tlIsRunning;
+    private String time;
+    private static Chronometer instance;
 
-    public Chronometer(TimeLog timeLog){
-        this.timeLog = timeLog;
+    private Chronometer(){
+
+    }
+
+    public static Chronometer getInstance(){
+        if(instance == null){
+            instance = new Chronometer();
+        }
+        return instance;
     }
 
     public void start(){
@@ -29,10 +38,14 @@ public class Chronometer implements Runnable {
 
     public void stop(){
         tlIsRunning = false;
-
-
     }
 
+    public boolean isRunning(){
+        return tlIsRunning;
+    }
+    public String getTime(){
+        return time;
+    }
     private long oldTime;
 
 
@@ -50,9 +63,10 @@ public class Chronometer implements Runnable {
 
                 oldTime = seconds;
 
-                timeLog.updateTimerText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+                time = (String.format("%02d:%02d:%02d", hours, minutes, seconds));
 
 
             }
         }
     }}
+
