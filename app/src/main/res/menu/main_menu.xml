@@ -16,8 +16,6 @@
         android:title="@string/str_timeLog"
         app:showAsAction="always"
 
-
-
         />
 
     <item
