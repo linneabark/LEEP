@@ -2,7 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
+    <!-- <item
+        android:id="@+id/clocktxt_id"
+        android:title="@string/str_clockTxtMenu"
+        app:showAsAction="always"
+        /> !-->
 
     <item
         android:id="@+id/settings_id"

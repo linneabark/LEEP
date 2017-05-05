@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.TimerTask;
 
 
-import static com.example.linneabark.test.R.id.list;
 
 
 /**
@@ -30,6 +29,8 @@ import static com.example.linneabark.test.R.id.list;
 public class TimeLog extends Fragment {
 
     TextView time_txt;
+
+    long curTime;
 
 
     private Time time;
@@ -58,6 +59,12 @@ public class TimeLog extends Fragment {
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                curTime = System.currentTimeMillis();
+                String hej = SaveDate.calculateTimeToString(curTime);
+
+                System.out.println(hej);
+
                 time.startTimer();
             }
         });
