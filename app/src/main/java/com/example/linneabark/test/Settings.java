@@ -33,16 +33,4 @@ public class Settings extends Fragment {
     }
 
 
-    /*public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(getActivity(),
-                R.array.Planets, android.R.layout.simple_list_item_1);
-        setListAdapter(adapter);
-        getListView().setOnItemClickListener();
-    }*/
-
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getActivity(), "Item: " + position, Toast.LENGTH_SHORT).show();
-    }
-
 }
