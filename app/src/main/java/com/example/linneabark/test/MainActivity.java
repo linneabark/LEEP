@@ -18,8 +18,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TimeLog timeLog = new TimeLog();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,11 +7,11 @@
 
 
     <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/LinearLayout1"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <!-- TODO: Update blank fragment layout -->
 
@@ -20,10 +20,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/startClock"
             android:background="@color/colorPrimary"
-            android:textColor="@color/plainBlack"
-            />
+            android:text="@string/startClock"
+            android:textColor="@color/plainBlack" />
 
         <TextView
             android:id="@+id/clock_txt"
@@ -32,17 +31,17 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/emptyClock"
-            android:textSize="40sp"
-            android:textColor="@color/plainBlack"/>
+            android:textColor="@color/plainBlack"
+            android:textSize="40sp" />
 
         <Button
             android:id="@+id/stopClock_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/stopClock"
             android:background="@color/colorPrimary"
-            android:textColor="@color/plainBlack"/>
+            android:text="@string/stopClock"
+            android:textColor="@color/plainBlack" />
     </LinearLayout>
 
 
