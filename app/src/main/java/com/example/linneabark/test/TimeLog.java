@@ -29,6 +29,7 @@ import java.util.TimerTask;
 public class TimeLog extends Fragment {
 
     TextView time_txt;
+    TextView timeMenu_txt;
 
     long curTime;
 
@@ -53,6 +54,7 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
+
         time = Time.getInstance(this);
         updateText(time.toString());
 
@@ -87,6 +89,7 @@ public class TimeLog extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             public void run(){
                 time_txt.setText(text);
+
             }
         });
     }

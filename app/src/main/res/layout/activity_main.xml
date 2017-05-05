@@ -8,53 +8,56 @@
     tools:context="com.example.linneabark.test.MainActivity"
     android:background="@color/plainWhite">
 
-    <TextView
-        android:id="@+id/welcome_txt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Välkommen till LEEP"
-        android:textColor="#000000"
-        android:textSize="40sp"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="16dp" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp">
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="125dp"
-        android:layout_height="48dp"
-        android:text="Logga in"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="246dp" />
+        <TextView
+            android:id="@+id/welcome_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Välkommen till LEEP"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            tools:layout_editor_absoluteX="7dp"
+            tools:layout_editor_absoluteY="16dp" />
 
-    <EditText
-        android:id="@+id/userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Användarnamn"
-        tools:layout_editor_absoluteX="81dp"
-        tools:layout_editor_absoluteY="100dp" />
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="125dp"
+            android:layout_height="48dp"
+            android:text="Logga in"
+            tools:layout_editor_absoluteX="130dp"
+            tools:layout_editor_absoluteY="246dp" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Lösenord"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="170dp" />
+        <EditText
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Användarnamn"/>
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="125dp"
-        android:layout_height="55dp"
-        android:text="Registrera"
-        tools:layout_editor_absoluteX="129dp"
-        tools:layout_editor_absoluteY="363dp" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:text="Lösenord" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="125dp"
+            android:layout_height="55dp"
+            android:text="Registrera"
+            />
+
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
 

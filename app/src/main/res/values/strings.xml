@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LEEP</string>
+    <string name="app_name"> </string>
     <string name="startActivity_button" />
     <string name="stopActivity_button" />
     <string name="clock_txt" />
@@ -8,7 +8,7 @@
 
     <!-- MENU !-->
     <string name="str_settings">Settings</string>
-    <string name="str_statistics">Statistics</string>
+    <string name="str_statistics"> Statistics</string>
     <string name="str_timeLog">Time Log</string>
     <string name="str_clockTxtMenu">00:00:00</string>
 

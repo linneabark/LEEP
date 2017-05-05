@@ -30,6 +30,7 @@ public class Time {
     }
 
     public void startTimer(){
+        value = 0;
         timer.cancel();
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -45,7 +46,6 @@ public class Time {
     public void stopTimer(){
         timer.cancel();
         timer = new Timer();
-        value = 0;
     }
 
 
