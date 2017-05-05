@@ -1,6 +1,5 @@
 package com.example.linneabark.test;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -11,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +29,4 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
-
-
 }

@@ -46,11 +46,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
+        /*register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 account.createAccount();
             }
-        });
+        });*/
+
 
     }
 

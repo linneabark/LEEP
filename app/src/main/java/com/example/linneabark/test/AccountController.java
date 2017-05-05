@@ -1,8 +1,11 @@
 package com.example.linneabark.test;
 
+import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -11,22 +14,51 @@ import android.widget.TextView;
 import java.io.IOException;
 
 public class AccountController extends AppCompatActivity {
+    Editable myMail;
+    Editable myUserName;
+    Editable myPassword;
+    boolean myUterusBearer;
+
+    private EditText mail;
+    private EditText userName;
+    private EditText password;
+    private EditText repeatPassword;
+    private RadioButton uterusBearer;
+    private TextView errorMessage;
+    private Button register;
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.register, container, false);
+        mail = (EditText) rootView.findViewById(R.id.mail);
+        userName = (EditText) rootView.findViewById(R.id.setUserName);
+        password = (EditText) rootView.findViewById(R.id.setPassword);
+        repeatPassword = (EditText) rootView.findViewById(R.id.repeatPassword);
+        uterusBearer = (RadioButton)rootView.findViewById(R.id.uterusBearer);
+        errorMessage = (TextView) rootView.findViewById(R.id.errorMessage);
+        register = (Button) rootView.findViewById(R.id.register);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                createAccount();
+            }
+        });
+
+        return rootView;
+    }
+
+
+    //trying to make clock with threads
 
     RootController rootC = new RootController();
-
+/*
     EditText mail = (EditText) this.findViewById(R.id.mail);
     EditText userName = (EditText) this.findViewById(R.id.setUserName);
     EditText password = (EditText) this.findViewById(R.id.setPassword);
     EditText repeatPassword = (EditText) this.findViewById(R.id.repeatPassword);
     RadioButton uterusBearer = (RadioButton)this.findViewById(R.id.uterusBearer);
     TextView errorMessage = (TextView) this.findViewById(R.id.errorMessage);
-    Button register = (Button) this.findViewById(R.id.register);
-
-
-    Editable myMail;
-    Editable myUserName;
-    Editable myPassword;
-    boolean myUterusBearer;
+    Button register = (Button) this.findViewById(R.id.register);*/
 
     public void createAccount() {
         setMail();

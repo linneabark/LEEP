@@ -1,6 +1,5 @@
 package com.example.linneabark.test;
 
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -20,40 +19,43 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimerTask;
 
-
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TimeLog extends Fragment {
+    private TextView quoteDisplay;
+    private Quotes quote = new Quotes();
+
+    private long stopTime;
 
     TextView time_txt;
 
+    //tiden stoppuret startades
     long curTime;
 
+
+    SaveActivity saveActivity = new SaveActivity();
 
     private Time time;
     public TimeLog() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
         //trying to make clock with threads
 
         // Inflate the layout for this fragment
-
+        quoteDisplay = (TextView) rootView.findViewById(R.id.quoteDisplay);
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
         time = Time.getInstance(this);
+
         updateText(time.toString());
 
         startClock.setOnClickListener(new OnClickListener() {
@@ -75,13 +77,20 @@ public class TimeLog extends Fragment {
                 time.stopTimer();
             }
         });
+        stopTime = System.currentTimeMillis();
+        saveActivity.addActivity(new ActivityRow(
+                new SimpleDateFormat("yyyy") ,
+                new SimpleDateFormat("MM)"),
+                new SimpleDateFormat("dd"),
+                curTime,
+                (stopTime-curTime),
+                new Category("Föreläsning", 6)));
+        System.out.println((stopTime-curTime) + " <-- Totaltiden för aktiviteten");
+
+        quoteDisplay.setText(quote.getQuote());
 
         return rootView;
-
-
     }
-
-
 
     public void updateText(final String text){
         getActivity().runOnUiThread(new Runnable() {
@@ -90,12 +99,6 @@ public class TimeLog extends Fragment {
             }
         });
     }
-
-
-
-
-
-
 }
 
 

@@ -48,14 +48,11 @@ public class Time {
         value = 0;
     }
 
-
-
     public void incTime(){
         value = value + 1;
     }
 
     public String toString(){
-
         //long value = System.currentTimeMillis() - tlStartTime;
         int seconds = (int) ((value % 60));
         int minutes = (int) ((value / MILLIS_TO_MINUTES) % 60);
