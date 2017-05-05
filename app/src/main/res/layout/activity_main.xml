@@ -14,10 +14,47 @@
         android:id="@+id/fragment_container"></RelativeLayout>
     !-->
 
-    <com.example.linneabark.test.SettingsView
-        android:layout_width="138dp"
-        android:layout_height="495dp"
-         />
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="125dp"
+        android:layout_height="48dp"
+        android:text="Logga in"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Användarnamn"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="Lösenord"
+        tools:layout_editor_absoluteX="84dp"
+        tools:layout_editor_absoluteY="170dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="125dp"
+        android:layout_height="55dp"
+        android:text="Registrera"
+        tools:layout_editor_absoluteX="129dp"
+        tools:layout_editor_absoluteY="363dp" />
 
 </android.support.constraint.ConstraintLayout>
 

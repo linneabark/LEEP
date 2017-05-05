@@ -19,7 +19,7 @@ import android.widget.Toast;
 public class Settings extends Fragment {
 
    // private static ListView list_View;
-    private static String[] settings = new String[] {"Categories", "Quotes", "Timer", "Help"};
+    private static String[] settings = new String[] {"Categories", "Quotes", "Timer", "Help", "Uterus"};
 
     public Settings() {
         // Required empty public constructor

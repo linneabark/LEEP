@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="mail@exempal.se"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="125dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <EditText
+        android:id="@+id/setUserName"
+        android:layout_width="278dp"
+        android:layout_height="36dp"
+        android:ems="10"
+        android:hint="Användarnamn"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="64dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <EditText
+        android:id="@+id/setPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lösenord"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="191dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <EditText
+        android:id="@+id/repeatPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Upprepa lösenord"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="257dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <RadioButton
+        android:id="@+id/uterusBearer"
+        android:layout_width="158dp"
+        android:layout_height="29dp"
+        android:text="Livmoderbärare"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="151dp"
+        android:layout_height="60dp"
+        android:text="Registrera"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="401dp" />
+
+    <TextView
+        android:id="@+id/errorMessage"
+        android:layout_width="186dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="53dp"
+        tools:layout_editor_absoluteY="369dp" />
+
+</android.support.constraint.ConstraintLayout>

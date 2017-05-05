@@ -10,18 +10,42 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+
+import static com.example.linneabark.test.R.id.loginButton;
 
 
 public class MainActivity extends AppCompatActivity {
 
-
+    private RootController rootC = new RootController();
+    private AccountController account = new AccountController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button registerButton = (Button) this.findViewById(R.id.registerButton);
+        Button loginButton = (Button) this.findViewById(R.id.loginButton);
+        Button register = (Button) this.findViewById(R.id.register);
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootC.switchToLog();
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                rootC.switchToRegister();
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                account.createAccount();
+            }
+        });
 
     }
 
