@@ -6,6 +6,7 @@
         android:id="@+id/settings_id"
         android:title="@string/str_settings"
         app:showAsAction="always"
+        android:orderInCategory="1"
         />
 
 
@@ -13,12 +14,14 @@
         android:id="@+id/timelog_id"
         android:title="@string/str_timeLog"
         app:showAsAction="always"
+        android:orderInCategory="2"
     />
 
     <item
         android:id="@+id/statistics_id"
         android:title="@string/str_statistics"
         app:showAsAction="always"
+        android:orderInCategory="3"
     />
 
 

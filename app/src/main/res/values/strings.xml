@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"> </string>
+    <string name="app_name">LEEP</string>
     <string name="startActivity_button" />
     <string name="stopActivity_button" />
     <string name="clock_txt" />
