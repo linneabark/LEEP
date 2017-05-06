@@ -17,7 +17,7 @@ public class Quotes {
         //Lägger till några quotes så att de finns per default.
         quotes.add("Just do IT!");
         quotes.add("You are amazing!");
-        quotes.add("Studying is not always easy. But you are STRONG!");
+        quotes.add("Studying is not always easy. But you do it!");
     }
 
     public String getQuote() {
@@ -68,7 +68,7 @@ public class Quotes {
             changeQuote(changedQuoteText);
         }
         else {
-            System.out.println("Det går ej att hitta quotet du söker");
+            System.out.println("Can not find the quote you are searching for!");
         }
     }
     public void changeQuote (String changedQuoteText) {
