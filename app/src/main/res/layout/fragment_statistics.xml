@@ -7,57 +7,34 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TabHost
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/button"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:text="Day"
+        android:background="@color/plainWhite"
+        android:textColor="@color/plainBlack"
+        android:shadowColor="@color/plainWhite" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="128dp"
+        android:text="Seven Days"
+        android:background="@color/plainWhite"
+        android:textColor="@color/plainBlack"
+        android:shadowColor="@color/plainWhite" />
 
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="182dp">
-
-
-                <LinearLayout
-                    android:id="@+id/Day"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                     >
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Five-days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                     >
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Month"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                     >
-
-                </LinearLayout>
-
-            </FrameLayout>
-
-        </LinearLayout>
-
-    </TabHost>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="256dp"
+        android:text="Month"
+        android:background="@color/plainWhite"
+        android:textColor="@color/plainBlack"
+        android:shadowColor="@color/plainWhite" />
 
 </FrameLayout>
