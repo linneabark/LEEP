@@ -78,14 +78,23 @@ public class TimeLog extends Fragment {
             }
         });
         stopTime = System.currentTimeMillis();
+
+        DateFormat dateFormatYear = new SimpleDateFormat("yyyy");
+        DateFormat dateFormatMonth = new SimpleDateFormat("MM");
+        DateFormat dateFormatDay = new SimpleDateFormat("dd");
+        Date date = new Date();
         saveActivity.addActivity(new ActivityRow(
-                new SimpleDateFormat("yyyy") ,
-                new SimpleDateFormat("MM)"),
-                new SimpleDateFormat("dd"),
+                dateFormatYear.format(date),
+                dateFormatMonth.format(date),
+                dateFormatDay.format(date),
                 curTime,
                 (stopTime-curTime),
                 new Category("Föreläsning", 6)));
         System.out.println((stopTime-curTime) + " <-- Totaltiden för aktiviteten");
+        System.out.println("I will print stuff about the activity row" + dateFormatYear.format(date) +
+                dateFormatMonth.format(date) +
+                dateFormatDay.format(date)+
+                curTime );
 
         quoteDisplay.setText(quote.getQuote());
 
