@@ -14,7 +14,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import static com.example.linneabark.test.R.id.loginButton;
 
@@ -25,10 +30,17 @@ public class MainActivity extends AppCompatActivity {
     private RootController rootC = new RootController();
     private AccountController account = new AccountController();
 
+    /*private ExpandableListView listView;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listDataHeader;
+    private HashMap <String, List<String>> listHash;
+*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -45,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 rootC.switchToRegister();
             }
         });
-
-        /*register.setOnClickListener(new View.OnClickListener() {
+/*
+        register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 account.createAccount();
             }
@@ -54,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu){
@@ -66,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
         return true;
 
     }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
