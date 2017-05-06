@@ -83,6 +83,7 @@ public class TimeLog extends Fragment {
         DateFormat dateFormatMonth = new SimpleDateFormat("MM");
         DateFormat dateFormatDay = new SimpleDateFormat("dd");
         Date date = new Date();
+        /**/
         saveActivity.addActivity(new ActivityRow(
                 dateFormatYear.format(date),
                 dateFormatMonth.format(date),
@@ -95,7 +96,9 @@ public class TimeLog extends Fragment {
                 dateFormatMonth.format(date) +
                 dateFormatDay.format(date)+
                 curTime );
-
+        System.out.println("I will print stuff about the activity  that are niot hseh" + dateFormatYear +
+                dateFormatMonth +
+                dateFormatDay);
         quoteDisplay.setText(quote.getQuote());
 
         return rootView;
