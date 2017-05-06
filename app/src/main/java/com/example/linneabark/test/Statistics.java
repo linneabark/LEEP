@@ -35,7 +35,7 @@ public class Statistics extends Fragment {
 
     //vi börjar med day. när man väljer dag under statistic.
     //då är en månad vald och då skall endast dagarna som månaden är kunna väljas.
-    public void findSpecifikDay() {
+    public void findAllDaysForSpecificMonth() {
         int numberOfMonth = findWhichMonth.numberOfMonth(textMonth.getText());
         String monthInNumber = "";
         if (numberOfMonth > 0 && numberOfMonth < 10) {
@@ -53,9 +53,34 @@ public class Statistics extends Fragment {
             if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
                 savedatumfordispalilista.add(saveActivity.activityRowList.get(i).getDay());
             }
-
         }
+    }
 
+    public void everythingfromspecifikday () {
+        int numberOfMonth = findWhichMonth.numberOfMonth(textMonth.getText());
+        String monthInNumber = "";
+        if (numberOfMonth > 0 && numberOfMonth < 10) {
+            monthInNumber = "0" + numberOfMonth;
+        } else if (numberOfMonth >= 10) {
+            monthInNumber = "" + numberOfMonth;
+        }
+        System.out.println("monthInNumber , klassen Statistics: " + monthInNumber);
 
+        String numberOfDay = textDay.getText();
+
+        //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
+        List<ActivityRow> saveAllActivityForADay = new ArrayList<>();
+
+        for(int i= 0; i < saveActivity.activityRowList.size(); i++ ){
+            //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
+            if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
+                //om månaden och dagen numberOfDay...
+                if(saveActivity.activityRowList.get(i).getDay().equals(numberOfDay)){
+                    //sparar den specifikt valda dagen i en lista för att illustrera dagen i progress sedan
+                    saveAllActivityForADay.add(saveActivity.activityRowList.get(i));
+                }
+                savedatumfordispalilista.add(saveActivity.activityRowList.get(i).getDay());
+            }
+        }
     }
 }
