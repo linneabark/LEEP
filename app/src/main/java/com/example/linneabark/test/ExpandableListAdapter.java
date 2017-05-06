@@ -1,14 +1,23 @@
 package com.example.linneabark.test;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by linneabark on 2017-05-06.
  */
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
+
+    private Context context;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listHashMap;
+
     @Override
     public int getGroupCount() {
         return 0;
