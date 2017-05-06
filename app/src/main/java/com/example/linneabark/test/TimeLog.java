@@ -29,12 +29,34 @@ import java.util.TimerTask;
 public class TimeLog extends Fragment {
 
     TextView time_txt;
-    TextView timeMenu_txt;
 
-    long curTime;
+    private String startTime;
+    private String stopTime;
+
+    public String getStartTime(){
+        String str = null;
+        if (str == null){
+            str = startTime;
+        }
+
+        return str;
+
+    }public String getStopTime(){
+        String str = null;
+        if (str == null){
+            str = stopTime;
+        }
+
+        return str;
+
+    }
+
+
+
 
 
     private Time time;
+
     public TimeLog() {
         // Required empty public constructor
     }
@@ -62,10 +84,9 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
 
-                curTime = System.currentTimeMillis();
-                String hej = SaveDate.calculateTimeToString(curTime);
+                startTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
 
-                System.out.println(hej);
+                System.out.println(getStartTime());
 
                 time.startTimer();
             }
@@ -75,6 +96,8 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
                 time.stopTimer();
+                stopTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
+                System.out.println(getStopTime());
             }
         });
 
