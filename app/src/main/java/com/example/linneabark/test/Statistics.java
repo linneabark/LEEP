@@ -6,11 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class Statistics extends Fragment {
-    private SaveActivity saveActivity = new SaveActivity();
+
 
     public Statistics() {
         // Required empty public constructor
@@ -24,18 +27,32 @@ public class Statistics extends Fragment {
     }
 
     //skall skapa en metod som hemtar månad och dagar etc..
-/*
-    private boolean whichMonth (int i) {
-        if (listViewMonth.getText().equals(saveActivity.activityRowList.get(i).getMonth())) {
 
-        }
-    }
-*/
+
+    private FindWhichMonth findWhichMonth = new FindWhichMonth();
+    private SaveActivity saveActivity = new SaveActivity();
+
+
     //vi börjar med day. när man väljer dag under statistic.
     //då är en månad vald och då skall endast dagarna som månaden är kunna väljas.
     public void findSpecifikDay() {
+        int numberOfMonth = findWhichMonth.numberOfMonth(textMonth.getText());
+        String monthInNumber = "";
+        if (numberOfMonth > 0 && numberOfMonth < 10) {
+            monthInNumber = "0" + numberOfMonth;
+        } else if (numberOfMonth >= 10) {
+            monthInNumber = "" + numberOfMonth;
+        }
+        System.out.println("monthInNumber , klassen Statistics: " + monthInNumber);
+
+        //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
+        List<String> savedatumfordispalilista = new ArrayList<>();
+
         for(int i= 0; i < saveActivity.activityRowList.size(); i++ ){
-           // if (listViewMonth.getText().equals)
+            //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
+            if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
+                savedatumfordispalilista.add(saveActivity.activityRowList.get(i).getDay());
+            }
 
         }
 
