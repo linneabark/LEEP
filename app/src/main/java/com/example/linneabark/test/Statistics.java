@@ -40,9 +40,9 @@ public class Statistics extends Fragment {
     String numberOfDay;// = textDay.getText(); //textDay skall bytas ut mot det som hanterar/illusterar vilken dag som är vald i statistics.
 
     //Vill kunna läsa av de två första, alltså t.ex. "01"
-    String firstDayOfMore = textDays.getText().substring(0,2);
+    String firstDayOfMore;// = textDays.getText().substring(0,2);
     //vill kunna läsa av de sista datumet. Illustrerigsförslag "01-05". Kolla så att den börjar rätt, med 3.
-    String lastDayOfMore = textDays.getText().substring(3);
+    String lastDayOfMore;// = textDays.getText().substring(3);
     public void giveValues () {
         if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
