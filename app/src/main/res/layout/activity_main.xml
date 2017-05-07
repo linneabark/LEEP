@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
@@ -11,15 +12,18 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content"
+        android:background="@color/menuColor"
         android:elevation="4dp"
+        app:theme="@style/MyActionBarTheme"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:backgroundTint="@color/smallMenuColor"
+        />
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+    >
 
         <TextView
             android:id="@+id/welcome_txt"
@@ -29,17 +33,13 @@
             android:gravity="center"
             android:text="Välkommen till LEEP"
             android:textColor="#000000"
-            android:textSize="40sp"
-            tools:layout_editor_absoluteX="7dp"
-            tools:layout_editor_absoluteY="16dp" />
+            android:textSize="40sp" />
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="125dp"
             android:layout_height="48dp"
-            android:text="Logga in"
-            tools:layout_editor_absoluteX="130dp"
-            tools:layout_editor_absoluteY="246dp" />
+            android:text="Logga in" />
 
         <EditText
             android:id="@+id/userName"

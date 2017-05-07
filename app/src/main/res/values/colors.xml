@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- MENU !-->
+    <color name="menuColor">#9635b0d9</color> <!-- is made a bit transparent right now, will make it cooler when scrolling !-->
+    <color name="smallMenuColor">#902586c2</color>
     <color name="colorPrimary">#3f8ab5</color>
     <color name="colorPrimaryDark">#30649f</color>
     <color name="colorAccent">#FF4081</color>

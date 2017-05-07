@@ -85,10 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new Statistics();
                 break;
             case R.id.timelog_id:
-                /*if(timeLog == null) {
-                    timeLog = new TimeLog();
-                }
-                nextFrag = timeLog;*/
                 nextFrag = new TimeLog();
                 break;
         }
