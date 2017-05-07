@@ -63,7 +63,6 @@ public class TimeLog extends Fragment {
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 curTime = System.currentTimeMillis();
                 String hej = SaveDate.calculateTimeToString(curTime);
 
@@ -95,11 +94,13 @@ public class TimeLog extends Fragment {
                 new Category("Föreläsning", 6)));
 
         System.out.println((stopTime-curTime) + " <-- Totaltiden för aktiviteten");
+        //I will print stuff about the activity row201705070
         System.out.println("I will print stuff about the activity row" + dateFormatYear.format(date) +
                 dateFormatMonth.format(date) +
                 dateFormatDay.format(date)+
                 curTime );
         Calendar cal = Calendar.getInstance();
+        //May
         System.out.println(new SimpleDateFormat("MMM").format(cal.getTime()));
         //.................tills hit^
 

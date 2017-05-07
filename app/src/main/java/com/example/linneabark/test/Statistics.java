@@ -29,21 +29,29 @@ public class Statistics extends Fragment {
     //skall skapa en metod som hemtar månad och dagar etc..
 
 
+    /**
+     * Kod nedanför för statistic view som hanterar vyn/statisticen av en dag som vy*/
     private FindWhichMonth findWhichMonth = new FindWhichMonth();
     private SaveActivity saveActivity = new SaveActivity();
 
+    //textMonth skall bytas ut mot det som hanterar/illusterar månad i statistics.
+    int numberOfMonth; //= findWhichMonth.numberOfMonth(textMonth.getText()); //textMonth skall bytas ut mot det som hanterar/illusterar månad i statistics.
+    String monthInNumber = "";
+    String numberOfDay;// = textDay.getText(); //textDay skall bytas ut mot det som hanterar/illusterar vilken dag som är vald i statistics.
 
-    //vi börjar med day. när man väljer dag under statistic.
-    //då är en månad vald och då skall endast dagarna som månaden är kunna väljas.
-    public void findAllDaysForSpecificMonth() {
-        int numberOfMonth = findWhichMonth.numberOfMonth(textMonth.getText());
-        String monthInNumber = "";
+    public void giveValues () {
         if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
         } else if (numberOfMonth >= 10) {
             monthInNumber = "" + numberOfMonth;
         }
         System.out.println("monthInNumber , klassen Statistics: " + monthInNumber);
+    }
+
+    //vi börjar med day. när man väljer dag under statistic.
+    //då är en månad vald och då skall endast dagarna som månaden är kunna väljas.
+    public void findAllDaysForSpecificMonth() {
+        giveValues();
 
         //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
         List<String> savedatumfordispalilista = new ArrayList<>();
@@ -57,16 +65,7 @@ public class Statistics extends Fragment {
     }
 
     public void everythingfromspecifikday () {
-        int numberOfMonth = findWhichMonth.numberOfMonth(textMonth.getText());
-        String monthInNumber = "";
-        if (numberOfMonth > 0 && numberOfMonth < 10) {
-            monthInNumber = "0" + numberOfMonth;
-        } else if (numberOfMonth >= 10) {
-            monthInNumber = "" + numberOfMonth;
-        }
-        System.out.println("monthInNumber , klassen Statistics: " + monthInNumber);
-
-        String numberOfDay = textDay.getText();
+        giveValues();
 
         //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
         List<ActivityRow> saveAllActivityForADay = new ArrayList<>();
@@ -79,7 +78,6 @@ public class Statistics extends Fragment {
                     //sparar den specifikt valda dagen i en lista för att illustrera dagen i progress sedan
                     saveAllActivityForADay.add(saveActivity.activityRowList.get(i));
                 }
-                savedatumfordispalilista.add(saveActivity.activityRowList.get(i).getDay());
             }
         }
     }
