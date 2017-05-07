@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -58,18 +59,40 @@ public class Statistics extends Fragment {
     public void findAllDaysForSpecificMonth() {
         giveValues();
 
-        //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
-        List<String> allDaysForSpecificMonth = new ArrayList<>();
+
 
         for(int i= 0; i < saveActivity.activityRowList.size(); i++ ){
             //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
             if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
+                //lägger till alla datum som loggats under en månad.
                 allDaysForSpecificMonth.add(saveActivity.activityRowList.get(i).getDay());
+                //sägger till alla aktiviteter som funnits under en månad.
+                allActivityRowsForSpecificMonth.add(saveActivity.activityRowList.get(i));
             }
         }
     }
+    //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
+    List<String> allDaysForSpecificMonth = new ArrayList<>();
+
+    List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
 
     public void monthTotalForActivity () {
+        List<String>totalOfCategoryList = new ArrayList<>();
+        List<Long> totalTimeList = new ArrayList<>();
+
+        for (int i = 0; i < allActivityRowsForSpecificMonth.size(); i++){
+            String categoryName = allActivityRowsForSpecificMonth.get(i).getCategory().getCategoryName();
+
+            if (!(totalOfCategoryList.contains(categoryName))) {
+                totalOfCategoryList.add(categoryName);
+            }
+            int k = totalOfCategoryList.indexOf(categoryName);
+            long j = totalTimeList.get(k);
+            long totalTimeOfActivity = allActivityRowsForSpecificMonth.get(i).getTotalTime();
+            totalTimeOfActivity = totalTimeOfActivity + j;
+            totalTimeList.add(k, totalTimeOfActivity);
+
+        }
 
     }
 
