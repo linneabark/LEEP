@@ -43,6 +43,7 @@ public class Statistics extends Fragment {
     String firstDayOfMore;// = textDays.getText().substring(0,2);
     //vill kunna läsa av de sista datumet. Illustrerigsförslag "01-05". Kolla så att den börjar rätt, med 3.
     String lastDayOfMore;// = textDays.getText().substring(3);
+
     public void giveValues () {
         if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
@@ -58,14 +59,18 @@ public class Statistics extends Fragment {
         giveValues();
 
         //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
-        List<String> savedatumfordispalilista = new ArrayList<>();
+        List<String> allDaysForSpecificMonth = new ArrayList<>();
 
         for(int i= 0; i < saveActivity.activityRowList.size(); i++ ){
             //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
             if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
-                savedatumfordispalilista.add(saveActivity.activityRowList.get(i).getDay());
+                allDaysForSpecificMonth.add(saveActivity.activityRowList.get(i).getDay());
             }
         }
+    }
+
+    public void monthTotalForActivity () {
+
     }
 
     public void everythingfromspecifikday () {
@@ -86,13 +91,14 @@ public class Statistics extends Fragment {
         }
     }
 
+    //en metod som ser till att alla dagar läggs till i listan.
     private boolean continueTo (int i) {
             if (saveActivity.activityRowList.get(i).getDay().equals(lastDayOfMore)) {
                 return false;
             }
             return true;
     }
-    //denna metoden lägger till alla dagarna som är valda i en lista.
+    //denna metoden lägger till alla dagarna som är valda i en lista. denna listan visar endast loggade dagar..
     //Ur denna listan kan man få ut all tid som en aktivitet fått tillägnad.
     public void everythingFromXDays () {
         //en bugg, detta kommer bara funka om man ej tar X dagar är på olika månader.
@@ -102,6 +108,7 @@ public class Statistics extends Fragment {
 
         //går igenom aktivitets listan och hämtar de valda dagarna.
         for(int i= 0; i < saveActivity.activityRowList.size(); i++) {
+            //kollar så att månaden som är förvald stämmer.
             if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
                 //om objeketet i activitetslistan är det samma som dagen vi vill kolla ifrån då läggs den till i listan.
                 if(saveActivity.activityRowList.get(i).getDay().equals(firstDayOfMore)) {
@@ -120,4 +127,8 @@ public class Statistics extends Fragment {
             }
         }
     }
+
+    //behöver en metod som kolalr vilken månad det är och sedan tar fram alla dagar som finns i denna.
+    //vill vi att den skall kolla de 5 lagrade dagarna eller typ 1-5, 2-6 osv och även om man bara lagrat en dag?
+    //tar ett beslut: 2017:05:07. gör 5 följande dagar och om de
 }

@@ -40,4 +40,6 @@ public class Category {
         */
         categoryList.add(newCateogry);
     }
+    public String getCategoryName() {return categoryName;}
+    public int getColor(){return color;}
 }
