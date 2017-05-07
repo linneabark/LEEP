@@ -39,6 +39,10 @@ public class Statistics extends Fragment {
     String monthInNumber = "";
     String numberOfDay;// = textDay.getText(); //textDay skall bytas ut mot det som hanterar/illusterar vilken dag som är vald i statistics.
 
+    //Vill kunna läsa av de två första, alltså t.ex. "01"
+    String firstDayOfMore = textDays.getText().substring(0,2);
+    //vill kunna läsa av de sista datumet. Illustrerigsförslag "01-05". Kolla så att den börjar rätt, med 3.
+    String lastDayOfMore = textDays.getText().substring(3);
     public void giveValues () {
         if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
@@ -77,6 +81,41 @@ public class Statistics extends Fragment {
                 if(saveActivity.activityRowList.get(i).getDay().equals(numberOfDay)){
                     //sparar den specifikt valda dagen i en lista för att illustrera dagen i progress sedan
                     saveAllActivityForADay.add(saveActivity.activityRowList.get(i));
+                }
+            }
+        }
+    }
+
+    private boolean continueTo (int i) {
+            if (saveActivity.activityRowList.get(i).getDay().equals(lastDayOfMore)) {
+                return false;
+            }
+            return true;
+    }
+    //denna metoden lägger till alla dagarna som är valda i en lista.
+    //Ur denna listan kan man få ut all tid som en aktivitet fått tillägnad.
+    public void everythingFromXDays () {
+        //en bugg, detta kommer bara funka om man ej tar X dagar är på olika månader.
+        giveValues();
+
+        List<ActivityRow> saveTotalTimeForXDays = new ArrayList();
+
+        //går igenom aktivitets listan och hämtar de valda dagarna.
+        for(int i= 0; i < saveActivity.activityRowList.size(); i++) {
+            if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
+                //om objeketet i activitetslistan är det samma som dagen vi vill kolla ifrån då läggs den till i listan.
+                if(saveActivity.activityRowList.get(i).getDay().equals(firstDayOfMore)) {
+                    int k = i;
+                    //while loopen lägger till förtsa och dagarna efter tills det att man kommer till den näst sista dagen.
+                    while (continueTo(k)){
+                        saveTotalTimeForXDays.add(saveActivity.activityRowList.get(k));
+                        k++;
+                    }
+                    System.out.println("vad har k för värde efter while loopen i classen Statistics: " + k);
+                }
+                //lägger till den sista dagen av flera i listan.
+                else if (saveActivity.activityRowList.get(i).getDay().equals(lastDayOfMore)) {
+                    saveTotalTimeForXDays.add(saveActivity.activityRowList.get(i));
                 }
             }
         }
