@@ -26,17 +26,41 @@ public class TimeLog extends Fragment {
     private TextView quoteDisplay;
     private Quotes quote = new Quotes();
 
-    private long stopTime;
+    private long stoppTime;
 
     TextView time_txt;
 
     //tiden stoppuret startades
     long curTime;
 
+    private String startTime;
+    private String stopTime;
+
+    public String getStartTime(){
+        String str = null;
+        if (str == null){
+            str = startTime;
+        }
+
+        return str;
+
+    }public String getStopTime(){
+        String str = null;
+        if (str == null){
+            str = stopTime;
+        }
+
+        return str;
+
+    }
+
+
+
 
     SaveActivity saveActivity = new SaveActivity();
 
     private Time time;
+
     public TimeLog() {
         // Required empty public constructor
     }
@@ -54,6 +78,7 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
+
         time = Time.getInstance(this);
 
         updateText(time.toString());
@@ -62,10 +87,9 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
 
-                curTime = System.currentTimeMillis();
-                String hej = SaveDate.calculateTimeToString(curTime);
+                startTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
 
-                System.out.println(hej);
+                System.out.println(getStartTime());
 
                 time.startTimer();
             }
@@ -75,17 +99,19 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
                 time.stopTimer();
+                stopTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
+                System.out.println(getStopTime());
             }
         });
-        stopTime = System.currentTimeMillis();
+        stoppTime = System.currentTimeMillis();
         saveActivity.addActivity(new ActivityRow(
                 new SimpleDateFormat("yyyy") ,
                 new SimpleDateFormat("MM)"),
                 new SimpleDateFormat("dd"),
                 curTime,
-                (stopTime-curTime),
+                (stoppTime-curTime),
                 new Category("Föreläsning", 6)));
-        System.out.println((stopTime-curTime) + " <-- Totaltiden för aktiviteten");
+        System.out.println((stoppTime-curTime) + " <-- Totaltiden för aktiviteten");
 
         quoteDisplay.setText(quote.getQuote());
 
@@ -96,6 +122,7 @@ public class TimeLog extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             public void run(){
                 time_txt.setText(text);
+
             }
         });
     }
