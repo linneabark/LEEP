@@ -1,7 +1,6 @@
 package com.example.linneabark.test;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -12,9 +11,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import java.io.IOException;
+/**
+ * Created by Eli on 2017-05-08.
+ */
 
-public class AccountController extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
+
     Editable myMail;
     Editable myUserName;
     Editable myPassword;
@@ -28,30 +30,29 @@ public class AccountController extends AppCompatActivity {
     private TextView errorMessage;
     private Button register;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.register, container, false);
-        mail = (EditText) rootView.findViewById(R.id.mail);
-        userName = (EditText) rootView.findViewById(R.id.setUserName);
-        password = (EditText) rootView.findViewById(R.id.setPassword);
-        repeatPassword = (EditText) rootView.findViewById(R.id.repeatPassword);
-        uterusBearer = (RadioButton)rootView.findViewById(R.id.uterusBearer);
-        errorMessage = (TextView) rootView.findViewById(R.id.errorMessage);
-        register = (Button) rootView.findViewById(R.id.register);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.register);
+
+        mail = (EditText) this.findViewById(R.id.mail);
+        userName = (EditText) this.findViewById(R.id.setUserName);
+        password = (EditText) this.findViewById(R.id.setPassword);
+        repeatPassword = (EditText) this.findViewById(R.id.repeatPassword);
+        uterusBearer = (RadioButton)this.findViewById(R.id.uterusBearer);
+        errorMessage = (TextView) this.findViewById(R.id.errorMessage);
+        register = (Button) this.findViewById(R.id.register);
 
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 createAccount();
             }
         });
-
-        return rootView;
     }
 
 
-    //trying to make clock with threads
 
-    RootController rootC = new RootController();
+     RootController rootC = new RootController();
 
 
     public void createAccount() {
@@ -87,5 +88,7 @@ public class AccountController extends AppCompatActivity {
     private void setUterusCarrier() {
         myUterusBearer = uterusBearer.isSelected();
     }
+
+
 
 }

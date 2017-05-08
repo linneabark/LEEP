@@ -8,12 +8,17 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="?attr/actionBarSize"
+        android:orientation="horizontal"
         android:weightSum="1">
 
         <Button
@@ -21,34 +26,80 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
+            android:layout_weight="0.35"
             android:background="@color/plainWhite"
             android:shadowColor="@color/plainWhite"
             android:text="Day"
-            android:textColor="@color/plainBlack"
-            android:layout_weight="0.35" />
+            android:textColor="@color/plainBlack" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
+            android:layout_weight="0.35"
             android:background="@color/plainWhite"
             android:shadowColor="@color/plainWhite"
             android:text="Seven Days"
-            android:textColor="@color/plainBlack"
-            android:layout_weight="0.35" />
+            android:textColor="@color/plainBlack" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
+            android:layout_weight="0.35"
             android:background="@color/plainWhite"
             android:shadowColor="@color/plainWhite"
             android:text="Month"
-            android:textColor="@color/plainBlack"
-            android:layout_weight="0.35" />
+            android:textColor="@color/plainBlack" />
+
 
     </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="0.35"
+                android:background="@color/plainWhite"
+                android:shadowColor="@color/plainWhite"
+                android:text="Day"
+                android:textColor="@color/plainBlack" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="0.35"
+                android:background="@color/plainWhite"
+                android:shadowColor="@color/plainWhite"
+                android:text="Seven Days"
+                android:textColor="@color/plainBlack" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="0.35"
+                android:background="@color/plainWhite"
+                android:shadowColor="@color/plainWhite"
+                android:text="Month"
+                android:textColor="@color/plainBlack" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
 </FrameLayout>

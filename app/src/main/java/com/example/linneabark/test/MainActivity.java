@@ -27,27 +27,36 @@ public class MainActivity extends AppCompatActivity {
     private TimeLog timeLog = new TimeLog();
 
     private RootController rootC = new RootController();
-    private AccountController account = new AccountController();
+    //private AccountController account = new AccountController();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button registerButton = (Button) this.findViewById(R.id.registerButton);
-        Button loginButton = (Button) this.findViewById(R.id.loginButton);
-        Button register = (Button) this.findViewById(R.id.register);
+            /*if(usersNotLoggedINorNoAccount){
+
+
+        Intent toy = new Intent(MainActivity.this, LoginActivity.class);
+
+        startActivity(toy);
+        }*/
+
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+
+
        // getSupportActionBar().hide();
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        /*loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                rootC.switchToLog();
+                setContentView(R.layout.activity_main);
+
             }
-        });
+        });*/
 
         /*registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -58,6 +67,18 @@ public class MainActivity extends AppCompatActivity {
 /*        register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 account.createAccount();
+            }
+        });*/
+
+
+        /*registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent toy = new Intent(MainActivity.this, RegisterActivity.class);
+
+                startActivity(toy);
+
             }
         });*/
 
