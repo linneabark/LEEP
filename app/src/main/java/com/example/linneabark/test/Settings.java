@@ -37,15 +37,22 @@ public class Settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        /*listView = (ExpandableListView)getActivity().findViewById(R.id.lvExp);
-        initData();
-        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
-        listView.setAdapter(listAdapter);*/
 
-       return inflater.inflate(R.layout.fragment_settings, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+
+        listView = (ExpandableListView)getActivity().findViewById(R.id.lvExp);
+        initData();
+        listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listHash);
+        System.out.println("listDataHeader: " + listDataHeader);
+        System.out.println("listHash: " + listHash);
+        System.out.println("Aktivitet: " + getActivity().toString());
+        listView.setAdapter(listAdapter);
+
+       return rootView;
     }
-/*
-    public void onCreate(Bundle savedInstanceState){
+
+   /* public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
         listView = (ExpandableListView)getActivity().findViewById(R.id.lvExp);
@@ -72,6 +79,7 @@ public class Settings extends Fragment {
         camilla.add("Kanske en del har");
         camilla.add("Hoppas det funkar");
         camilla.add("Orkar inte mer");
+
 
         List<String> margareta = new ArrayList<>();
         margareta.add("blahahahah");

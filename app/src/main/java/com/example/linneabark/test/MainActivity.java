@@ -30,12 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private RootController rootC = new RootController();
     private AccountController account = new AccountController();
 
-    /*private ExpandableListView listView;
-    private ExpandableListAdapter listAdapter;
-    private List<String> listDataHeader;
-    private HashMap <String, List<String>> listHash;
-*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,12 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(final Menu menu){
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-
         return true;
-
     }
 
     @Override
