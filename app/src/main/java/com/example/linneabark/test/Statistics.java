@@ -59,8 +59,6 @@ public class Statistics extends Fragment {
     public void findAllDaysForSpecificMonth() {
         giveValues();
 
-
-
         for(int i= 0; i < saveActivity.activityRowList.size(); i++ ){
             //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
             if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
@@ -74,18 +72,27 @@ public class Statistics extends Fragment {
     //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
     List<String> allDaysForSpecificMonth = new ArrayList<>();
 
+    //sparar alla aktiviteter från en specifik månad.
     List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
 
+    //en metod som lägger till alla olika aktiviteter som har använts i en String list. och all sammanlagd tid i en Long list.
+    //Så ett index i ena listan hör ihop med samma index i den andra listan.
     public void monthTotalForActivity () {
-        List<String>totalOfCategoryList = new ArrayList<>();
+        //en lista för att spara alla olika kategrier som använts
+        List<String> totalOfCategoryList = new ArrayList<>();
+        //En lista för att spara all sammanlagd tid för en kategori.
         List<Long> totalTimeList = new ArrayList<>();
 
+        //For loopen gör så att man kan gå igenom alla objekt från en månad
         for (int i = 0; i < allActivityRowsForSpecificMonth.size(); i++){
+            //Hämtar kategorinamnet från alla objekt i listan
             String categoryName = allActivityRowsForSpecificMonth.get(i).getCategory().getCategoryName();
 
+            //Lägger till kategorinmanet i listan, om det ej finns i listan för att kunna jämföra med totaltiden av en kategori.
             if (!(totalOfCategoryList.contains(categoryName))) {
                 totalOfCategoryList.add(categoryName);
             }
+
             int k = totalOfCategoryList.indexOf(categoryName);
             long j = totalTimeList.get(k);
             long totalTimeOfActivity = allActivityRowsForSpecificMonth.get(i).getTotalTime();
