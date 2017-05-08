@@ -45,6 +45,7 @@ public class Statistics extends Fragment {
     //vill kunna läsa av de sista datumet. Illustrerigsförslag "01-05". Kolla så att den börjar rätt, med 3.
     String lastDayOfMore;// = textDays.getText().substring(3);
 
+    //Tar fram de värderna som typparametrarna ActivityRow objekten hanterar.
     public void giveValues () {
         if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
@@ -92,15 +93,19 @@ public class Statistics extends Fragment {
             if (!(totalOfCategoryList.contains(categoryName))) {
                 totalOfCategoryList.add(categoryName);
             }
+            //Varje kategori har utförts en visstid(totalTime). Denna tid måste läggas till i listan som sparar den totala tiden.
 
-            int k = totalOfCategoryList.indexOf(categoryName);
-            long j = totalTimeList.get(k);
+            //Hämtar indexet som kategorin ligger på.
+            int indexOfCategory = totalOfCategoryList.indexOf(categoryName);
+            //Hämtar den totala tiden som redan ligger i listan som hanterar total tiden
+            long j = totalTimeList.get(indexOfCategory);
+            //Hämtar den totala tiden just detta objekt la ner på just denna kategori
             long totalTimeOfActivity = allActivityRowsForSpecificMonth.get(i).getTotalTime();
+            //Läggger ihop tiden som redan låg i listan med den "nya" för objektet
             totalTimeOfActivity = totalTimeOfActivity + j;
-            totalTimeList.add(k, totalTimeOfActivity);
-
+            //Lägger till den ökade totaltiden i listan som innehåller total tider.
+            totalTimeList.add(indexOfCategory, totalTimeOfActivity);
         }
-
     }
 
     public void everythingfromspecifikday () {
@@ -160,5 +165,4 @@ public class Statistics extends Fragment {
 
     //behöver en metod som kolalr vilken månad det är och sedan tar fram alla dagar som finns i denna.
     //vill vi att den skall kolla de 5 lagrade dagarna eller typ 1-5, 2-6 osv och även om man bara lagrat en dag?
-    //tar ett beslut: 2017:05:07. gör 5 följande dagar och om de
 }
