@@ -48,7 +48,7 @@ public class Settings extends Fragment {
         System.out.println("listDataHeader: " + listDataHeader);
         System.out.println("listHash: " + listHash);
         System.out.println("Aktivitet: " + getActivity().toString());
-        listView.setAdapter(listAdapter);
+       // listView.setAdapter(listAdapter);
 
        return rootView;
     }
