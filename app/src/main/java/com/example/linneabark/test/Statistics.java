@@ -78,16 +78,19 @@ public class Statistics extends Fragment {
 
     //en metod som lägger till alla olika aktiviteter som har använts i en String list. och all sammanlagd tid i en Long list.
     //Så ett index i ena listan hör ihop med samma index i den andra listan.
-    public void monthTotalForActivity () {
+
+    //För specifikt en månad, ta listan som används "allActivityRowsForSpecificMonth"
+    //metoden hanterar den listan (för en månad eller XDays) och tar fram totala tiden alla kategorier körts
+    public void totalForActivity (List<ActivityRow> oneList) {
         //en lista för att spara alla olika kategrier som använts
         List<String> totalOfCategoryList = new ArrayList<>();
         //En lista för att spara all sammanlagd tid för en kategori.
         List<Long> totalTimeList = new ArrayList<>();
 
         //For loopen gör så att man kan gå igenom alla objekt från en månad
-        for (int i = 0; i < allActivityRowsForSpecificMonth.size(); i++){
+        for (int i = 0; i < oneList.size(); i++){
             //Hämtar kategorinamnet från alla objekt i listan
-            String categoryName = allActivityRowsForSpecificMonth.get(i).getCategory().getCategoryName();
+            String categoryName = oneList.get(i).getCategory().getCategoryName();
 
             //Lägger till kategorinmanet i listan, om det ej finns i listan för att kunna jämföra med totaltiden av en kategori.
             if (!(totalOfCategoryList.contains(categoryName))) {
@@ -100,7 +103,7 @@ public class Statistics extends Fragment {
             //Hämtar den totala tiden som redan ligger i listan som hanterar total tiden
             long j = totalTimeList.get(indexOfCategory);
             //Hämtar den totala tiden just detta objekt la ner på just denna kategori
-            long totalTimeOfActivity = allActivityRowsForSpecificMonth.get(i).getTotalTime();
+            long totalTimeOfActivity = oneList.get(i).getTotalTime();
             //Läggger ihop tiden som redan låg i listan med den "nya" för objektet
             totalTimeOfActivity = totalTimeOfActivity + j;
             //Lägger till den ökade totaltiden i listan som innehåller total tider.
