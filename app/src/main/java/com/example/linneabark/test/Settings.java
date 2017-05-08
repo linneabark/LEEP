@@ -22,9 +22,6 @@ import java.util.List;
  */
 public class Settings extends Fragment {
 
-   // private static ListView list_View;
-    private static String[] settings = new String[] {"Categories", "Quotes", "Timer", "Help", "Uterus"};
-
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
@@ -55,16 +52,6 @@ public class Settings extends Fragment {
 
        return rootView;
     }
-
-   /* public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-
-        listView = (ExpandableListView)getActivity().findViewById(R.id.lvExp);
-        initData();
-        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
-        listView.setAdapter(listAdapter);
-
-    }*/
 
     private void initData() {
         listDataHeader = new ArrayList<>();
