@@ -27,8 +27,11 @@ import java.util.TimerTask;
 public class TimeLog extends Fragment {
     private TextView quoteDisplay;
     private Quotes quote = new Quotes();
+    private SaveDate saveDate = new SaveDate();
 
-    private long stoppTime;
+    private long stopActivity;
+
+    private long startActivity;
 
     TextView time_txt;
 
@@ -89,12 +92,12 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
-
-
-                System.out.println(getStartTime());
+                /*startTime = saveDate.calculateTimeToString(System.currentTimeMillis());
+                System.out.println(getStartTime());*/
 
                 time.startTimer();
+
+                startActivity = System.currentTimeMillis();
             }
         });
 
@@ -102,44 +105,24 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
                 time.stopTimer();
-                stopTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
-                System.out.println(getStopTime());
+                /*stopTime = saveDate.calculateTimeToString(System.currentTimeMillis());
+                System.out.println(getStopTime());*/
 
+                stopActivity = System.currentTimeMillis();
 
+                saveActivity.addActivity(new ActivityRow(
+
+                        saveDate.calculateYearToString(),
+                        saveDate.calculateMonthToString(),
+                        saveDate.calculateDayToString(),
+
+                        startActivity,
+                        (stopActivity-startActivity),
+                        new Category("Föreläsning", 6)));
 
 
             }
         });
-        stoppTime = System.currentTimeMillis();
-
-
-        //.............Vill att nedanstående kod står eller körs när man trycker på stop knappen.
-        DateFormat dateFormatYear = new SimpleDateFormat("yyyy");
-        DateFormat dateFormatMonth = new SimpleDateFormat("MM");
-        DateFormat dateFormatDay = new SimpleDateFormat("dd");
-        Date date = new Date();
-
-        saveActivity.addActivity(new ActivityRow(
-
-                dateFormatYear.format(date),
-                dateFormatMonth.format(date),
-                dateFormatDay.format(date),
-
-                curTime,
-                (stoppTime-curTime),
-                new Category("Föreläsning", 6)));
-
-        System.out.println((stoppTime-curTime) + " <-- Totaltiden för aktiviteten");
-
-        //I will print stuff about the activity row201705070
-        System.out.println("I will print stuff about the activity row" + dateFormatYear.format(date) +
-                dateFormatMonth.format(date) +
-                dateFormatDay.format(date)+
-                curTime );
-        Calendar cal = Calendar.getInstance();
-        //May
-        System.out.println(new SimpleDateFormat("MMM").format(cal.getTime()));
-        //.................tills hit^
 
         quoteDisplay.setText(quote.getQuote());
 

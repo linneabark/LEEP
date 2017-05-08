@@ -26,7 +26,6 @@ public class Statistics extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_statistics, container, false);
-        TextView statistics = (TextView) rootview.findViewById(R.id.statistics);
 
         return rootview;
 
