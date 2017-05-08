@@ -23,8 +23,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public ExpandableListAdapter (Context context, List <String> listDataHeader, HashMap <String, List<String>> listHashMap){
         this.context = context;
+        System.out.println("Context ela: " + context);
         this.listDataHeader = listDataHeader;
+        System.out.println("ListDataHeader ela: " + listDataHeader);
         this.listHashMap = listHashMap;
+        System.out.println("listHashMap ela: " + listHashMap);
     }
 
     @Override

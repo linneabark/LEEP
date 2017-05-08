@@ -1,5 +1,6 @@
 package com.example.linneabark.test;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -28,6 +29,7 @@ public class Settings extends Fragment {
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap <String, List<String>> listHash;
+    private Context context;
 
     public Settings() {
         // Required empty public constructor
@@ -40,10 +42,12 @@ public class Settings extends Fragment {
 
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        context = getContext();
+        System.out.println("Context: " + context);
 
         listView = (ExpandableListView)getActivity().findViewById(R.id.lvExp);
         initData();
-        listAdapter = new ExpandableListAdapter(getContext(), listDataHeader, listHash);
+        listAdapter = new ExpandableListAdapter(this.context, listDataHeader, listHash);
         System.out.println("listDataHeader: " + listDataHeader);
         System.out.println("listHash: " + listHash);
         System.out.println("Aktivitet: " + getActivity().toString());
