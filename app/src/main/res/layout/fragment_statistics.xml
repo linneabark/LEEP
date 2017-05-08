@@ -6,15 +6,35 @@
     android:background="@color/plainWhite">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:text="Day"
+        android:background="@color/plainWhite"
         android:textColor="@color/plainBlack"
-        android:id="@+id/statistics"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="40sp"
-        />
+        android:shadowColor="@color/plainWhite" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="128dp"
+        android:text="Seven Days"
+        android:background="@color/plainWhite"
+        android:textColor="@color/plainBlack"
+        android:shadowColor="@color/plainWhite" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="256dp"
+        android:text="Month"
+        android:background="@color/plainWhite"
+        android:textColor="@color/plainBlack"
+        android:shadowColor="@color/plainWhite" />
 
 </FrameLayout>

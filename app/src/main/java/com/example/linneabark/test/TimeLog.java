@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Calendar;
 import java.util.Timer;
 
 import java.text.DateFormat;
@@ -89,6 +91,7 @@ public class TimeLog extends Fragment {
 
                 startTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
 
+
                 System.out.println(getStartTime());
 
                 time.startTimer();
@@ -104,14 +107,33 @@ public class TimeLog extends Fragment {
             }
         });
         stoppTime = System.currentTimeMillis();
+
+
+        //.............Vill att nedanstående kod står eller körs när man trycker på stop knappen.
+        DateFormat dateFormatYear = new SimpleDateFormat("yyyy");
+        DateFormat dateFormatMonth = new SimpleDateFormat("MM");
+        DateFormat dateFormatDay = new SimpleDateFormat("dd");
+        Date date = new Date();
+
         saveActivity.addActivity(new ActivityRow(
-                new SimpleDateFormat("yyyy") ,
-                new SimpleDateFormat("MM)"),
-                new SimpleDateFormat("dd"),
+                dateFormatYear.format(date),
+                dateFormatMonth.format(date),
+                dateFormatDay.format(date),
                 curTime,
                 (stoppTime-curTime),
                 new Category("Föreläsning", 6)));
+
         System.out.println((stoppTime-curTime) + " <-- Totaltiden för aktiviteten");
+
+        //I will print stuff about the activity row201705070
+        System.out.println("I will print stuff about the activity row" + dateFormatYear.format(date) +
+                dateFormatMonth.format(date) +
+                dateFormatDay.format(date)+
+                curTime );
+        Calendar cal = Calendar.getInstance();
+        //May
+        System.out.println(new SimpleDateFormat("MMM").format(cal.getTime()));
+        //.................tills hit^
 
         quoteDisplay.setText(quote.getQuote());
 

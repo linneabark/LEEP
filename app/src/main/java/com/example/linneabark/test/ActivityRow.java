@@ -1,20 +1,20 @@
 package com.example.linneabark.test;
 
-import java.text.Format;
+import java.util.Date;
 
 /**
  * Created by Evelina on 2017-05-05.
  */
 
 public class ActivityRow {
-    private Format year;
-    private Format month;
-    private Format day;
+    private String year;
+    private String month;
+    private String day;
     private long startTime;
     private long totalTime;
     private Category category;
 
-    public ActivityRow (Format year, Format month, Format day, long startTime, long totalTime, Category category) {
+    public ActivityRow (String year, String month, String day, long startTime, long totalTime, Category category) {
         this.year = year;
         this.month = month;
         this.day= day;
@@ -23,10 +23,34 @@ public class ActivityRow {
         this.category = category;
     }
 
-    public Format getYear () {return year;}
-    public Format getMonth () {return month;}
-    public Format getDay () {return day;}
+    public String getYear () {return year;}
+    public String getMonth () {return month;}
+    public String getDay () {return day;}
     public long getStartTime () {return startTime;}
     public long getTotalTime () {return totalTime;}
     public Category getCategory () {return category;}
+    /*
+    private Date year;
+    private Date month;
+    private Date day;
+    private long startTime;
+    private long totalTime;
+    private Category category;
+
+    public ActivityRow (Date year, Date month, Date day, long startTime, long totalTime, Category category) {
+        this.year = year;
+        this.month = month;
+        this.day= day;
+        this.startTime = startTime;
+        this.totalTime = totalTime;
+        this.category = category;
+    }
+
+    public Date getYear () {return year;}
+    public Date getMonth () {return month;}
+    public Date getDay () {return day;}
+    public long getStartTime () {return startTime;}
+    public long getTotalTime () {return totalTime;}
+    public Category getCategory () {return category;}
+    */
 }
