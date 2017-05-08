@@ -67,7 +67,7 @@ public class TimeLog extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
@@ -101,11 +101,15 @@ public class TimeLog extends Fragment {
                 time.stopTimer();
                 stopTime = SaveDate.calculateTimeToString(System.currentTimeMillis());
                 System.out.println(getStopTime());
+
+
+
+
             }
         });
         stoppTime = System.currentTimeMillis();
         saveActivity.addActivity(new ActivityRow(
-                new SimpleDateFormat("yyyy") ,
+                new SimpleDateFormat("yyyy"),
                 new SimpleDateFormat("MM)"),
                 new SimpleDateFormat("dd"),
                 curTime,

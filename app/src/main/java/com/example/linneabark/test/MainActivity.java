@@ -20,13 +20,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static com.example.linneabark.test.R.id.loginButton;
+import static com.example.linneabark.test.R.id.my_toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
     private TimeLog timeLog = new TimeLog();
 
-    //private RootController rootC = new RootController();
-    //private AccountController account = new AccountController();
+    private RootController rootC = new RootController();
+    private AccountController account = new AccountController();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +41,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        /*loginButton.setOnClickListener(new View.OnClickListener() {
+       // getSupportActionBar().hide();
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 rootC.switchToLog();
             }
         });
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        /*registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 rootC.switchToRegister();
             }
-        });
+        });*/
 
-        /*register.setOnClickListener(new View.OnClickListener() {
+/*        register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 account.createAccount();
             }
