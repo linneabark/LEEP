@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -81,6 +82,12 @@ public class Settings extends Fragment {
                 //Do nothing
             }
         });
+
+        final EditText input = new EditText(getActivity());
+        input.setSingleLine();
+        input.setText("");
+        helpBuilder.setView(input);
+
 
 
         AlertDialog helpDialog = helpBuilder.create();
