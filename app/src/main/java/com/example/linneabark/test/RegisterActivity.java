@@ -32,20 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioButton uterusBearer;
     private TextView errorMessage;
     private Button register;
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data ){
-
-        if(requestCode == REGISTER_REQUEST_CODE ){
-
-            //make sure the request was succesfull
-
-            if(resultCode == RESULT_OK){
-
-            }
-        }
-
-    }
+    private Button backButton;
 
 
 
@@ -58,13 +45,27 @@ public class RegisterActivity extends AppCompatActivity {
         userName = (EditText) this.findViewById(R.id.setUserName);
         password = (EditText) this.findViewById(R.id.setPassword);
         repeatPassword = (EditText) this.findViewById(R.id.repeatPassword);
-        uterusBearer = (RadioButton)this.findViewById(R.id.uterusBearer);
         errorMessage = (TextView) this.findViewById(R.id.errorMessage);
         register = (Button) this.findViewById(R.id.register);
+        backButton = (Button) this.findViewById(R.id.backButton);
 
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 createAccount();
+
+                finish();
+
+                System.out.println();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+                Intent toy = new Intent(RegisterActivity.this, LoginActivity.class);
+
+                startActivity(toy);
+
             }
         });
     }
@@ -79,7 +80,6 @@ public class RegisterActivity extends AppCompatActivity {
         setMail();
         setUserName();
         boolean ok = setPassword();
-        setUterusCarrier();
 
         if (!ok) {
             errorMessage.setText("Lösenordet stämmer inte överens!");
@@ -103,10 +103,6 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         }
         return false;
-    }
-
-    private void setUterusCarrier() {
-        myUterusBearer = uterusBearer.isSelected();
     }
 
 

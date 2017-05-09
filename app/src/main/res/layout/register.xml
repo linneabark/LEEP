@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <EditText
             android:id="@+id/setUserName"
@@ -19,10 +21,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:hint="Username"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/mail"
@@ -31,8 +33,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:hint="mail@exempal.se"
             android:inputType="textEmailAddress" />
 
@@ -43,8 +45,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:hint="Password"
             android:inputType="textPassword" />
 
@@ -55,8 +57,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:ems="10"
+            android:gravity="center"
             android:hint="Repeat password"
             android:inputType="textPassword" />
 
@@ -69,25 +71,24 @@
             android:gravity="center"
             android:text="" />
 
-        <RadioButton
-            android:id="@+id/uterusBearer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Uterus bearer" />
-
         <Button
             android:id="@+id/register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="Register"
-            android:layout_gravity="center"
             android:background="@color/colorPrimary"
+            android:text="Register"
             android:textColor="@color/plainBlack" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="BACK" />
 
     </LinearLayout>
 
