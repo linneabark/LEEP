@@ -26,7 +26,6 @@ public class Settings extends Fragment {
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap <String, List<String>> listHash;
-    private Context context;
 
     public Settings() {
         // Required empty public constructor
@@ -37,16 +36,10 @@ public class Settings extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
-
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);            //DET ÄR HÄR DEN GER NULLPOINTER
-        //System.out.println("Listview: " + listView);
+        listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
-        //System.out.println("listDataHeader: " + listDataHeader);
-        //System.out.println("listHash: " + listHash);
-        //System.out.println("Aktivitet: " + getActivity().toString());
         listView.setAdapter(listAdapter);
 
        return rootView;
@@ -56,37 +49,48 @@ public class Settings extends Fragment {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
 
-        listDataHeader.add("Linnea");
-        listDataHeader.add("Camilla");
-        listDataHeader.add("Margareta");
-        listDataHeader.add("Bark");
+        listDataHeader.add("CATEGORIES");
+        listDataHeader.add("TIMER");
+        listDataHeader.add("QUOTES");
+        listDataHeader.add("ACTIVITIES");
+        listDataHeader.add("HELP");
 
-        List<String> linnea = new ArrayList<>();
-        linnea.add("This is expandablelistview");
+        List<String> category = new ArrayList<>();
+        category.add("Category 1");
+        category.add("Category 2");
+        category.add("Category 3");
+        category.add("Category 4");
+        category.add("Category 5");
 
-        List<String> camilla = new ArrayList<>();
-        camilla.add("Skriver lite har");
-        camilla.add("Kanske en del har");
-        camilla.add("Hoppas det funkar");
-        camilla.add("Orkar inte mer");
+        List<String> timer = new ArrayList<>();
+        timer.add("Skriver lite har");
+        timer.add("Kanske en del har");
+        timer.add("Hoppas det funkar");
+        timer.add("Orkar inte mer");
 
 
-        List<String> margareta = new ArrayList<>();
-        margareta.add("blahahahah");
-        margareta.add("bläääää");
-        margareta.add("trött");
-        margareta.add("orkar inteeeeeee");
+        List<String> quote = new ArrayList<>();
+        quote.add("blahahahah");
+        quote.add("bläääää");
+        quote.add("trött");
+        quote.add("orkar inteeeeeee");
 
-        List<String> bark = new ArrayList<>();
-        bark.add("ett");
-        bark.add("sista");
-        bark.add("jävla");
-        bark.add("försök");
+        List<String> activity = new ArrayList<>();
+        activity.add("ett");
+        activity.add("sista");
+        activity.add("jävla");
+        activity.add("försök");
 
-        listHash.put(listDataHeader.get(0), linnea);
-        listHash.put(listDataHeader.get(1), camilla);
-        listHash.put(listDataHeader.get(2), margareta);
-        listHash.put(listDataHeader.get(3), bark);
+        List<String> help = new ArrayList<>();
+        help.add("japp");
+        help.add("det funkar");
+
+
+        listHash.put(listDataHeader.get(0), category);
+        listHash.put(listDataHeader.get(1), timer);
+        listHash.put(listDataHeader.get(2), quote);
+        listHash.put(listDataHeader.get(3), activity);
+        listHash.put(listDataHeader.get(4), help);
     }
 
 }
