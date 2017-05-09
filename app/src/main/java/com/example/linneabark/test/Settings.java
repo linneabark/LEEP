@@ -45,6 +45,7 @@ public class Settings extends Fragment {
        return rootView;
     }
 
+        //method that adds headers and items in the expandablelistview
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
