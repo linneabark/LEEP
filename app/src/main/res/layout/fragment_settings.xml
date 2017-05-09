@@ -1,11 +1,16 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
     xmlns:andoroid="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.linneabark.test.Settings"
-    android:background="@color/plainWhite"
-    android:id="@+id/list">
+    android:background="#09CDDA"
+    >
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,14 +19,10 @@
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" /> -->
 
-    <ListView
+
+    <ExpandableListView
+        android:id="@+id/lvExp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/settings_list_id"
-        >
-
-
-        </ListView>
-
-
+        android:layout_height="match_parent" />
 </FrameLayout>

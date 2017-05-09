@@ -17,7 +17,12 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import static com.example.linneabark.test.R.id.loginButton;
 import static com.example.linneabark.test.R.id.my_toolbar;
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+
 
             if( !alreadyAUser()){
 
@@ -56,49 +63,16 @@ public class MainActivity extends AppCompatActivity {
 
        // getSupportActionBar().hide();
 
-        /*loginButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                setContentView(R.layout.activity_main);
-
-            }
-        });*/
-
-        /*registerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootC.switchToRegister();
-            }
-        });*/
-
-/*        register.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                account.createAccount();
-            }
-        });*/
 
 
-        /*registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent toy = new Intent(MainActivity.this, RegisterActivity.class);
-
-                startActivity(toy);
-
-            }
-        });*/
 
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(final Menu menu){
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
-
         return true;
-
     }
 
     @Override
