@@ -1,6 +1,7 @@
 package com.example.linneabark.test;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ public class Settings extends Fragment {
     private List<String> listDataHeader;
     private HashMap <String, List<String>> listHash;
 
+
     public Settings() {
         // Required empty public constructor
     }
@@ -38,6 +41,14 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
+        showPopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSimplePopUp();
+            }
+        });
+
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
@@ -45,6 +56,22 @@ public class Settings extends Fragment {
 
        return rootView;
     }
+
+    private void showSimplePopUp(){
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
+        helpBuilder.setTitle("Pop Up");
+        helpBuilder.setMessage("This is a PopUp");
+        helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing but close the dialog
+            }
+        });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
 
         //method that adds headers and items in the expandablelistview
     private void initData() {
