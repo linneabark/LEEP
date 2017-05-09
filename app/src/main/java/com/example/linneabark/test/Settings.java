@@ -26,7 +26,6 @@ public class Settings extends Fragment {
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap <String, List<String>> listHash;
-    private Context context;
 
     public Settings() {
         // Required empty public constructor
@@ -37,16 +36,10 @@ public class Settings extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-
-
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);            //DET ÄR HÄR DEN GER NULLPOINTER
-        //System.out.println("Listview: " + listView);
+        listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
-        //System.out.println("listDataHeader: " + listDataHeader);
-        //System.out.println("listHash: " + listHash);
-        //System.out.println("Aktivitet: " + getActivity().toString());
         listView.setAdapter(listAdapter);
 
        return rootView;

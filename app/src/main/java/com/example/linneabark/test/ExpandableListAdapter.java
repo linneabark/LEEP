@@ -23,11 +23,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     public ExpandableListAdapter (Context context, List <String> listDataHeader, HashMap <String, List<String>> listHashMap){
         this.context = context;
-        System.out.println("Context ela: " + context);
         this.listDataHeader = listDataHeader;
-        System.out.println("ListDataHeader ela: " + listDataHeader);
         this.listHashMap = listHashMap;
-        System.out.println("listHashMap ela: " + listHashMap);
     }
 
     @Override
@@ -71,7 +68,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_group, null);
-
         }
         TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
