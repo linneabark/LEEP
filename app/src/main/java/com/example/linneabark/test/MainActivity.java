@@ -29,19 +29,24 @@ public class MainActivity extends AppCompatActivity {
     private RootController rootC = new RootController();
     //private AccountController account = new AccountController();
 
+    int value = 0;
+
+    public boolean alreadyAUser(){
+
+         return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            /*if(usersNotLoggedINorNoAccount){
-
+            if( !alreadyAUser()){
 
         Intent toy = new Intent(MainActivity.this, LoginActivity.class);
 
         startActivity(toy);
-        }*/
+        }
 
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
