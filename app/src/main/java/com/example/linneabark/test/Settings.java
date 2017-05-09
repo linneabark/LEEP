@@ -68,8 +68,25 @@ public class Settings extends Fragment {
             }
         });
 
+        helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });
+
+        helpBuilder.setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });
+
+
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+
+
     }
 
 
