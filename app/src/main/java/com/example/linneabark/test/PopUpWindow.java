@@ -1,5 +1,6 @@
 package com.example.linneabark.test;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -9,11 +10,11 @@ import android.os.Bundle;
 
 public class PopUpWindow extends Activity {
 
-    boolean isClicked = true;
-    PopUpWindow popUpWindow;
+    public void onCreate (Bundle SavedInstanceState){
+        super.onCreate(SavedInstanceState);
 
-    @Override
-    public void onCreate (Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+
     }
+
+
 }
