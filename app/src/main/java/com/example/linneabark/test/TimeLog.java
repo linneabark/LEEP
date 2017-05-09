@@ -12,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.Calendar;
 import java.util.Timer;
 
 import java.text.DateFormat;
@@ -25,25 +27,52 @@ import java.util.TimerTask;
 public class TimeLog extends Fragment {
     private TextView quoteDisplay;
     private Quotes quote = new Quotes();
+    private SaveDate saveDate = new SaveDate();
 
-    private long stopTime;
+    private long stopActivity;
+
+    private long startActivity;
 
     TextView time_txt;
 
     //tiden stoppuret startades
     long curTime;
 
+    private String startTime;
+    private String stopTime;
+
+    public String getStartTime(){
+        String str = null;
+        if (str == null){
+            str = startTime;
+        }
+
+        return str;
+
+    }public String getStopTime(){
+        String str = null;
+        if (str == null){
+            str = stopTime;
+        }
+
+        return str;
+
+    }
+
+
+
 
     SaveActivity saveActivity = new SaveActivity();
 
     private Time time;
+
     public TimeLog() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             final Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
@@ -54,6 +83,7 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
+
         time = Time.getInstance(this);
 
         updateText(time.toString());
@@ -62,12 +92,12 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
 
-                curTime = System.currentTimeMillis();
-                String hej = SaveDate.calculateTimeToString(curTime);
-
-                System.out.println(hej);
+                /*startTime = saveDate.calculateTimeToString(System.currentTimeMillis());
+                System.out.println(getStartTime());*/
 
                 time.startTimer();
+
+                startActivity = System.currentTimeMillis();
             }
         });
 
@@ -75,17 +105,24 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
                 time.stopTimer();
+                /*stopTime = saveDate.calculateTimeToString(System.currentTimeMillis());
+                System.out.println(getStopTime());*/
+
+                stopActivity = System.currentTimeMillis();
+
+                saveActivity.addActivity(new ActivityRow(
+
+                        saveDate.calculateYearToString(),
+                        saveDate.calculateMonthToString(),
+                        saveDate.calculateDayToString(),
+
+                        startActivity,
+                        (stopActivity-startActivity),
+                        new Category("Föreläsning", 6)));
+
+
             }
         });
-        stopTime = System.currentTimeMillis();
-        saveActivity.addActivity(new ActivityRow(
-                new SimpleDateFormat("yyyy") ,
-                new SimpleDateFormat("MM)"),
-                new SimpleDateFormat("dd"),
-                curTime,
-                (stopTime-curTime),
-                new Category("Föreläsning", 6)));
-        System.out.println((stopTime-curTime) + " <-- Totaltiden för aktiviteten");
 
         quoteDisplay.setText(quote.getQuote());
 
@@ -96,6 +133,7 @@ public class TimeLog extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
             public void run(){
                 time_txt.setText(text);
+
             }
         });
     }

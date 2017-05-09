@@ -11,6 +11,9 @@
     <string name="str_statistics">Statistics</string>
     <string name="str_timeLog">Time Log</string>
     <string name="str_clockTxtMenu">00:00:00</string>
+    <string name="str_account">Account</string>
+
+
 
     <!-- START PAGE !-->
     <string name="welcomeToLeep">Welcome to LEEP!</string>

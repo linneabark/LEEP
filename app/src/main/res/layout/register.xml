@@ -6,79 +6,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="mail@exempal.se"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="125dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/setUserName"
-        android:layout_width="278dp"
-        android:layout_height="36dp"
-        android:ems="10"
-        android:hint="Användarnamn"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="64dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+        <EditText
+            android:id="@+id/setUserName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"/>
 
-    <EditText
-        android:id="@+id/setPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Lösenord"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="191dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+        <EditText
+            android:id="@+id/mail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="mail@exempal.se"
+            android:inputType="textEmailAddress" />
 
-    <EditText
-        android:id="@+id/repeatPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Upprepa lösenord"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="257dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        />
+        <EditText
+            android:id="@+id/setPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword" />
 
-    <RadioButton
-        android:id="@+id/uterusBearer"
-        android:layout_width="158dp"
-        android:layout_height="29dp"
-        android:text="Livmoderbärare"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="324dp" />
+        <EditText
+            android:id="@+id/repeatPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:ems="10"
+            android:hint="Repeat password"
+            android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="151dp"
-        android:layout_height="60dp"
-        android:text="Registrera"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="401dp" />
+        <TextView
+            android:id="@+id/errorMessage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="" />
 
-    <TextView
-        android:id="@+id/errorMessage"
-        android:layout_width="186dp"
-        android:layout_height="24dp"
-        tools:layout_editor_absoluteX="53dp"
-        tools:layout_editor_absoluteY="369dp" />
+        <RadioButton
+            android:id="@+id/uterusBearer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Uterus bearer" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Register"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/plainBlack" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

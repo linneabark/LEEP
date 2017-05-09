@@ -3,12 +3,15 @@ package com.example.linneabark.test;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.example.linneabark.test.R.id.loginButton;
+import static com.example.linneabark.test.R.id.my_toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,24 +45,16 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
         Button register = (Button) this.findViewById(R.id.register);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
+       // getSupportActionBar().hide();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 rootC.switchToLog();
             }
         });
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                rootC.switchToRegister();
-            }
-        });
-/*
-        register.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                account.createAccount();
-            }
-        });*/
-
 
     }
 
@@ -82,10 +78,6 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new Statistics();
                 break;
             case R.id.timelog_id:
-                /*if(timeLog == null) {
-                    timeLog = new TimeLog();
-                }
-                nextFrag = timeLog;*/
                 nextFrag = new TimeLog();
                 break;
         }

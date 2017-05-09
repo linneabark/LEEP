@@ -1,0 +1,4 @@
+Skriver om statistics:
+
+    //behöver en metod som kolalr vilken månad det är och sedan tar fram alla dagar som finns i denna.
+    //vill vi att den skall kolla de 5 lagrade dagarna eller typ 1-5, 2-6 osv och även om man bara lagrat en dag?

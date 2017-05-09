@@ -2,13 +2,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.linneabark.test.Statistics"
     android:background="@color/plainWhite">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:weightSum="1">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:background="@color/plainWhite"
+            android:shadowColor="@color/plainWhite"
+            android:text="Day"
+            android:textColor="@color/plainBlack"
+            android:layout_weight="0.35" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:background="@color/plainWhite"
+            android:shadowColor="@color/plainWhite"
+            android:text="Seven Days"
+            android:textColor="@color/plainBlack"
+            android:layout_weight="0.35" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0dp"
+            android:background="@color/plainWhite"
+            android:shadowColor="@color/plainWhite"
+            android:text="Month"
+            android:textColor="@color/plainBlack"
+            android:layout_weight="0.35" />
+
+    </LinearLayout>
 
 </FrameLayout>

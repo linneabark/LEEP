@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_container"
@@ -7,6 +8,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.linneabark.test.MainActivity"
     android:background="@color/plainWhite">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/menuColor"
+        android:elevation="4dp"
+        app:theme="@style/MyActionBarTheme"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:backgroundTint="@color/smallMenuColor"
+        />
+
 
     <LinearLayout
         android:id="@+id/LinearLayout1"
@@ -23,7 +36,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
             android:gravity="center"
-            android:text="Välkommen till LEEP"
+            android:text="Welcome to LEEP"
             android:textColor="#000000"
             android:textSize="35dp" />
 
@@ -34,8 +47,8 @@
             android:layout_height="40dp"
             android:layout_marginTop="50dp"
             android:ems="10"
+            android:hint="Username"
             android:inputType="textPersonName"
-            android:text="Användarnamn"
             android:textAlignment="center" />
 
         <EditText
@@ -46,16 +59,24 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:text="Lösenord"
-            android:textAlignment="center"/>
+            android:hint="Password"
+            android:textAlignment="center" />
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Keep me logged in" />
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="fill_parent"
             android:layout_marginLeft="10dp"
             android:layout_height="48dp"
-            android:layout_marginTop="50dp"
-            android:text="Logga in"
+            android:layout_marginTop="30dp"
+            android:text="Log in"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:textColor="@color/plainBlack" />
@@ -66,19 +87,16 @@
             android:layout_marginLeft="10dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Registrera dig"
+            android:text="Register"
             android:textSize="10dp"
-            android:background="@color/plainWhite"
             android:layout_gravity="center"
-            android:textColor="@color/plainBlack"/>
-
-
-
-
-
-
+            android:background="@color/plainWhite"
+            android:textColor="@color/plainBlack"
+            android:shadowColor="@color/plainWhite"/>
 
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
 

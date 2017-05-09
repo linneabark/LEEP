@@ -1,5 +1,6 @@
 package com.example.linneabark.test;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,11 +13,12 @@ import java.util.Date;
 public class SaveDate {
     private final static long MILLIS_TO_MINUTES = 60000;
     private final static long MILLIS_TO_HOURS = 3600000;
+    Date date = new Date();
 
     public SaveDate(){
     }
 
-    public static String calculateTimeToString(long curTimeMillis){
+    public String calculateTimeToString(long curTimeMillis){
         long curTime = curTimeMillis;
 
         int seconds = (int) ((curTime / 1000) % 60);
@@ -28,11 +30,30 @@ public class SaveDate {
         return str;
     }
 
-    public static String calculateDateToString(Date date){
-        Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public String calculateDateToString(Date date){
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+
         String str = formatter.format(date);
 
         return str;
+    }
+
+    public String calculateYearToString(){
+        DateFormat dateFormatYear = new SimpleDateFormat("yyyy");
+
+        return dateFormatYear.format(date);
+    }
+
+    public String calculateMonthToString(){
+        DateFormat dateFormatMonth = new SimpleDateFormat("MM");
+
+        return dateFormatMonth.format(date);
+    }
+
+    public String calculateDayToString(){
+        DateFormat dateFormatDay = new SimpleDateFormat("dd");
+
+        return dateFormatDay.format(date);
     }
 }
 
