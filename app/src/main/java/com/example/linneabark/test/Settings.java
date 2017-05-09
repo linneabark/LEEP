@@ -56,12 +56,13 @@ public class Settings extends Fragment {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
 
-        listDataHeader.add("Linnea");
-        listDataHeader.add("Camilla");
-        listDataHeader.add("Margareta");
-        listDataHeader.add("Bark");
+        listDataHeader.add("Category");
+        listDataHeader.add("Timer");
+        listDataHeader.add("Qoute");
+        listDataHeader.add("Activity");
+        listDataHeader.add("Help");
 
-        List<String> linnea = new ArrayList<>();
+        List<String> category = new ArrayList<>();
         linnea.add("This is expandablelistview");
 
         List<String> camilla = new ArrayList<>();
