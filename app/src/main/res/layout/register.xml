@@ -89,6 +89,13 @@
             android:background="@color/colorPrimary"
             android:textColor="@color/plainBlack" />
 
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="BACK" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
