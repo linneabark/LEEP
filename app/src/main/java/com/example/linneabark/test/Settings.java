@@ -63,31 +63,41 @@ public class Settings extends Fragment {
         listDataHeader.add("Help");
 
         List<String> category = new ArrayList<>();
-        linnea.add("This is expandablelistview");
+        category.add("Category 1");
+        category.add("Category 2");
+        category.add("Category 3");
+        category.add("Category 4");
+        category.add("Category 5");
 
-        List<String> camilla = new ArrayList<>();
-        camilla.add("Skriver lite har");
-        camilla.add("Kanske en del har");
-        camilla.add("Hoppas det funkar");
-        camilla.add("Orkar inte mer");
+        List<String> timer = new ArrayList<>();
+        timer.add("Skriver lite har");
+        timer.add("Kanske en del har");
+        timer.add("Hoppas det funkar");
+        timer.add("Orkar inte mer");
 
 
-        List<String> margareta = new ArrayList<>();
-        margareta.add("blahahahah");
-        margareta.add("bläääää");
-        margareta.add("trött");
-        margareta.add("orkar inteeeeeee");
+        List<String> qoute = new ArrayList<>();
+        qoute.add("blahahahah");
+        qoute.add("bläääää");
+        qoute.add("trött");
+        qoute.add("orkar inteeeeeee");
 
-        List<String> bark = new ArrayList<>();
-        bark.add("ett");
-        bark.add("sista");
-        bark.add("jävla");
-        bark.add("försök");
+        List<String> activity = new ArrayList<>();
+        activity.add("ett");
+        activity.add("sista");
+        activity.add("jävla");
+        activity.add("försök");
 
-        listHash.put(listDataHeader.get(0), linnea);
-        listHash.put(listDataHeader.get(1), camilla);
-        listHash.put(listDataHeader.get(2), margareta);
-        listHash.put(listDataHeader.get(3), bark);
+        List<String> help = new ArrayList<>();
+        help.add("japp");
+        help.add("det funkar");
+
+
+        listHash.put(listDataHeader.get(0), category);
+        listHash.put(listDataHeader.get(1), timer);
+        listHash.put(listDataHeader.get(2), qoute);
+        listHash.put(listDataHeader.get(3), activity);
+        listHash.put(listDataHeader.get(4), help);
     }
 
 }
