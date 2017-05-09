@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int value;
 
+    //change this to true if you want to be able to access the original layout (with toolbar etc)
     public boolean alreadyAUser(){
 
         return false;
