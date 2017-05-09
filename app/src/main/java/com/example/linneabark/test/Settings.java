@@ -56,11 +56,11 @@ public class Settings extends Fragment {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
 
-        listDataHeader.add("Category");
-        listDataHeader.add("Timer");
-        listDataHeader.add("Qoute");
-        listDataHeader.add("Activity");
-        listDataHeader.add("Help");
+        listDataHeader.add("CATEGORIES");
+        listDataHeader.add("TIMER");
+        listDataHeader.add("QUOTES");
+        listDataHeader.add("ACTIVITIES");
+        listDataHeader.add("HELP");
 
         List<String> category = new ArrayList<>();
         category.add("Category 1");
