@@ -34,11 +34,12 @@ public class MainActivity extends AppCompatActivity {
     private RootController rootC = new RootController();
     //private AccountController account = new AccountController();
 
-    int value = 0;
+    private int value;
 
     public boolean alreadyAUser(){
 
-         return false;
+        return false;
+
     }
 
     @Override
@@ -48,11 +49,10 @@ public class MainActivity extends AppCompatActivity {
         
 
 
-            if( !alreadyAUser()){
+            if(!alreadyAUser()){
 
-        Intent toy = new Intent(MainActivity.this, LoginActivity.class);
-
-        startActivity(toy);
+                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(toy);
         }
 
 

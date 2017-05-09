@@ -12,7 +12,7 @@ import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
 
-
+static final int REGISTER_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent toy = new Intent(LoginActivity.this, MainActivity.class);
 
-                startActivity(toy);
+                startActivityForResult(toy,REGISTER_REQUEST_CODE);
 
             }
         });
