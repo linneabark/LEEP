@@ -9,7 +9,7 @@
     android:paddingTop="16dp"
     xmlns:andoroid="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.linneabark.test.Settings"
-    android:background="#09CDDA"
+    android:background="@color/plainWhite"
     >
 
 

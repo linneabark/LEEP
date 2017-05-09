@@ -14,5 +14,5 @@
         android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EF00DB"/>
+        android:background="@color/smallMenuColor"/>
 </LinearLayout>
