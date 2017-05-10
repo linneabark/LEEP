@@ -42,26 +42,35 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
-        showPopUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showSimplePopUp();
-            }
-        });
+
 
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
+        final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
+        showPopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCategoryPopUp();
+            }
+        });
+
        return rootView;
     }
 
-    private void showSimplePopUp(){
+    private void showCategoryPopUp(){
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         helpBuilder.setTitle("Pop Up");
         helpBuilder.setMessage("This is a PopUp");
+
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
+        helpBuilder.setView(checkBoxLayout);
+
+
+
         helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -69,29 +78,35 @@ public class Settings extends Fragment {
             }
         });
 
-        helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+        //Third button
+        /*helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });*/
+
+        helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Do nothing
             }
         });
 
-        helpBuilder.setNeutralButton("Neutral", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
 
+
+
+        //Code if we want to fill out something
+        /*
         final EditText input = new EditText(getActivity());
         input.setSingleLine();
         input.setText("");
         helpBuilder.setView(input);
+*/
 
 
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
 
 
     }
