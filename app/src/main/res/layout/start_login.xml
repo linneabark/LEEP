@@ -60,13 +60,22 @@
             android:layout_marginTop="10dp"
             android:text="Keep me logged in" />
 
+        <TextView
+            android:id="@+id/errormessage_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text=""/>
+
         <Button
             android:id="@+id/loginButton"
             android:layout_width="fill_parent"
             android:layout_marginLeft="10dp"
             android:layout_height="48dp"
             android:layout_marginTop="30dp"
-            android:text="Log in"
+            android:text="LOG IN"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:textColor="@color/plainBlack" />

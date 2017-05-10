@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,22 +36,24 @@ public class MainActivity extends AppCompatActivity {
     //private AccountController account = new AccountController();
 
     private int value;
+    Context mContext;
 
 
-    public boolean checkValueOfRadioButton(){
+    public boolean checkValueOfRadioButton() {
 
         SharedPreferences sharedPreferences = getSharedPreferences("Clicked_RadioButton", Context.MODE_PRIVATE);
 
         int value = sharedPreferences.getInt("RadioButton", 0);
 
-        if(value == 1){
+        if (value == 1) {
             return true;
         }
         return false;
 
         //change this to true if you want to be able to access the original layout (with toolbar etc)
     }
-    public boolean alreadyAUser(){
+
+    public boolean alreadyAUser() {
 
         return false;
 
@@ -60,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        mContext = this;
+
 
         //if the value is 0 start login in again
             if(checkValueOfRadioButton()){
@@ -72,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
 
         //MenuItem logOut = getItemId(R.id.account_id);
 
@@ -87,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
@@ -100,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.timelog_id:
                 nextFrag = new TimeLog();
                 break;
+            case R.id.account_id:
+                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)),Toast.LENGTH_LONG).show();
+
+                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(toy);
+
         }
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();

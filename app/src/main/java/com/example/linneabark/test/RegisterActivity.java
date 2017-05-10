@@ -35,12 +35,16 @@ public class RegisterActivity extends AppCompatActivity {
     private Button register;
     private Button backButton;
 
+    Context mContext;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+
+        mContext = this;
 
         mail = (EditText) this.findViewById(R.id.mail);
         userName = (EditText) this.findViewById(R.id.setUserName);
@@ -63,7 +67,12 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 } else{
-                    saveInfo();
+                    //saveInfo();
+
+                    AccountDetails.setUsername(mContext, userName);
+                    AccountDetails.setPassword(mContext,password);
+                    AccountDetails.setEmail(mContext, mail);
+
                     finish();
 
                 }
@@ -91,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     //save user's login info
 
-    public void saveInfo(){
+    /*public void saveInfo(){
         SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
@@ -102,12 +111,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Account created!", Toast.LENGTH_LONG).show();
 
-    }
+    }**/
 
 
 
 
-    private boolean comparePasswords() throws IllegalArgumentException {
+    private boolean comparePasswords() {
         if (password.getText().toString().equals(repeatPassword.getText().toString())) {
             return true;
         }

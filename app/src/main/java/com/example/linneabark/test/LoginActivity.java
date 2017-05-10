@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import static com.example.linneabark.test.R.id.errorMessage;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -21,8 +24,8 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText userName;
     EditText passWord;
+    TextView eM;
     RadioButton rB;
-    View view;
 
 
     @Override
@@ -30,25 +33,36 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
 
-        view = new View(this);
-
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
         userName = (EditText) this.findViewById(R.id.userName);
         passWord = (EditText) this.findViewById(R.id.password);
         rB = (RadioButton) this.findViewById(R.id.radioButton);
+        eM = (TextView) this.findViewById(R.id.errormessage_login);
+
+       // displayUserInfo();
+
+        final Intent switchToMain = new Intent(LoginActivity.this, MainActivity.class);
 
 
-        displayData();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent toy = new Intent(LoginActivity.this, MainActivity.class);
-                checkValueOfRadioButton();
-                saveValueOfRadioButton();
 
-                startActivity(toy);
+                if(!compareUserInfo()){ //if the password or username does not match
+
+                    eM.setText("Password or username does not match!");
+
+                }else{
+                    checkStateOfRadioButton();
+                    saveValueOfRadioButton();
+
+                    startActivity(switchToMain);
+                }
+
+
+
 
             }
         });
@@ -69,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void displayData() {
+    public void displayUserInfo() {
         SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
 
         String username = sharedPreferences.getString("Username", "");
@@ -80,6 +94,21 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public boolean compareUserInfo() {
+        SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+
+        String username = sharedPreferences.getString("Username", "");
+        String password = sharedPreferences.getString("Password", "");
+
+        if((userName.getText().toString().equals(username)) && (passWord.getText().toString().equals(password))){
+            return true;
+        }
+
+        return false;
+
+
+    }
+
     //saves the current value of the radiobutton to be able to distinguish when to skip login view or not
 
     public void saveValueOfRadioButton() {
@@ -87,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Clicked_RadioButton", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
-        if(checkValueOfRadioButton()){
+        if(checkStateOfRadioButton()){
             editor.putInt("RadioButton", 1);
         }else{
             editor.putInt("RadioButton", 0);
@@ -99,9 +128,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //checks wether or not the radiobutton is clicked
+    //checks whether or not the radiobutton is clicked
 
-    private boolean checkValueOfRadioButton()
+    private boolean checkStateOfRadioButton()
     {
 
         boolean checked = rB.isChecked();
