@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private AccountController account = new AccountController();
 
-    private int value;
-    Context mContext;
+    private Context mContext;
 
 
     public boolean checkValueOfRadioButton() {
@@ -53,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
         //change this to true if you want to be able to access the original layout (with toolbar etc)
     }
 
-    public boolean alreadyAUser() {
-
-        return false;
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

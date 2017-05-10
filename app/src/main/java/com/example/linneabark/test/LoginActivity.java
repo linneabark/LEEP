@@ -44,28 +44,25 @@ public class LoginActivity extends AppCompatActivity {
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
-       // displayUserInfo();
-
+        // displayUserInfo();
 
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(!compareUserInfo()){ //if the password or username does not match
+                if (!compareUserInfo()) { //if the password or username does not match
 
                     eM.setText("Password or username does not match!");
 
-                }else{
-                    saveValueOfRadioButton(); //see whether or not the radiobutton is checked(1 = true, 0 = false)
+                } else {
+                    AccountDetails.setKeepLoginState(mContext,rB); //see whether or not the radiobutton is checked(1 = true, 0 = false)
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
 
                     startActivity(LoginToMain);
-                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext)+"!"), Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_LONG).show();
 
 
                 }
-
-
 
 
             }
@@ -84,12 +81,11 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
     }
 
     public boolean compareUserInfo() {
 
-        if((userName.getText().toString().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))){
+        if ((userName.getText().toString().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))) {
             return true;
         }
 
@@ -100,31 +96,4 @@ public class LoginActivity extends AppCompatActivity {
 
     //saves the current value of the radiobutton to be able to distinguish when to skip login view or not
 
-    public void saveValueOfRadioButton() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences("Clicked_RadioButton", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        if(checkStateOfRadioButton()){
-            editor.putInt("RadioButton", 1);
-        }else{
-            editor.putInt("RadioButton", 0);
-        }
-        editor.apply();
-
-
-    }
-
-    //checks whether or not the radiobutton is clicked
-
-    private boolean checkStateOfRadioButton()
-    {
-
-        boolean checked = rB.isChecked();
-
-       if (checked){
-           return true;
-       }
-        return false;
-    }
 }

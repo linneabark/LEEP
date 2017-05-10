@@ -3,6 +3,7 @@ package com.example.linneabark.test;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 /**
@@ -10,6 +11,7 @@ import android.widget.Toast;
  */
 
 public class AccountDetails {
+
     private SharedPreferences sharedPreferences;
     private static String USER_INFO = "UserInfo";
 
@@ -57,6 +59,18 @@ public class AccountDetails {
 
     }
 
+    public static void setKeepLoginState(Context context, RadioButton input) {
+
+        SharedPreferences.Editor editor = getUserInfo(context).edit();
+
+        boolean checked = input.isChecked();
+
+        if (checked) {
+            editor.putInt("RadioButton", 1);
+        }
+        editor.putInt("RadioButton", 0);
+        editor.apply();
+    }
 
 }
 
