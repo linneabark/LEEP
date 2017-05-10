@@ -104,13 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    //display user's login info
-
-
-
-
-     RootController rootC = new RootController();
-
 
 
 
@@ -123,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private boolean checkEmail(){
-        if((mail.getText().toString().contains("@"))){
+        if((mail.getText().toString().contains("@")) && (mail.getText().toString().contains("."))){
             return true;
 
         }

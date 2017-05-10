@@ -32,14 +32,10 @@ import static com.example.linneabark.test.R.id.my_toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TimeLog timeLog = new TimeLog();
-
-    private RootController rootC = new RootController();
     //private AccountController account = new AccountController();
 
     private int value;
 
-    //change this to true if you want to be able to access the original layout (with toolbar etc)
 
     public boolean checkValueOfRadioButton(){
 
@@ -52,16 +48,13 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
 
-
-
+        //change this to true if you want to be able to access the original layout (with toolbar etc)
     }
     public boolean alreadyAUser(){
 
         return false;
 
     }
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         
 
         //if the value is 0 start login in again
-            if(!checkValueOfRadioButton()){
+            if(checkValueOfRadioButton()){
 
                 Intent toy = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(toy);
@@ -80,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        MenuItem logOut = getItemId(R.id.account_id);
+        //MenuItem logOut = getItemId(R.id.account_id);
 
 
     }
