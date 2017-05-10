@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         //if the value is 0 start login in again
             if(checkValueOfRadioButton()){
 
-                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
+                Intent toy = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(toy);
         }
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new TimeLog();
                 break;
             case R.id.account_id:
-                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)),Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_LONG).show();
 
                 Intent toy = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(toy);

@@ -23,10 +23,6 @@ import static com.example.linneabark.test.LoginActivity.REGISTER_REQUEST_CODE;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    Editable myMail;
-    Editable myUserName;
-    Editable myPassword;
-
     private EditText mail;
     private EditText userName;
     private EditText password;
@@ -44,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
 
+
         mContext = this;
 
         mail = (EditText) this.findViewById(R.id.mail);
@@ -60,18 +57,18 @@ public class RegisterActivity extends AppCompatActivity {
 
                 //if the creation of the account was correct finish activity and save user info
 
-                comparePasswords();
-                checkEmail();
+                comparePasswords(); //compare the written passwords
+                checkEmail(); //check the email (if it's an email or not)
 
-                if(!comparePasswords() || !checkEmail()){
+                if(!comparePasswords() || !checkEmail()){ //if the passwords does not match, the errormessages will tell
 
 
-                } else{
-                    //saveInfo();
+                } else{ //if everything is okay, save the information and finish the activity
 
                     AccountDetails.setUsername(mContext, userName);
                     AccountDetails.setPassword(mContext,password);
                     AccountDetails.setEmail(mContext, mail);
+                    Toast.makeText(mContext, "Account created!", Toast.LENGTH_LONG).show();
 
                     finish();
 
@@ -85,38 +82,18 @@ public class RegisterActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //if we want the view to go to the start of the program directly after register
-
-                Intent toy = new Intent(RegisterActivity.this, LoginActivity.class);
-
-                startActivity(toy);
+                Intent RegisterToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
 
 
+                startActivity(RegisterToLogin);
 
 
             }
         });
     }
 
-    //save user's login info
 
-    /*public void saveInfo(){
-        SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("Username", userName.getText().toString());
-        editor.putString("Email", mail.getText().toString());
-        editor.putString("Password", password.getText().toString());
-        editor.apply();
-
-        Toast.makeText(this, "Account created!", Toast.LENGTH_LONG).show();
-
-    }**/
-
-
-
-
-    private boolean comparePasswords() {
+    private boolean comparePasswords() { //compares passwords before saving them (compares the two edittext-fields
         if (password.getText().toString().equals(repeatPassword.getText().toString())) {
             return true;
         }
@@ -124,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
         return false;
     }
 
-    private boolean checkEmail(){
+    private boolean checkEmail(){ //checks the email in the edittext-field
         if((mail.getText().toString().contains("@")) && (mail.getText().toString().contains("."))){
             return true;
 

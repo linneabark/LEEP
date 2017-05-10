@@ -24,14 +24,17 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText userName;
     EditText passWord;
-    TextView eM;
-    RadioButton rB;
+    TextView eM; //errorMessage
+    RadioButton rB; //keep the login
+    Context mContext;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
+
+        mContext = this;
 
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
@@ -42,8 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
        // displayUserInfo();
-
-        final Intent switchToMain = new Intent(LoginActivity.this, MainActivity.class);
 
 
 
@@ -57,8 +58,12 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     checkStateOfRadioButton();
                     saveValueOfRadioButton();
+                    Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
 
-                    startActivity(switchToMain);
+                    startActivity(LoginToMain);
+                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext)+"!"), Toast.LENGTH_LONG).show();
+
+
                 }
 
 
@@ -83,24 +88,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void displayUserInfo() {
-        SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
-
-        String username = sharedPreferences.getString("Username", "");
-        String password = sharedPreferences.getString("Password", "");
-
-        userName.setText(username);
-        passWord.setText(password);
-
-    }
-
     public boolean compareUserInfo() {
-        SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
 
-        String username = sharedPreferences.getString("Username", "");
-        String password = sharedPreferences.getString("Password", "");
-
-        if((userName.getText().toString().equals(username)) && (passWord.getText().toString().equals(password))){
+        if((userName.getText().toString().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))){
             return true;
         }
 
@@ -122,8 +112,6 @@ public class LoginActivity extends AppCompatActivity {
             editor.putInt("RadioButton", 0);
         }
         editor.apply();
-
-        Toast.makeText(this, "Radio button checked or not!", Toast.LENGTH_LONG).show();
 
 
     }
