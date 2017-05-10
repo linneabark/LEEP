@@ -35,6 +35,8 @@ public class AccountDetails {
     }
 
 
+    //maybe change to be able to setUsername without having to define a EditText?
+    //input.getText().toString(); in the other class and pass it as a string
     public static void setUsername(Context context, EditText input) {
         SharedPreferences.Editor editor = getUserInfo(context).edit();
         editor.putString("Username", input.getText().toString());
@@ -59,18 +61,34 @@ public class AccountDetails {
 
     }
 
+    public static void setKeepLoginStateToZero(Context context, int x){
+        SharedPreferences.Editor editor = getUserInfo(context).edit();
+
+        editor.putInt("RadioButton", x);
+        editor.apply();
+    }
+
     public static void setKeepLoginState(Context context, RadioButton input) {
+
 
         SharedPreferences.Editor editor = getUserInfo(context).edit();
 
         boolean checked = input.isChecked();
 
         if (checked) {
+
             editor.putInt("RadioButton", 1);
-        }
+        }else
+
         editor.putInt("RadioButton", 0);
         editor.apply();
     }
+
+    public static int getKeepLoginState(Context context) {
+        return getUserInfo(context).getInt("RadioButton", 0);
+    }
+
+
 
 }
 

@@ -38,20 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
 
 
-    public boolean checkValueOfRadioButton() {
-
-        SharedPreferences sharedPreferences = getSharedPreferences("Clicked_RadioButton", Context.MODE_PRIVATE);
-
-        int value = sharedPreferences.getInt("RadioButton", 0);
-
-        if (value == 1) {
-            return true;
-        }
-        return false;
-
-        //change this to true if you want to be able to access the original layout (with toolbar etc)
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         //if the value is 0 start login in again
-            if(checkValueOfRadioButton()){
-
-                Intent toy = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(toy);
-        }
 
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -102,7 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new TimeLog();
                 break;
             case R.id.account_id:
+
+                AccountDetails.setKeepLoginStateToZero(mContext, 0);
                 Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_LONG).show();
+
 
                 Intent toy = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(toy);
