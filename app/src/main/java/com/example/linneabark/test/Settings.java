@@ -60,6 +60,10 @@ public class Settings extends Fragment {
        return rootView;
     }
 
+    public void onClick (View v){
+        
+    }
+
     private void showCategoryPopUp(){
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         helpBuilder.setTitle("Pop Up");
