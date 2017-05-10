@@ -56,8 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     eM.setText("Password or username does not match!");
 
                 }else{
-                    checkStateOfRadioButton();
-                    saveValueOfRadioButton();
+                    saveValueOfRadioButton(); //see whether or not the radiobutton is checked(1 = true, 0 = false)
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
 
                     startActivity(LoginToMain);
