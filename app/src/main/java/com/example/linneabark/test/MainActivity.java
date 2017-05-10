@@ -1,7 +1,10 @@
 package com.example.linneabark.test;
 
 import android.app.ActionBar;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
@@ -37,11 +40,28 @@ public class MainActivity extends AppCompatActivity {
     private int value;
 
     //change this to true if you want to be able to access the original layout (with toolbar etc)
+
+    public boolean checkValueOfRadioButton(){
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Clicked_RadioButton", Context.MODE_PRIVATE);
+
+        int value = sharedPreferences.getInt("RadioButton", 0);
+
+        if(value == 1){
+            return true;
+        }
+        return false;
+
+
+
+    }
     public boolean alreadyAUser(){
 
         return false;
 
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
 
-
-            if(!alreadyAUser()){
+        //if the value is 0 start login in again
+            if(!checkValueOfRadioButton()){
 
                 Intent toy = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(toy);
@@ -60,11 +80,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-
-
-       // getSupportActionBar().hide();
-
-
+        MenuItem logOut = getItemId(R.id.account_id);
 
 
     }

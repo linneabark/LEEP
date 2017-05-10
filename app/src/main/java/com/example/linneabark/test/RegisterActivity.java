@@ -53,11 +53,21 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                saveInfo();
 
-                //if the creation of the account was correct finish activity
+                //if the creation of the account was correct finish activity and save user info
 
-                checkPassword();
+                comparePasswords();
+                checkEmail();
+
+                if(!comparePasswords() || !checkEmail()){
+
+
+                } else{
+                    saveInfo();
+                    finish();
+
+                }
+
 
             }
         });
@@ -102,25 +112,24 @@ public class RegisterActivity extends AppCompatActivity {
      RootController rootC = new RootController();
 
 
-    public void checkPassword() {
-
-        boolean ok = comparePasswords();
-
-        if (!ok) {
-            errorMessage.setText("Lösenordet stämmer inte överens!");
-        } else{
-            finish();
-        }
-
-    }
 
 
     private boolean comparePasswords() throws IllegalArgumentException {
         if (password.getText().toString().equals(repeatPassword.getText().toString())) {
             return true;
         }
+        errorMessage.setText("Passwords does not match!");
         return false;
     }
 
+    private boolean checkEmail(){
+        if((mail.getText().toString().contains("@"))){
+            return true;
+
+        }
+        errorMessage.setText("Not a valid email!");
+        return false;
+
+    }
 
 }
