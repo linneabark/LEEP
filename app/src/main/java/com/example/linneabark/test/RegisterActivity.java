@@ -1,6 +1,8 @@
 package com.example.linneabark.test;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static com.example.linneabark.test.LoginActivity.REGISTER_REQUEST_CODE;
 
@@ -49,10 +52,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                createAccount();
 
-                //if the creation of the account was correct
-                finish();
+                saveInfo();
+
+                //if the creation of the account was correct finish activity
+
+                checkPassword();
+
             }
         });
 
@@ -73,36 +79,44 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
+    //save user's login info
+
+    public void saveInfo(){
+        SharedPreferences sharedPreferences = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("Username", userName.getText().toString());
+        editor.putString("Email", mail.getText().toString());
+        editor.putString("Password", password.getText().toString());
+        editor.apply();
+
+        Toast.makeText(this, "Account created!", Toast.LENGTH_LONG).show();
+
+    }
+
+    //display user's login info
+
 
 
 
      RootController rootC = new RootController();
 
 
-    public void createAccount() {
-        setMail();
-        setUserName();
-        boolean ok = setPassword();
+    public void checkPassword() {
+
+        boolean ok = comparePasswords();
 
         if (!ok) {
             errorMessage.setText("Lösenordet stämmer inte överens!");
+        } else{
+            finish();
         }
-        else {
-            rootC.switchToLog();
-        }
+
     }
 
-    private void setMail() {
-        myMail = mail.getText();
-    }
 
-    private void setUserName() {
-        myUserName = userName.getText();
-    }
-
-    private boolean setPassword() throws IllegalArgumentException {
-        if (password.getText() == repeatPassword.getText()) {
-            myPassword = password.getText();
+    private boolean comparePasswords() throws IllegalArgumentException {
+        if (password.getText().toString().equals(repeatPassword.getText().toString())) {
             return true;
         }
         return false;
