@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public class Settings extends Fragment {
     private List<String> listDataHeader;
     private HashMap <String, List<String>> listHash;
 
+//    private TextView text;
+
 
     public Settings() {
         // Required empty public constructor
@@ -43,25 +46,33 @@ public class Settings extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
+        //TextView text = (TextView) rootView.findViewById(R.id.lblListHeader);
 
         final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
-        showPopUp.setOnClickListener(new View.OnClickListener() {
+            showPopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 showCategoryPopUp();
             }
         });
 
-       return rootView;
-    }
+        /*TextView text = (TextView) rootView.findViewById(R.id.lblListItem);
 
-    public void onClick (View v){
-        
+        text.setOnClickListener(new View.OnClickListener() {
+                                   @Override
+                                   public void onClick(View v) {
+                                       Toast.makeText(getActivity(), "You clicked", Toast.LENGTH_SHORT);
+
+                                   }
+                               }
+        );*/
+
+       return rootView;
     }
 
     private void showCategoryPopUp(){
