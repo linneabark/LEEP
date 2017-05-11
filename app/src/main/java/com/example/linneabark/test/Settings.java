@@ -14,9 +14,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,25 +56,31 @@ public class Settings extends Fragment {
         listView.setAdapter(listAdapter);
         //TextView text = (TextView) rootView.findViewById(R.id.lblListHeader);
 
-        final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
+       /* final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
             showPopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 showCategoryPopUp();
             }
-        });
+        });*/
 
-        /*TextView text = (TextView) rootView.findViewById(R.id.lblListItem);
 
-        text.setOnClickListener(new View.OnClickListener() {
-                                   @Override
-                                   public void onClick(View v) {
-                                       Toast.makeText(getActivity(), "You clicked", Toast.LENGTH_SHORT);
+       View textView = inflater.inflate(R.layout.list_item, container, false);
 
-                                   }
-                               }
-        );*/
+
+       TextView text = (TextView) textView.findViewById(R.id.lblListItem);
+        System.out.println("Skriver den ut detta?");
+
+        text.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    showCategoryPopUp();
+                    Toast.makeText(getActivity(), "Du klickade på category", Toast.LENGTH_SHORT);
+                    System.out.println("Heeeeeeeeeeej");
+                }
+            });
+
 
        return rootView;
     }
