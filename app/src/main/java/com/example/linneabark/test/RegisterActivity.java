@@ -51,7 +51,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                createAccount();
+
 
                 finish();
 
@@ -66,28 +66,27 @@ public class RegisterActivity extends AppCompatActivity {
 
                 startActivity(toy);
 
+                okCreateAccount();
             }
         });
     }
 
-
-
-
-     RootController rootC = new RootController();
-
+    AccountCheck accountCheck = new AccountCheck();
 
     public void createAccount() {
-        setMail();
-        setUserName();
-        boolean ok = setPassword();
+        String useRname = userName.getText().toString();
+        String eMail = mail.getText().toString();
+        String passworD = password.getText().toString();
 
-        if (!ok) {
-            errorMessage.setText("Lösenordet stämmer inte överens!");
-        }
-        else {
-            rootC.switchToLog();
-        }
+        new CreateAccount(useRname, eMail, passworD);
     }
+
+    public void okCreateAccount() {
+        boolean checkPassword = accountCheck.checkPassword(mail.getText().toString(), repeatPassword.getText().toString());
+        boolean checkMail = accountCheck.checkMail(mail.toString());}
+
+
+
 
     private void setMail() {
         myMail = mail.getText();
@@ -97,12 +96,8 @@ public class RegisterActivity extends AppCompatActivity {
         myUserName = userName.getText();
     }
 
-    private boolean setPassword() throws IllegalArgumentException {
-        if (password.getText() == repeatPassword.getText()) {
-            myPassword = password.getText();
-            return true;
-        }
-        return false;
+    private void setPassword() {
+        myPassword = password.getText();
     }
 
 
