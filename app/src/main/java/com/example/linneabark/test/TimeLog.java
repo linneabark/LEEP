@@ -11,7 +11,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -29,39 +32,17 @@ public class TimeLog extends Fragment {
     private TextView quoteDisplay;
     private Quotes quote = new Quotes();
     private SaveDate saveDate = new SaveDate();
+    private TextView testText;
 
     private long stopActivity;
 
     private long startActivity;
 
+    SaveActivity sA = new SaveActivity();
+
    private TextView time_txt;
 
-    //tiden stoppuret startades
-    long curTime;
-
-    private String startTime;
-    private String stopTime;
-
-    public String getStartTime(){
-        String str = null;
-        if (str == null){
-            str = startTime;
-        }
-
-        return str;
-
-    }public String getStopTime(){
-        String str = null;
-        if (str == null){
-            str = stopTime;
-        }
-
-        return str;
-
-    }
-
-
-
+    CategoryHashMap cHM = new CategoryHashMap();
 
     SaveActivity saveActivity = new SaveActivity();
 
@@ -77,6 +58,10 @@ public class TimeLog extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
+        Spinner spinner;
+
+        spinner = (Spinner)rootView.findViewById(R.id.spinner);
+
         //trying to make clock with threads
 
         // Inflate the layout for this fragment
@@ -84,8 +69,10 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-
+        testText = (TextView) rootView.findViewById(R.id.testText);
         time = Time.getInstance(this);
+
+
 
         updateText(time.toString());
 
@@ -120,6 +107,11 @@ public class TimeLog extends Fragment {
                         startActivity,
                         (stopActivity-startActivity),
                         new Category("Föreläsning", 6)));
+
+                        testText.setText(cHM.getName(0));
+
+                        System.out.println(cHM.getName(0));
+
 
 
             }

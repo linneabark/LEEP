@@ -3,6 +3,8 @@ package com.example.linneabark.test;
 import android.graphics.Color;
 
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Created by Evelina on 2017-05-05.
@@ -20,9 +22,7 @@ public class Category {
     // HashSet declaration    //Hashset. för att lagra categorierna. accepterar bara en av en sort.
     public HashSet<Category> categoryList = new HashSet<Category>();
 
-    public HashSet<Category> getCategoryList() {
-        return categoryList;
-    }
+
 
 
     public void addFirstCategory () {
@@ -46,5 +46,6 @@ public class Category {
         categoryList.add(newCateogry);
     }
     public String getCategoryName() {return categoryName;}
+
     public int getColor(){return color;}
 }
