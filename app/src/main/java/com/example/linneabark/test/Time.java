@@ -32,7 +32,7 @@ public class Time {
     public void startTimer(){
         value = 0;
         timer.cancel();
-        //timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
