@@ -18,7 +18,12 @@ public class Category {
     }
 
     // HashSet declaration    //Hashset. för att lagra categorierna. accepterar bara en av en sort.
-    HashSet<Category> categoryList = new HashSet<Category>();
+    public HashSet<Category> categoryList = new HashSet<Category>();
+
+    public HashSet<Category> getCategoryList() {
+        return categoryList;
+    }
+
 
     public void addFirstCategory () {
         // Adding elements to the HashSet
