@@ -64,28 +64,34 @@ public class RegisterActivity extends AppCompatActivity {
 
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                createAccount();
+                okCreateAccount();
             }
         });
     }
 
-
-
-
-     RootController rootC = new RootController();
-
+    AccountCheck accountCheck = new AccountCheck();
 
     public void createAccount() {
-        setMail();
-        setUserName();
-        boolean ok = setPassword();
-        setUterusCarrier();
+        String useRname = userName.getText().toString();
+        String eMail = mail.getText().toString();
+        String passworD = password.getText().toString();
 
-        if (!ok) {
-            errorMessage.setText("Lösenordet stämmer inte överens!");
+        new CreateAccount(useRname, eMail, passworD);
+    }
+
+    public void okCreateAccount() {
+        boolean checkPassword = accountCheck.checkPassword(mail.getText().toString(), repeatPassword.getText().toString());
+        boolean checkMail = accountCheck.checkMail(mail.toString());
+
+        if (!checkPassword) {
+            errorMessage.setText("Check the password, they don't match!");
+        }
+        else if (!checkMail) {
+            errorMessage.setText("Please correct mail");
         }
         else {
-            rootC.switchToLog();
+            errorMessage.setText("");
+            createAccount();
         }
     }
 
@@ -97,12 +103,8 @@ public class RegisterActivity extends AppCompatActivity {
         myUserName = userName.getText();
     }
 
-    private boolean setPassword() throws IllegalArgumentException {
-        if (password.getText() == repeatPassword.getText()) {
-            myPassword = password.getText();
-            return true;
-        }
-        return false;
+    private void setPassword() {
+        myPassword = password.getText();
     }
 
     private void setUterusCarrier() {
