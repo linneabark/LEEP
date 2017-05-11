@@ -11,7 +11,7 @@ public class Time {
 
     public static final long MILLIS_TO_MINUTES = 60;
     public static final long MILLIS_TO_HOURS = 3600;
-    private static Time instance;
+    private static Time instance; //CC vill att den deklareras till new Time();
     private long value;
     private static TimeLog tL;
     private Timer timer;
@@ -45,7 +45,7 @@ public class Time {
 
     public void stopTimer(){
         timer.cancel();
-        timer = new Timer();
+        //timer = new Timer();
     }
 
     public void incTime(){

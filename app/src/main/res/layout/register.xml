@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <EditText
             android:id="@+id/setUserName"
@@ -19,9 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:gravity="center"
             android:ems="10"
-            android:hint="Username"
+            android:gravity="center"
+            android:hint="@string/username_name"
             android:inputType="textPersonName"/>
 
         <EditText
@@ -31,9 +33,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:ems="10"
-            android:hint="mail@exempal.se"
+            android:gravity="center"
+            android:hint="@string/email_hint"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -43,9 +45,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:ems="10"
-            android:hint="Password"
+            android:gravity="center"
+            android:hint="@string/password_hint"
             android:inputType="textPassword" />
 
         <EditText
@@ -55,9 +57,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:gravity="center"
             android:ems="10"
-            android:hint="Repeat password"
+            android:gravity="center"
+            android:hint="@string/repeatPassword_hint"
             android:inputType="textPassword" />
 
         <TextView
@@ -69,25 +71,27 @@
             android:gravity="center"
             android:text="" />
 
-        <RadioButton
-            android:id="@+id/uterusBearer"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:text="Uterus bearer" />
+
 
         <Button
             android:id="@+id/register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
-            android:text="Register"
-            android:layout_gravity="center"
+            android:text="@string/Register_name"
             android:background="@color/colorPrimary"
             android:textColor="@color/plainBlack" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/back_name" />
+
 
     </LinearLayout>
 
