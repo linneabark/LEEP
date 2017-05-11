@@ -13,7 +13,7 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/menuColor"
+        android:background="@color/menuColor2"
         android:elevation="4dp"
         app:theme="@style/MyActionBarTheme"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"

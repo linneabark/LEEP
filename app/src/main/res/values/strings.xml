@@ -11,7 +11,7 @@
     <string name="str_statistics">Statistics</string>
     <string name="str_timeLog">Time Log</string>
     <string name="str_clockTxtMenu">00:00:00</string>
-    <string name="str_account">Account</string>
+    <string name="str_account">Log Out</string>
 
 
 
@@ -28,5 +28,15 @@
 
     <!-- SETTINGS !-->
 
+    <!-- REGISTER/LOGIN !-->
+    <string name="email_hint">email@example.com</string>
+    <string name="password_hint">Password</string>
+    <string name="repeatPassword_hint">Repeat Password</string>
+    <string name="Register_name">REGISTER</string>
+    <string name="back_name">BACK</string>
+    <string name="username_name">Username</string>
+
+    <string name="keepLoggedIn">Keep me logged in</string>
+    <string name="LogIn">LOG IN</string>
 
 </resources>

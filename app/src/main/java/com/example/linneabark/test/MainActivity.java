@@ -1,7 +1,10 @@
 package com.example.linneabark.test;
 
 import android.app.ActionBar;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,41 +33,28 @@ import static com.example.linneabark.test.R.id.my_toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TimeLog timeLog = new TimeLog();
-
-    private RootController rootC = new RootController();
     //private AccountController account = new AccountController();
 
-    private int value;
+    private Context mContext;
 
-    public boolean alreadyAUser(){
 
-        return false;
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
+        mContext = this;
 
 
-            if(!alreadyAUser()){
-
-                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(toy);
-        }
+        //if the value is 0 start login in again
 
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
 
-
-       // getSupportActionBar().hide();
-
-
+        //MenuItem logOut = getItemId(R.id.account_id);
 
 
     }
@@ -77,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
@@ -90,6 +82,15 @@ public class MainActivity extends AppCompatActivity {
             case R.id.timelog_id:
                 nextFrag = new TimeLog();
                 break;
+            case R.id.account_id:
+
+                AccountDetails.setKeepLoginStateToZero(mContext, 0);
+                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_LONG).show();
+
+
+                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(toy);
+
         }
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();

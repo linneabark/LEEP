@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="0dp"
             android:gravity="center"
-            android:text="Welcome to LEEP"
+            android:text="@string/welcomeToLeep"
             android:textColor="#000000"
             android:textSize="35dp" />
 
@@ -37,7 +37,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="50dp"
             android:ems="10"
-            android:hint="Username"
+            android:hint="@string/username_name"
             android:inputType="textPersonName"
             android:textAlignment="center" />
 
@@ -49,7 +49,7 @@
             android:layout_marginTop="10dp"
             android:ems="10"
             android:inputType="textPassword"
-            android:hint="Password"
+            android:hint="@string/password_hint"
             android:textAlignment="center" />
 
         <RadioButton
@@ -58,7 +58,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
-            android:text="Keep me logged in" />
+            android:text="@string/keepLoggedIn" />
+
+        <TextView
+            android:id="@+id/errormessage_login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text=""/>
 
         <Button
             android:id="@+id/loginButton"
@@ -66,7 +75,7 @@
             android:layout_marginLeft="10dp"
             android:layout_height="48dp"
             android:layout_marginTop="30dp"
-            android:text="Log in"
+            android:text="@string/LogIn"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
             android:textColor="@color/plainBlack" />
@@ -77,7 +86,7 @@
             android:layout_marginLeft="10dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:text="Register"
+            android:text="@string/Register_name"
             android:textSize="10dp"
             android:layout_gravity="center"
             android:background="@color/plainWhite"

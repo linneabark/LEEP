@@ -25,6 +25,7 @@ import java.util.TimerTask;
  * A simple {@link Fragment} subclass.
  */
 public class TimeLog extends Fragment {
+
     private TextView quoteDisplay;
     private Quotes quote = new Quotes();
     private SaveDate saveDate = new SaveDate();
@@ -33,7 +34,7 @@ public class TimeLog extends Fragment {
 
     private long startActivity;
 
-    TextView time_txt;
+   private TextView time_txt;
 
     //tiden stoppuret startades
     long curTime;

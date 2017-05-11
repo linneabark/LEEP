@@ -22,9 +22,14 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:ems="10"
+<<<<<<< HEAD
             android:gravity="center"
             android:hint="Username"
             android:inputType="textPersonName" />
+=======
+            android:hint="@string/username_name"
+            android:inputType="textPersonName"/>
+>>>>>>> newerAccount
 
         <EditText
             android:id="@+id/mail"
@@ -34,8 +39,12 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
+<<<<<<< HEAD
             android:gravity="center"
             android:hint="mail@exempal.se"
+=======
+            android:hint="@string/email_hint"
+>>>>>>> newerAccount
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -46,8 +55,12 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
+<<<<<<< HEAD
             android:gravity="center"
             android:hint="Password"
+=======
+            android:hint="@string/password_hint"
+>>>>>>> newerAccount
             android:inputType="textPassword" />
 
         <EditText
@@ -58,8 +71,12 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:ems="10"
+<<<<<<< HEAD
             android:gravity="center"
             android:hint="Repeat password"
+=======
+            android:hint="@string/repeatPassword_hint"
+>>>>>>> newerAccount
             android:inputType="textPassword" />
 
         <TextView
@@ -71,6 +88,10 @@
             android:gravity="center"
             android:text="" />
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> newerAccount
         <Button
             android:id="@+id/register"
             android:layout_width="fill_parent"
@@ -79,6 +100,11 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
+<<<<<<< HEAD
+=======
+            android:text="@string/Register_name"
+            android:layout_gravity="center"
+>>>>>>> newerAccount
             android:background="@color/colorPrimary"
             android:text="Register"
             android:textColor="@color/plainBlack" />
@@ -88,7 +114,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
+<<<<<<< HEAD
             android:text="BACK" />
+=======
+            android:text="@string/back_name" />
+>>>>>>> newerAccount
 
     </LinearLayout>
 
