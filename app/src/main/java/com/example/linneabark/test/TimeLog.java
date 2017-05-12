@@ -1,5 +1,6 @@
 package com.example.linneabark.test;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -48,6 +50,8 @@ public class TimeLog extends Fragment {
 
     private Time time;
 
+    Context mContext;
+
     public TimeLog() {
         // Required empty public constructor
     }
@@ -59,6 +63,8 @@ public class TimeLog extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
         Spinner spinner;
+
+        mContext = getActivity();
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
 
@@ -86,6 +92,9 @@ public class TimeLog extends Fragment {
                 time.startTimer();
 
                 startActivity = System.currentTimeMillis();
+
+                Toast.makeText(mContext, "Activity started!", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -93,8 +102,6 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
                 time.stopTimer();
-                /*stopTime = saveDate.calculateTimeToString(System.currentTimeMillis());
-                System.out.println(getStopTime());*/
 
                 stopActivity = System.currentTimeMillis();
 
@@ -112,6 +119,7 @@ public class TimeLog extends Fragment {
 
                         System.out.println(cHM.getName(0));
 
+                Toast.makeText(mContext, "Activity saved. Duration: "+  saveDate.calculateTimeToString(stopActivity-startActivity), Toast.LENGTH_LONG).show();
 
 
             }

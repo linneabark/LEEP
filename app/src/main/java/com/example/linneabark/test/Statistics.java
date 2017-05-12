@@ -116,7 +116,7 @@ public class Statistics extends Fragment {
         }
     }
 
-    public void everythingfromspecifikday () {
+    public void everythingfromspecificday () {
         giveValues();
 
         //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
