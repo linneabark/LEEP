@@ -56,7 +56,9 @@ public class Settings extends Fragment {
         listView.setAdapter(listAdapter);
         //TextView text = (TextView) rootView.findViewById(R.id.lblListHeader);
 
-       /* final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
+
+        /*
+        final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
             showPopUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +66,43 @@ public class Settings extends Fragment {
                 showCategoryPopUp();
             }
         });*/
+        /*View textView = inflater.inflate(R.layout.list_item, container, false);
+        */
+
+        /*
+        final TextView smallText = (TextView) rootView.findViewById(R.id.lblListItem);
+        System.out.println(((TextView) rootView.findViewById(R.id.lblListItem)).getText());
+        smallText.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCategoryPopUp();
+            }
+        });
+*/
+        /*
+        final ExpandableListView exand = (ExpandableListView) rootView.findViewById(R.id.lvExp);
+            exand.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    showCategoryPopUp();
+                }
+            });*/
+
+        /*
+
+        final TextView text = (TextView) rootView.findViewById(R.id.lblListItem);
+        text.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCategoryPopUp();
+            }
+        });*/
 
 
-       View textView = inflater.inflate(R.layout.list_item, container, false);
+       /*View textView = inflater.inflate(R.layout.list_item, container, false);
 
 
-       TextView text = (TextView) textView.findViewById(R.id.lblListItem);
+        TextView text = (TextView) textView.findViewById(R.id.lblListItem);
         System.out.println("Skriver den ut detta?");
 
         text.setOnClickListener(new View.OnClickListener(){
@@ -80,7 +113,7 @@ public class Settings extends Fragment {
                     System.out.println("Heeeeeeeeeeej");
                 }
             });
-
+*/
 
        return rootView;
     }
@@ -130,13 +163,7 @@ public class Settings extends Fragment {
         input.setText("");
         helpBuilder.setView(input);
 */
-
-
-
-
     }
-
-
         //method that adds headers and items in the expandablelistview
     private void initData() {
         listDataHeader = new ArrayList<>();
