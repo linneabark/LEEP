@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -57,7 +58,7 @@ public class Settings extends Fragment {
         //TextView text = (TextView) rootView.findViewById(R.id.lblListHeader);
 
 
-        /*
+
         final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
             showPopUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,55 +66,8 @@ public class Settings extends Fragment {
 
                 showCategoryPopUp();
             }
-        });*/
-        /*View textView = inflater.inflate(R.layout.list_item, container, false);
-        */
-
-        /*
-        final TextView smallText = (TextView) rootView.findViewById(R.id.lblListItem);
-        System.out.println(((TextView) rootView.findViewById(R.id.lblListItem)).getText());
-        smallText.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCategoryPopUp();
-            }
         });
-*/
-        /*
-        final ExpandableListView exand = (ExpandableListView) rootView.findViewById(R.id.lvExp);
-            exand.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    showCategoryPopUp();
-                }
-            });*/
-
-        /*
-
-        final TextView text = (TextView) rootView.findViewById(R.id.lblListItem);
-        text.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCategoryPopUp();
-            }
-        });*/
-
-
-       /*View textView = inflater.inflate(R.layout.list_item, container, false);
-
-
-        TextView text = (TextView) textView.findViewById(R.id.lblListItem);
-        System.out.println("Skriver den ut detta?");
-
-        text.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    showCategoryPopUp();
-                    Toast.makeText(getActivity(), "Du klickade på category", Toast.LENGTH_SHORT);
-                    System.out.println("Heeeeeeeeeeej");
-                }
-            });
-*/
+        
 
        return rootView;
     }
