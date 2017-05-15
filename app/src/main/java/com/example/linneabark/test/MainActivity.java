@@ -35,12 +35,12 @@ import java.util.List;
 import static com.example.linneabark.test.R.id.loginButton;
 import static com.example.linneabark.test.R.id.my_toolbar;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     //private AccountController account = new AccountController();
 
     private Context mContext;
-    Settings settings = new Settings();
+    Settings settings;
 
 
 
@@ -107,13 +107,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }*/
 
-    @Override
     public void onClick(View v) {
         System.out.println("Hej");
-        switch(v.getId()){
-            case R.id.list_item_button:
-                settings.showCategoryPopUp();
-                break;
+        settings.showCategoryPopUp();
         }
     }
-}
+

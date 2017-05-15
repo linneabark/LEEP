@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment {
+public class Settings extends Fragment implements View.OnClickListener {
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -157,4 +157,9 @@ public class Settings extends Fragment {
         listHash.put(listDataHeader.get(4), help);
     }
 
+    @Override
+    public void onClick(View v) {
+        System.out.println("Hej");
+        showCategoryPopUp();
+    }
 }
