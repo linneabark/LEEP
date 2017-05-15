@@ -55,7 +55,7 @@ public class Settings extends Fragment {
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
-        
+
        return rootView;
     }
 

@@ -23,6 +23,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -143,12 +144,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Code if we want to fill out something
-        /*
-        final EditText input = new EditText(getActivity());
+
+        final EditText input = new EditText(this);
         input.setSingleLine();
         input.setText("");
         helpBuilder.setView(input);
-*/
+
     }
 
 
