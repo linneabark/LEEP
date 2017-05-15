@@ -35,11 +35,12 @@ import java.util.List;
 import static com.example.linneabark.test.R.id.loginButton;
 import static com.example.linneabark.test.R.id.my_toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //private AccountController account = new AccountController();
 
     private Context mContext;
+    Settings settings = new Settings();
 
 
 
@@ -101,56 +102,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void clickedSettings(View v){
+    /*public void clickedSettings(View v){
         showCategoryPopUp();
 
+    }*/
+
+    @Override
+    public void onClick(View v) {
+        System.out.println("Hej");
+        switch(v.getId()){
+            case R.id.list_item_button:
+                settings.showCategoryPopUp();
+                break;
+        }
     }
-    private void showCategoryPopUp(){
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Pop Up");
-        helpBuilder.setMessage("This is a PopUp");
-
-        LayoutInflater inflater = getLayoutInflater();
-        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
-        helpBuilder.setView(checkBoxLayout);
-
-
-
-        helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing but close the dialog
-            }
-        });
-
-        //Third button
-        /*helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });*/
-
-        helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-
-
-        //Code if we want to fill out something
-
-        final EditText input = new EditText(this);
-        input.setSingleLine();
-        input.setText("");
-        helpBuilder.setView(input);
-
-    }
-
-
 }

@@ -60,7 +60,9 @@ public class Settings extends Fragment {
     }
 
 
-    private void showCategoryPopUp(){
+    public void showCategoryPopUp(){
+
+
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         helpBuilder.setTitle("Pop Up");
         helpBuilder.setMessage("This is a PopUp");

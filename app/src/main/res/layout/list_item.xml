@@ -29,5 +29,5 @@
         android:elevation="0dp"
         android:focusable="false"
 
-        android:onClick="clickedSettings" />
+        android:onClick="onClick" />
 </RelativeLayout>
