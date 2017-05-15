@@ -55,9 +55,6 @@ public class Settings extends Fragment {
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
-        //TextView text = (TextView) rootView.findViewById(R.id.lblListHeader);
-
-
 
         final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
             showPopUp.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +64,12 @@ public class Settings extends Fragment {
                 showCategoryPopUp();
             }
         });
-        
+
+
 
        return rootView;
     }
+
 
     private void showCategoryPopUp(){
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());

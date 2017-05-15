@@ -22,7 +22,8 @@ public class PopUpWindow extends Activity {
 
     }
 
-    public void onClick(View v){
+    public void clickedSettings(View v){
+        System.out.println("Hej");
         showSimplePopUp();
 
     }

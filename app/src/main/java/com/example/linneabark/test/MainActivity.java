@@ -3,6 +3,7 @@ package com.example.linneabark.test;
 import android.app.ActionBar;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,9 +13,11 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -95,6 +98,57 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
         return true;
+    }
+
+    public void clickedSettings(View v){
+        showCategoryPopUp();
+
+    }
+    private void showCategoryPopUp(){
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Pop Up");
+        helpBuilder.setMessage("This is a PopUp");
+
+        LayoutInflater inflater = getLayoutInflater();
+        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
+        helpBuilder.setView(checkBoxLayout);
+
+
+
+        helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing but close the dialog
+            }
+        });
+
+        //Third button
+        /*helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });*/
+
+        helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+
+
+        //Code if we want to fill out something
+        /*
+        final EditText input = new EditText(getActivity());
+        input.setSingleLine();
+        input.setText("");
+        helpBuilder.setView(input);
+*/
     }
 
 
