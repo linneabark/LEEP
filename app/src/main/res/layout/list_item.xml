@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
     android:layout_height="55dip"
     android:orientation="vertical">
 
-    
+
     <TextView
         android:id="@+id/lblListItem"
-        android:textSize="16dip"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/smallMenuColor"/>
-</LinearLayout>
+        android:layout_weight="1"
+        android:background="@color/smallMenuColor"
+        android:paddingBottom="5dp"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="5dp"
+        android:textSize="16dip" />
+
+    <ImageButton
+        android:id="@+id/list_item_button"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="345dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/editing_edit_icon"
+        android:baselineAlignBottom="false"
+        android:elevation="0dp"
+        android:focusable="false"
+
+        android:onClick="clickedSettings" />
+</RelativeLayout>

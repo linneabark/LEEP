@@ -3,6 +3,7 @@ package com.example.linneabark.test;
 import android.app.ActionBar;
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -12,14 +13,17 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,11 +35,13 @@ import java.util.List;
 import static com.example.linneabark.test.R.id.loginButton;
 import static com.example.linneabark.test.R.id.my_toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     //private AccountController account = new AccountController();
 
+
     private Context mContext;
+
 
 
 
@@ -46,9 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
-
         //if the value is 0 start login in again
-
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(final Menu menu){
+    public boolean onCreateOptionsMenu(final Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
         return true;
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.settings_id:
                 nextFrag = new Settings();
                 break;
@@ -97,5 +101,57 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public void clickedSettings(View v){
+        showCategoryPopUp();
+    }
 
+    public void showCategoryPopUp(){
+
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Pop Up");
+        helpBuilder.setMessage("This is a PopUp");
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
+        helpBuilder.setView(checkBoxLayout);
+
+
+
+        helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing but close the dialog
+            }
+        });
+
+        //Third button
+        /*helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });*/
+
+        helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing
+            }
+        });
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+
+
+        //Code if we want to fill out something
+        /*
+        final EditText input = new EditText(getActivity());
+        input.setSingleLine();
+        input.setText("");
+        helpBuilder.setView(input);
+*/
+    }
 }
+
