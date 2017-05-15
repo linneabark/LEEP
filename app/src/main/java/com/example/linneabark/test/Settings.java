@@ -55,18 +55,7 @@ public class Settings extends Fragment {
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
-
-        final Button showPopUp = (Button) rootView.findViewById(R.id.buttonShowPopUp);
-            showPopUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                showCategoryPopUp();
-            }
-        });
-
-
-
+        
        return rootView;
     }
 

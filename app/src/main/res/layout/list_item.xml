@@ -5,30 +5,29 @@
     android:layout_height="55dip"
     android:orientation="vertical">
 
-    
+
     <TextView
         android:id="@+id/lblListItem"
-        android:textSize="16dip"
-        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/smallMenuColor"
         android:layout_weight="1"
-        />
+        android:background="@color/smallMenuColor"
+        android:paddingBottom="5dp"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+        android:paddingTop="5dp"
+        android:textSize="16dip" />
 
     <ImageButton
         android:id="@+id/list_item_button"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="300dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="345dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/settings_icon"
         android:baselineAlignBottom="false"
         android:elevation="0dp"
         android:focusable="false"
-        android:onClick="clickedSettings"
 
-        />
+        android:onClick="clickedSettings" />
 </RelativeLayout>
