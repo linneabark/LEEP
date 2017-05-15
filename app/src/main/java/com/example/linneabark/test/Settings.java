@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment implements settingsClickable {
+public class Settings extends Fragment {
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -158,10 +158,5 @@ public class Settings extends Fragment implements settingsClickable {
         listHash.put(listDataHeader.get(3), activity);
         listHash.put(listDataHeader.get(4), help);
     }
-
-    @Override
-    public void clickedSettings(View v) {
-        System.out.println("Hej");
-        showCategoryPopUp();
-    }
+    
 }
