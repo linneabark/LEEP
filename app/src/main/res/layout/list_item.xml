@@ -24,10 +24,10 @@
         android:layout_height="20dp"
         android:layout_marginLeft="345dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/settings_icon"
+        android:background="@drawable/editing_edit_icon"
         android:baselineAlignBottom="false"
         android:elevation="0dp"
         android:focusable="false"
 
-        android:onClick="onClick" />
+        android:onClick="clickedSettings" />
 </RelativeLayout>

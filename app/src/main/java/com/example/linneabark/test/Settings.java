@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment implements View.OnClickListener {
+public class Settings extends Fragment implements settingsClickable {
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -56,8 +56,10 @@ public class Settings extends Fragment implements View.OnClickListener {
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
+
        return rootView;
     }
+
 
 
     public void showCategoryPopUp(){
@@ -158,7 +160,7 @@ public class Settings extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
+    public void clickedSettings(View v) {
         System.out.println("Hej");
         showCategoryPopUp();
     }
