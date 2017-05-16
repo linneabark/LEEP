@@ -129,14 +129,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Third button
-        /*helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });*/
-
         helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -146,16 +138,6 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
-
-
-        //Code if we want to fill out something
-        /*
-        final EditText input = new EditText(getActivity());
-        input.setSingleLine();
-        input.setText("");
-        helpBuilder.setView(input);
-*/
     }
     //method that adds headers and items in the expandablelistview
 

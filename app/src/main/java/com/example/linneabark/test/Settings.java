@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.R.attr.onClick;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -50,12 +52,19 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        View v = inflater.inflate(R.layout.list_item, container, false);
 
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
+
+        Button button = (Button) rootView.findViewById(R.id.testButton);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCategoryPopUp();
+            }
+        });
 
 
        return rootView;
@@ -67,13 +76,15 @@ public class Settings extends Fragment {
 
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
-        helpBuilder.setTitle("Pop Up");
-        helpBuilder.setMessage("This is a PopUp");
+        // helpBuilder.setTitle("Pop Up");
+        //helpBuilder.setMessage("This is a PopUp");
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
         helpBuilder.setView(checkBoxLayout);
 
+  //      EditText editText = (EditText) getActivity().findViewById(R.id.edit_text);
+//        editText.setText(getCategoryName());
 
 
         helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -83,13 +94,6 @@ public class Settings extends Fragment {
             }
         });
 
-        //Third button
-        /*helpBuilder.setNegativeButton("Negative", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });*/
 
         helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
             @Override
@@ -102,14 +106,12 @@ public class Settings extends Fragment {
         helpDialog.show();
 
 
+    }
 
-        //Code if we want to fill out something
-        /*
-        final EditText input = new EditText(getActivity());
-        input.setSingleLine();
-        input.setText("");
-        helpBuilder.setView(input);
-*/
+    private String getCategoryName(){
+
+        return null;
+
     }
         //method that adds headers and items in the expandablelistview
     private void initData() {
