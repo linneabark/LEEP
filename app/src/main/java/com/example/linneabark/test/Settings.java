@@ -50,6 +50,7 @@ public class Settings extends Fragment {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
+        View v = inflater.inflate(R.layout.list_item, container, false);
 
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         initData();
@@ -158,5 +159,6 @@ public class Settings extends Fragment {
         listHash.put(listDataHeader.get(3), activity);
         listHash.put(listDataHeader.get(4), help);
     }
-    
+
+
 }
