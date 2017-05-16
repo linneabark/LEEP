@@ -19,34 +19,26 @@ import java.util.List;
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
-    private List<String> listDataHeaderCategory;
-    private List<String> listDataHeaderTimer;
-    private List<String> listDataHeaderQuotes;
-    private List<String> listDataHeaderHelp;
+    private List<String> listDataHeader;
+
     private HashMap<String, List<String>> listHashMap;
 
 
-    public ExpandableListAdapter (Context context, List <String> listDataHeaderCategory,List <String> listDataHeaderTimer, List <String> listDataHeaderQuotes, List <String> listDataHeaderHelp, HashMap <String, List<String>> listHashMap){
+    public ExpandableListAdapter (Context context, List <String> listDataHeader,HashMap <String, List<String>> listHashMap){
         this.context = context;
-        this.listDataHeaderCategory=listDataHeaderCategory;
-        this.listDataHeaderTimer=listDataHeaderTimer;
-        this.listDataHeaderQuotes=listDataHeaderQuotes;
-        this.listDataHeaderHelp=listDataHeaderHelp;
+        this.listDataHeader=listDataHeader;
+
         this.listHashMap=listHashMap;
-
-
     }
 
     @Override
     public int getGroupCount() {
-        int listDataHeader = listDataHeaderCategory.size() + listDataHeaderTimer.size() + listDataHeaderQuotes.size() + listDataHeaderHelp.size();
-        return listDataHeader;
+        return listDataHeader.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        int count = listHashMap.get(listDataHeaderCategory.get(groupPosition)).size() + listHashMap.get(listDataHeaderTimer.get(groupPosition)).size() + listHashMap.get(listDataHeaderQuotes.get(groupPosition)).size() + listHashMap.get(listDataHeaderHelp.get(groupPosition)).size()
-        return count;
+        return listHashMap.get(listDataHeader.get(groupPosition)).size();
     }
 
     @Override
