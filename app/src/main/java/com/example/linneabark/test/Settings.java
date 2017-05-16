@@ -144,12 +144,6 @@ public class Settings extends Fragment {
         quote.add("trött");
         quote.add("orkar inteeeeeee");
 
-        List<String> activity = new ArrayList<>();
-        activity.add("ett");
-        activity.add("sista");
-        activity.add("jävla");
-        activity.add("försök");
-
         List<String> help = new ArrayList<>();
         help.add("japp");
         help.add("det funkar");
@@ -158,8 +152,7 @@ public class Settings extends Fragment {
         listHash.put(listDataHeader.get(0), category);
         listHash.put(listDataHeader.get(1), timer);
         listHash.put(listDataHeader.get(2), quote);
-        listHash.put(listDataHeader.get(3), activity);
-        listHash.put(listDataHeader.get(4), help);
+        listHash.put(listDataHeader.get(3), help);
     }
 
 
