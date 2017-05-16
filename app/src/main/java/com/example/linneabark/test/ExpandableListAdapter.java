@@ -23,22 +23,18 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> listDataHeaderTimer;
     private List<String> listDataHeaderQuotes;
     private List<String> listDataHeaderHelp;
-    private HashMap<String, List<String>> listHashCategory;
-    private HashMap<String, List<String>> listHashTimer;
-    private HashMap<String, List<String>> listHashQuotes;
-    private HashMap<String, List<String>> listHashHelp;
+    private HashMap<String, List<String>> listHashMap;
+    
 
-    public ExpandableListAdapter (Context context, List <String> listDataHeaderCategory,List <String> listDataHeaderTimer, List <String> listDataHeaderQuotes, List <String> listDataHeaderHelp, HashMap <String, List<String>> listHashCategory,HashMap <String, List<String>> listHashTimer,HashMap <String, List<String>> listHashQuotes,HashMap <String, List<String>> listHashHelp ){
+    public ExpandableListAdapter (Context context, List <String> listDataHeaderCategory,List <String> listDataHeaderTimer, List <String> listDataHeaderQuotes, List <String> listDataHeaderHelp, HashMap <String, List<String>> listHashMap){
         this.context = context;
         this.listDataHeaderCategory=listDataHeaderCategory;
         this.listDataHeaderTimer=listDataHeaderTimer;
         this.listDataHeaderQuotes=listDataHeaderQuotes;
         this.listDataHeaderHelp=listDataHeaderHelp;
-        this.listHashCategory=listHashCategory;
-        this.listHashTimer=listHashTimer;
-        this.listHashQuotes=listHashQuotes;
-        this.listHashHelp=listHashHelp;
-        
+        this.listHashMap=listHashMap;
+
+
     }
 
     @Override
