@@ -36,8 +36,14 @@ public class Settings extends Fragment {
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
-    private List<String> listDataHeader;
-    private HashMap <String, List<String>> listHash;
+    private List<String> listDataHeaderCategory;
+    private List<String> listDataHeaderTimer;
+    private List<String> listDataHeaderQuotes;
+    private List<String> listDataHeaderHelp;
+    private HashMap<String, List<String>> listHashCategory;
+    private HashMap<String, List<String>> listHashTimer;
+    private HashMap<String, List<String>> listHashQuotes;
+    private HashMap<String, List<String>> listHashHelp;
 
 //    private TextView text;
 
