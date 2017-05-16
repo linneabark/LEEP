@@ -2,6 +2,7 @@ package com.example.linneabark.test;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,7 +11,7 @@ import java.util.Map;
  * Created by Evelina on 2017-05-05.
  */
 
-public class Category {
+public class Category implements Serializable {
     private String categoryName;
     private int color;
 

@@ -1,12 +1,13 @@
 package com.example.linneabark.test;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Evelina on 2017-05-05.
  */
 
-public class ActivityRow {
+public class ActivityRow implements Serializable {
     private String year;
     private String month;
     private String day;

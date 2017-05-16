@@ -6,7 +6,7 @@
     android:background="@color/plainWhite">
 
 
-    <LinearLayout
+    <TextView
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,36 +52,45 @@
             android:textColor="@color/plainBlack"
             android:textSize="20dp"
             android:textStyle="italic"/>
+
+
+        <TextView
+            android:text="Select a country: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            />
         </LinearLayout>
+       <!-- <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="300dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:background="@color/plainWhite"
+            android:onClick=""
+            /> !-->
 
-
+        <!--<TextView
+            android:id="@+id/testText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="An activity?" /> !-->
 
         <TextView
             android:id="@+id/quoteDisplay"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:gravity="center"
             android:text="No quote is defined yet!"
+            android:textSize="30dp"
             android:textColor="@color/plainBlack"/>
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="200dp"
-            android:layout_height="20dp"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimary" />
-
-        <TextView
-            android:id="@+id/testText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="An activity?" />
-
-    </LinearLayout>
+    </TextView>
 
 
 </FrameLayout>

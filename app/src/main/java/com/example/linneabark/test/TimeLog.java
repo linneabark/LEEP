@@ -7,10 +7,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -18,7 +22,9 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Timer;
 
 import java.text.DateFormat;
@@ -37,24 +43,45 @@ public class TimeLog extends Fragment {
     private TextView testText;
 
     private long stopActivity;
-
     private long startActivity;
-
-    SaveActivity sA = new SaveActivity();
-
-   private TextView time_txt;
-
+    private TextView time_txt;
     CategoryHashMap cHM = new CategoryHashMap();
-
     SaveActivity saveActivity = new SaveActivity();
-
     private Time time;
-
     Context mContext;
+
 
     public TimeLog() {
         // Required empty public constructor
     }
+
+    public void chooseCategory() {
+        // ArrayAdapter<String> adapter = ArrayAdapter.createFromResource()
+    }
+
+
+    /*private View.OnTouchListener Spinner_OnTouch = new View.OnTouchListener(){
+        public boolean onTouch(View v, MotionEvent event){
+            if (event.getAction() == MotionEvent.ACTION_UP){
+                // a method
+
+            }
+            return true;
+        }
+    };
+
+    private View.OnKeyListener Spinner_OnKey = new View.OnKeyListener() {
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
+            if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
+                // a method
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+    };*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,11 +89,22 @@ public class TimeLog extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
 
-        Spinner spinner;
+
+        //Spinner spinner;
 
         mContext = getActivity();
 
-        spinner = (Spinner)rootView.findViewById(R.id.spinner);
+        /*this.arraySpinner = new String[] {
+                "Choose an activity", cHM.getName(0), cHM.getName(1), cHM.getName(2), cHM.getName(3), cHM.getName(4), cHM.getName(5)
+        };*/
+
+
+        //spinner = (Spinner)rootView.findViewById(R.id.spinner);
+
+
+        //spinner.setOnTouchListener(Spinner_OnTouch);
+        //spinner.setOnKeyListener(Spinner_OnKey);
+
 
         //trying to make clock with threads
 
@@ -75,9 +113,8 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        testText = (TextView) rootView.findViewById(R.id.testText);
+        //testText = (TextView) rootView.findViewById(R.id.testText);
         time = Time.getInstance(this);
-
 
 
         updateText(time.toString());
@@ -85,9 +122,6 @@ public class TimeLog extends Fragment {
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*startTime = saveDate.calculateTimeToString(System.currentTimeMillis());
-                System.out.println(getStartTime());*/
 
                 time.startTimer();
 
@@ -112,14 +146,22 @@ public class TimeLog extends Fragment {
                         saveDate.calculateDayToString(),
 
                         startActivity,
-                        (stopActivity-startActivity),
+                        (stopActivity - startActivity),
                         new Category("Föreläsning", 6)));
 
-                        testText.setText(cHM.getName(0));
+                //testText.setText(cHM.getName(0));
 
-                        System.out.println(cHM.getName(0));
+                System.out.println(cHM.getName(0));
 
-                Toast.makeText(mContext, "Activity saved. Duration: "+  saveDate.calculateTimeToString(stopActivity-startActivity), Toast.LENGTH_LONG).show();
+                SaveAll.saveActivityToTxt(AccountDetails.getUsername(mContext), SaveActivity.activityRowList, mContext);
+
+
+                List<ActivityRow> list = SaveAll.getActivityFromTxt(AccountDetails.getUsername(mContext), mContext);
+
+                System.out.println(list);
+
+
+                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_LONG).show();
 
 
             }
@@ -130,14 +172,16 @@ public class TimeLog extends Fragment {
         return rootView;
     }
 
-    public void updateText(final String text){
+
+    public void updateText(final String text) {
         getActivity().runOnUiThread(new Runnable() {
-            public void run(){
+            public void run() {
                 time_txt.setText(text);
 
             }
         });
     }
+
 }
 
 

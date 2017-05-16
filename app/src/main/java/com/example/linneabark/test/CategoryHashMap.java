@@ -13,8 +13,12 @@ public class CategoryHashMap {
     private HashMap<Integer, String> nameMap = new HashMap<Integer, String>();
 
     {
-        nameMap.put(0, "Matte");
-        nameMap.put(1, "Föreläsning");
+        nameMap.put(0, "Linjär algebra");
+        nameMap.put(1, "Träning");
+        nameMap.put(2, "Grundläggande programmering");
+        nameMap.put(3, "Objektorienterad programmering");
+        nameMap.put(4, "Prokrastinering");
+        nameMap.put(5, "Lunch");
     }
 
     private HashMap<Integer, Integer> colorMap = new HashMap<Integer, Integer>();
@@ -22,6 +26,10 @@ public class CategoryHashMap {
     {
         colorMap.put(0, Color.BLUE);
         colorMap.put(1, Color.CYAN);
+        colorMap.put(2, Color.GREEN);
+        colorMap.put(3, Color.MAGENTA);
+        colorMap.put(4, Color.BLACK);
+        colorMap.put(5, Color.YELLOW);
     }
 
 
