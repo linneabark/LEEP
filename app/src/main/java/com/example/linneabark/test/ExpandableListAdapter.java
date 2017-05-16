@@ -24,7 +24,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<String> listDataHeaderQuotes;
     private List<String> listDataHeaderHelp;
     private HashMap<String, List<String>> listHashMap;
-    
+
 
     public ExpandableListAdapter (Context context, List <String> listDataHeaderCategory,List <String> listDataHeaderTimer, List <String> listDataHeaderQuotes, List <String> listDataHeaderHelp, HashMap <String, List<String>> listHashMap){
         this.context = context;
@@ -39,12 +39,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return listDataHeader.size();
+        int listDataHeader = listDataHeaderCategory.size() + listDataHeaderTimer.size() + listDataHeaderQuotes.size() + listDataHeaderHelp.size();
+        return listDataHeader;
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return listHashMap.get(listDataHeader.get(groupPosition)).size();
+        int count = listHashMap.get(listDataHeaderCategory.get(groupPosition)).size() + listHashMap.get(listDataHeaderTimer.get(groupPosition)).size() + listHashMap.get(listDataHeaderQuotes.get(groupPosition)).size() + listHashMap.get(listDataHeaderHelp.get(groupPosition)).size()
+        return count;
     }
 
     @Override
