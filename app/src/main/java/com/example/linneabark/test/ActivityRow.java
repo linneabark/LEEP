@@ -14,9 +14,7 @@ public class ActivityRow implements Serializable {
     private long startTime;
     private long totalTime;
     private Category category;
-    private CategoryHashMap categoryHashMap;
-    private String categoryName;
-    private int categoryColor;
+
 
     public ActivityRow (String year, String month, String day, long startTime, long totalTime, Category category) {
         this.year = year;
@@ -25,9 +23,7 @@ public class ActivityRow implements Serializable {
         this.startTime = startTime;
         this.totalTime = totalTime;
         this.category = category;
-        //this.categoryHashMap = category;
-        //this.categoryName = categoryName;
-        //this.categoryColor = categoryColor;
+
 
     }
 

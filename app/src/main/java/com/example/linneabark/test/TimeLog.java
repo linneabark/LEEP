@@ -58,10 +58,6 @@ public class TimeLog extends Fragment {
         // Required empty public constructor
     }
 
-    public int chooseCategory(int position){
-        return position;
-
-    }
 
     Spinner spinner;
 
@@ -77,9 +73,9 @@ public class TimeLog extends Fragment {
         return this.position;
     }
 
-    String[] hej = new String[] {
+   /* String[] hej = new String[] {
             cHM.getName(0), cHM.getName(1), cHM.getName(2), cHM.getName(3), cHM.getName(4), cHM.getName(5)
-    };
+    };*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,6 +83,18 @@ public class TimeLog extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
+
+        //check whether or not the categories has been initialized with a name yet, should be in a seperate method
+       if(AccountDetails.getCategory1(mContext).equals("") && (AccountDetails.getCategory2(mContext).equals("")
+       && (AccountDetails.getCategory3(mContext).equals("")))) {
+           AccountDetails.setCategory1(mContext, "Category 1");
+           AccountDetails.setCategory2(mContext, "Category 2");
+           AccountDetails.setCategory3(mContext, "Category 3");
+       }
+
+        String[] hej = new String[] {
+                AccountDetails.getCategory1(mContext), AccountDetails.getCategory2(mContext), AccountDetails.getCategory3(mContext)
+        };
 
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);

@@ -17,6 +17,13 @@ public class AccountDetails {
 
     static String theUser = "";
 
+    String category1 = "Category1";
+    String category2 = "Category2";
+    String category3 = "Category3";
+
+
+
+
     public void AccountDetails() {
         // Blank
     }
@@ -25,10 +32,10 @@ public class AccountDetails {
         theUser = input.getText().toString();
     }
 
+    //all the getter
     public static String getUSER(){
         return theUser;
     }
-
 
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
@@ -49,9 +56,75 @@ public class AccountDetails {
         return getUserInfos(context).getString("Email", "");
     }
 
+    //the categories
+
+    public static String getCategory1(Context context) {
+        return getUserInfos(context).getString("Category 1", "");
+    }
+
+    public static String getCategory2(Context context) {
+        return getUserInfos(context).getString("Category 2", "");
+    }
+
+    public static String getCategory3(Context context) {
+        return getUserInfos(context).getString("Category 3", "");
+    }
+
+
+    public static void setCategory1(Context context, String input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category 1", input);
+
+        editor.apply();
+
+    }
+
+    public static void setCategory1(Context context, EditText input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category 1", input.getText().toString());
+
+        editor.apply();
+
+    }
+
+
+
+    public static void setCategory2(Context context, String input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category 2", input);
+
+        editor.apply();
+
+    }
+
+    public static void setCategory2(Context context, EditText input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category 2", input.getText().toString());
+
+        editor.apply();
+
+    }
+
+    public static void setCategory3(Context context, String input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category 3", input);
+
+        editor.apply();
+
+    }
+
+    public static void setCategory3(Context context, EditText input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category 3", input.getText().toString());
+
+        editor.apply();
+
+    }
 
     //maybe change to be able to setUsername without having to define a EditText?
     //input.getText().toString(); in the other class and pass it as a string
+
+    //all the setters
     public static void setUsername(Context context, EditText input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Username", input.getText().toString());
@@ -75,6 +148,11 @@ public class AccountDetails {
         editor.apply();
 
     }
+
+
+
+
+    //keeps track of wether or not the user is already logged in or not
 
     public static void setKeepLoginStateToZero(Context context, int x){
         SharedPreferences.Editor editor = getUserInfo(context).edit();
