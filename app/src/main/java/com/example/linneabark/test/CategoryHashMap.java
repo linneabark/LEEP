@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 public class CategoryHashMap {
 
+
     private HashMap<Integer, String> nameMap = new HashMap<Integer, String>();
 
     {

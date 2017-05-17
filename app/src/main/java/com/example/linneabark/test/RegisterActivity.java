@@ -54,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         register = (Button) this.findViewById(R.id.register);
         backButton = (Button) this.findViewById(R.id.backButton);
 
+
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -68,9 +69,15 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } else{ //if everything is okay, save the information and finish the activity
 
+                    AccountDetails.setUSER(userName); //sets the "user folder"
+
                     AccountDetails.setUsername(mContext, userName);
-                    AccountDetails.setPassword(mContext,password);
+                    AccountDetails.setPassword(mContext, password);
                     AccountDetails.setEmail(mContext, mail);
+
+
+                    /*AccountDetails.setUsername();
+                    AccountDetails.setEmail(mContext, mail);*/
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_LONG).show();
 
                     finish();

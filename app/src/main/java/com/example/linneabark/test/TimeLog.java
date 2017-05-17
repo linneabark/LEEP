@@ -3,6 +3,7 @@ package com.example.linneabark.test;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,6 +25,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Timer;
@@ -45,7 +48,7 @@ public class TimeLog extends Fragment {
     private long stopActivity;
     private long startActivity;
     private TextView time_txt;
-    CategoryHashMap cHM = new CategoryHashMap();
+    private CategoryHashMap cHM = new CategoryHashMap();
     SaveActivity saveActivity = new SaveActivity();
     private Time time;
     Context mContext;
@@ -55,58 +58,64 @@ public class TimeLog extends Fragment {
         // Required empty public constructor
     }
 
-    public void chooseCategory() {
-        // ArrayAdapter<String> adapter = ArrayAdapter.createFromResource()
+    public int chooseCategory(int position){
+        return position;
+
     }
 
+    Spinner spinner;
 
-    /*private View.OnTouchListener Spinner_OnTouch = new View.OnTouchListener(){
-        public boolean onTouch(View v, MotionEvent event){
-            if (event.getAction() == MotionEvent.ACTION_UP){
-                // a method
 
-            }
-            return true;
-        }
+    public int position;
+
+    public void setPosition(int value){
+        this.position = value;
+
+    }
+
+    public int getPosition(){
+        return this.position;
+    }
+
+    String[] hej = new String[] {
+            cHM.getName(0), cHM.getName(1), cHM.getName(2), cHM.getName(3), cHM.getName(4), cHM.getName(5)
     };
-
-    private View.OnKeyListener Spinner_OnKey = new View.OnKeyListener() {
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER) {
-                // a method
-                return true;
-            } else {
-                return false;
-            }
-
-        }
-
-    };*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
-
-
-        //Spinner spinner;
-
         mContext = getActivity();
 
-        /*this.arraySpinner = new String[] {
-                "Choose an activity", cHM.getName(0), cHM.getName(1), cHM.getName(2), cHM.getName(3), cHM.getName(4), cHM.getName(5)
-        };*/
+
+        spinner = (Spinner)rootView.findViewById(R.id.spinner);
+
+        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, hej );
+        array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(array);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-        //spinner = (Spinner)rootView.findViewById(R.id.spinner);
+                //parent.getItemAtPosition(position);
+
+                setPosition(position);
+                Toast.makeText(mContext,parent.getItemAtPosition(position) + " selected.", Toast.LENGTH_LONG ).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        }
 
 
-        //spinner.setOnTouchListener(Spinner_OnTouch);
-        //spinner.setOnKeyListener(Spinner_OnKey);
+        );
 
 
-        //trying to make clock with threads
 
         // Inflate the layout for this fragment
         quoteDisplay = (TextView) rootView.findViewById(R.id.quoteDisplay);
@@ -123,11 +132,15 @@ public class TimeLog extends Fragment {
             @Override
             public void onClick(View v) {
 
+                if(getPosition() == 0){
+
+                }
+
                 time.startTimer();
 
                 startActivity = System.currentTimeMillis();
 
-                Toast.makeText(mContext, "Activity started!", Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "Activity started!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -147,11 +160,8 @@ public class TimeLog extends Fragment {
 
                         startActivity,
                         (stopActivity - startActivity),
-                        new Category("Föreläsning", 6)));
+                        new Category("Föreläsning", Color.BLACK)));
 
-                //testText.setText(cHM.getName(0));
-
-                System.out.println(cHM.getName(0));
 
                 SaveAll.saveActivityToTxt(AccountDetails.getUsername(mContext), SaveActivity.activityRowList, mContext);
 

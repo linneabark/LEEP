@@ -6,7 +6,7 @@
     android:background="@color/plainWhite">
 
 
-    <TextView
+    <LinearLayout
         android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,22 +54,24 @@
             android:textStyle="italic"/>
 
 
+        </LinearLayout>
+
         <TextView
-            android:text="Select a country: "
+            android:text="Select a category: "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:id="@+id/category"
 
             />
-        </LinearLayout>
-       <!-- <Spinner
+       <Spinner
             android:id="@+id/spinner"
             android:layout_width="300dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/plainWhite"
-            android:onClick=""
-            /> !-->
+           />
+
 
         <!--<TextView
             android:id="@+id/testText"
@@ -90,7 +92,8 @@
             android:textSize="30dp"
             android:textColor="@color/plainBlack"/>
 
-    </TextView>
+    </LinearLayout>
+
 
 
 </FrameLayout>

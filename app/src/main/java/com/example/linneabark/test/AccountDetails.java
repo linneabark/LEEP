@@ -15,8 +15,23 @@ public class AccountDetails {
     private SharedPreferences sharedPreferences;
     private static String USER_INFO = "UserInfo";
 
+    static String theUser = "";
+
     public void AccountDetails() {
         // Blank
+    }
+
+    public static void setUSER(EditText input){
+        theUser = input.getText().toString();
+    }
+
+    public static String getUSER(){
+        return theUser;
+    }
+
+
+    private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
+        return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
     }
 
     private static SharedPreferences getUserInfo(Context context) { //or is it getPrefs?
@@ -24,21 +39,21 @@ public class AccountDetails {
     }
 
     public static String getUsername(Context context) {
-        return getUserInfo(context).getString("Username", "");
+        return getUserInfos(context).getString("Username", "");
     }
 
     public static String getPassword(Context context) {
-        return getUserInfo(context).getString("Password", "");
+        return getUserInfos(context).getString("Password", "");
     }
     public static String getEmail(Context context) {
-        return getUserInfo(context).getString("Email", "");
+        return getUserInfos(context).getString("Email", "");
     }
 
 
     //maybe change to be able to setUsername without having to define a EditText?
     //input.getText().toString(); in the other class and pass it as a string
     public static void setUsername(Context context, EditText input) {
-        SharedPreferences.Editor editor = getUserInfo(context).edit();
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Username", input.getText().toString());
 
         editor.apply();
@@ -46,7 +61,7 @@ public class AccountDetails {
     }
 
     public static void setEmail(Context context, EditText input) {
-        SharedPreferences.Editor editor = getUserInfo(context).edit();
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Email", input.getText().toString());
 
         editor.apply();
@@ -54,7 +69,7 @@ public class AccountDetails {
     }
 
     public static void setPassword(Context context, EditText input) {
-        SharedPreferences.Editor editor = getUserInfo(context).edit();
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Password", input.getText().toString());
 
         editor.apply();

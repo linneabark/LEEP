@@ -99,7 +99,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean compareUserInfo() {
 
-        if ((userName.getText().toString().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))) {
+        AccountDetails.setUSER(userName);
+
+        if ((AccountDetails.getUSER().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))) {
             return true;
         }
 
