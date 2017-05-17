@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
     //private AccountController account = new AccountController();
 
     private Context mContext;
-    clickedButton testClicked;
 
 
 
