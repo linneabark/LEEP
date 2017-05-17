@@ -114,14 +114,16 @@ public class MainActivity extends AppCompatActivity {
         View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
         helpBuilder.setView(checkBoxLayout);
 
-
+/*
 
         helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //Do nothing but close the dialog
             }
-        });
+        });*/
+
+        /*
 
         helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
             @Override
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 //Do nothing
             }
         });
+        */
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
