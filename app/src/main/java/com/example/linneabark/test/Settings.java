@@ -39,6 +39,7 @@ public class Settings extends Fragment{
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
+    ImageButton button;
 
 
 //    private TextView text;
@@ -60,10 +61,20 @@ public class Settings extends Fragment{
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
+        /**
+        button = (ImageButton) inflater.inflate(R.layout.list_item, container, false).findViewById(R.id.list_item_button);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCategoryPopUp();
+            }
+        });*/
+
+
        return rootView;
     }
 
-/*
+
     public void showCategoryPopUp(){
 
 
@@ -91,7 +102,7 @@ public class Settings extends Fragment{
         helpDialog.show();
 
 
-    }*/
+    }
 
         //method that adds headers and items in the expandablelistview
     private void initData() {
@@ -111,13 +122,6 @@ public class Settings extends Fragment{
         category.add("Category 4");
         category.add("Category 5");
 
-        List<String> timer = new ArrayList<>();
-        timer.add("Skriver lite har");
-        timer.add("Kanske en del har");
-        timer.add("Hoppas det funkar");
-        timer.add("Orkar inte mer");
-
-
         List<String> quote = new ArrayList<>();
         quote.add("blahahahah");
         quote.add("bläääää");
@@ -126,13 +130,11 @@ public class Settings extends Fragment{
 
         List<String> help = new ArrayList<>();
         help.add("japp");
-        help.add("det funkar");
 
 
         listHash.put(listDataHeader.get(0), category);
-        listHash.put(listDataHeader.get(1), timer);
-        listHash.put(listDataHeader.get(2), quote);
-        listHash.put(listDataHeader.get(3), help);
+        listHash.put(listDataHeader.get(1), quote);
+        listHash.put(listDataHeader.get(2), help);
     }
 
 

@@ -134,5 +134,4 @@ public class MainActivity extends AppCompatActivity {
         helpDialog.show();
     }
     //method that adds headers and items in the expandablelistview
-
 }
