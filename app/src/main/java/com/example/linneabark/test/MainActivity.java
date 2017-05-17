@@ -40,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     //private AccountController account = new AccountController();
 
     private Context mContext;
+    clickedButton testClicked;
+
+
 
 
     @Override
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
 
 
         //MenuItem logOut = getItemId(R.id.account_id);
@@ -102,13 +106,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickedSettings(View v) {
 
-        showCategoryPopUp();
+
+        /*testClicked = new Settings();
+        testClicked.showCategoryPopUp();
+*/
+
+
+        // clickListener.onClick(v);
 
         /*FragmentManager fm = getSupportFragmentManager();
         Settings fragment = (Settings) fm.findFragmentById(R.id.item_list);
         fragment.showCategoryPopUp();*/
     }
-
+/*
     public void showCategoryPopUp(){
 
 
@@ -140,5 +150,5 @@ public class MainActivity extends AppCompatActivity {
         helpDialog.show();
     }
     //method that adds headers and items in the expandablelistview
-
+*/
 }

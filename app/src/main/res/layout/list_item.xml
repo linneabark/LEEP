@@ -29,6 +29,5 @@
         android:baselineAlignBottom="false"
         android:elevation="0dp"
         android:focusable="false"
-
-        android:onClick="clickedSettings" />
+        />
 </RelativeLayout>

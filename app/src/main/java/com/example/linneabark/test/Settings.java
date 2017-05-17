@@ -32,7 +32,7 @@ import static android.R.attr.onClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment {
+public class Settings extends Fragment implements clickedButton{
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -59,7 +59,9 @@ public class Settings extends Fragment {
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
-        Button button = (Button) rootView.findViewById(R.id.testButton);
+
+
+        ImageButton button = (ImageButton) rootView.findViewById(R.id.list_item_button);
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,11 +111,6 @@ public class Settings extends Fragment {
 
     }
 
-    private String getCategoryName(){
-
-        return null;
-
-    }
         //method that adds headers and items in the expandablelistview
     private void initData() {
         listDataHeader = new ArrayList<>();
