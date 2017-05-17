@@ -3,8 +3,10 @@
 
     android:layout_width="match_parent"
     android:layout_height="55dip"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/item_list">
+    android:id="@+id/item_list"
+    tools:context="com.example.linneabark.test.Settings">
 
 
     <TextView
@@ -29,5 +31,5 @@
         android:baselineAlignBottom="false"
         android:elevation="0dp"
         android:focusable="false"
-        />
+        android:onClick="showCategoryPopUp"/>
 </RelativeLayout>

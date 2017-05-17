@@ -12,12 +12,6 @@
     android:background="@color/plainWhite"
     >
 
-    <Button
-        android:id="@+id/testButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_margin="250dp"
-        android:text="popUp" />
 
     <!-- TODO: Update blank fragment layout -->
    <!-- <TextView

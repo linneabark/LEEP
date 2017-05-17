@@ -4,14 +4,17 @@
     android:layout_width="match_parent"
     android:padding="16dp"
     android:background="@color/colorPrimary"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/list_group">
+
+
 
     <TextView
         android:id="@+id/lblListHeader"
-        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:textSize="20sp"
-        android:textColor="#FFFFFF"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </LinearLayout>

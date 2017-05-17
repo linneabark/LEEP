@@ -103,28 +103,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-    public void clickedSettings(View v) {
-
-
-        /*testClicked = new Settings();
-        testClicked.showCategoryPopUp();
-*/
-
-
-        // clickListener.onClick(v);
-
-        /*FragmentManager fm = getSupportFragmentManager();
-        Settings fragment = (Settings) fm.findFragmentById(R.id.item_list);
-        fragment.showCategoryPopUp();*/
-    }
-/*
-    public void showCategoryPopUp(){
+    public void showCategoryPopUp(View v){
 
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        helpBuilder.setTitle("Pop Up");
-        helpBuilder.setMessage("This is a PopUp");
+        //helpBuilder.setTitle("Pop Up");
+        //helpBuilder.setMessage("This is a PopUp");
 
         LayoutInflater inflater = this.getLayoutInflater();
         View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
@@ -150,5 +134,5 @@ public class MainActivity extends AppCompatActivity {
         helpDialog.show();
     }
     //method that adds headers and items in the expandablelistview
-*/
+
 }

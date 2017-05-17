@@ -12,6 +12,7 @@
         android:text="CheckBox 1"/>
      />
 
+
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"

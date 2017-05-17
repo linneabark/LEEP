@@ -17,6 +17,7 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
@@ -32,7 +33,7 @@ import static android.R.attr.onClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment implements clickedButton{
+public class Settings extends Fragment{
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
@@ -59,36 +60,17 @@ public class Settings extends Fragment implements clickedButton{
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
-
-
-        ImageButton button = (ImageButton) rootView.findViewById(R.id.list_item_button);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCategoryPopUp();
-            }
-        });
-
-
        return rootView;
     }
 
-
-
+/*
     public void showCategoryPopUp(){
 
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
-        // helpBuilder.setTitle("Pop Up");
-        //helpBuilder.setMessage("This is a PopUp");
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
         helpBuilder.setView(checkBoxLayout);
-
-  //      EditText editText = (EditText) getActivity().findViewById(R.id.edit_text);
-//        editText.setText(getCategoryName());
-
 
         helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
@@ -109,7 +91,7 @@ public class Settings extends Fragment implements clickedButton{
         helpDialog.show();
 
 
-    }
+    }*/
 
         //method that adds headers and items in the expandablelistview
     private void initData() {
