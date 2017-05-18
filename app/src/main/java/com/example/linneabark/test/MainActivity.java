@@ -1,3 +1,4 @@
+
 package com.example.linneabark.test;
 
 import android.app.ActionBar;
@@ -39,10 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
     //private AccountController account = new AccountController();
 
+
+
     private Context mContext;
-    Settings settings;
 
-
+    public Context getContext(){
+        return mContext;
+    }
 
 
     @Override
@@ -53,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
 
         //if the value is 0 start login in again
-
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.account_id:
 
                 AccountDetails.setKeepLoginStateToZero(mContext, 0);
-                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_LONG).show();
 
 
                 Intent toy = new Intent(MainActivity.this, LoginActivity.class);
