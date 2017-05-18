@@ -75,6 +75,10 @@ public class Settings extends Fragment{
     }
     */
 
+    public String getHeader(){
+        return null;
+    }
+
         //method that adds headers and items in the expandablelistview
     private void initData() {
         listDataHeader = new ArrayList<>();
