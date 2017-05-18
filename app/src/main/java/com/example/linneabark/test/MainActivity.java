@@ -107,31 +107,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-        //helpBuilder.setTitle("Pop Up");
-        //helpBuilder.setMessage("This is a PopUp");
+
 
         LayoutInflater inflater = this.getLayoutInflater();
-        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
+        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window_category, null);
         helpBuilder.setView(checkBoxLayout);
 
-/*
-
-        helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing but close the dialog
-            }
-        });*/
-
-        /*
-
-        helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });
-        */
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();

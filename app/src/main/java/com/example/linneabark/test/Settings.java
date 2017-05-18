@@ -65,23 +65,8 @@ public class Settings extends Fragment{
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window, null);
+        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window_category, null);
         helpBuilder.setView(checkBoxLayout);
-
-        helpBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing but close the dialog
-            }
-        });
-
-
-        helpBuilder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Do nothing
-            }
-        });
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
