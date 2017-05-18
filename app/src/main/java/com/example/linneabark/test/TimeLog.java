@@ -177,7 +177,7 @@ public class TimeLog extends Fragment {
                 System.out.println("THIS CATEGORYY????:" + AccountDetails.getCategory(mContext,getPosition()));
 
 
-                SaveAll.saveActivityToTxt(AccountDetails.getUSER(), SaveActivity.activityRowList, mContext);
+                SaveAll.saveActivityToTxt(AccountDetails.getUsername(mContext), SaveActivity.activityRowList, mContext);
 
                 System.out.println("Which filename: "+ AccountDetails.getUsername(mContext));
                 System.out.println("Which filename2: "+ AccountDetails.getUSER());
