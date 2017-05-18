@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     //private AccountController account = new AccountController();
 
     private Context mContext;
+    Settings settings;
 
 
 
@@ -110,10 +111,19 @@ public class MainActivity extends AppCompatActivity {
 
 
         LayoutInflater inflater = this.getLayoutInflater();
-        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window_category, null);
-        helpBuilder.setView(checkBoxLayout);
 
+        //if() {
+            View categoryLayout = inflater.inflate(R.layout.pop_up_window_category, null);
+            helpBuilder.setView(categoryLayout);
+       /* }else if() {
 
+            View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
+            helpBuilder.setView(quotesLayout);
+        }else{
+            View helpLayout = inflater.inflate(R.layout.pop_up_window_help, null);
+            helpBuilder.setView(helpLayout);
+        }
+*/
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }

@@ -39,6 +39,7 @@ public class Settings extends Fragment{
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
+    Category cat;
 
     public Settings() {
         // Required empty public constructor
@@ -55,6 +56,7 @@ public class Settings extends Fragment{
         initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
+
 
        return rootView;
     }
@@ -75,7 +77,10 @@ public class Settings extends Fragment{
     }
     */
 
+
     public String getHeader(){
+      //  listAdapter.getGroup();
+
         return null;
     }
 
@@ -83,6 +88,7 @@ public class Settings extends Fragment{
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
+        //category = new Category();
 
         listDataHeader.add("CATEGORIES");
         listDataHeader.add("QUOTES");
