@@ -29,6 +29,8 @@ public class Time {
         return instance;
     }
 
+    TimerTask tt;
+
     public void startTimer(){
         value = 0;
         timer.cancel();

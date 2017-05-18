@@ -34,6 +34,7 @@ public class AccountDetails {
 
     //all the getter
     public static String getUSER(){
+
         return theUser;
     }
 
@@ -41,9 +42,6 @@ public class AccountDetails {
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
     }
 
-    private static SharedPreferences getUserInfo(Context context) { //or is it getPrefs?
-        return context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE);
-    }
 
     public static String getUsername(Context context) {
         return getUserInfos(context).getString("Username", "");
@@ -58,6 +56,10 @@ public class AccountDetails {
 
     //the categories
 
+    public static String getCategory(Context context, int x) {
+        return getUserInfos(context).getString("Category "+x, "");
+    }
+
     public static String getCategory1(Context context) {
         return getUserInfos(context).getString("Category 1", "");
     }
@@ -68,6 +70,13 @@ public class AccountDetails {
 
     public static String getCategory3(Context context) {
         return getUserInfos(context).getString("Category 3", "");
+    }
+
+    public static void setCategory(Context context, String input, int x){
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Category " + x, input);
+
+        editor.apply();
     }
 
 
@@ -155,7 +164,7 @@ public class AccountDetails {
     //keeps track of wether or not the user is already logged in or not
 
     public static void setKeepLoginStateToZero(Context context, int x){
-        SharedPreferences.Editor editor = getUserInfo(context).edit();
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
 
         editor.putInt("RadioButton", x);
         editor.apply();
@@ -164,7 +173,7 @@ public class AccountDetails {
     public static void setKeepLoginState(Context context, RadioButton input) {
 
 
-        SharedPreferences.Editor editor = getUserInfo(context).edit();
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
 
         boolean checked = input.isChecked();
 
@@ -178,7 +187,7 @@ public class AccountDetails {
     }
 
     public static int getKeepLoginState(Context context) {
-        return getUserInfo(context).getInt("RadioButton", 0);
+        return getUserInfos(context).getInt("RadioButton", 0);
     }
 
 

@@ -13,18 +13,16 @@ public class ActivityRow implements Serializable {
     private String day;
     private long startTime;
     private long totalTime;
-    private Category category;
+    private String categoryName;
 
 
-    public ActivityRow (String year, String month, String day, long startTime, long totalTime, Category category) {
+    public ActivityRow (String year, String month, String day, long startTime, long totalTime, String categoryName) {
         this.year = year;
         this.month = month;
         this.day= day;
         this.startTime = startTime;
         this.totalTime = totalTime;
-        this.category = category;
-
-
+        this.categoryName = categoryName;
     }
 
     public String getYear () {return year;}
@@ -32,29 +30,5 @@ public class ActivityRow implements Serializable {
     public String getDay () {return day;}
     public long getStartTime () {return startTime;}
     public long getTotalTime () {return totalTime;}
-    public Category getCategory () {return category;}
-    /*
-    private Date year;
-    private Date month;
-    private Date day;
-    private long startTime;
-    private long totalTime;
-    private Category category;
-
-    public ActivityRow (Date year, Date month, Date day, long startTime, long totalTime, Category category) {
-        this.year = year;
-        this.month = month;
-        this.day= day;
-        this.startTime = startTime;
-        this.totalTime = totalTime;
-        this.category = category;
-    }
-
-    public Date getYear () {return year;}
-    public Date getMonth () {return month;}
-    public Date getDay () {return day;}
-    public long getStartTime () {return startTime;}
-    public long getTotalTime () {return totalTime;}
-    public Category getCategory () {return category;}
-    */
+    public String getCategoryName () {return categoryName;}
 }

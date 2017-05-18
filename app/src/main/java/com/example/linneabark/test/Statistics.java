@@ -36,7 +36,8 @@ public class Statistics extends Fragment {
 
 
     /**
-     * Kod nedanför för statistic view som hanterar vyn/statisticen av en dag som vy*/
+     * Kod nedanför för statistic view som hanterar vyn/statisticen av en dag som vy
+     */
     private FindWhichMonth findWhichMonth = new FindWhichMonth();
     private SaveActivity saveActivity = new SaveActivity();
 
@@ -51,7 +52,7 @@ public class Statistics extends Fragment {
     String lastDayOfMore;// = textDays.getText().substring(3);
 
     //Tar fram de värderna som typparametrarna ActivityRow objekten hanterar.
-    public void giveValues () {
+    public void giveValues() {
         if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
         } else if (numberOfMonth >= 10) {
@@ -65,7 +66,7 @@ public class Statistics extends Fragment {
     public void findAllDaysForSpecificMonth() {
         giveValues();
 
-        for(int i= 0; i < saveActivity.activityRowList.size(); i++ ){
+        for (int i = 0; i < saveActivity.activityRowList.size(); i++) {
             //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
             if (saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber)) {
                 //lägger till alla datum som loggats under en månad.
@@ -75,18 +76,19 @@ public class Statistics extends Fragment {
             }
         }
     }
+
     //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
     List<String> allDaysForSpecificMonth = new ArrayList<>();
 
     //sparar alla aktiviteter från en specifik månad.
-    List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
+    List<ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
 
     //en metod som lägger till alla olika aktiviteter som har använts i en String list. och all sammanlagd tid i en Long list.
     //Så ett index i ena listan hör ihop med samma index i den andra listan.
 
     //För specifikt en månad, ta listan som används "allActivityRowsForSpecificMonth"
     //metoden hanterar den listan (för en månad eller XDays) och tar fram totala tiden alla kategorier körts
-    public void totalForActivity (List<ActivityRow> oneList) {
+    /*public void totalForActivity(List<ActivityRow> oneList) {
         //en lista för att spara alla olika kategrier som använts
         List<String> totalOfCategoryList = new ArrayList<>();
         //En lista för att spara all sammanlagd tid för en kategori.
@@ -113,8 +115,10 @@ public class Statistics extends Fragment {
             totalTimeOfActivity = totalTimeOfActivity + j;
             //Lägger till den ökade totaltiden i listan som innehåller total tider.
             totalTimeList.add(indexOfCategory, totalTimeOfActivity);
-        }
+
     }
+
+}*/
 
     public void everythingfromspecificday () {
         giveValues();

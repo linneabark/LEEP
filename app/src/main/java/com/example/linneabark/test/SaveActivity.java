@@ -10,11 +10,12 @@ import java.util.List;
 public class SaveActivity {
     public static List<ActivityRow> activityRowList = new ArrayList<>();
 
+
+
     public void addActivity (ActivityRow activityRow) {
         activityRowList.add(activityRow);
     }
 
-    public ActivityRow getItem(int x){
-       return activityRowList.get(x);
+
     }
-}
+

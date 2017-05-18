@@ -52,6 +52,7 @@ public class TimeLog extends Fragment {
     SaveActivity saveActivity = new SaveActivity();
     private Time time;
     Context mContext;
+    Category cG = new Category();
 
 
     public TimeLog() {
@@ -65,12 +66,14 @@ public class TimeLog extends Fragment {
     public int position;
 
     public void setPosition(int value){
-        this.position = value;
+        position = value;
+
+        System.out.println(value);
 
     }
 
     public int getPosition(){
-        return this.position;
+        return position;
     }
 
    /* String[] hej = new String[] {
@@ -84,22 +87,29 @@ public class TimeLog extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
 
+        /**SPINNER **/
+
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
        if(AccountDetails.getCategory1(mContext).equals("") && (AccountDetails.getCategory2(mContext).equals("")
        && (AccountDetails.getCategory3(mContext).equals("")))) {
-           AccountDetails.setCategory1(mContext, "Category 1");
-           AccountDetails.setCategory2(mContext, "Category 2");
-           AccountDetails.setCategory3(mContext, "Category 3");
+
+           String input = "Category ";
+
+           for(int i = 1; i <4; i++){
+               AccountDetails.setCategory(mContext, input, i);
+           }
        }
 
-        String[] hej = new String[] {
-                AccountDetails.getCategory1(mContext), AccountDetails.getCategory2(mContext), AccountDetails.getCategory3(mContext)
-        };
+       cG.addDefaultCategories(mContext);
 
+       String [] categoryList = new String [cG.categoryList.size()];
+
+       for (int i = 0; i < cG.categoryList.size(); i++) {
+           categoryList[i] = cG.categoryList.get(i);
+       }
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-
-        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, hej );
+        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, categoryList );
         array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(array);
 
@@ -110,7 +120,7 @@ public class TimeLog extends Fragment {
 
                 //parent.getItemAtPosition(position);
 
-                setPosition(position);
+                setPosition(position+1);
                 Toast.makeText(mContext,parent.getItemAtPosition(position) + " selected.", Toast.LENGTH_LONG ).show();
             }
 
@@ -123,14 +133,12 @@ public class TimeLog extends Fragment {
 
         );
 
+        /**TIMER **/
 
-
-        // Inflate the layout for this fragment
         quoteDisplay = (TextView) rootView.findViewById(R.id.quoteDisplay);
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        //testText = (TextView) rootView.findViewById(R.id.testText);
         time = Time.getInstance(this);
 
 
@@ -139,10 +147,6 @@ public class TimeLog extends Fragment {
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(getPosition() == 0){
-
-                }
 
                 time.startTimer();
 
@@ -168,11 +172,15 @@ public class TimeLog extends Fragment {
 
                         startActivity,
                         (stopActivity - startActivity),
-                        new Category("Föreläsning", Color.BLACK)));
+                        AccountDetails.getCategory(mContext, getPosition())));
+
+                System.out.println("THIS CATEGORYY????:" + AccountDetails.getCategory(mContext,getPosition()));
 
 
-                SaveAll.saveActivityToTxt(AccountDetails.getUsername(mContext), SaveActivity.activityRowList, mContext);
+                SaveAll.saveActivityToTxt(AccountDetails.getUSER(), SaveActivity.activityRowList, mContext);
 
+                System.out.println("Which filename: "+ AccountDetails.getUsername(mContext));
+                System.out.println("Which filename2: "+ AccountDetails.getUSER());
 
                 List<ActivityRow> list = SaveAll.getActivityFromTxt(AccountDetails.getUsername(mContext), mContext);
 

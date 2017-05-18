@@ -33,44 +33,53 @@ public class SaveAll implements Serializable{
 
 
 
-    public static void saveActivityToTxt(String filename, List<ActivityRow> list, Context mContext) { //filename aka username
+    public static String saveActivityToTxt(String filename, List<ActivityRow> list, Context mContext) { //filename aka username
 
+        ContextWrapper cw = new ContextWrapper(mContext);
+        File directory = cw.getDir(activityFolder, Context.MODE_PRIVATE);
+        File myPath =new File(directory, (filename + ".txt"));
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
         try {
-
-            ContextWrapper cw = new ContextWrapper(mContext);
-            File directory = cw.getDir(activityFolder, Context.MODE_PRIVATE);
-            File myPath =new File(directory,filename + ".txt");
-
-            FileOutputStream fos = new FileOutputStream(myPath);
+            fos = new FileOutputStream(myPath);
             // Use the compress method on the BitMap object to write image to the OutputStream
 
             //list.toArray().toString();
             //FileOutputStream fos = mContext.openFileOutput((filename +".txt"), Context.MODE_PRIVATE);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos = new ObjectOutputStream(fos);
             oos.writeObject(list);
-            oos.close();
-            fos.close();
 
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally{
+            if((null != oos) || (null != fos))
+            try{
+                fos.close();
+                oos.close();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
         }
 
-        System.out.println(list);
+        System.out.println("IS THIS THE LIST???: " + list);
+        return directory.getAbsolutePath();
     }
+
 
     public static List getActivityFromTxt(String filename, Context context) {
         ContextWrapper cw = new ContextWrapper(context);
-        File directory = cw.getDir("users", Context.MODE_PRIVATE);
-        // Create imageDir
-        File myPath=new File(directory,filename + ".txt");
+        /*File directory = cw.getDir("users", Context.MODE_PRIVATE);
+        File myPath=new File(directory,filename + ".txt");*/
+
+        String path = (cw.getFilesDir().getPath());
 
 
         List<ActivityRow> list = null;
 
         try {
-            FileInputStream fis = new FileInputStream(myPath);
+            File f = new File(path, (filename + ".txt"));
+            FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             list = ((List <ActivityRow> )ois.readObject());

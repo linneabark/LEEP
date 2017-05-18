@@ -1,3 +1,4 @@
+
 package com.example.linneabark.test;
 
 import android.app.ActionBar;
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Context mContext;
 
-
+    public Context getContext(){
+        return mContext;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

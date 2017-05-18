@@ -107,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
 
         return false;
 
-
     }
 
     //saves the current value of the radiobutton to be able to distinguish when to skip login view or not
