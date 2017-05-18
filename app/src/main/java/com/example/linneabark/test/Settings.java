@@ -39,11 +39,6 @@ public class Settings extends Fragment{
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
-    ImageButton button;
-
-
-//    private TextView text;
-
 
     public Settings() {
         // Required empty public constructor
@@ -61,19 +56,9 @@ public class Settings extends Fragment{
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
-        /**
-        button = (ImageButton) inflater.inflate(R.layout.list_item, container, false).findViewById(R.id.list_item_button);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showCategoryPopUp();
-            }
-        });*/
-
-
        return rootView;
     }
-
+/*
 
     public void showCategoryPopUp(){
 
@@ -103,6 +88,7 @@ public class Settings extends Fragment{
 
 
     }
+    */
 
         //method that adds headers and items in the expandablelistview
     private void initData() {
@@ -110,9 +96,7 @@ public class Settings extends Fragment{
         listHash = new HashMap<>();
 
         listDataHeader.add("CATEGORIES");
-        listDataHeader.add("TIMER");
         listDataHeader.add("QUOTES");
-        listDataHeader.add("ACTIVITIES");
         listDataHeader.add("HELP");
 
         List<String> category = new ArrayList<>();
