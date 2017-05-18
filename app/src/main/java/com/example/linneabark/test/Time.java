@@ -9,8 +9,8 @@ import java.util.TimerTask;
 
 public class Time {
 
-    public static final long MILLIS_TO_MINUTES = 60;
-    public static final long MILLIS_TO_HOURS = 3600;
+    private static final long MILLIS_TO_MINUTES = 60;
+    private static final long MILLIS_TO_HOURS = 3600;
     private static Time instance; //CC vill att den deklareras till new Time();
     private long value;
     private static TimeLog tL;
@@ -29,6 +29,8 @@ public class Time {
         return instance;
     }
 
+    TimerTask tt;
+
     public void startTimer(){
         value = 0;
         timer.cancel();
@@ -44,11 +46,13 @@ public class Time {
     }
 
     public void stopTimer(){
+        value = 0;
+        tL.updateText(instance.toString());
         timer.cancel();
         //timer = new Timer();
     }
 
-    public void incTime(){
+    private void incTime(){
         value = value + 1;
     }
 

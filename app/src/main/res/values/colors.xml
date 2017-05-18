@@ -8,6 +8,7 @@
     <color name="colorPrimary">#3f8ab5</color>
     <color name="colorPrimaryDark">#30649f</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
 
     <color name="plainWhite">#FFFFFF</color>
     <color name="plainBlack">#000000</color>
