@@ -33,8 +33,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     Context mContext;
 
-    AccountCheck accountCheck = new AccountCheck();
-
 
 
 
@@ -69,15 +67,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } else{ //if everything is okay, save the information and finish the activity
 
-                    AccountDetails.setUSER(userName); //sets the "user folder"
+                    AccountDetails.setUSER(userName.getText().toString()); //sets the "user folder with the same name as username"
 
                     AccountDetails.setUsername(mContext, userName);
                     AccountDetails.setPassword(mContext, password);
                     AccountDetails.setEmail(mContext, mail);
 
 
-                    /*AccountDetails.setUsername();
-                    AccountDetails.setEmail(mContext, mail);*/
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_LONG).show();
 
                     finish();
@@ -99,13 +95,6 @@ public class RegisterActivity extends AppCompatActivity {
             });
 
     }
-
-
-
-
-    public void okCreateAccount() {
-        boolean checkPassword = accountCheck.checkPassword(mail.getText().toString(), repeatPassword.getText().toString());
-        boolean checkMail = accountCheck.checkMail(mail.toString());}
 
 
 

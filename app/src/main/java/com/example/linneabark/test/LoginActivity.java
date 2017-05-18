@@ -1,5 +1,4 @@
 package com.example.linneabark.test;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,6 +35,14 @@ public class LoginActivity extends AppCompatActivity {
 
         mContext = this;
 
+        if(AccountDetails.getKeepLoginState(mContext) == 1){
+
+            AccountDetails.setUSER(AccountDetails.getPreviousUser(mContext));
+
+            Intent toy = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(toy);
+
+        }
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -44,16 +51,7 @@ public class LoginActivity extends AppCompatActivity {
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
-        // displayUserInfo();
-
         System.out.println(AccountDetails.getKeepLoginState(mContext));
-
-        if(AccountDetails.getKeepLoginState(mContext) == 1){
-
-            Intent toy = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(toy);
-        }
-
 
 
 
@@ -66,8 +64,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
 
-                    AccountDetails.setKeepLoginState(mContext,rB); //see whether or not the radiobutton is checked(1 = true, 0 = false)
+                    AccountDetails.setKeepLoginState(mContext,rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
+
+                    AccountDetails.setPreviousUser(mContext, AccountDetails.getUSER());
 
                     startActivity(LoginToMain);
                     Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_LONG).show();
@@ -99,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean compareUserInfo() {
 
-        AccountDetails.setUSER(userName);
+        AccountDetails.setUSER(userName.getText().toString());
 
         if ((AccountDetails.getUSER().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))) {
             return true;
@@ -108,7 +109,5 @@ public class LoginActivity extends AppCompatActivity {
         return false;
 
     }
-
-    //saves the current value of the radiobutton to be able to distinguish when to skip login view or not
 
 }
