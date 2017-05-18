@@ -53,8 +53,6 @@ public class LoginActivity extends AppCompatActivity {
 
         System.out.println(AccountDetails.getKeepLoginState(mContext));
 
-
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -71,14 +69,9 @@ public class LoginActivity extends AppCompatActivity {
                     AccountDetails.setPreviousUser(mContext, AccountDetails.getUSER());
 
                     startActivity(LoginToMain);
-                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_LONG).show();
-
-
+                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
                 }
-
                 System.out.println(AccountDetails.getKeepLoginState(mContext));
-
-
             }
         });
 

@@ -121,7 +121,7 @@ public class TimeLog extends Fragment {
                 //parent.getItemAtPosition(position);
 
                 setPosition(position+1);
-                Toast.makeText(mContext,parent.getItemAtPosition(position) + " selected.", Toast.LENGTH_LONG ).show();
+                Toast.makeText(mContext,parent.getItemAtPosition(position) + " selected.", Toast.LENGTH_SHORT ).show();
             }
 
             @Override
@@ -187,7 +187,7 @@ public class TimeLog extends Fragment {
                 System.out.println(list);
 
 
-                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();
 
 
             }

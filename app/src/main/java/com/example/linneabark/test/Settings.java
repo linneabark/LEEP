@@ -39,7 +39,7 @@ public class Settings extends Fragment{
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
-    Category cat;
+    Category cG;
 
     public Settings() {
         // Required empty public constructor
