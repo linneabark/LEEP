@@ -16,6 +16,8 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        //For piechart
+        maven { url "https://jitpack.io" }
     }
 }
 

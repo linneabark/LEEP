@@ -26,11 +26,6 @@ public class Category implements Serializable {
     public Category(){
 
     }
-
-    public void getCategory(){
-
-    }
-
     // HashSet declaration    //Hashset. för att lagra categorierna. accepterar bara en av en sort.
     //public HashSet<Category> categoryList = new HashSet<Category>();
 

@@ -7,99 +7,154 @@
     android:background="@color/plainWhite">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_weight="0.35"
-            android:background="@color/plainWhite"
-            android:shadowColor="@color/plainWhite"
-            android:text="Day"
-            android:textColor="@color/plainBlack" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_weight="0.35"
-            android:background="@color/plainWhite"
-            android:shadowColor="@color/plainWhite"
-            android:text="Seven Days"
-            android:textColor="@color/plainBlack" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_weight="0.35"
-            android:background="@color/plainWhite"
-            android:shadowColor="@color/plainWhite"
-            android:text="Month"
-            android:textColor="@color/plainBlack" />
-
-
-    </LinearLayout>
+        android:orientation="vertical">
 
         <LinearLayout
-
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:orientation="horizontal">
+
+            <!--
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/recyclerStatistics"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        </oid.support.v7.widget.RecyclerView>
+            -->
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/btnDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:layout_weight="0.35"
                 android:background="@color/plainWhite"
                 android:shadowColor="@color/plainWhite"
+                android:elevation="0dp"
                 android:text="Day"
                 android:textColor="@color/plainBlack" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btnXDays"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:layout_weight="0.35"
                 android:background="@color/plainWhite"
                 android:shadowColor="@color/plainWhite"
+                android:elevation="0dp"
                 android:text="Seven Days"
                 android:textColor="@color/plainBlack" />
 
             <Button
-                android:id="@+id/button6"
+                android:id="@+id/btnMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:layout_weight="0.35"
                 android:background="@color/plainWhite"
                 android:shadowColor="@color/plainWhite"
+                android:elevation="0dp"
                 android:text="Month"
                 android:textColor="@color/plainBlack" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerMonth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+            <!--
+            <NumberPicker
+                android:id="@+id/monthPicker"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+                </LinearLayout>
+            -->
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btnHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/plainWhite"
+                android:shadowColor="@color/plainWhite"
+                android:layout_gravity="right"
+                android:elevation="0dp"
+                android:text=".?" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/pieChart"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"></com.github.mikephil.charting.charts.PieChart>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/plainWhite"
+                android:shadowColor="@color/plainWhite"
+                android:layout_gravity="right"
+                android:elevation="0dp"
+                android:text="" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></ScrollView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
         </LinearLayout>
 
     </LinearLayout>
-
 
 </FrameLayout>

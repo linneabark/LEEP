@@ -165,17 +165,14 @@ public class TimeLog extends Fragment {
                 stopActivity = System.currentTimeMillis();
 
                 saveActivity.addActivity(new ActivityRow(
-
                         saveDate.calculateYearToString(),
                         saveDate.calculateMonthToString(),
                         saveDate.calculateDayToString(),
-
                         startActivity,
                         (stopActivity - startActivity),
                         AccountDetails.getCategory(mContext, getPosition())));
 
                 System.out.println("THIS CATEGORYY????:" + AccountDetails.getCategory(mContext,getPosition()));
-
 
                 SaveAll.saveActivityToTxt(AccountDetails.getUsername(mContext), SaveActivity.activityRowList, mContext);
 
