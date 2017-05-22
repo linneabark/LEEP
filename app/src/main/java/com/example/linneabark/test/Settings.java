@@ -21,7 +21,6 @@ public class Settings extends Fragment{
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
-    Category cat;
 
     public Settings() {
         // Required empty public constructor
@@ -59,22 +58,15 @@ public class Settings extends Fragment{
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
-        //category = new Category();
 
         listDataHeader.add("CATEGORIES");
         listDataHeader.add("QUOTES");
         listDataHeader.add("HELP");
 
-        cat = new Category();
-
-
-        /*
         List<String> category = new ArrayList<>();
-        category.add("Category 1");
-        category.add("Category 2");
-        category.add("Category 3");
-        category.add("Category 4");
-        category.add("Category 5");*/
+        category.add(AccountDetails.getCategory1(getContext()));
+        category.add(AccountDetails.getCategory2(getContext()));
+        category.add(AccountDetails.getCategory3(getContext()));
 
         List<String> quote = new ArrayList<>();
         quote.add("blahahahah");
@@ -86,7 +78,7 @@ public class Settings extends Fragment{
         help.add("Massa hjälpinfo");
 
 
-        listHash.put(listDataHeader.get(0), cat.categoryList);
+        listHash.put(listDataHeader.get(0), category);
         listHash.put(listDataHeader.get(1), quote);
         listHash.put(listDataHeader.get(2), help);
     }

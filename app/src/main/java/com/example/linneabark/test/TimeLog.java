@@ -52,7 +52,6 @@ public class TimeLog extends Fragment {
     SaveActivity saveActivity = new SaveActivity();
     private Time time;
     Context mContext;
-    Category cG = new Category();
 
 
     public TimeLog() {
@@ -93,25 +92,18 @@ public class TimeLog extends Fragment {
        if(AccountDetails.getCategory1(mContext).equals("") && (AccountDetails.getCategory2(mContext).equals("")
        && (AccountDetails.getCategory3(mContext).equals("")))) {
 
-           String input = "Category ";
+           String input = "Category";
 
            for(int i = 1; i <4; i++){
                AccountDetails.setCategory(mContext, input, i);
            }
        }
 
-       cG.addDefaultCategories(mContext);
-
-       String [] categoryList = new String [cG.categoryList.size()];
-
-       for (int i = 0; i < cG.categoryList.size(); i++) {
-           categoryList[i] = cG.categoryList.get(i);
-       }
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, categoryList );
-        array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(array);
+       // ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, categoryList );
+      //  array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //spinner.setAdapter(array);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
