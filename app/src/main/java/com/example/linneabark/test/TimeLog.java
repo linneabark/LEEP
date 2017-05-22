@@ -44,6 +44,10 @@ public class TimeLog extends Fragment {
     private Quotes quote = new Quotes();
     private SaveDate saveDate = new SaveDate();
     private TextView testText;
+    private String category1 = "Category 1";
+    private String category2 = "Category 2";
+    private String category3 = "Category 3";
+
 
     private long stopActivity;
     private long startActivity;
@@ -57,10 +61,7 @@ public class TimeLog extends Fragment {
     public TimeLog() {
         // Required empty public constructor
     }
-
-
     Spinner spinner;
-
 
     public int position;
 
@@ -68,7 +69,6 @@ public class TimeLog extends Fragment {
         position = value;
 
         System.out.println(value);
-
     }
 
     public int getPosition(){
@@ -89,14 +89,13 @@ public class TimeLog extends Fragment {
         /**SPINNER **/
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
-       if(AccountDetails.getCategory1(mContext).equals("") && (AccountDetails.getCategory2(mContext).equals("")
-       && (AccountDetails.getCategory3(mContext).equals("")))) {
+       if((AccountDetails.getCategory1(mContext).equals("")) && (AccountDetails.getCategory2(mContext).equals(""))
+       && (AccountDetails.getCategory3(mContext).equals(""))) {
 
-           String input = "Category";
+           AccountDetails.setCategory1(mContext, category1);
+           AccountDetails.setCategory2(mContext, category2);
+           AccountDetails.setCategory3(mContext, category3);
 
-           for(int i = 1; i <4; i++){
-               AccountDetails.setCategory(mContext, input, i);
-           }
        }
 
 
@@ -121,7 +120,6 @@ public class TimeLog extends Fragment {
 
             }
         }
-
 
         );
 
@@ -181,7 +179,6 @@ public class TimeLog extends Fragment {
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_LONG).show();
 
-
             }
         });
 
@@ -189,7 +186,6 @@ public class TimeLog extends Fragment {
 
         return rootView;
     }
-
 
     public void updateText(final String text) {
         getActivity().runOnUiThread(new Runnable() {
@@ -199,7 +195,4 @@ public class TimeLog extends Fragment {
             }
         });
     }
-
 }
-
-
