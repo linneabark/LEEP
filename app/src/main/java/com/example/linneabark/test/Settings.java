@@ -4,31 +4,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.view.View.OnClickListener;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import static android.R.attr.onClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,9 +43,7 @@ public class Settings extends Fragment{
        return rootView;
     }
 /*
-
     public void showCategoryPopUp(){
-
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -72,17 +52,8 @@ public class Settings extends Fragment{
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
-
     }
     */
-
-
-    public String getHeader(){
-      //  listAdapter.getGroup();
-
-        return null;
-    }
 
         //method that adds headers and items in the expandablelistview
     private void initData() {
