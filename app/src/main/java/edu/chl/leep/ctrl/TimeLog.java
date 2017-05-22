@@ -67,9 +67,6 @@ public class TimeLog extends Fragment {
         return position;
     }
 
-   /* String[] hej = new String[] {
-            cHM.getName(0), cHM.getName(1), cHM.getName(2), cHM.getName(3), cHM.getName(4), cHM.getName(5)
-    };*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

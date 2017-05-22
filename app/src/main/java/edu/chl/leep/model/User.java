@@ -30,13 +30,6 @@ public class User {
         this.password = password;
         this.mContext = mContext;
 
-        /*
-        Leep.setUSER(user); //sets the "user folder with the same name as username"
-        Leep.setUsername(mContext, userName);
-        Leep.setPassword(mContext, password);
-        Leep.setEmail(mContext, email);
-
-*/
     }
 
 
