@@ -112,7 +112,7 @@ public class Settings extends Fragment{
         quote.add("orkar inteeeeeee");
 
         List<String> help = new ArrayList<>();
-        help.add("japp");
+        help.add("Massa hjälpinfo");
 
 
         listHash.put(listDataHeader.get(0), cat.categoryList);
