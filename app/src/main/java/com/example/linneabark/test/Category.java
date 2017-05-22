@@ -17,6 +17,7 @@ import java.util.Map;
 public class Category implements Serializable {
     private String categoryName;
     public MainActivity mA;
+    List<String> categoryList = new ArrayList<>();
 
 
     public Category(String categoryName) {
@@ -24,17 +25,18 @@ public class Category implements Serializable {
     }
 
     public Category(){
+        mA = new MainActivity();
+        addDefaultCategories(mA.getContext());
+
 
     }
 
     public void getCategory(){
-
     }
 
     // HashSet declaration    //Hashset. för att lagra categorierna. accepterar bara en av en sort.
     //public HashSet<Category> categoryList = new HashSet<Category>();
 
-    List<String> categoryList = new ArrayList<>();
 
 
     public void addDefaultCategories(Context mContext) {

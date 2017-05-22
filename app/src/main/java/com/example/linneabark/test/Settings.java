@@ -94,12 +94,16 @@ public class Settings extends Fragment{
         listDataHeader.add("QUOTES");
         listDataHeader.add("HELP");
 
+        cat = new Category();
+
+
+        /*
         List<String> category = new ArrayList<>();
         category.add("Category 1");
         category.add("Category 2");
         category.add("Category 3");
         category.add("Category 4");
-        category.add("Category 5");
+        category.add("Category 5");*/
 
         List<String> quote = new ArrayList<>();
         quote.add("blahahahah");
@@ -111,7 +115,7 @@ public class Settings extends Fragment{
         help.add("japp");
 
 
-        listHash.put(listDataHeader.get(0), category);
+        listHash.put(listDataHeader.get(0), cat.categoryList);
         listHash.put(listDataHeader.get(1), quote);
         listHash.put(listDataHeader.get(2), help);
     }

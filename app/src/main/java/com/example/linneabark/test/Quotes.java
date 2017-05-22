@@ -17,7 +17,7 @@ public class Quotes {
         //Lägger till några quotes så att de finns per default.
         quotes.add("Just do IT!");
         quotes.add("You are amazing!");
-        quotes.add("Studying is not always easy. But you do it!");
+        quotes.add("Studying is not always easy. But you are doing it!");
     }
 
     public String getQuote() {
