@@ -1,6 +1,10 @@
 package edu.chl.leep.ctrl;
 
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,8 +13,11 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityRow;
@@ -22,10 +29,13 @@ import edu.chl.leep.service.FileService;
 import edu.chl.leep.utils.SaveDate;
 import com.example.linneabark.test.unused.CategoryHashMap;
 
+import java.util.Calendar;
 import java.util.List;
 
 import edu.chl.leep.service.AccountDetails;
 import edu.chl.leep.model.Time;
+
+import static android.R.attr.countDown;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,6 +59,11 @@ public class TimeLog extends Fragment {
     private Time time;
     Context mContext;
 
+    // Timer
+    private ImageButton timerButton;
+    private TextView txtTimer;
+    private TextView txtCountDown;
+    private TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
     public TimeLog() {
         // Required empty public constructor
@@ -173,6 +188,39 @@ public class TimeLog extends Fragment {
         });
 
         quoteDisplay.setText(quote.getQuote());
+
+        // Pop Up timer
+        // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
+        txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
+        timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
+
+        timerButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int hour = cal.get(Calendar.HOUR);
+                int minute = cal.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mTimeSetListener, hour, minute, true);
+
+                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                timePickerDialog.setTitle("Set time to start count down.");
+                timePickerDialog.show();
+            }
+        });
+
+        mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                System.out.println("hourofday " + hourOfDay);
+                System.out.println("minute " + minute);
+                String text = "Hour " + hourOfDay + ", minute " + minute + ".";
+                txtTimer.setText(text);
+            }
+        };
 
         return rootView;
     }

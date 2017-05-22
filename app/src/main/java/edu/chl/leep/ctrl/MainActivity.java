@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
 
-
         //MenuItem logOut = getItemId(R.id.account_id);
+
 
 
     }
