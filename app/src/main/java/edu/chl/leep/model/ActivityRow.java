@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package edu.chl.leep.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,6 +8,7 @@ import java.util.Date;
  */
 
 public class ActivityRow implements Serializable {
+    // TODO Single activity
     private String year;
     private String month;
     private String day;

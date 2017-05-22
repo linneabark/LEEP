@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package com.example.linneabark.test.unused;
 
 public class ChangeAccount {
     AccountCheck accountCheck = new AccountCheck();

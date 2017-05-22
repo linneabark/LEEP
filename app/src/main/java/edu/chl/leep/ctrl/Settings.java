@@ -1,16 +1,20 @@
-package com.example.linneabark.test;
+package edu.chl.leep.ctrl;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+
+import com.example.linneabark.test.ExpandableListAdapter;
+import com.example.linneabark.test.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import edu.chl.leep.service.AccountDetails;
 
 /**
  * A simple {@link Fragment} subclass.

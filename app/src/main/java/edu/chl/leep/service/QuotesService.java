@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package edu.chl.leep.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.Random;
  * Created by Evelina on 2017-05-05.
  */
 
-public class Quotes {
-    //Quotes is stored in a list
+public class QuotesService {
+    //QuotesService is stored in a list
     List<String> quotes = new ArrayList<String>();
     Random rand = new Random();
 
-    public Quotes() {
+    public QuotesService() {
         //Lägger till några quotes så att de finns per default.
         quotes.add("Just do IT!");
         quotes.add("You are amazing!");

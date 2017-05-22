@@ -1,4 +1,6 @@
-package com.example.linneabark.test;
+package com.example.linneabark.test.unused;
+
+import com.example.linneabark.test.unused.CreateAccount;
 
 public class AccountCheck {
     // RegisterActivity registerActivity = new RegisterActivity();

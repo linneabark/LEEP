@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package edu.chl.leep.service;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +18,7 @@ public class AccountDetails {
 
     private SharedPreferences sharedPreferences;
 
+    // TODO till User
     private static String USER_INFO = "UserInfo";
 
     static String theUser = "";
@@ -45,6 +46,8 @@ public class AccountDetails {
     //HANDLE PREVIOUS USER
 
     private static SharedPreferences getPrefPreviousUser(Context context) { //or is it getPrefs?
+        //TODO flytta till fileservice, allt som har med att skriva ut
+
         return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
     }
 

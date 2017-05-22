@@ -1,4 +1,6 @@
-package com.example.linneabark.test;
+package edu.chl.leep.model;
+
+import edu.chl.leep.ctrl.TimeLog;
 
 import java.util.Timer;
 import java.util.TimerTask;

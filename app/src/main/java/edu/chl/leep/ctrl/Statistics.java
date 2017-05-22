@@ -1,14 +1,17 @@
-package com.example.linneabark.test;
+package edu.chl.leep.ctrl;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.utils.FindWhichMonth;
+import com.example.linneabark.test.R;
+import edu.chl.leep.service.SaveActivity;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 /**

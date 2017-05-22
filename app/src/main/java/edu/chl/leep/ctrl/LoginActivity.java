@@ -1,7 +1,6 @@
-package com.example.linneabark.test;
+package edu.chl.leep.ctrl;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,7 +10,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static com.example.linneabark.test.R.id.errorMessage;
+import com.example.linneabark.test.R;
+
+import edu.chl.leep.service.AccountDetails;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -32,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
+
+        //TODO new Leep();
+        //Måste kunna kommas åt i hela programmet, sätt public static
 
         mContext = this;
 

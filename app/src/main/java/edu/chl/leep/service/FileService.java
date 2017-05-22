@@ -1,21 +1,17 @@
-package com.example.linneabark.test;
+package edu.chl.leep.service;
 
 import android.content.Context;
 import android.content.ContextWrapper;
 
-import java.io.BufferedReader;
+import edu.chl.leep.model.ActivityRow;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,7 +19,7 @@ import java.util.List;
  * Created by Eli on 2017-05-15.
  */
 
-public class SaveAll implements Serializable{
+public class FileService implements Serializable{
 
     String SAVED_INFO = "savedInfo.txt";
 

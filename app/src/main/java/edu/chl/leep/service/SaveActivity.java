@@ -1,4 +1,6 @@
-package com.example.linneabark.test;
+package edu.chl.leep.service;
+
+import edu.chl.leep.model.ActivityRow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +10,9 @@ import java.util.List;
  */
 
 public class SaveActivity {
+
+    //TODO Slå ihop med fileservice
+
     public static List<ActivityRow> activityRowList = new ArrayList<>();
 
 

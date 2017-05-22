@@ -1,16 +1,8 @@
 
-package com.example.linneabark.test;
+package edu.chl.leep.ctrl;
 
-import android.app.ActionBar;
-import android.content.ClipData;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -23,25 +15,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ExpandableListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.example.linneabark.test.R;
 
-import static com.example.linneabark.test.R.id.loginButton;
-import static com.example.linneabark.test.R.id.my_toolbar;
+import edu.chl.leep.model.Leep;
+import edu.chl.leep.service.AccountDetails;
 
 public class MainActivity extends AppCompatActivity {
 
     //private AccountController account = new AccountController();
 
 
-
+    public static Leep leep;
     private Context mContext;
 
     public Context getContext(){
@@ -56,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
+        leep = new Leep();
         //if the value is 0 start login in again
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);

@@ -8,7 +8,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     xmlns:andoroid="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.linneabark.test.Settings"
+    tools:context="edu.chl.leep.ctrl.Settings"
     android:background="@color/plainWhite"
     >
 
