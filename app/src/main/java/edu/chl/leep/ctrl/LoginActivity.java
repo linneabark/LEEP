@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
+import edu.chl.leep.model.Leep;
 import edu.chl.leep.service.AccountDetails;
 
 /**
@@ -27,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView eM; //errorMessage
     RadioButton rB; //keep the login
     Context mContext;
+    private static Leep leep;
 
 
     @Override
@@ -35,7 +37,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.start_login);
 
         //TODO new Leep();
+
+
+
         //Måste kunna kommas åt i hela programmet, sätt public static
+
+
 
         mContext = this;
 
@@ -92,6 +99,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public static Leep getInstance(){
+        if(leep == null){
+            leep = new Leep();
+        }
+        
+        return leep;
     }
 
 
