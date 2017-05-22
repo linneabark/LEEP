@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                     AccountDetails.setEmail(mContext, mail);
 
 
-                    Toast.makeText(mContext, "Account created!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
 
                     finish();
 

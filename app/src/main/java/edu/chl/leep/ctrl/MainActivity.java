@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.account_id:
 
                 AccountDetails.setKeepLoginStateToZero(mContext, 0);
-                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
 
 
                 Intent toy = new Intent(MainActivity.this, LoginActivity.class);

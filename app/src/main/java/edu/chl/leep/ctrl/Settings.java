@@ -26,6 +26,7 @@ public class Settings extends Fragment{
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
 
+
     public Settings() {
         // Required empty public constructor
     }
