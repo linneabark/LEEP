@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.Leep;
 import edu.chl.leep.service.QuotesService;
 import com.example.linneabark.test.R;
 
@@ -81,12 +82,12 @@ public class TimeLog extends Fragment {
         /**SPINNER **/
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
-       if((AccountDetails.getCategory1(mContext).equals("")) && (AccountDetails.getCategory2(mContext).equals(""))
-       && (AccountDetails.getCategory3(mContext).equals(""))) {
+       if((Leep.getCategory1(mContext).equals("")) && (Leep.getCategory2(mContext).equals(""))
+       && (Leep.getCategory3(mContext).equals(""))) {
 
-           AccountDetails.setCategory1(mContext, category1);
-           AccountDetails.setCategory2(mContext, category2);
-           AccountDetails.setCategory3(mContext, category3);
+           Leep.setCategory1(mContext, category1);
+           Leep.setCategory2(mContext, category2);
+           Leep.setCategory3(mContext, category3);
 
        }
 
@@ -152,17 +153,17 @@ public class TimeLog extends Fragment {
                         saveDate.calculateDayToString(),
                         startActivity,
                         (stopActivity - startActivity),
-                        AccountDetails.getCategory(mContext, getPosition())));
+                        Leep.getCategory(mContext, getPosition())));
 
-                System.out.println("THIS CATEGORYY????:" + AccountDetails.getCategory(mContext,getPosition()));
+                System.out.println("THIS CATEGORYY????:" + Leep.getCategory(mContext,getPosition()));
 
 
-                FileService.saveActivityToTxt(AccountDetails.getUsername(mContext), SaveActivity.activityRowList, mContext);
+                FileService.saveActivityToTxt(Leep.getUsername(mContext), SaveActivity.activityRowList, mContext);
 
-                System.out.println("Which filename: "+ AccountDetails.getUsername(mContext));
-                System.out.println("Which filename2: "+ AccountDetails.getUSER());
+                System.out.println("Which filename: "+ Leep.getUsername(mContext));
+                System.out.println("Which filename2: "+ Leep.getUSER());
 
-                List<ActivityRow> list = FileService.getActivityFromTxt(AccountDetails.getUsername(mContext), mContext);
+                List<ActivityRow> list = FileService.getActivityFromTxt(Leep.getUsername(mContext), mContext);
 
                 System.out.println(list);
 

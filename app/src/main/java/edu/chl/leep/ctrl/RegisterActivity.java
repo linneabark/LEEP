@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
+import edu.chl.leep.model.Leep;
 import edu.chl.leep.service.AccountDetails;
 
 /**
@@ -65,11 +66,10 @@ public class RegisterActivity extends AppCompatActivity {
                     // TODO User user = new User(name, email)
                     //MainActivity.leep.register(user);
                     //FilseSERVICE. SAVE
-                    AccountDetails.setUSER(userName.getText().toString()); //sets the "user folder with the same name as username"
-
-                    AccountDetails.setUsername(mContext, userName);
-                    AccountDetails.setPassword(mContext, password);
-                    AccountDetails.setEmail(mContext, mail);
+                    Leep.setUSER(userName.getText().toString()); //sets the "user folder with the same name as username"
+                    Leep.setUsername(mContext, userName);
+                    Leep.setPassword(mContext, password);
+                    Leep.setEmail(mContext, mail);
 
 
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();

@@ -19,18 +19,23 @@ public class AccountDetails {
     private SharedPreferences sharedPreferences;
 
     // TODO till User
+
+    //Flyttat till User
+    /*
     private static String USER_INFO = "UserInfo";
 
     static String theUser = "";
     static String category1 = "Category1";
     static String category2 = "Category2";
     static String category3 = "Category3";
-
+*/
 
     public void AccountDetails() {
         // Blank
     }
 
+    //Flyttat till Leep
+    /*
     public static void setUSER(String input){
         theUser = input;
     }
@@ -42,15 +47,21 @@ public class AccountDetails {
         String y = theUser;
         return y;
     }
+    */
 
     //HANDLE PREVIOUS USER
 
+
+    //Flyttat till fileservice
+    /*
     private static SharedPreferences getPrefPreviousUser(Context context) { //or is it getPrefs?
         //TODO flytta till fileservice, allt som har med att skriva ut
 
         return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
-    }
+    }*/
 
+    //Flyttat till Leep
+    /*
     public static String getPreviousUser(Context context) {
         return getPrefPreviousUser(context).getString("user", "");
     }
@@ -60,8 +71,11 @@ public class AccountDetails {
         editor.putString("user", input);
 
         editor.apply();
-    }
+    }*/
 
+    //Flyttat till LEEP
+
+    /*
     //HANDLE THE USER INFO
 
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
@@ -200,7 +214,7 @@ public class AccountDetails {
     }
 
 
-
+*/
 }
 
 

@@ -36,19 +36,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
 
-        //TODO new Leep();
-
-
-
         //Måste kunna kommas åt i hela programmet, sätt public static
-
-
+        getInstance();
 
         mContext = this;
 
-        if(AccountDetails.getKeepLoginState(mContext) == 1){
+        if(Leep.getKeepLoginState(mContext) == 1){
 
-            AccountDetails.setUSER(AccountDetails.getPreviousUser(mContext));
+            Leep.setUSER(Leep.getPreviousUser(mContext));
 
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
@@ -62,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
-        System.out.println(AccountDetails.getKeepLoginState(mContext));
+        System.out.println(Leep.getKeepLoginState(mContext));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -73,16 +68,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
 
-                    AccountDetails.setKeepLoginState(mContext,rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+                    Leep.setKeepLoginState(mContext,rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
 
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
 
-                    AccountDetails.setPreviousUser(mContext, AccountDetails.getUSER());
+                    Leep.setPreviousUser(mContext, Leep.getUSER());
 
                     startActivity(LoginToMain);
-                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, ("Logged in " + Leep.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(AccountDetails.getKeepLoginState(mContext));
+                System.out.println(Leep.getKeepLoginState(mContext));
             }
         });
 
@@ -105,16 +100,16 @@ public class LoginActivity extends AppCompatActivity {
         if(leep == null){
             leep = new Leep();
         }
-        
+
         return leep;
     }
 
 
     public boolean compareUserInfo() {
 
-        AccountDetails.setUSER(userName.getText().toString());
+        Leep.setUSER(userName.getText().toString());
 
-        if ((AccountDetails.getUSER().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))) {
+        if ((Leep.getUSER().equals(Leep.getUsername(mContext))) && (passWord.getText().toString().equals(Leep.getPassword(mContext)))) {
             return true;
         }
 

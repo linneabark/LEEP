@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import edu.chl.leep.model.Leep;
 import edu.chl.leep.service.AccountDetails;
 
 /**
@@ -69,9 +70,9 @@ public class Settings extends Fragment{
         listDataHeader.add("HELP");
 
         List<String> category = new ArrayList<>();
-        category.add(AccountDetails.getCategory1(getContext()));
-        category.add(AccountDetails.getCategory2(getContext()));
-        category.add(AccountDetails.getCategory3(getContext()));
+        category.add(Leep.getCategory1(getContext()));
+        category.add(Leep.getCategory2(getContext()));
+        category.add(Leep.getCategory3(getContext()));
 
         List<String> quote = new ArrayList<>();
         quote.add("blahahahah");
