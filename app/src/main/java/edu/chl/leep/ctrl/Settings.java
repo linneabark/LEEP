@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import edu.chl.leep.model.Leep;
-import edu.chl.leep.service.AccountDetails;
 
 /**
  * A simple {@link Fragment} subclass.

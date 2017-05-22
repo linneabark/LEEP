@@ -13,7 +13,8 @@ import android.widget.Toast;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.Leep;
-import edu.chl.leep.service.AccountDetails;
+import edu.chl.leep.model.User;
+import edu.chl.leep.service.FileService;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -28,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView errorMessage;
     private Button register;
     private Button backButton;
+    public static User newUser;
 
     Context mContext;
 
@@ -66,12 +68,24 @@ public class RegisterActivity extends AppCompatActivity {
                     // TODO User user = new User(name, email)
                     //MainActivity.leep.register(user);
                     //FilseSERVICE. SAVE
+
+                    newUser = new User(
+                            userName.getText().toString(),
+                            userName.getText().toString(),
+                            mail.getText().toString(),
+                            password.getText().toString(),
+                            mContext);
+
+                    MainActivity.leep.register();
+
+                    //Ändra till User
+/*
                     Leep.setUSER(userName.getText().toString()); //sets the "user folder with the same name as username"
-                    Leep.setUsername(mContext, userName);
-                    Leep.setPassword(mContext, password);
-                    Leep.setEmail(mContext, mail);
+                    Leep.setUsername(mContext, userName.getText().toString());
+                    Leep.setPassword(mContext, password.getText().toString());
+                    Leep.setEmail(mContext, mail.getText().toString());
 
-
+*/
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
 
                     finish();

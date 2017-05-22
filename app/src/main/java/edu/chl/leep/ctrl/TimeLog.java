@@ -25,7 +25,6 @@ import com.example.linneabark.test.unused.CategoryHashMap;
 
 import java.util.List;
 
-import edu.chl.leep.service.AccountDetails;
 import edu.chl.leep.model.Time;
 
 /**
@@ -165,7 +164,7 @@ public class TimeLog extends Fragment {
 
                 List<ActivityRow> list = FileService.getActivityFromTxt(Leep.getUsername(mContext), mContext);
 
-                System.out.println(list);
+                //System.out.println(list);
 
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();

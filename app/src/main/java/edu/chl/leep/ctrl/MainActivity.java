@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.Leep;
-import edu.chl.leep.service.AccountDetails;
 
 public class MainActivity extends AppCompatActivity {
 

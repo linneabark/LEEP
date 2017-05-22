@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import edu.chl.leep.ctrl.RegisterActivity;
 import edu.chl.leep.service.FileService;
 
 /**
@@ -27,6 +28,19 @@ public class Leep {
     //TODO metod: login(User)
 
     //TODO getters
+
+    public static void register(){
+        System.out.println("Blläääääääää");
+        Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
+        System.out.println("User: " +RegisterActivity.newUser.user);
+        Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
+        System.out.println("Username: " +RegisterActivity.newUser.userName);
+        Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
+        System.out.println("Password: " +RegisterActivity.newUser.password);
+        Leep.setEmail(User.mContext, RegisterActivity.newUser.email);
+        System.out.println("email: " +RegisterActivity.newUser.email);
+
+    }
 
 
     public static void setUSER(String input){
@@ -137,25 +151,25 @@ public class Leep {
     //input.getText().toString(); in the other class and pass it as a string
 
     //all the setters
-    public static void setUsername(Context context, EditText input) {
+    public static void setUsername(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Username", input.getText().toString());
+        editor.putString("Username", input);
 
         editor.apply();
 
     }
 
-    public static void setEmail(Context context, EditText input) {
+    public static void setEmail(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Email", input.getText().toString());
+        editor.putString("Email", input);
 
         editor.apply();
 
     }
 
-    public static void setPassword(Context context, EditText input) {
+    public static void setPassword(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Password", input.getText().toString());
+        editor.putString("Password", input);
 
         editor.apply();
 

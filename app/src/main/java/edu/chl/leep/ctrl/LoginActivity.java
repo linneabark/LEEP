@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.Leep;
-import edu.chl.leep.service.AccountDetails;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -108,8 +107,10 @@ public class LoginActivity extends AppCompatActivity {
     public boolean compareUserInfo() {
 
         Leep.setUSER(userName.getText().toString());
+        System.out.println("Leep.getUserName: " + Leep.getUsername(mContext));
+        System.out.println("Leep.getpassword: " + Leep.getPassword(mContext));
 
-        if ((Leep.getUSER().equals(Leep.getUsername(mContext))) && (passWord.getText().toString().equals(Leep.getPassword(mContext)))) {
+        if ((userName.getText().toString().equals(Leep.getUsername(mContext))) && (passWord.getText().toString().equals(Leep.getPassword(mContext)))) {
             return true;
         }
 
