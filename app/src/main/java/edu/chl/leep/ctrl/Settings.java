@@ -34,7 +34,9 @@ public class Settings extends Fragment{
     private EditText categoryEdit;
    // private IQuotesService iqs;
     private QuotesService qs;
-    private Button exitButton;
+    private Button exitButtonHelp;
+    private Button exitButtonCategory;
+    private Button exitButtonQuotes;
 
 
 
@@ -78,8 +80,16 @@ public class Settings extends Fragment{
         helpBuilder.setView(categoryLayout);
 
         
-        AlertDialog helpDialog = helpBuilder.create();
+        final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+
+        exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
+        exitButtonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
     }
 
 
@@ -90,8 +100,15 @@ public class Settings extends Fragment{
         View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
         helpBuilder.setView(quotesLayout);
 
-        AlertDialog helpDialog = helpBuilder.create();
+        final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
+        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
     }
 
     private void showHelpPopUp() {
@@ -103,8 +120,8 @@ public class Settings extends Fragment{
 
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-        exitButton = (Button) helpLayout.findViewById(R.id.done_button_help);
-        exitButton.setOnClickListener(new View.OnClickListener() {
+        exitButtonHelp = (Button) helpLayout.findViewById(R.id.done_button_help);
+        exitButtonHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 helpDialog.dismiss();
