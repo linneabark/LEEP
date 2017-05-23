@@ -15,7 +15,7 @@
         android:paddingBottom="10dp"
         android:paddingLeft="50dp"
         android:paddingTop="10dp"
-        android:text="Change category name"
+        android:text="Change Category Name"
         android:textColor="@color/plainBlack"
         android:textSize="24sp"
         android:textStyle="bold" />
