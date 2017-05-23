@@ -6,7 +6,9 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
@@ -26,6 +28,7 @@ public class Settings extends Fragment{
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
+    private EditText categoryEdit;
 
 
     public Settings() {
@@ -67,6 +70,7 @@ public class Settings extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
+        
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
@@ -76,7 +80,7 @@ public class Settings extends Fragment{
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
+        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
         helpBuilder.setView(quotesLayout);
 
         AlertDialog helpDialog = helpBuilder.create();
@@ -87,7 +91,7 @@ public class Settings extends Fragment{
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View helpLayout = inflater.inflate(R.layout.pop_up_window_help, null);
+        View helpLayout = inflater.inflate(R.layout.pop_up_help, null);
         helpBuilder.setView(helpLayout);
 
         AlertDialog helpDialog = helpBuilder.create();
