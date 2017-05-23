@@ -33,6 +33,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     }
 
+
     @Override
     public int getGroupCount() {
         return listDataHeader.size();
@@ -100,4 +101,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+
 }

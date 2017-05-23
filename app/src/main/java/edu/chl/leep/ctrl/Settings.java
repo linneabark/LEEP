@@ -44,7 +44,6 @@ public class Settings extends Fragment{
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash);
         listView.setAdapter(listAdapter);
 
-
        return rootView;
     }
 /*
@@ -59,6 +58,20 @@ public class Settings extends Fragment{
         helpDialog.show();
     }
     */
+
+    public int getExpanded(){
+
+        if (listView.isGroupExpanded(0)){
+            return 1;
+        }else if (listView.isGroupExpanded(1)){
+            return 2;
+        }else if(listView.isGroupExpanded(2)){
+            return 3;
+        }
+        return 0;
+
+    }
+
 
         //method that adds headers and items in the expandablelistview
     private void initData() {
