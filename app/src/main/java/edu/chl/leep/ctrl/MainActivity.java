@@ -114,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
         trans.commit();
 
 */
-        System.out.println("Expanded: " + settings.getExpanded());
-
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = this.getLayoutInflater();
@@ -131,18 +129,11 @@ public class MainActivity extends AppCompatActivity {
             helpBuilder.setView(helpLayut);
         }
 
-           // View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
-            //helpBuilder.setView(quotesLayout);
-            //View helpLayout = inflater.inflate(R.layout.pop_up_window_help, null);
-            //helpBuilder.setView(helpLayout);
-
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-    }//}
-    //method that adds headers and items in the expandablelistview
+    }
 
     public Context getContext(){
-        System.out.println("mA Context: " + mContext);
         return mContext;
     }
 

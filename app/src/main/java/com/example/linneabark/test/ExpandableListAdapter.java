@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,11 +21,15 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     private Context context;
     private List<String> listDataHeader;
-
+    private int lastExpandedGroupPosition = -1;
+    private ExpandableListView listView;
     private HashMap<String, List<String>> listHashMap;
 
 
-    public ExpandableListAdapter (Context context, List <String> listDataHeader,HashMap <String, List<String>> listHashMap){
+    public ExpandableListAdapter (Context context, List <String> listDataHeader,
+                                  HashMap <String, List<String>> listHashMap,
+                                  ExpandableListView listView){
+        this.listView=listView;
         this.context = context;
         this.listDataHeader=listDataHeader;
 
@@ -103,4 +108,17 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
 
+    @Override
+    public void onGroupExpanded(int groupPosition) {
+
+        if (groupPosition!= lastExpandedGroupPosition){
+            lastExpandedGroupPosition = groupPosition;
+            listView.collapseGroup(lastExpandedGroupPosition);
+        }
+        super.onGroupExpanded(groupPosition);
+    }
+
+    public int getLastExpandedGroupPosition(){
+        return lastExpandedGroupPosition;
+    }
 }
