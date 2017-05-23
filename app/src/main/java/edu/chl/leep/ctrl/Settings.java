@@ -138,7 +138,7 @@ public class Settings extends Fragment{
         quote.add(qs.getQuote3());
 
         List<String> help = new ArrayList<>();
-        help.add("Massa hjälpinfo");
+        help.add("Info om hur appen fungerar");
 
 
         listHash.put(listDataHeader.get(0), category);
