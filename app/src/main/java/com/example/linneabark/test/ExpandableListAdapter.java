@@ -110,15 +110,14 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public void onGroupExpanded(int groupPosition) {
+        System.out.println("Listview, exp: " + listView);
 
-        if (groupPosition!= lastExpandedGroupPosition){
-            lastExpandedGroupPosition = groupPosition;
+        if (groupPosition!= lastExpandedGroupPosition && groupPosition != -1){
             listView.collapseGroup(lastExpandedGroupPosition);
+
         }
+        lastExpandedGroupPosition = groupPosition;
         super.onGroupExpanded(groupPosition);
     }
 
-    public int getLastExpandedGroupPosition(){
-        return lastExpandedGroupPosition;
-    }
 }
