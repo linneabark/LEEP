@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
+import edu.chl.leep.model.RegisterActivityModel;
 import edu.chl.leep.service.AccountDetails;
 
 /**
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button backButton;
 
     Context mContext;
+    RegisterActivityModel registerActivityModel;
 
 
     @Override
@@ -38,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         mContext = this;
+        registerActivityModel = new RegisterActivityModel();
 
         mail = (EditText) this.findViewById(R.id.mail);
         userName = (EditText) this.findViewById(R.id.setUserName);
@@ -54,10 +57,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                 //if the creation of the account was correct finish activity and save user info
 
-                comparePasswords(); //compare the written passwords
-                checkEmail(); //check the email (if it's an email or not)
+                registerActivityModel.comparePasswords(password, repeatPassword, errorMessage); //compare the written passwords
+                registerActivityModel.checkEmail(mail, errorMessage); //check the email (if it's an email or not)
 
-                if(!comparePasswords() || !checkEmail()){ //if the passwords does not match, the errormessages will tell
+                if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage) || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
 
 
                 } else{ //if everything is okay, save the information and finish the activity
@@ -86,34 +89,11 @@ public class RegisterActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent RegisterToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-
-                startActivity(RegisterToLogin);
+               finish();
             }
             });
 
     }
 
-
-
-
-
-    private boolean comparePasswords() { //compares passwords before saving them (compares the two edittext-fields
-        if (password.getText().toString().equals(repeatPassword.getText().toString())) {
-            return true;
-        }
-        errorMessage.setText("Passwords does not match!");
-        return false;
-    }
-
-    private boolean checkEmail(){ //checks the email in the edittext-field
-        if((mail.getText().toString().contains("@")) && (mail.getText().toString().contains("."))){
-            return true;
-
-        }
-        errorMessage.setText("Not a valid email!");
-        return false;
-
-    }
 
 }

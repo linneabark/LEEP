@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
+import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.AccountDetails;
 
 /**
@@ -27,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView eM; //errorMessage
     RadioButton rB; //keep the login
     Context mContext;
+    LoginActivityModel loginActivityModel;
+
 
 
     @Override
@@ -38,15 +41,14 @@ public class LoginActivity extends AppCompatActivity {
         //Måste kunna kommas åt i hela programmet, sätt public static
 
         mContext = this;
+        loginActivityModel = new LoginActivityModel();
 
-        if(AccountDetails.getKeepLoginState(mContext) == 1){
 
-            AccountDetails.setUSER(AccountDetails.getPreviousUser(mContext));
-
+        if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
-
         }
+
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -60,22 +62,18 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (!compareUserInfo()) { //if the password or username does not match
+                if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) { //if the password or username does not match
 
                     eM.setText("Password or username does not match!");
 
                 } else {
 
-                    AccountDetails.setKeepLoginState(mContext,rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+                   loginActivityModel.setUserSettings(mContext, rB);
 
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
-
-                    AccountDetails.setPreviousUser(mContext, AccountDetails.getUSER());
-
                     startActivity(LoginToMain);
-                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(AccountDetails.getKeepLoginState(mContext));
+
             }
         });
 
@@ -91,19 +89,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-
-    public boolean compareUserInfo() {
-
-        AccountDetails.setUSER(userName.getText().toString());
-
-        if ((AccountDetails.getUSER().equals(AccountDetails.getUsername(mContext))) && (passWord.getText().toString().equals(AccountDetails.getPassword(mContext)))) {
-            return true;
-        }
-
-        return false;
 
     }
 
