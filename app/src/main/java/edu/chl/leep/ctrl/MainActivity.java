@@ -42,26 +42,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         mContext = this;
         System.out.println("this.mContext: " + mContext);
 
-
         leep = new Leep();
 
-
-    //    testSettings = new Settings();
-    //    System.out.println("Settings: " + testSettings);
         //if the value is 0 start login in again
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-
-
-
         //MenuItem logOut = getItemId(R.id.account_id);
-
 
     }
 
@@ -116,24 +107,6 @@ public class MainActivity extends AppCompatActivity {
 */
         settings.choosePopUp();
 
-        /*
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-
-        LayoutInflater inflater = this.getLayoutInflater();
-
-        if(settings.getExpanded() == 1) {
-            View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
-            helpBuilder.setView(categoryLayout);
-        } else if (settings.getExpanded() == 2){
-            View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
-            helpBuilder.setView(quotesLayout);
-        }else {
-            View helpLayut = inflater.inflate(R.layout.pop_up_window_help, null);
-            helpBuilder.setView(helpLayut);
-        }
-
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();*/
     }
 
     public Context getContext(){
