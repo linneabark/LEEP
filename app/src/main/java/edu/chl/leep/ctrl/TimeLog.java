@@ -59,10 +59,10 @@ public class TimeLog extends Fragment {
     private Time time;
     Context mContext;
 
-    // Timer
+    /** Timer variables */
     private ImageButton timerButton;
     private TextView txtTimer;
-    private TextView txtCountDown;
+    public TextView txtCountDown;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
 
     public TimeLog() {
@@ -189,7 +189,7 @@ public class TimeLog extends Fragment {
 
         quoteDisplay.setText(quote.getQuote());
 
-        // Pop Up timer
+        /** Timer, count down */
         // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
         txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
         timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
@@ -215,10 +215,14 @@ public class TimeLog extends Fragment {
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                /*
                 System.out.println("hourofday " + hourOfDay);
                 System.out.println("minute " + minute);
                 String text = "Hour " + hourOfDay + ", minute " + minute + ".";
                 txtTimer.setText(text);
+                */
+
+                time.startCountDown(hourOfDay, minute);
             }
         };
 
