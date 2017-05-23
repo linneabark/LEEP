@@ -31,7 +31,8 @@ public class Settings extends Fragment{
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
-    private IQuotesService iqs;
+   // private IQuotesService iqs;
+    private QuotesService qs;
 
 
     public Settings() {
@@ -119,7 +120,8 @@ public class Settings extends Fragment{
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
-        iqs = new QuotesService();
+        //iqs = new QuotesService();
+        qs = new QuotesService();
 
         listDataHeader.add("CATEGORIES");
         listDataHeader.add("QUOTES");
@@ -131,10 +133,9 @@ public class Settings extends Fragment{
         category.add(Leep.getCategory3(getContext()));
 
         List<String> quote = new ArrayList<>();
-        quote.add(iqs.getQuote());
-        quote.add(iqs.getQuote());
-        quote.add(iqs.getQuote());
-        quote.add(iqs.getQuote());
+        quote.add(qs.getQuote1());
+        quote.add(qs.getQuote2());
+        quote.add(qs.getQuote3());
 
         List<String> help = new ArrayList<>();
         help.add("Massa hjälpinfo");
