@@ -21,6 +21,7 @@ import java.util.List;
 
 public class FileService implements Serializable{
 
+
     String SAVED_INFO = "savedInfo.txt";
 
     private static String activityFolder = "Activities";

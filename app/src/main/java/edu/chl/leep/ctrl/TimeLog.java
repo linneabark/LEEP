@@ -1,6 +1,5 @@
 package edu.chl.leep.ctrl;
 
-import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -13,7 +12,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -34,8 +32,6 @@ import java.util.List;
 
 import edu.chl.leep.service.AccountDetails;
 import edu.chl.leep.model.Time;
-
-import static android.R.attr.countDown;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +54,7 @@ public class TimeLog extends Fragment {
     SaveActivity saveActivity = new SaveActivity();
     private Time time;
     Context mContext;
+
 
     /** Timer variables */
     private ImageButton timerButton;
@@ -93,23 +90,23 @@ public class TimeLog extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
 
+        if((AccountDetails.getCategory1(mContext).equals("")) && (AccountDetails.getCategory2(mContext).equals(""))
+                && (AccountDetails.getCategory3(mContext).equals(""))) {
+
+            AccountDetails.setCategory1(mContext, category1);
+            AccountDetails.setCategory2(mContext, category2);
+            AccountDetails.setCategory3(mContext, category3);
+        }
+
         /**SPINNER **/
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
-       if((AccountDetails.getCategory1(mContext).equals("")) && (AccountDetails.getCategory2(mContext).equals(""))
-       && (AccountDetails.getCategory3(mContext).equals(""))) {
-
-           AccountDetails.setCategory1(mContext, category1);
-           AccountDetails.setCategory2(mContext, category2);
-           AccountDetails.setCategory3(mContext, category3);
-
-       }
-
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-       // ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, categoryList );
-      //  array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item,); (last parameter should include a string with three getCategories)
+        //array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //spinner.setAdapter(array);
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override

@@ -8,4 +8,6 @@ public class User {
 
 
     //TODO ska innehålla namn, password, email m.m
+
+
 }

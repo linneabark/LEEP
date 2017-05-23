@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Context mContext;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +40,15 @@ public class LoginActivity extends AppCompatActivity {
 
         mContext = this;
 
+
         if(AccountDetails.getKeepLoginState(mContext) == 1){
 
             AccountDetails.setUSER(AccountDetails.getPreviousUser(mContext));
-
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
-
         }
+
+
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -65,17 +67,15 @@ public class LoginActivity extends AppCompatActivity {
                     eM.setText("Password or username does not match!");
 
                 } else {
+                        AccountDetails.setKeepLoginState(mContext, rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+                        AccountDetails.setPreviousUser(mContext, AccountDetails.getUSER());
 
-                    AccountDetails.setKeepLoginState(mContext,rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+                        Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
 
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
-
-                    AccountDetails.setPreviousUser(mContext, AccountDetails.getUSER());
-
                     startActivity(LoginToMain);
-                    Toast.makeText(mContext, ("Logged in " + AccountDetails.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(AccountDetails.getKeepLoginState(mContext));
+
             }
         });
 
@@ -93,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
 
     public boolean compareUserInfo() {
 
