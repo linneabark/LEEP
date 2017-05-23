@@ -18,6 +18,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import edu.chl.leep.model.Leep;
+import edu.chl.leep.service.IQuotesService;
+import edu.chl.leep.service.QuotesService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +31,7 @@ public class Settings extends Fragment{
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
+    private IQuotesService iqs;
 
 
     public Settings() {
@@ -116,6 +119,7 @@ public class Settings extends Fragment{
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
+        iqs = new QuotesService();
 
         listDataHeader.add("CATEGORIES");
         listDataHeader.add("QUOTES");
@@ -127,10 +131,10 @@ public class Settings extends Fragment{
         category.add(Leep.getCategory3(getContext()));
 
         List<String> quote = new ArrayList<>();
-        quote.add("blahahahah");
-        quote.add("bläääää");
-        quote.add("trött");
-        quote.add("orkar inteeeeeee");
+        quote.add(iqs.getQuote());
+        quote.add(iqs.getQuote());
+        quote.add(iqs.getQuote());
+        quote.add(iqs.getQuote());
 
         List<String> help = new ArrayList<>();
         help.add("Massa hjälpinfo");

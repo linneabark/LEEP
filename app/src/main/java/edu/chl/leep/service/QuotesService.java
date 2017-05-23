@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Evelina on 2017-05-05.
  */
 
-public class QuotesService {
+public class QuotesService implements IQuotesService{
     //QuotesService is stored in a list
     List<String> quotes = new ArrayList<String>();
     Random rand = new Random();
