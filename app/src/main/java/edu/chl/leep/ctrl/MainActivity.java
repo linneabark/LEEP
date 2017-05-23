@@ -52,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        //MenuItem logOut = getItemId(R.id.account_id);
-
     }
 
     @Override

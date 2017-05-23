@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/plainWhite"
+    android:id="@+id/pop_up_window_category"
+    >
+
+    <TextView
+        android:id="@+id/popup_category_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="10dp"
+        android:text="Change category name"
+        android:textColor="@color/plainBlack"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/edit_text_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hej"
+        android:textColor="@color/colorPrimary"
+        android:textColorLink="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/close_button_category"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/smallMenuColor"
+            android:text="Close"
+            android:textColor="@color/plainWhite" />
+
+        <Button
+            android:id="@+id/save_button_category"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/smallMenuColor"
+            android:text="Save"
+            android:textColor="@color/plainWhite" />
+    </LinearLayout>
+
+
+
+</LinearLayout>
