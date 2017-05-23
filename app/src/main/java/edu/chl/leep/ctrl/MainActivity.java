@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void showCategoryPopUp(View v){
+    public void showPopUp(View v){
 /*
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction trans = fm.beginTransaction();
@@ -114,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
         trans.commit();
 
 */
+        settings.choosePopUp();
+
+        /*
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 
         LayoutInflater inflater = this.getLayoutInflater();
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
+        helpDialog.show();*/
     }
 
     public Context getContext(){

@@ -31,6 +31,6 @@
         android:baselineAlignBottom="false"
         android:elevation="0dp"
         android:focusable="false"
-        android:onClick="showCategoryPopUp"
+        android:onClick="showPopUp"
         />
 </RelativeLayout>

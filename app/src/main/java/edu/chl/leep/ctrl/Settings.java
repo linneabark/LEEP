@@ -2,6 +2,7 @@ package edu.chl.leep.ctrl;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,18 +48,51 @@ public class Settings extends Fragment{
 
        return rootView;
     }
-/*
-    public void showCategoryPopUp(){
+
+    public void choosePopUp(){
+
+        if (getExpanded() == 1){
+            showCategoryPopUp();
+        }else if(getExpanded() == 2){
+            showQuotesPopUp();
+        }else{
+            showHelpPopUp();
+        }
+    }
+
+    private void showCategoryPopUp(){
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View checkBoxLayout = inflater.inflate(R.layout.pop_up_category, null);
-        helpBuilder.setView(checkBoxLayout);
+        View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
+        helpBuilder.setView(categoryLayout);
 
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
-    */
+
+
+    private void showQuotesPopUp() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
+        helpBuilder.setView(quotesLayout);
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
+
+    private void showHelpPopUp() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View helpLayout = inflater.inflate(R.layout.pop_up_window_help, null);
+        helpBuilder.setView(helpLayout);
+
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
 
     public int getExpanded(){
 

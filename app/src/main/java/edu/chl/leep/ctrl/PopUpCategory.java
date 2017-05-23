@@ -30,9 +30,6 @@ public class PopUpCategory extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mcontext = getActivity();
 
-
-
-
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(mcontext);
         LayoutInflater inf = getActivity().getLayoutInflater();
 
