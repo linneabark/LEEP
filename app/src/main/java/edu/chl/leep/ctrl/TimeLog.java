@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
@@ -21,6 +22,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
 import com.example.linneabark.test.R;
 
@@ -59,6 +61,8 @@ public class TimeLog extends Fragment {
     private Time time;
     Context mContext;
 
+    TimeLogModel timeLogModel;
+
     /** Timer variables */
     private ImageButton timerButton;
     private TextView txtTimer;
@@ -92,23 +96,16 @@ public class TimeLog extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
+        timeLogModel = new TimeLogModel();
 
         /**SPINNER **/
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
-       if((AccountDetails.getCategory1(mContext).equals("")) && (AccountDetails.getCategory2(mContext).equals(""))
-       && (AccountDetails.getCategory3(mContext).equals(""))) {
-
-           AccountDetails.setCategory1(mContext, category1);
-           AccountDetails.setCategory2(mContext, category2);
-           AccountDetails.setCategory3(mContext, category3);
-
-       }
-
+       timeLogModel.CheckCategoryStatus(mContext, category1, category2, category3);
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-       // ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, categoryList );
-      //  array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item,); (last parameter should include a string with three getCategories)
+        //array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //spinner.setAdapter(array);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
