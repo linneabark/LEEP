@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
@@ -33,6 +34,8 @@ public class Settings extends Fragment{
     private EditText categoryEdit;
    // private IQuotesService iqs;
     private QuotesService qs;
+    private Button exitButton;
+
 
 
     public Settings() {
@@ -93,13 +96,20 @@ public class Settings extends Fragment{
 
     private void showHelpPopUp() {
 
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
+        final AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View helpLayout = inflater.inflate(R.layout.pop_up_help, null);
+        final View helpLayout = inflater.inflate(R.layout.pop_up_help, null);
         helpBuilder.setView(helpLayout);
 
-        AlertDialog helpDialog = helpBuilder.create();
+        final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+        exitButton = (Button) helpLayout.findViewById(R.id.done_button_help);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
     }
 
     public int getExpanded(){
