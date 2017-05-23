@@ -97,16 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showPopUp(View v){
-/*
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction trans = fm.beginTransaction();
-        Fragment nf = puc;
-        trans.add(R.id.fragment_container, nf);
-        trans.commit();
-
-*/
         settings.choosePopUp();
-
     }
 
     public Context getContext(){
