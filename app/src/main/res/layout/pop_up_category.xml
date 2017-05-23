@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/plainWhite"
     android:orientation="vertical"
-    tools:context="edu.chl.leep.ctrl.PopUpCategory">
+    >
 
     <TextView
         android:id="@+id/popup_category_title"

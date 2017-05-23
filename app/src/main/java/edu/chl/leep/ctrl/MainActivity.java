@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static Leep leep;
     private Context mContext;
-    //private PopUpCategory puc;
     private Settings testSettings;
     private Fragment nextFrag;
     private Settings settings;
