@@ -23,20 +23,22 @@
         android:id="@+id/edit_text_quotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:text="Hej"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@color/colorPrimary" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/close_button_quotes"
             android:layout_width="70dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="120dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
             android:background="@color/smallMenuColor"
             android:text="Close"
             android:textColor="@color/plainWhite" />
@@ -45,10 +47,10 @@
             android:id="@+id/save_button_quotes"
             android:layout_width="70dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
             android:background="@color/smallMenuColor"
             android:text="Save"
             android:textColor="@color/plainWhite" />

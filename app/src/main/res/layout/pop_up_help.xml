@@ -32,6 +32,16 @@
 
         />
 
-    
+    <Button
+        android:id="@+id/done_button_help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/smallMenuColor"
+        android:text="Done"
+        android:textColor="@color/plainWhite" />
+
 
 </LinearLayout>
