@@ -10,25 +10,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:paddingLeft="50dp"
+        android:paddingLeft="145dp"
+        android:paddingRight="110dp"
         android:paddingTop="10dp"
         android:text="Help"
         android:textColor="@color/plainBlack"
         android:textSize="24sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/pop_up_help_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Här ska det stå en massa saker"
+        android:paddingBottom="10dp"
+        android:paddingLeft="110dp"
+        android:paddingRight="110dp"
+        android:paddingTop="10dp"
+        android:text="Här ska det stå saker"
         android:textColor="@color/colorPrimary"
         android:textSize="12sp"
-        android:paddingBottom="10dp"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
 
         />
 

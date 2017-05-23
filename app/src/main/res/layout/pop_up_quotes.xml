@@ -12,13 +12,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
-        android:paddingLeft="50dp"
+        android:paddingLeft="105dp"
         android:paddingTop="10dp"
         android:text="Change quotes"
         android:textColor="@color/plainBlack"
         android:textSize="24sp"
-        android:textStyle="bold"
-        />
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/edit_text_quotes"
         android:layout_width="match_parent"
