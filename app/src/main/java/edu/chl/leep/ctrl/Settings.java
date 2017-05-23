@@ -34,6 +34,7 @@ public class Settings extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
@@ -51,7 +52,7 @@ public class Settings extends Fragment{
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View checkBoxLayout = inflater.inflate(R.layout.pop_up_window_category, null);
+        View checkBoxLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(checkBoxLayout);
 
         AlertDialog helpDialog = helpBuilder.create();

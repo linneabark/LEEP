@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.linneabark.test.edu.chl.leep.ctrl.TimeLog"
+    tools:context="edu.chl.leep.ctrl.TimeLog"
     android:background="@color/plainWhite">
 
 

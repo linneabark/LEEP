@@ -28,10 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     public static Leep leep;
     private Context mContext;
+    private PopUpCategory puc;
 
-    public Context getContext(){
-        return mContext;
-    }
+
 
 
     @Override
@@ -40,12 +39,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
+        System.out.println("this.mContext: " + mContext);
+        //puc = new PopUpCategory();
+
 
         leep = new Leep();
         //if the value is 0 start login in again
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
 
 
 
@@ -95,6 +98,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void showCategoryPopUp(View v){
 
+/*
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction trans = fm.beginTransaction();
+        Fragment nf = puc;
+        trans.add(R.id.fragment_container, nf);
+        trans.commit();
+
+*/
+
+
+
+
+
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
 
@@ -102,20 +118,26 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
 
         //if() {
-            View categoryLayout = inflater.inflate(R.layout.pop_up_window_category, null);
+            View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
             helpBuilder.setView(categoryLayout);
-       /* }else if() {
+        /*}else if() {
 
             View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
             helpBuilder.setView(quotesLayout);
         }else{
             View helpLayout = inflater.inflate(R.layout.pop_up_window_help, null);
             helpBuilder.setView(helpLayout);
-        }
-*/
+        }*/
+
         AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
     }
     //method that adds headers and items in the expandablelistview
+
+    public Context getContext(){
+        System.out.println("mA Context: " + mContext);
+        return mContext;
+    }
+
 
 }

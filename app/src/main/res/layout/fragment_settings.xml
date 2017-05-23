@@ -7,17 +7,9 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    xmlns:andoroid="http://schemas.android.com/apk/res-auto"
     tools:context="edu.chl.leep.ctrl.Settings"
     android:background="@color/plainWhite"
     >
-
-
-    <!-- TODO: Update blank fragment layout -->
-   <!-- <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" /> -->
 
     <ExpandableListView
         android:id="@+id/lvExp"
