@@ -14,7 +14,6 @@
     <string name="str_account">Log Out</string>
 
 
-
     <!-- START PAGE !-->
     <string name="welcomeToLeep">Welcome to LEEP!</string>
 
@@ -22,7 +21,7 @@
     <string name="emptyClock">00:00:00</string>
     <string name="startClock">START</string>
     <string name="stopClock">STOP</string>
-    
+
     <!-- SPINNER !-->
     <string name="select_category">Select category</string>
 

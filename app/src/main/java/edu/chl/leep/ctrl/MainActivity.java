@@ -23,6 +23,7 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.model.Leep;
 
 public class MainActivity extends AppCompatActivity {
+//TODO name to xCtrl, maybe MenuActivityCtrl
 
     //private AccountController account = new AccountController();
 
@@ -50,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-        //MenuItem logOut = getItemId(R.id.account_id);
 
     }
 

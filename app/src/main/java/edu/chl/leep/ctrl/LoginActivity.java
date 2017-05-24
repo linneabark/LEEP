@@ -18,7 +18,7 @@ import edu.chl.leep.model.Leep;
  * Created by Eli on 2017-05-08.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity { //TODO change name to LoginActivityCtrl
 
     static final int REGISTER_REQUEST_CODE = 1;
 
@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     RadioButton rB; //keep the login
     Context mContext;
     private static Leep leep;
+
 
 
     @Override
@@ -46,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
 
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
-
         }
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
@@ -59,27 +59,26 @@ public class LoginActivity extends AppCompatActivity {
         System.out.println(Leep.getKeepLoginState(mContext));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+                                           public void onClick(View v) {
 
-                if (!compareUserInfo()) { //if the password or username does not match
+                                               if (!compareUserInfo()) { //if the password or username does not match
 
-                    eM.setText("Password or username does not match!");
+                                                   eM.setText("Password or username does not match!");
 
-                } else {
+                                               } else {
 
-                    Leep.setKeepLoginState(mContext,rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+                                                   Leep.setKeepLoginState(mContext, rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
 
-                    Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
+                                                   Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
 
-                    Leep.setPreviousUser(mContext, Leep.getUSER());
+                                                   Leep.setPreviousUser(mContext, Leep.getUSER());
 
-                    startActivity(LoginToMain);
-                    Toast.makeText(mContext, ("Logged in " + Leep.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
-                }
-                System.out.println(Leep.getKeepLoginState(mContext));
-            }
-        });
+                                                   startActivity(LoginToMain);
+                                                   Toast.makeText(mContext, ("Logged in " + Leep.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
+                                               }
 
+                                           }
+                                       });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,11 +89,12 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(toy);
 
             }
-        });
 
 
-    }
 
+    });
+
+        }
     public static Leep getInstance(){
         if(leep == null){
             leep = new Leep();
@@ -102,6 +102,8 @@ public class LoginActivity extends AppCompatActivity {
 
         return leep;
     }
+
+
 
 
     public boolean compareUserInfo() {

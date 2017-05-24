@@ -33,6 +33,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class Statistics extends Fragment {
+    //TODO StatisticsCtrl
 
     private float [] yvalue = {20f, 30f, 40f, 10f};
     private String [] xcategory = {"Plugg", "Föreläning", "Prokastinering", "TV"};

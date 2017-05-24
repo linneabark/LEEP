@@ -27,6 +27,7 @@ import edu.chl.leep.service.QuotesService;
  * A simple {@link Fragment} subclass.
  */
 public class Settings extends Fragment{
+    //TODO SettingsCtrl
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;

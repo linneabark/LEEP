@@ -1,7 +1,6 @@
 package edu.chl.leep.ctrl;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +20,7 @@ import edu.chl.leep.service.FileService;
  */
 
 public class RegisterActivity extends AppCompatActivity {
+    //TODO change name to RegisterActivityCtrl
 
     private EditText mail;
     private EditText userName;
@@ -57,10 +57,10 @@ public class RegisterActivity extends AppCompatActivity {
 
                 //if the creation of the account was correct finish activity and save user info
 
-                comparePasswords(); //compare the written passwords
-                checkEmail(); //check the email (if it's an email or not)
+                comparePasswords(password, repeatPassword, errorMessage); //compare the written passwords
+                checkEmail(mail, errorMessage); //check the email (if it's an email or not)
 
-                if(!comparePasswords() || !checkEmail()){ //if the passwords does not match, the errormessages will tell
+                if(!comparePasswords(password, repeatPassword, errorMessage) || !checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
 
 
                 } else{ //if everything is okay, save the information and finish the activity
@@ -100,19 +100,13 @@ public class RegisterActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent RegisterToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-
-                startActivity(RegisterToLogin);
+               finish();
             }
             });
 
     }
 
-
-
-
-
-    private boolean comparePasswords() { //compares passwords before saving them (compares the two edittext-fields
+    public boolean comparePasswords(EditText password, EditText repeatPassword, TextView errorMessage) { //compares passwords before saving them (compares the two edittext-fields
         if (password.getText().toString().equals(repeatPassword.getText().toString())) {
             return true;
         }
@@ -120,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
         return false;
     }
 
-    private boolean checkEmail(){ //checks the email in the edittext-field
+    public boolean checkEmail(EditText mail, TextView errorMessage){ //checks the email in the edittext-field
         if((mail.getText().toString().contains("@")) && (mail.getText().toString().contains("."))){
             return true;
 
@@ -129,5 +123,6 @@ public class RegisterActivity extends AppCompatActivity {
         return false;
 
     }
+
 
 }

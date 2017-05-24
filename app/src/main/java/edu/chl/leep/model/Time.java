@@ -18,8 +18,16 @@ public class Time {
     private static TimeLog tL;
     private Timer timer;
 
+    private long timerValue;
+    TimeLog timeLog;
+
     private Time(){
         value = 0;
+        timer = new Timer();
+    }
+
+    public Time(int hours, int minutes) {
+        value = hours * 3600 + minutes * 60;
         timer = new Timer();
     }
 
@@ -56,6 +64,26 @@ public class Time {
 
     private void incTime(){
         value = value + 1;
+    }
+
+    public void startCountDown(int hours, int minutes) {
+        instance = new Time(hours, minutes);
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (timerValue == 1) {
+                    timer.cancel();
+                }
+                timeLog.txtCountDown.setText(Time.this.toString());
+                decTime();
+            }
+        },0, 1000);
+    }
+
+    private void decTime() {
+        value = value - 1;
     }
 
     public String toString(){
