@@ -32,11 +32,15 @@ public class Settings extends Fragment{
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
+    private EditText quotesEdit;
    // private IQuotesService iqs;
     private QuotesService qs;
     private Button exitButtonHelp;
     private Button exitButtonCategory;
     private Button exitButtonQuotes;
+
+    private Button saveButtonCategory;
+    private Button saveButtonQuotes;
 
 
 
@@ -83,6 +87,19 @@ public class Settings extends Fragment{
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
 
+        categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
+        categoryEdit.setText(Leep.getCategory1(getContext()), TextView.BufferType.EDITABLE);
+
+        saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
+        saveButtonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
         exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
         exitButtonCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +119,19 @@ public class Settings extends Fragment{
 
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+
+        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
+        quotesEdit.setText(qs.getQuote1(), TextView.BufferType.EDITABLE);
+
+        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_category);
+        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
         exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
         exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
