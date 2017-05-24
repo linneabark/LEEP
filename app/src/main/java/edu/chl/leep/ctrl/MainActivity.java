@@ -23,6 +23,7 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.model.Leep;
 
 public class MainActivity extends AppCompatActivity {
+//TODO name to xCtrl, maybe MenuActivityCtrl
 
     //private AccountController account = new AccountController();
 

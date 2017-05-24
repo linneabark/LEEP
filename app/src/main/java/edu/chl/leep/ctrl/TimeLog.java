@@ -37,6 +37,7 @@ import edu.chl.leep.model.Time;
  * A simple {@link Fragment} subclass.
  */
 public class TimeLog extends Fragment {
+    //TODO TimeLogCtrl
 
     private TextView quoteDisplay;
     private QuotesService quote = new QuotesService();

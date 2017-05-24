@@ -20,6 +20,7 @@ import edu.chl.leep.service.FileService;
  */
 
 public class RegisterActivity extends AppCompatActivity {
+    //TODO change name to RegisterActivityCtrl
 
     private EditText mail;
     private EditText userName;

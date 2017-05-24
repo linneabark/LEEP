@@ -18,7 +18,7 @@ import edu.chl.leep.model.Leep;
  * Created by Eli on 2017-05-08.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity { //TODO change name to LoginActivityCtrl
 
     static final int REGISTER_REQUEST_CODE = 1;
 

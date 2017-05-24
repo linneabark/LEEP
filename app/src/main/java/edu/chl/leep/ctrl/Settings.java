@@ -23,6 +23,7 @@ import edu.chl.leep.model.Leep;
  * A simple {@link Fragment} subclass.
  */
 public class Settings extends Fragment{
+    //TODO SettingsCtrl
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
