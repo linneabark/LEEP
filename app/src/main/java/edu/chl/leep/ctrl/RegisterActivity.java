@@ -58,10 +58,6 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //if the creation of the account was correct finish activity and save user info
-
-                registerActivityModel.comparePasswords(password, repeatPassword, errorMessage); //compare the written passwords
-                registerActivityModel.checkEmail(mail, errorMessage); //check the email (if it's an email or not)
 
                 if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage) || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
 
