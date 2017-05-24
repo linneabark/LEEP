@@ -30,15 +30,10 @@ public class Leep {
     //TODO getters
 
     public static void register(){
-        System.out.println("Blläääääääää");
         Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
-        System.out.println("User: " +RegisterActivity.newUser.user);
         Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
-        System.out.println("Username: " +RegisterActivity.newUser.userName);
         Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
-        System.out.println("Password: " +RegisterActivity.newUser.password);
         Leep.setEmail(User.mContext, RegisterActivity.newUser.email);
-        System.out.println("email: " +RegisterActivity.newUser.email);
 
     }
 
