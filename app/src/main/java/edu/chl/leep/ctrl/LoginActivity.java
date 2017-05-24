@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LoginActivityModel;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -28,6 +29,8 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     RadioButton rB; //keep the login
     Context mContext;
     private static Leep leep;
+    LoginActivityModel loginActivityModel;
+
 
 
 
@@ -40,14 +43,13 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         getInstance();
 
         mContext = this;
+        loginActivityModel = new LoginActivityModel();
 
-        if(Leep.getKeepLoginState(mContext) == 1){
-
-            Leep.setUSER(Leep.getPreviousUser(mContext));
-
+        if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
         }
+
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -61,20 +63,15 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         loginButton.setOnClickListener(new View.OnClickListener() {
                                            public void onClick(View v) {
 
-                                               if (!compareUserInfo()) { //if the password or username does not match
+                                               if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) { //if the password or username does not match
 
                                                    eM.setText("Password or username does not match!");
 
                                                } else {
-
-                                                   Leep.setKeepLoginState(mContext, rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+                                                   loginActivityModel.rememberUser(mContext, rB);
 
                                                    Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
-
-                                                   Leep.setPreviousUser(mContext, Leep.getUSER());
-
                                                    startActivity(LoginToMain);
-                                                   Toast.makeText(mContext, ("Logged in " + Leep.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
                                                }
 
                                            }
@@ -105,19 +102,5 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
 
 
 
-
-    public boolean compareUserInfo() {
-
-        Leep.setUSER(userName.getText().toString());
-        System.out.println("Leep.getUserName: " + Leep.getUsername(mContext));
-        System.out.println("Leep.getpassword: " + Leep.getPassword(mContext));
-
-        if ((userName.getText().toString().equals(Leep.getUsername(mContext))) && (passWord.getText().toString().equals(Leep.getPassword(mContext)))) {
-            return true;
-        }
-
-        return false;
-
-    }
 
 }
