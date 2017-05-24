@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.linneabark.test.ExpandableListAdapter;
@@ -33,6 +34,9 @@ public class Settings extends Fragment{
     private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
     private EditText quotesEdit;
+
+    private TextView tv;
+    private String string;
    // private IQuotesService iqs;
     private QuotesService qs;
     private Button exitButtonHelp;
@@ -41,6 +45,7 @@ public class Settings extends Fragment{
 
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
+
 
 
 
@@ -68,7 +73,15 @@ public class Settings extends Fragment{
     public void choosePopUp(){
 
         if (getExpanded() == 1){
-            showCategoryPopUp();
+            tv = (TextView) listView.findViewById(R.id.lblListItem);
+            string = tv.getText().toString();
+            System.out.println("String: " + string);
+            if(string.equals(Leep.getCategory1(getContext()))){
+            showCategoryPopUpOne();
+            }else if (string.equals(Leep.getCategory2(getContext()))){
+                showCategoryPopUpTwo();
+            }
+
         }else if(getExpanded() == 2){
             showQuotesPopUp();
         }else{
@@ -76,16 +89,17 @@ public class Settings extends Fragment{
         }
     }
 
-    private void showCategoryPopUp(){
+    private void showCategoryPopUpOne(){
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-        
+
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
+
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory1(getContext()), TextView.BufferType.EDITABLE);
@@ -94,11 +108,45 @@ public class Settings extends Fragment{
         saveButtonCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Leep.setCategory1(getContext(), categoryEdit.getText().toString());
+                helpDialog.dismiss();
 
             }
         });
 
+        exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
+        exitButtonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
+    }
 
+    private void showCategoryPopUpTwo(){
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
+        helpBuilder.setView(categoryLayout);
+
+
+        final AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+
+        categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
+        categoryEdit.setText(Leep.getCategory2(getContext()), TextView.BufferType.EDITABLE);
+
+        saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
+        saveButtonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Leep.setCategory2(getContext(), categoryEdit.getText().toString());
+                helpDialog.dismiss();
+
+            }
+        });
 
         exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
         exitButtonCategory.setOnClickListener(new View.OnClickListener() {
@@ -123,10 +171,11 @@ public class Settings extends Fragment{
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
         quotesEdit.setText(qs.getQuote1(), TextView.BufferType.EDITABLE);
 
-        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_category);
+        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                helpDialog.dismiss();
 
             }
         });
