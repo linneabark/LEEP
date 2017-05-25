@@ -47,7 +47,9 @@ public class TimeLog extends Fragment {
     private String category1 = "Category 1";
     private String category2 = "Category 2";
     private String category3 = "Category 3";
-    private String quote1 = "Quote 1";
+
+
+
 
 
     private long stopActivity;
@@ -102,6 +104,8 @@ public class TimeLog extends Fragment {
            Leep.setCategory2(mContext, category2);
            Leep.setCategory3(mContext, category3);
        }
+
+        timeLogModel.checkQuoteStatus(mContext);
 
         /**SPINNER **/
 

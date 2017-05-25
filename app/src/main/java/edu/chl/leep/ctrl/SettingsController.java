@@ -67,10 +67,7 @@ public class SettingsController extends Fragment{
         listView.setAdapter(listAdapter);
         System.out.println("Listview, sett: " + listView);
 
-        if ((Leep.getQuote1(getContext())).equals("")){
-            System.out.println("Quote: " + Leep.getQuote1(getContext()));
-            Leep.setQuote1(getContext(), quote1);
-        }
+
 
        return rootView;
     }
@@ -247,12 +244,13 @@ public class SettingsController extends Fragment{
         helpDialog.show();
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(qs.getQuote2(), TextView.BufferType.EDITABLE);
+        quotesEdit.setText(Leep.getQuote2(getContext()), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Leep.setQuote2(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
 
             }
@@ -279,12 +277,13 @@ public class SettingsController extends Fragment{
         helpDialog.show();
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(qs.getQuote3(), TextView.BufferType.EDITABLE);
+        quotesEdit.setText(Leep.getQuote3(getContext()), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Leep.setQuote3(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
 
             }
@@ -348,7 +347,9 @@ public class SettingsController extends Fragment{
 
         List<String> quote = new ArrayList<>();
         quote.add(Leep.getQuote1(getContext()));
+        System.out.println("Quote 1: " +Leep.getQuote1(getContext()));
         quote.add(Leep.getQuote2(getContext()));
+        System.out.println("Quote 2: " + Leep.getQuote2(getContext()));
         quote.add(Leep.getQuote3(getContext()));
 
         List<String> help = new ArrayList<>();
