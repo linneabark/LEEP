@@ -106,11 +106,19 @@ public class Leep {
         return getUserInfos(context).getString("Category 3", "");
     }
 
-    public static String getQuotes1(Context context) {
+    public static String getQuote1(Context context) {
         return getUserInfos(context).getString("Quote 1", "");
     }
 
-    public static void setQuotes1(Context context, String input) {
+    public static String getQuote2(Context context){
+        return getUserInfos(context).getString("Quote 2", "");
+    }
+
+    public static String getQuote3 (Context context){
+        return  getUserInfos(context).getString("Quote 3", "");
+    }
+
+    public static void setQuote1(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Quote 1", input);
 
