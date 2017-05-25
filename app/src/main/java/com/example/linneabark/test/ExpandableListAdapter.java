@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -25,6 +26,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private ExpandableListView listView;
     private HashMap<String, List<String>> listHashMap;
 
+    private ImageButton button;
 
     public ExpandableListAdapter (Context context, List <String> listDataHeader,
                                   HashMap <String, List<String>> listHashMap,
@@ -94,6 +96,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item, null);
+            button = (ImageButton) convertView.findViewById(R.id.list_item_button);
+            button.setTag(childPosition);
+
         }
         TextView textListChild = (TextView) convertView.findViewById(R.id.lblListItem);
         textListChild.setText(childText);

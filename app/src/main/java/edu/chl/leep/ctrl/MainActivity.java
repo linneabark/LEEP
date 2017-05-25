@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void showPopUp(View v){
-        settings.choosePopUp();
+        settings.choosePopUp(v);
     }
 
     public Context getContext(){

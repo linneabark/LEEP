@@ -37,7 +37,7 @@ public class Settings extends Fragment{
     private EditText quotesEdit;
 
     private TextView tv;
-    private String string;
+    private String testString;
 
     private QuotesService qs;
     private Button exitButtonHelp;
@@ -46,6 +46,12 @@ public class Settings extends Fragment{
 
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
+
+    private RelativeLayout rl;
+    private String string;
+
+    private TextView testText;
+
 
 
 
@@ -71,13 +77,18 @@ public class Settings extends Fragment{
        return rootView;
     }
 
-    public void choosePopUp(){
+    public void choosePopUp(View v){
+
+        //rl = (RelativeLayout) v.findViewById(R.id.item_list);
+
+        testText = (TextView) v.findViewById(R.id.lblListItem);
+        testString = testText.getText().toString();
+        System.out.println("String: " + testString);
+
 
         if (getExpanded() == 1){
-            tv = (TextView) listView.findViewById(R.id.lblListItem);
-            string = tv.getText().toString();
-            System.out.println("String: " + string);
-            if(string.equals(Leep.getCategory1(getContext()))){
+
+            if(testString.equals(Leep.getCategory1(getContext()))){
             showCategoryPopUpOne();
             }else if (string.equals(Leep.getCategory2(getContext()))){
                 showCategoryPopUpTwo();
