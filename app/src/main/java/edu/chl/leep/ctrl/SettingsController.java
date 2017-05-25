@@ -38,7 +38,6 @@ public class SettingsController extends Fragment{
     private EditText categoryEdit;
     private EditText quotesEdit;
     private String testString;
-    private QuotesService qs;
     private Button exitButtonHelp;
     private Button exitButtonCategory;
     private Button exitButtonQuotes;
@@ -331,7 +330,6 @@ public class SettingsController extends Fragment{
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
-        qs = new QuotesService();
 
         listDataHeader.add("CATEGORIES");
         listDataHeader.add("QUOTES");

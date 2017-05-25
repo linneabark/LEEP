@@ -95,17 +95,4 @@ public class QuotesService implements IQuotesService{
     }
     */
 
-    public String getQuote1(){
-        return quotes.get(0);
-    }
-
-    public String getQuote2(){
-        return quotes.get(1);
-    }
-
-    public String getQuote3(){
-        return quotes.get(2);
-    }
-
-
 }

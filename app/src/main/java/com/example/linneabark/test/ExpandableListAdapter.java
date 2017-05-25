@@ -117,5 +117,5 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         lastExpandedGroupPosition = groupPosition;
         super.onGroupExpanded(groupPosition);
     }
-    
+
 }
