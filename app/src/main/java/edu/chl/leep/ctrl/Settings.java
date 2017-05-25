@@ -36,28 +36,14 @@ public class Settings extends Fragment{
     private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
     private EditText quotesEdit;
-
-    private TextView tv;
     private String testString;
-
     private QuotesService qs;
     private Button exitButtonHelp;
     private Button exitButtonCategory;
     private Button exitButtonQuotes;
-
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
-
-    private RelativeLayout rl;
-    private String string;
-
-    private TextView testText;
-
     private ImageButton testButton;
-
-
-
-
 
     public Settings() {
         // Required empty public constructor
@@ -265,8 +251,7 @@ public class Settings extends Fragment{
 
     }
 
-
-        //method that adds headers and items in the expandablelistview
+    //method that adds headers and items in the expandablelistview
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
