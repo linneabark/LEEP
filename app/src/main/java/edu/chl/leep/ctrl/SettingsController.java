@@ -44,6 +44,8 @@ public class SettingsController extends Fragment{
     private Button saveButtonQuotes;
     private ImageButton testButton;
 
+    private String quote1 = "Quote 1";
+
     public SettingsController() {
         // Required empty public constructor
     }
@@ -61,6 +63,11 @@ public class SettingsController extends Fragment{
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash, listView);
         listView.setAdapter(listAdapter);
         System.out.println("Listview, sett: " + listView);
+
+        if ((Leep.getQuotes1(getContext())).equals("")){
+            System.out.println("Quote: " + Leep.getQuotes1(getContext()));
+            Leep.setQuotes1(getContext(), quote1);
+        }
 
        return rootView;
     }
@@ -204,12 +211,13 @@ public class SettingsController extends Fragment{
         helpDialog.show();
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(qs.getQuote1(), TextView.BufferType.EDITABLE);
+        quotesEdit.setText(Leep.getQuotes1(getContext()), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Leep.setQuotes1(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
 
             }
@@ -337,7 +345,7 @@ public class SettingsController extends Fragment{
         category.add(Leep.getCategory3(getContext()));
 
         List<String> quote = new ArrayList<>();
-        quote.add(qs.getQuote1());
+        quote.add(Leep.getQuotes1(getContext()));
         quote.add(qs.getQuote2());
         quote.add(qs.getQuote3());
 

@@ -1,5 +1,8 @@
 package edu.chl.leep.service;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -96,4 +99,6 @@ public class QuotesService implements IQuotesService{
     public String getQuote3(){
         return quotes.get(2);
     }
+
+
 }

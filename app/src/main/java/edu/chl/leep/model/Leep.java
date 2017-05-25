@@ -106,6 +106,19 @@ public class Leep {
         return getUserInfos(context).getString("Category 3", "");
     }
 
+    public static String getQuotes1(Context context) {
+        return getUserInfos(context).getString("Quote 1", "");
+    }
+
+    public static void setQuotes1(Context context, String input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Quote 1", input);
+
+        editor.apply();
+
+    }
+
+
     public static void setCategory(Context context, String input, int x){
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Category " + x, input);
@@ -201,7 +214,6 @@ public class Leep {
     public static int getKeepLoginState(Context context) {
         return getUserInfo(context).getInt("RadioButton", 0);
     }
-
 
 
 }
