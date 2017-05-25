@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -52,6 +53,8 @@ public class Settings extends Fragment{
 
     private TextView testText;
 
+    private ImageButton testButton;
+
 
 
 
@@ -78,22 +81,18 @@ public class Settings extends Fragment{
     }
 
     public void choosePopUp(View v){
-
-        //rl = (RelativeLayout) v.findViewById(R.id.item_list);
-
-        testText = (TextView) v.findViewById(R.id.lblListItem);
-        testString = testText.getText().toString();
-        System.out.println("String: " + testString);
-
+        testButton = (ImageButton) v.findViewById(R.id.list_item_button);
+        System.out.println("Button " + testButton.getTag());
+        testString = testButton.getTag().toString();
 
         if (getExpanded() == 1){
-
-            if(testString.equals(Leep.getCategory1(getContext()))){
-            showCategoryPopUpOne();
-            }else if (string.equals(Leep.getCategory2(getContext()))){
+            if(Integer.valueOf(testString) == 0) {
+                showCategoryPopUpOne();
+            }else if (Integer.valueOf(testString) == 1){
                 showCategoryPopUpTwo();
+            }else {
+                showCategoryPopUpThree();
             }
-
         }else if(getExpanded() == 2){
             showQuotesPopUp();
         }else{
@@ -155,6 +154,40 @@ public class Settings extends Fragment{
             @Override
             public void onClick(View v) {
                 Leep.setCategory2(getContext(), categoryEdit.getText().toString());
+                helpDialog.dismiss();
+
+            }
+        });
+
+        exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
+        exitButtonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
+    }
+
+    private void showCategoryPopUpThree(){
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
+        helpBuilder.setView(categoryLayout);
+
+
+        final AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+
+        categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
+        categoryEdit.setText(Leep.getCategory3(getContext()), TextView.BufferType.EDITABLE);
+
+        saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
+        saveButtonCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Leep.setCategory3(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
 
             }
