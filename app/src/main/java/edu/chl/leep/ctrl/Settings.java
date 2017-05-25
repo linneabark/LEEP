@@ -82,7 +82,6 @@ public class Settings extends Fragment{
 
     public void choosePopUp(View v){
         testButton = (ImageButton) v.findViewById(R.id.list_item_button);
-        System.out.println("Button " + testButton.getTag());
         testString = testButton.getTag().toString();
 
         if (getExpanded() == 1){
