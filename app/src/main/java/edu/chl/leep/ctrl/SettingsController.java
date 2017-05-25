@@ -27,7 +27,7 @@ import edu.chl.leep.service.QuotesService;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment{
+public class SettingsController extends Fragment{
     //TODO SettingsCtrl
 
     private ExpandableListView listView;
@@ -45,7 +45,7 @@ public class Settings extends Fragment{
     private Button saveButtonQuotes;
     private ImageButton testButton;
 
-    public Settings() {
+    public SettingsController() {
         // Required empty public constructor
     }
 
