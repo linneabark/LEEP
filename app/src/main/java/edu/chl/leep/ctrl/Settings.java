@@ -38,7 +38,7 @@ public class Settings extends Fragment{
 
     private TextView tv;
     private String string;
-   // private IQuotesService iqs;
+
     private QuotesService qs;
     private Button exitButtonHelp;
     private Button exitButtonCategory;
