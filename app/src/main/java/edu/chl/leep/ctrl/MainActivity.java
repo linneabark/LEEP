@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
+        System.out.println("Context: " + mContext);
         mainActivityModel = new MainActivityModel();
 
         System.out.println("this.mContext: " + mContext);

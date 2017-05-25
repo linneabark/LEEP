@@ -25,9 +25,9 @@ public class QuotesService implements IQuotesService{
         mA = new MainActivity();
 
         //Lägger till några quotes så att de finns per default.
-        quotes.add("Rumpnisse");
-        quotes.add("Hejdå");
-        quotes.add("Hej");
+        quotes.add(Leep.getQuote1(mA.getContext()));
+        quotes.add(Leep.getQuote2(mA.getContext()));
+        quotes.add(Leep.getQuote3(mA.getContext()));
     }
 
     public String getQuote() {
