@@ -43,7 +43,6 @@ public class TimeLog extends Fragment {
     private TextView quoteDisplay;
     private QuotesService quote = new QuotesService();
     private SaveDate saveDate = new SaveDate();
-    private TextView testText;
     private String category1 = "Category 1";
     private String category2 = "Category 2";
     private String category3 = "Category 3";

@@ -24,16 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     //private AccountController account = new AccountController();
 
-
     public static Leep leep;
     private Context mContext;
     private SettingsController settings;
 
     MainActivityModel mainActivityModel;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

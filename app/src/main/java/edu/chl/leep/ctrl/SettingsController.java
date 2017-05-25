@@ -1,5 +1,6 @@
 package edu.chl.leep.ctrl;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -44,10 +45,6 @@ public class SettingsController extends Fragment{
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
     private ImageButton testButton;
-
-    private String quote1 = "Quote 1";
-    private String quote2 = "Quote 2";
-    private String quote3 = "Quote 3";
 
     public SettingsController() {
         // Required empty public constructor
@@ -360,6 +357,7 @@ public class SettingsController extends Fragment{
         listHash.put(listDataHeader.get(1), quote);
         listHash.put(listDataHeader.get(2), help);
     }
+
 
 
 }
