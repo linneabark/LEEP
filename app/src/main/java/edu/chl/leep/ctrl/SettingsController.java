@@ -78,7 +78,13 @@ public class SettingsController extends Fragment{
                 showCategoryPopUpThree();
             }
         }else if(getExpanded() == 2){
-            showQuotesPopUp();
+            if(Integer.valueOf(testString) == 0) {
+                showQuotesPopUpOne();
+            }else if(Integer.valueOf(testString) == 1){
+                showQuotesPopUpTwo();
+            }else{
+                showQuotesPopUpThree();
+            }
         }else{
             showHelpPopUp();
         }
@@ -187,7 +193,7 @@ public class SettingsController extends Fragment{
     }
 
 
-    private void showQuotesPopUp() {
+    private void showQuotesPopUpOne() {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -199,6 +205,70 @@ public class SettingsController extends Fragment{
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
         quotesEdit.setText(qs.getQuote1(), TextView.BufferType.EDITABLE);
+
+        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
+        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+
+            }
+        });
+
+
+        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
+        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
+    }
+
+    private void showQuotesPopUpTwo() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
+        helpBuilder.setView(quotesLayout);
+
+        final AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
+        quotesEdit.setText(qs.getQuote2(), TextView.BufferType.EDITABLE);
+
+        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
+        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+
+            }
+        });
+
+
+        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
+        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
+    }
+
+    private void showQuotesPopUpThree() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
+        helpBuilder.setView(quotesLayout);
+
+        final AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
+        quotesEdit.setText(qs.getQuote3(), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
