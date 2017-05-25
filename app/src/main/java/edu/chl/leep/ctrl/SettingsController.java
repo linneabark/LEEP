@@ -335,7 +335,6 @@ public class SettingsController extends Fragment{
     private void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
-        //iqs = new QuotesService();
         qs = new QuotesService();
 
         listDataHeader.add("CATEGORIES");
@@ -349,8 +348,8 @@ public class SettingsController extends Fragment{
 
         List<String> quote = new ArrayList<>();
         quote.add(Leep.getQuote1(getContext()));
-        quote.add(qs.getQuote2());
-        quote.add(qs.getQuote3());
+        quote.add(Leep.getQuote2(getContext()));
+        quote.add(Leep.getQuote3(getContext()));
 
         List<String> help = new ArrayList<>();
         help.add("Info om hur appen fungerar");
