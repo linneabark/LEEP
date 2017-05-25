@@ -34,12 +34,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.listView=listView;
         this.context = context;
         this.listDataHeader=listDataHeader;
-
         this.listHashMap=listHashMap;
-
-
     }
-
 
     @Override
     public int getGroupCount() {
@@ -115,18 +111,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public void onGroupExpanded(int groupPosition) {
-        System.out.println("Listview, exp: " + listView);
-
         if (groupPosition!= lastExpandedGroupPosition && groupPosition != -1){
             listView.collapseGroup(lastExpandedGroupPosition);
-
         }
         lastExpandedGroupPosition = groupPosition;
         super.onGroupExpanded(groupPosition);
     }
-
-
-
-
-
+    
 }
