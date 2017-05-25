@@ -123,8 +123,15 @@ public class Leep {
         editor.putString("Quote 1", input);
 
         editor.apply();
-
     }
+
+    public static void setQuote2(Context context, String input){
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Quote 2", input);
+
+        editor.apply();
+    }
+    
 
 
     public static void setCategory(Context context, String input, int x){
