@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.ImageButton;
@@ -44,9 +45,6 @@ public class TimeLog extends Fragment {
     private QuotesService quote = new QuotesService();
     private SaveDate saveDate = new SaveDate();
     private TextView testText;
-    private String category1 = "Category 1";
-    private String category2 = "Category 2";
-    private String category3 = "Category 3";
 
 
     private long stopActivity;
@@ -94,22 +92,15 @@ public class TimeLog extends Fragment {
 
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
-       if((Leep.getCategory1(mContext).equals("")) && (Leep.getCategory2(mContext).equals(""))
-       && (Leep.getCategory3(mContext).equals(""))) {
-
-           Leep.setCategory1(mContext, category1);
-           Leep.setCategory2(mContext, category2);
-           Leep.setCategory3(mContext, category3);
-       }
+       timeLogModel.checkCategoryStatus(mContext);
 
         /**SPINNER **/
 
-        //check whether or not the categories has been initialized with a name yet, should be in a seperate method
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-        //ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item,); (last parameter should include a string with three getCategories)
-        //array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //spinner.setAdapter(array);
+        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, Leep.getCategoryList(mContext));
+        array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(array);
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){

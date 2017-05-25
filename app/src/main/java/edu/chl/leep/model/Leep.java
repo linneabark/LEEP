@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.chl.leep.ctrl.RegisterActivity;
 import edu.chl.leep.service.FileService;
 
@@ -19,6 +22,17 @@ public class Leep {
     public Leep(){
         String userName;
         String password;
+
+    }
+
+    public static List<String> getCategoryList(Context mContext){
+        List<String> categoryList = new ArrayList<>();
+
+        categoryList.add(getCategory1(mContext));
+        categoryList.add(getCategory2(mContext));
+        categoryList.add(getCategory3(mContext));
+
+        return categoryList;
 
     }
 
