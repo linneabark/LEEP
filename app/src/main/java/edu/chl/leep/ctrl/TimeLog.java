@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityRow;
 import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
 import com.example.linneabark.test.R;
 
@@ -53,6 +54,7 @@ public class TimeLog extends Fragment {
     private TextView time_txt;
     private CategoryHashMap cHM = new CategoryHashMap();
     SaveActivity saveActivity = new SaveActivity();
+    TimeLogModel timeLogModel;
     private Time time;
     Context mContext;
 
@@ -87,6 +89,8 @@ public class TimeLog extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
+
+        timeLogModel = new TimeLogModel();
 
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
@@ -194,13 +198,11 @@ public class TimeLog extends Fragment {
         timerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR);
-                int minute = cal.get(Calendar.MINUTE);
+
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mTimeSetListener, hour, minute, true);
+                        mTimeSetListener, timeLogModel.getHour(), timeLogModel.getMinute(), true);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 

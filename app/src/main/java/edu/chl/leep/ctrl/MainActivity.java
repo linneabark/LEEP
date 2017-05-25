@@ -21,9 +21,10 @@ import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.MainActivityModel;
 
 public class MainActivity extends AppCompatActivity {
-//TODO name to xCtrl, maybe MenuActivityCtrl
+//TODO name to xCtrl, maybe
 
     //private AccountController account = new AccountController();
 
@@ -31,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
     public static Leep leep;
     private Context mContext;
     private Settings testSettings;
-    private Fragment nextFrag;
     private Settings settings;
+
+    MainActivityModel mainActivityModel;
+
 
 
 
@@ -43,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
+        mainActivityModel = new MainActivityModel();
+
         System.out.println("this.mContext: " + mContext);
 
         leep = new Leep();
@@ -80,12 +85,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.account_id:
 
-                Leep.setKeepLoginStateToZero(mContext, 0);
-                Toast.makeText(mContext, ("Logged out " + Leep.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
-
-
-                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(toy);
+                mainActivityModel.logOutUser(mContext);
+                Intent MainToLogin = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(MainToLogin);
 
         }
         transaction.add(R.id.fragment_container, nextFrag);
