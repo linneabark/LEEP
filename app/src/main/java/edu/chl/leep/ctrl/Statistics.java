@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.Leep;
 import edu.chl.leep.utils.FindWhichMonth;
 import com.example.linneabark.test.R;
 import edu.chl.leep.service.SaveActivity;
@@ -65,6 +66,29 @@ public class Statistics extends Fragment {
     // denna listan skall egentligen användas --> allDaysForSpecificMonth
     private String [] date = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10"};
     StatisticsDateAdapter statisticsDateAdapter = new StatisticsDateAdapter(mainActivity.getContext(), date);
+
+    String [] reformListToDisplay () {
+        //ActivityRow (String userName, String year, String month, String day, String startTime, String totalTime, String categoryName)
+
+        getDefaultStatisticList();
+        String []listToDisplay = new String [defaultStatisticList.size()];
+
+        for(int i = 0; i < defaultStatisticList.size(); i++) {
+            int stopTime = Integer.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getStartTime()))
+                    + Integer.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getTotalTime()));
+            String s = defaultStatisticList.get(i).getCategoryName() + "    " + defaultStatisticList.get(i).getStartTime() + " - " + stopTime;
+            listToDisplay[i] = s;
+        }
+        return listToDisplay;
+    }
+
+    /*userActivityList.add(new ActivityRow("Evelina", "1997", "05", "09", "0990", "1000", "Föreläsning"));
+        userActivityList.add(new ActivityRow("Evelina", "1997", "04", "09", "0990", "1000", "sov"));
+        userActivityList.add(new ActivityRow("Evelina", "1997", "05", "09", "0990", "1000", "plugg"));
+        userActivityList.add(new ActivityRow("Evelina", "1997", "05", "09", "0990", "1000", "mat"));
+
+        System.out.println(userActivityList.size() + "user activity sizee");*/
+
 
     String [] listOfActivity = {"hej", "på", "dig", "din", "lilla", "grej", "vad", "gör", "en", "sak", "som", "dig"};
     StatisticsActivityAdapter statisticsActivityAdapter = new StatisticsActivityAdapter(mainActivity.getContext(), listOfActivity);
@@ -245,23 +269,112 @@ public class Statistics extends Fragment {
 
 
     //textMonth skall bytas ut mot det som hanterar/illusterar månad i statistics.
-    int numberOfMonth; //= findWhichMonth.numberOfMonth(textMonth.getText()); //textMonth skall bytas ut mot det som hanterar/illusterar månad i statistics.
-    String monthInNumber = "";
-    String numberOfDay;// = textDay.getText(); //textDay skall bytas ut mot det som hanterar/illusterar vilken dag som är vald i statistics.
+    //int numberOfMonth; //= findWhichMonth.numberOfMonth(textMonth.getText()); //textMonth skall bytas ut mot det som hanterar/illusterar månad i statistics.
+    //String monthInNumber = "";
+    //String numberOfDay;// = textDay.getText(); //textDay skall bytas ut mot det som hanterar/illusterar vilken dag som är vald i statistics.
+
+    String monthInNumber = statisticsMonthAdapter.getMonthOfBtn();
+    String numberOfDay = statisticsDateAdapter.getDateOfBtn();
+
 
     //Vill kunna läsa av de två första, alltså t.ex. "01"
     String firstDayOfMore;// = textDays.getText().substring(0,2);
     //vill kunna läsa av de sista datumet. Illustrerigsförslag "01-05". Kolla så att den börjar rätt, med 3.
     String lastDayOfMore;// = textDays.getText().substring(3);
 
+    public String takeAwayFirstZeros (String string) {
+        string = string.replaceFirst("^0+(?!$)", "");
+        return string;
+    }
+
+
     //Tar fram de värderna som typparametrarna ActivityRow objekten hanterar.
     public void giveValues () {
-        if (numberOfMonth > 0 && numberOfMonth < 10) {
+        /*if (numberOfMonth > 0 && numberOfMonth < 10) {
             monthInNumber = "0" + numberOfMonth;
         } else if (numberOfMonth >= 10) {
             monthInNumber = "" + numberOfMonth;
         }
-        System.out.println("monthInNumber , klassen Statistics: " + monthInNumber);
+        System.out.println("monthInNumber , klassen Statistics: " + monthInNumber);*/
+    }
+
+    //tar den sparade listan och lägger in allt som sparats i en ny lista för den specifika usern.
+    public void getAllSavedActivitysForUser () {
+        //Hämta den sparade listan i textFilen. vi antar att det är raden nedanför..
+        List<ActivityRow> allActivitysForAllUsers = new ArrayList<>();
+
+        for (int i = 0; i < allActivitysForAllUsers.size(); i++) {
+            // --------------------------------------------------------------------------------------------------------------Leep.getUSER() eller AccountDetails?????
+            if (Leep.getUSER().equals(allActivitysForAllUsers.get(i).getUserName())) {
+                userActivityList.add(allActivitysForAllUsers.get(i));
+            }
+        }
+    }
+
+
+    private int intYearFromList (List<ActivityRow> list, int positionInList) {
+        return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getYear()));
+    }
+    private int intMonthFromList (List<ActivityRow> list, int positionInList) {
+        return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getMonth()));
+    }
+    private int intDayFromList (List<ActivityRow> list, int positionInList) {
+        return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getDay()));
+    }
+
+    private List <ActivityRow> defaultStatisticList = new ArrayList<>();
+
+    //listan för specifik user.
+    List<ActivityRow> userActivityList = new ArrayList<>();
+
+    public List<ActivityRow> getDefaultStatisticList () {
+        int year = 0;
+        int month = 0;
+        int day = 0;
+
+        // 5 > 4 -> är true
+        //Find the greatest year
+        for (int i = 0; i < userActivityList.size(); i++) {
+            int yearFromList = intYearFromList(userActivityList,i);
+            if (yearFromList > year) {
+                year = yearFromList;
+            }
+        }
+
+        //Find the greatest month in the greatest year
+        for (int i = 0; i < userActivityList.size(); i++) {
+            if (year == intYearFromList(userActivityList, i)){
+
+                int monthFromList = intMonthFromList(userActivityList, i);
+                if (monthFromList > month) {
+                    month = monthFromList;
+                }
+            }
+        }
+
+        //find the greatest day in the greatest month and year
+        for (int i = 0; i < userActivityList.size(); i++) {
+            if (year == intYearFromList(userActivityList, i) && month == intMonthFromList(userActivityList, i)){
+
+                int dayFromList = intDayFromList(userActivityList, i);
+                if (dayFromList > day) {
+                    day = dayFromList;
+                }
+            }
+        }
+
+        //Insert all the activitys from the greatest date
+        for(int i = 0; i < userActivityList.size(); i++) {
+            if(year == intYearFromList(userActivityList, i) &&
+                    month == intMonthFromList(userActivityList, i) &&
+                    day == intDayFromList(userActivityList, i)) {
+                defaultStatisticList.add(userActivityList.get(i));
+            }
+        }
+
+
+
+        return defaultStatisticList;
     }
 
     //vi börjar med day. när man väljer dag under statistic.
@@ -312,7 +425,7 @@ public class Statistics extends Fragment {
             //Hämtar den totala tiden som redan ligger i listan som hanterar total tiden
             long j = totalTimeList.get(indexOfCategory);
             //Hämtar den totala tiden just detta objekt la ner på just denna kategori
-            long totalTimeOfActivity = oneList.get(i).getTotalTime();
+            long totalTimeOfActivity = Integer.valueOf(takeAwayFirstZeros(oneList.get(i).getTotalTime()));
             //Läggger ihop tiden som redan låg i listan med den "nya" för objektet
             totalTimeOfActivity = totalTimeOfActivity + j;
             //Lägger till den ökade totaltiden i listan som innehåller total tider.

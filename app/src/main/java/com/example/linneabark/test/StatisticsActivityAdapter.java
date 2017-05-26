@@ -20,9 +20,9 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
     private String [] activity;
 
 
-    public StatisticsActivityAdapter (Context context, String [] monthsList) {
+    public StatisticsActivityAdapter (Context context, String [] activityList) {
         this.context = context;
-        activity = monthsList;
+        activity = activityList;
     }
 
     @Override
