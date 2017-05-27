@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
+import com.example.linneabark.test.SaveActivityRowList;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.service.SaveActivity;
 
 public class MainActivity extends AppCompatActivity {
 //TODO name to xCtrl, maybe
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private Settings settings;
 
     MainActivityModel mainActivityModel;
+    SaveActivityRowList saveActivityRowList;
 
 
 
@@ -47,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
         mainActivityModel = new MainActivityModel();
+        saveActivityRowList = new SaveActivityRowList();
 
         System.out.println("this.mContext: " + mContext);
 
@@ -84,7 +88,12 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new TimeLog();
                 break;
             case R.id.account_id:
-
+                System.out.println("Håller på att logga ut.");
+                for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
+                    System.out.println("activityRowList ('the main list for activiys') innehåller: " + SaveActivity.activityRowList.get(i).getUserName() + " " + SaveActivity.activityRowList.get(i).getStartTime());
+                }
+                saveActivityRowList.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
+                SaveActivity.activityRowList.clear();
                 mainActivityModel.logOutUser(mContext);
                 Intent MainToLogin = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(MainToLogin);

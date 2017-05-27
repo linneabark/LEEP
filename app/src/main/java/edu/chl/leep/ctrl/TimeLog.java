@@ -191,9 +191,9 @@ public class TimeLog extends Fragment {
                 System.out.println("Vad är tiden som startades precis? : " + convert.longToString(startActivity));
 
                 System.out.println("var är element 1 i saveActivity. activityRowList: " + saveActivity.activityRowList.get(0).getStartTime());
-                writeAndReadFile.writeArrayToFile(saveActivity.activityRowList);
+                //writeAndReadFile.writeArrayToFile(saveActivity.activityRowList);
 
-                getTheSavedList = writeAndReadFile.getArrayFromFile();
+               // getTheSavedList = writeAndReadFile.getArrayFromFile();
                 System.out.println("vad är första elemetet i getTheSavedList: " + saveActivity.activityRowList.get(0).getStartTime());
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();

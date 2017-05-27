@@ -61,7 +61,7 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
             public void onClick(View view){
                 recyclerItemIndex = position;
                 statisticsModel.setDateBtn(date.get(position));
-                statisticsActivityAdapter.swapList(statisticsModel.getAllActivitys(statisticsActivityAdapter));
+                statisticsActivityAdapter.swapList(StatisticsModel.getAllActivitys(statisticsActivityAdapter));
                 notifyDataSetChanged();
             }
         });
@@ -96,7 +96,7 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
    // }
 
     public void swapList (List<String> changedList) {
-        System.out.println("klass statisticsDateAdapter, ,etod swapList. Kommer jag hit?");
+        System.out.println("klass statisticsDateAdapter, metod swapList. Kommer jag hit?");
         System.out.println("vad är date just nu? size är --> " +  date.size());
         if(date != null) {
             System.out.println("kommer jag in i if?");
@@ -112,6 +112,8 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
             System.out.println("Eller komme rjag in i else?");
             date = changedList;
         }
+
+        System.out.println("date listan innehåller: " + date.toString());
         notifyDataSetChanged();
     }
 }

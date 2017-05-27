@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.linneabark.test.R;
-import com.example.linneabark.test.WriteAndReadFile;
+import com.example.linneabark.test.SaveActivityRowList;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.LoginActivityModel;
@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     private static Leep leep;
     LoginActivityModel loginActivityModel;
 
-    WriteAndReadFile writeAndReadFile;
 
 
 
@@ -48,7 +47,7 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         mContext = this;
         loginActivityModel = new LoginActivityModel();
 
-        writeAndReadFile = new WriteAndReadFile(mContext);
+
 
         if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
@@ -74,6 +73,8 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
 
                                                } else {
                                                    loginActivityModel.rememberUser(mContext, rB);
+
+                                                   SaveActivityRowList.putTheValuesInActivityRowList(mContext);
 
                                                    Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
                                                    startActivity(LoginToMain);

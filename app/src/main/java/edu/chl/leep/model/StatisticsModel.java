@@ -9,6 +9,7 @@ import com.example.linneabark.test.StatisticsMonthAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.FindWhichMonth;
 
 /**
@@ -16,6 +17,8 @@ import edu.chl.leep.utils.FindWhichMonth;
  */
 
 public class StatisticsModel {
+
+    static long totalTimeOfEveryting;
 
     StatisticsMonthAdapter statisticsMonthAdapter;
     StatisticsDateAdapter statisticsDateAdapter;
@@ -46,18 +49,18 @@ public class StatisticsModel {
 
     private List <ActivityRow> defaultStatisticList = new ArrayList<>();
     //listan för specifik user.
-    private List<ActivityRow> userActivityList = new ArrayList<>();
+    private static List<ActivityRow> userActivityList = SaveActivity.activityRowList;
     //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
     private List<String> allDaysForSpecificMonth = new ArrayList<>();
     //sparar alla aktiviteter från en specifik månad.
-    private List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
+    private static List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
 
     // en lista för att spara alla olika kategrier som använts
-    private List<String> totalOfCategoryList = new ArrayList<>();
+    private static List<String> totalOfCategoryList = new ArrayList<>();
     //En lista för att spara all sammanlagd tid för en kategori.
-    private List<Long> totalTimeList = new ArrayList<>();
+    private static List<Long> totalTimeList = new ArrayList<>();
 
-    public List<String> getTotalOfCategoryList () {
+    public static List<String> getTotalOfCategoryList () {
         return totalOfCategoryList;
     }
 
@@ -76,20 +79,24 @@ public class StatisticsModel {
 
 
     public List <String> reformListToDisplay () {
-        addFirstListToCheck();
+        System.out.println("reformListToDisplay SM");
+        //addFirstListToCheck();
         giveValuesToDefaultStatisticList();
         List<String>listToDisplay = new ArrayList<>();
 
         for(int i = 0; i < defaultStatisticList.size(); i++) {
-            int stopTime = Integer.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getStartTime()))
-                    + Integer.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getTotalTime()));
+            long stopTime = Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getStartTime()))
+                    + Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getTotalTime()));
             String s = defaultStatisticList.get(i).getCategoryName() + "    " + defaultStatisticList.get(i).getStartTime() + " - " + stopTime;
             listToDisplay.add(s);
         }
         return listToDisplay;
     }
+/*
+    public void addFirstListToCheck(){
+        System.out.println("---------------------------------------------------------------------------------------------------går in i addFristListToCheck");
 
-    private void addFirstListToCheck(){
+        System.out.println("userActivityList size innan add: " + userActivityList.size());
         //ActivityRow (String userName, String year, String month, String day, String startTime, String totalTime, String categoryName)
         userActivityList.add(new ActivityRow("Evelina", "1997", "05", "09", "0990", "1000", "Föreläsning"));
         userActivityList.add(new ActivityRow("Evelina", "1997", "04", "08", "0990", "1000", "sov"));
@@ -104,13 +111,14 @@ public class StatisticsModel {
         userActivityList.add(new ActivityRow("Evelina", "1997", "05", "09", "0990", "1000", "plugg"));
         userActivityList.add(new ActivityRow("Evelina", "1997", "05", "09", "0990", "1000", "mat"));
 
-        System.out.println(userActivityList.size() + "user activity sizee");
+        System.out.println("userActivityList size efter add: " + userActivityList.size() );
     }
+*/
 
-
-
+/*
     //tar den sparade listan och lägger in allt som sparats i en ny lista för den specifika usern.
     public void getAllSavedActivitysForUser () {
+        System.out.println("getAllSavedActivitysForUser SM");
         //Hämta den sparade listan i textFilen. vi antar att det är raden nedanför..
         List<ActivityRow> allActivitysForAllUsers = new ArrayList<>();
 
@@ -121,11 +129,15 @@ public class StatisticsModel {
             }
         }
     }
+    */
 
-    public List<ActivityRow> giveValuesToDefaultStatisticList () {
+     public List<ActivityRow> giveValuesToDefaultStatisticList () {
+        System.out.println("giveValuesToDefaultStatisticList SM");
         int year = 0;
         int month = 0;
         int day = 0;
+
+        System.out.println("userActivityList i giveValuesToDefaultStatisticsList : listans size --> " + userActivityList.size());
 
         //Find the greatest year
         for (int i = 0; i < userActivityList.size(); i++) {
@@ -166,10 +178,10 @@ public class StatisticsModel {
             }
         }
 
-
-
+        System.out.println("default StatisticList --> size  = "+defaultStatisticList.size());
         return defaultStatisticList;
     }
+
 
     //vi börjar med day. när man väljer dag under statistic.
     //då är en månad vald och då skall endast dagarna som månaden är kunna väljas.
@@ -190,7 +202,7 @@ public class StatisticsModel {
         return allDaysForSpecificMonth;
     }
 
-    public void findAllDaysForSpecificMonth() {
+ /*   public void findAllDaysForSpecificMonth() {
 
         for(int i= 0; i < userActivityList.size(); i++ ){
             //saveActivity.activityRowList.get(i).getMonth().equals(monthInNumber); <-- kollar vilka som stämmer överrens med månaden.
@@ -201,7 +213,7 @@ public class StatisticsModel {
                 allActivityRowsForSpecificMonth.add(userActivityList.get(i));
             }
         }
-    }
+    }*/
 
 
     //en metod som lägger till alla olika aktiviteter som har använts i en String list. och all sammanlagd tid i en Long list.
@@ -209,7 +221,11 @@ public class StatisticsModel {
 
     //För specifikt en månad, ta listan som används "allActivityRowsForSpecificMonth"
     //metoden hanterar den listan (för en månad eller XDays) och tar fram totala tiden alla kategorier körts
-    public void totalForActivity (List<ActivityRow> oneList) {
+    /*
+
+     äldre version, från början.
+    public static void totalForActivity (List<ActivityRow> oneList) {
+
         //en lista för att spara alla olika kategrier som använts
         List<String> totalOfCategoryList = new ArrayList<>();
         //En lista för att spara all sammanlagd tid för en kategori.
@@ -238,6 +254,61 @@ public class StatisticsModel {
             totalTimeList.add(indexOfCategory, totalTimeOfActivity);
         }
     }
+
+*/
+
+    public static void totalForActivity (List<ActivityRow> oneList) {
+        long j;
+        totalTimeOfEveryting = 0;
+
+        //For loopen gör så att man kan gå igenom alla objekt från en månad
+        for (int i = 0; i < oneList.size(); i++){
+            //Hämtar kategorinamnet från alla objekt i listan
+            String categoryName = oneList.get(i).getCategoryName();
+
+            System.out.println("categpryname totalforactivity --> " + categoryName);
+
+            //Hämtar indexet som kategorin ligger på.
+
+            long totalTimeOfActivity = Long.valueOf(takeAwayFirstZeros(oneList.get(i).getTotalTime()));
+
+            //Lägger till kategorinmanet i listan, om det ej finns i listan för att kunna jämföra med totaltiden av en kategori.
+            if (!(totalOfCategoryList.contains(categoryName))) {
+
+                totalOfCategoryList.add(categoryName);
+                totalTimeList.add(totalOfCategoryList.indexOf(categoryName),totalTimeOfActivity);
+
+            }
+            else {
+                int indexOfCategory = totalOfCategoryList.indexOf(categoryName);
+                incActivityTotalTime(indexOfCategory, totalTimeOfActivity, totalTimeList.get(indexOfCategory));
+            }
+            System.out.println("index of v´categopry --> " + totalOfCategoryList.indexOf(categoryName));
+//Hämtar den totala tiden just detta objekt la ner på just denna kategori
+            System.out.println(" vad blir totalTimeList.get(indexOfCategory) --> " + totalTimeList.get(totalOfCategoryList.indexOf(categoryName)));
+
+            totalTimeOfEveryting = totalTimeOfEveryting + oldTimeOfActivity;
+            //Varje kategori har utförts en visstid(totalTime). Denna tid måste läggas till i listan som sparar den totala tiden.
+            //Hämtar den totala tiden som redan ligger i listan som hanterar total tiden
+            System.out.println("totalTimeList size in inc " + totalTimeList);
+
+        }
+    }
+    static long oldTimeOfActivity = 0;
+
+    static void incActivityTotalTime (int indexOfCategory, long totalTimeOfActivity, long oldTime) {
+        //Läggger ihop tiden som redan låg i listan med den "nya" för objektet
+        totalTimeOfActivity = totalTimeOfActivity + oldTime;
+        System.out.println("totaltimeOfActivity " + totalTimeOfActivity);
+        //Lägger till den ökade totaltiden i listan som innehåller total tider.
+        totalTimeList.remove(indexOfCategory);
+        totalTimeList.add(indexOfCategory, totalTimeOfActivity);
+
+        oldTimeOfActivity = totalTimeOfActivity;
+    }
+
+
+
 
     public void everythingfromspecifikday () {
 
@@ -300,22 +371,22 @@ public class StatisticsModel {
 
 
 
-    String dateBtn;
+    static String dateBtn;
     public void setDateBtn(String dateBtn) {
         this.dateBtn = dateBtn;
     }
 
-    String monthBtn;
+    static String monthBtn;
     public void setMonthBtn(String monthBtn) {
         this.monthBtn = monthBtn;
     }
 
 
-    public List<String> getAllActivitys (StatisticsActivityAdapter statisticsActivityAdapter) {
+    public static List<String> getAllActivitys (StatisticsActivityAdapter statisticsActivityAdapter) {
         List <String> allActivitys = new ArrayList<>();
         List <ActivityRow> activityRowList = new ArrayList<>();
 
-        System.out.println("Klass statisticsDateAdapter, metod getAllActivityd.");
+        System.out.println("Klass statisticsDateAdapter, metod getAllActivitys.");
         int intDate = Integer.valueOf(takeAwayFirstZeros(dateBtn));
 
         System.out.println("Klass statistics, metod getAllActivitys. Värde på datum som trycks på " + intDate);
@@ -351,9 +422,10 @@ public class StatisticsModel {
         System.out.println("Får allActivitys ngt " + allActivitys.size());
         return allActivitys;
     }
-    void activityToString (List <String> allActivitys, List<ActivityRow> activityRowList, int indexFromForLoop){
-        int stopTime = Integer.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()))
-                + Integer.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime()));
+
+    static void activityToString (List <String> allActivitys, List<ActivityRow> activityRowList, int indexFromForLoop){
+        long stopTime = Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()))
+                + Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime()));
 
         String s = allActivityRowsForSpecificMonth.get(indexFromForLoop).getCategoryName() + "          " + allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime() + " - " + stopTime;
 
@@ -375,23 +447,25 @@ public class StatisticsModel {
         }
 
     }*/
-private String whichBtn = "btnDay";
+    private static String whichBtn = "btnDay";
+
     public void setWhichBtn (String btn) {
         whichBtn = btn;
     }
 
-
     public List<String> getAllDays () {
+
         int count = 0;
         List <String> allDays = new ArrayList<>();
         System.out.println("Klass statisticsMomthAdapter, metod getAllDays.");
         int intMonth= FindWhichMonth.numberOfMonth(monthBtn);
 
         System.out.println("Klass statistics, metod getAllDays. Värde på månad som trycks på " + intMonth);
-        System.out.println("hur stor är listan.. " + userActivityList.size());
+        System.out.println("hur stor är userActivitylistan.. " + userActivityList.size());
 
         System.out.println();
         for(int i= 0; i < userActivityList.size(); i++ ){
+
             int intMonthFromList = Integer.valueOf(takeAwayFirstZeros(userActivityList.get(i).getMonth()));
             //int intDayFromList = Integer.valueOf(Statistics.takeAwayFirstZeros(Statistics.userActivityList.get(i).getDay()));
             if (whichBtn.equals("btnDay")) {
@@ -403,6 +477,7 @@ private String whichBtn = "btnDay";
                     }
                     //Bugg. Varje gång man byter månad kommer listan läggast till igen och visas som en dubbellista dör activitertrna visas.
                     allActivityRowsForSpecificMonth.add(userActivityList.get(i));
+                    System.out.println("det som läggs till i allactivityrowsforspecificmonth: " + userActivityList.get(i));
                 }
             } else if (whichBtn.equals("btnMonth")) {
                 //Vill ej ha dagar i den listan just nu. I framtiden ändra till oklickbara knapar.
@@ -418,6 +493,8 @@ private String whichBtn = "btnDay";
             allDays.add("No logged days");
         }
         System.out.println("Får allDAys ngt " + allDays.size());
+        System.out.println("Får allActivityRowsForSpecificMonth ngt " + allActivityRowsForSpecificMonth.size());
+
         return allDays;
     }
 }
