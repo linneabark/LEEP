@@ -34,8 +34,6 @@ public class SettingsController extends Fragment{
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
-    //private List<String> listDataHeader;
-    //private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
     private EditText quotesEdit;
     private String buttonTag;
@@ -45,8 +43,7 @@ public class SettingsController extends Fragment{
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
     private ImageButton popUpButton;
-
-    private SettingsModel sm;
+    private SettingsModel settingsModel;
 
     public SettingsController() {
         // Required empty public constructor
@@ -60,10 +57,10 @@ public class SettingsController extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        sm = new SettingsModel(getContext());
-        sm.initData();
+        settingsModel = new SettingsModel(getContext());
+        settingsModel.initData();
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
-        listAdapter = new ExpandableListAdapter(getActivity(), sm.getListDataHeader(), sm.getListHash(), listView);
+        listAdapter = new ExpandableListAdapter(getActivity(), settingsModel.getListDataHeader(), settingsModel.getListHash(), listView);
         listView.setAdapter(listAdapter);
         System.out.println("Listview, sett: " + listView);
 
