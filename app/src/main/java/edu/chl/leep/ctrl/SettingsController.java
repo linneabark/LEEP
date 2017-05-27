@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.SettingsModel;
 import edu.chl.leep.service.IQuotesService;
 import edu.chl.leep.service.QuotesService;
 
@@ -33,8 +34,8 @@ public class SettingsController extends Fragment{
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
-    private List<String> listDataHeader;
-    private HashMap<String, List<String>> listHash;
+    //private List<String> listDataHeader;
+    //private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
     private EditText quotesEdit;
     private String buttonTag;
@@ -44,6 +45,8 @@ public class SettingsController extends Fragment{
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
     private ImageButton popUpButton;
+
+    private SettingsModel sm;
 
     public SettingsController() {
         // Required empty public constructor
@@ -58,11 +61,12 @@ public class SettingsController extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
-        initData();
         listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash, listView);
         listView.setAdapter(listAdapter);
         System.out.println("Listview, sett: " + listView);
 
+        sm = new SettingsModel(getContext());
+        sm.initData();
 
 
        return rootView;
