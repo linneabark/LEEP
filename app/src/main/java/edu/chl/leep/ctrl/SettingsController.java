@@ -53,10 +53,7 @@ public class SettingsController extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-
         settingsModel = new SettingsModel(getContext());
         settingsModel.initData();
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
@@ -99,10 +96,8 @@ public class SettingsController extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory1(getContext()), TextView.BufferType.EDITABLE);
@@ -113,8 +108,6 @@ public class SettingsController extends Fragment{
             public void onClick(View v) {
                 Leep.setCategory1(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
-
-
             }
         });
 
@@ -134,10 +127,8 @@ public class SettingsController extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory2(getContext()), TextView.BufferType.EDITABLE);
@@ -148,7 +139,6 @@ public class SettingsController extends Fragment{
             public void onClick(View v) {
                 Leep.setCategory2(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
 
@@ -168,10 +158,8 @@ public class SettingsController extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory3(getContext()), TextView.BufferType.EDITABLE);
@@ -182,7 +170,6 @@ public class SettingsController extends Fragment{
             public void onClick(View v) {
                 Leep.setCategory3(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
 
@@ -214,10 +201,8 @@ public class SettingsController extends Fragment{
             public void onClick(View v) {
                 Leep.setQuote1(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
-
 
         exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
         exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
@@ -247,10 +232,8 @@ public class SettingsController extends Fragment{
             public void onClick(View v) {
                 Leep.setQuote2(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
-
 
         exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
         exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
@@ -280,11 +263,9 @@ public class SettingsController extends Fragment{
             public void onClick(View v) {
                 Leep.setQuote3(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
-
-
+        
         exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
         exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
