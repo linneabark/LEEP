@@ -27,9 +27,9 @@ public class QuotesService implements IQuotesService{
         this.context = context;
 
         //Lägger till några quotes så att de finns per default.
-        quotes.add(Leep.getQuote1(context));
-        quotes.add(Leep.getQuote2(context));
-        quotes.add(Leep.getQuote3(context));
+        quotes.add("Hej");
+        quotes.add("På");
+        quotes.add("Dig");
     }
 
     public String getQuote() {
