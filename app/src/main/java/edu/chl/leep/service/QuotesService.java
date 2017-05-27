@@ -48,53 +48,5 @@ public class QuotesService implements IQuotesService{
         quotes.add(inputQuote);
     }
 
-    /**
-     * eller om man anropar addQuote , och man skriver in i ett textField, kallat txtQuote
-     */
-    public void addQuote(){
-        //quotes.add(txtArea.getText());
-    }
-
-    public void printQuote() {
-        for (int i = 0 ; i < quotes.size(); i++) {
-            //Lägg till ett quote i t.ex. en textArea
-            //textArea.setText(quotes.get(i));
-        }
-        //Fixa så att den skriver ut lika många textArea : s som det finns quotes.....................................................................
-    }
-
-
-    public int findQuote () {
-        for(int i = 0 ; i < quotes.size(); i++){
-        /*  if (textArea.getText().equals(quotes.get(i))) {
-                return i;
-            }*/
-        }
-        return -1;
-    }
-
-    //kanske onödig check men tänker att de är bra att he fler checks ifall ngt inte skulle stämma.
-    public void isThereAQuote() {
-        String changedQuoteText = "";// = textArea.getText();.......................................................
-        if (findQuote() != -1) {
-            changeQuote(changedQuoteText);
-        }
-        else {
-            System.out.println("Can not find the quote you are searching for!");
-        }
-    }
-    public void changeQuote (String changedQuoteText) {
-        quotes.set(findQuote(), changedQuoteText);
-    }
-    /*
-    //eller
-    public void changeQuote (String changedQuoteText) {
-            updateQuote(findQuote(), changedQuoteText);
-    }
-    //vi antar att ändra knappen vet vilket index quoten har, räknat från 0.
-    public void updateQuote(int index, String changedQuote){
-        quotes.set(index, changedQuote);
-    }
-    */
 
 }
