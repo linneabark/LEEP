@@ -161,21 +161,14 @@ public class TimeLog extends Fragment {
                         (stopActivity - startActivity),
                         Leep.getCategory(mContext, getPosition())));
 
-                System.out.println("THIS CATEGORYY????:" + Leep.getCategory(mContext,getPosition()));
-
 
                 FileService.saveActivityToTxt(Leep.getUsername(mContext), SaveActivity.activityRowList, mContext);
 
-                System.out.println("Which filename: "+ Leep.getUsername(mContext));
-                System.out.println("Which filename2: "+ Leep.getUSER());
-
                 List<ActivityRow> list = FileService.getActivityFromTxt(Leep.getUsername(mContext), mContext);
-
-                //System.out.println(list);
-
-
-                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();
-
+                long value = (stopActivity - startActivity);
+                System.out.println("hEJEJEJEJ:" + saveDate.calculateTimeToString((time.getLastTime())));
+                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(time.getLastTime()), Toast.LENGTH_SHORT).show();
+gi
             }
         });
 
@@ -196,7 +189,6 @@ public class TimeLog extends Fragment {
                         mTimeSetListener, timeLogModel.getHour(), timeLogModel.getMinute(), true);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
                 timePickerDialog.setTitle("Set time to start count down.");
                 timePickerDialog.show();
             }

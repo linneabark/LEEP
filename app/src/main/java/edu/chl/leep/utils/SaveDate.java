@@ -19,15 +19,19 @@ public class SaveDate {
     }
 
     public String calculateTimeToString(long curTimeMillis){
-        long curTime = curTimeMillis;
 
-        int seconds = (int) ((curTime / 1000) % 60);
-        int minutes = (int) ((curTime / MILLIS_TO_MINUTES) % 60);
-        int hours = (int) ((curTime / MILLIS_TO_HOURS) % 24);
 
-        String str = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+        if(curTimeMillis >= 359999000){
+            return "99:59:59";
+        }
 
-        return str;
+        int seconds = (int) ((curTimeMillis / 1000) % 60);
+        int minutes = (int) ((curTimeMillis / MILLIS_TO_MINUTES) % 60);
+        int hours = (int) ((curTimeMillis / MILLIS_TO_HOURS));
+
+        return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+
+
     }
 
     public String calculateDateToString(Date date){

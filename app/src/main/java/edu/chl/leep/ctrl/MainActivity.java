@@ -22,6 +22,7 @@ import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.model.Time;
 
 public class MainActivity extends AppCompatActivity {
 //TODO name to xCtrl, maybe
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        changeFragment(R.id.timelog_id);
+
     }
 
     @Override
@@ -66,14 +69,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
+    private boolean changeFragment(int id){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
         settings = new Settings();
-        switch (item.getItemId()) {
+        switch (id) {
             case R.id.settings_id:
                 nextFrag = settings;
                 break;
@@ -84,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new TimeLog();
                 break;
             case R.id.account_id:
-
                 mainActivityModel.logOutUser(mContext);
                 Intent MainToLogin = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(MainToLogin);
@@ -93,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return changeFragment(item.getItemId());
     }
 
 

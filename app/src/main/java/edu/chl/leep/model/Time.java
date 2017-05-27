@@ -1,9 +1,11 @@
 package edu.chl.leep.model;
 
 import edu.chl.leep.ctrl.TimeLog;
+import edu.chl.leep.utils.SaveDate;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Eli on 2017-05-04.
@@ -17,6 +19,7 @@ public class Time {
     private long value;
     private static TimeLog tL;
     private Timer timer;
+    private long lastTime;
 
     private long timerValue;
     TimeLog timeLog;
@@ -48,14 +51,16 @@ public class Time {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                tL.updateText(instance.toString());
-                System.out.println(instance.toString());
+
+                SaveDate sd = new SaveDate();
+                tL.updateText(sd.calculateTimeToString(value));
                 instance.incTime();
             }
         },0,1000);
     }
 
     public void stopTimer(){
+        lastTime = value;
         value = 0;
         tL.updateText(instance.toString());
         timer.cancel();
@@ -63,10 +68,11 @@ public class Time {
     }
 
     private void incTime(){
-        value = value + 1;
+        value = value + 1000;
     }
 
     public void startCountDown(int hours, int minutes) {
+        System.out.println("hello");
         instance = new Time(hours, minutes);
         timer.cancel();
         timer = new Timer();
@@ -76,7 +82,7 @@ public class Time {
                 if (timerValue == 1) {
                     timer.cancel();
                 }
-                timeLog.txtCountDown.setText(Time.this.toString());
+                timeLog.txtCountDown.setText(this.toString());
                 decTime();
             }
         },0, 1000);
@@ -87,11 +93,12 @@ public class Time {
     }
 
     public String toString(){
-        //long value = System.currentTimeMillis() - tlStartTime;
-        int seconds = (int) ((value % 60));
-        int minutes = (int) ((value / MILLIS_TO_MINUTES) % 60);
-        int hours = (int) ((value / MILLIS_TO_HOURS)%24);
-
-        return (String.format("%02d:%02d:%02d", hours, minutes, seconds));
+        SaveDate sd = new SaveDate();
+        return sd.calculateTimeToString(value);
     }
+
+    public long getTime(){
+        return value;
+    }
+    public long getLastTime(){return lastTime;}
 }
