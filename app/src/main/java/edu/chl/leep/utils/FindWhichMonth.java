@@ -25,7 +25,7 @@ public class FindWhichMonth {
     }
 
     //int numberMonth = -1 och numberMonth = 1 + i ; är nog onödigt tydliga.
-    public int numberOfMonth (String day) {
+    public static int numberOfMonth (String day) {
         int numberMonth = -1;
         for (int i = 0; i < months.length; i++){
             if (day.equals(months[i])) {

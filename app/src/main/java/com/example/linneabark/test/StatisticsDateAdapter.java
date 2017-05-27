@@ -9,6 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.chl.leep.ctrl.Statistics;
+import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.utils.FindWhichMonth;
+
 /**
  * Created by Evelina on 2017-05-12.
  */
@@ -17,12 +25,17 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
 
     private int recyclerItemIndex = 0;
     Context context;
-    private String [] date;
+    private List<String> date;
+
+    StatisticsActivityAdapter statisticsActivityAdapter;
+    StatisticsModel statisticsModel = new StatisticsModel();
 
 
-    public StatisticsDateAdapter (Context context, String [] dateList) {
+
+    public StatisticsDateAdapter (Context context, List<String> dateList, StatisticsActivityAdapter sAA) {
         this.context = context;
         date = dateList;
+        statisticsActivityAdapter = sAA;
     }
 
     @Override
@@ -39,15 +52,17 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //configures your layouts for the list item (e.g. setting text to a TextView)
         //holder.mTextView.setText(months[position]);
-        ((ViewHolder)holder).btn.setText(date[position]);
+        //((ViewHolder)holder).btn.setText(date[position]);
+        ((ViewHolder)holder).btn.setText(date.get(position));
 
         //Direkt kopiering av StatisticsMonthAdapter
         holder.btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
+                statisticsModel.setDateBtn(date.get(position));
+                statisticsActivityAdapter.swapList(statisticsModel.getAllActivitys(statisticsActivityAdapter));
                 notifyDataSetChanged();
-                dateOfBtn = position;
             }
         });
 
@@ -60,9 +75,11 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
         }
     }
 
+
+
     @Override
     public int getItemCount() {
-        return date.length;
+        return date.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -73,9 +90,28 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
         }
 
     }
-    private int dateOfBtn;
-    public String getDateOfBtn () {
-        return date[dateOfBtn];
-    }
+    //private int dateOfBtn;
+    //public String getDateOfBtn () {
+   //     return date.get(dateOfBtn);
+   // }
 
+    public void swapList (List<String> changedList) {
+        System.out.println("klass statisticsDateAdapter, ,etod swapList. Kommer jag hit?");
+        System.out.println("vad är date just nu? size är --> " +  date.size());
+        if(date != null) {
+            System.out.println("kommer jag in i if?");
+            date.clear();
+            /*for (int i =0; i < date.size(); i++){
+                date.remove(i);
+                System.out.println("is the remove metod removing? date.size() --> " + date.size());
+            }*/
+            System.out.println("is the clear metod removing? date.size() --> " + date.size());
+            date.addAll(changedList);
+            System.out.println("date size after if --> " + date.size());
+        } else {
+            System.out.println("Eller komme rjag in i else?");
+            date = changedList;
+        }
+        notifyDataSetChanged();
+    }
 }

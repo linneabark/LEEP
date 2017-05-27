@@ -30,8 +30,11 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.utils.SaveDate;
+
+import com.example.linneabark.test.WriteAndReadFile;
 import com.example.linneabark.test.unused.CategoryHashMap;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -59,6 +62,8 @@ public class TimeLog extends Fragment {
     private Time time;
     Context mContext;
 
+    WriteAndReadFile writeAndReadFile;
+
 
     /** Timer variables */
     private ImageButton timerButton;
@@ -69,6 +74,7 @@ public class TimeLog extends Fragment {
     public TimeLog() {
         // Required empty public constructor
     }
+
     Spinner spinner;
 
     public int position;
@@ -82,6 +88,9 @@ public class TimeLog extends Fragment {
     public int getPosition(){
         return position;
     }
+
+    List<ActivityRow> getTheSavedList = new ArrayList<ActivityRow>();
+
 
 
     @Override
@@ -167,7 +176,7 @@ public class TimeLog extends Fragment {
 
                 System.out.println("THIS CATEGORYY????:" + Leep.getCategory(mContext,getPosition()));
 
-
+/*
                 FileService.saveActivityToTxt(Leep.getUsername(mContext), SaveActivity.activityRowList, mContext);
 
                 System.out.println("Which filename: "+ Leep.getUsername(mContext));
@@ -176,7 +185,16 @@ public class TimeLog extends Fragment {
                 List<ActivityRow> list = FileService.getActivityFromTxt(Leep.getUsername(mContext), mContext);
 
                 //System.out.println(list);
+                */
+                //writeAndReadFile = new WriteAndReadFile(mContext);
 
+                System.out.println("Vad är tiden som startades precis? : " + convert.longToString(startActivity));
+
+                System.out.println("var är element 1 i saveActivity. activityRowList: " + saveActivity.activityRowList.get(0).getStartTime());
+                writeAndReadFile.writeArrayToFile(saveActivity.activityRowList);
+
+                getTheSavedList = writeAndReadFile.getArrayFromFile();
+                System.out.println("vad är första elemetet i getTheSavedList: " + saveActivity.activityRowList.get(0).getStartTime());
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();
 
