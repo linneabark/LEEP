@@ -1,21 +1,14 @@
 package edu.chl.leep.model;
-
 import android.content.Context;
-import android.widget.ExpandableListView;
-
-import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import edu.chl.leep.ctrl.MainActivity;
 
 /**
  * Created by linneabark on 2017-05-27.
  */
 
 public class SettingsModel {
-
 
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
@@ -49,7 +42,6 @@ public class SettingsModel {
 
         List<String> help = new ArrayList<>();
         help.add("Info om hur appen fungerar");
-
 
         listHash.put(listDataHeader.get(0), category);
         listHash.put(listDataHeader.get(1), quote);

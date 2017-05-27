@@ -1,6 +1,4 @@
 package edu.chl.leep.ctrl;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -11,22 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.StringTokenizer;
-
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.SettingsModel;
-import edu.chl.leep.service.IQuotesService;
-import edu.chl.leep.service.QuotesService;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -265,7 +252,7 @@ public class SettingsController extends Fragment{
                 helpDialog.dismiss();
             }
         });
-        
+
         exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
         exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
