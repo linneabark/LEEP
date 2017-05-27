@@ -7,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
-    tools:context="edu.chl.leep.ctrl.Settings"
+    tools:context="edu.chl.leep.ctrl.SettingsController"
     android:background="@color/plainWhite"
     >
 

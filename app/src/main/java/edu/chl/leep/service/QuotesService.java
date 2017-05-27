@@ -1,8 +1,15 @@
 package edu.chl.leep.service;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import edu.chl.leep.ctrl.MainActivity;
+import edu.chl.leep.ctrl.SettingsController;
+import edu.chl.leep.model.Leep;
 
 /**
  * Created by Evelina on 2017-05-05.
@@ -12,12 +19,15 @@ public class QuotesService implements IQuotesService{
     //QuotesService is stored in a list
     List<String> quotes = new ArrayList<String>();
     Random rand = new Random();
+    MainActivity mA;
 
     public QuotesService() {
+        mA = new MainActivity();
+
         //Lägger till några quotes så att de finns per default.
-        quotes.add("Just do IT!");
-        quotes.add("You are amazing!");
-        quotes.add("Studying is not always easy. But you are doing it!");
+        quotes.add("Fuck you");
+        quotes.add("Life sucks, deal with it");
+        quotes.add("Rumpnisse");
     }
 
     public String getQuote() {
@@ -85,15 +95,4 @@ public class QuotesService implements IQuotesService{
     }
     */
 
-    public String getQuote1(){
-        return quotes.get(0);
-    }
-
-    public String getQuote2(){
-        return quotes.get(1);
-    }
-
-    public String getQuote3(){
-        return quotes.get(2);
-    }
 }

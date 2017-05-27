@@ -46,8 +46,6 @@ public class TimeLog extends Fragment {
     private TextView quoteDisplay;
     private QuotesService quote = new QuotesService();
     private SaveDate saveDate = new SaveDate();
-    private TextView testText;
-
 
     private long stopActivity;
     private long startActivity;
@@ -96,6 +94,8 @@ public class TimeLog extends Fragment {
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
        timeLogModel.checkCategoryStatus(mContext);
+
+        timeLogModel.checkQuoteStatus(mContext);
 
         /**SPINNER **/
 
