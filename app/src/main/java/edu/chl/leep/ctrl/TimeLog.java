@@ -44,7 +44,7 @@ public class TimeLog extends Fragment {
     //TODO TimeLogCtrl
 
     private TextView quoteDisplay;
-    private QuotesService quote = new QuotesService();
+    private QuotesService quote = new QuotesService(getContext());
     private SaveDate saveDate = new SaveDate();
 
     private long stopActivity;

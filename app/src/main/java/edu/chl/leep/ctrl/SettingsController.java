@@ -325,39 +325,4 @@ public class SettingsController extends Fragment{
             return 3;
         }
         return 0;
-
-
-        /*
-    //method that adds headers and items in the expandablelistview
-    private void initData() {
-        listDataHeader = new ArrayList<>();
-        listHash = new HashMap<>();
-
-        listDataHeader.add("CATEGORIES");
-        listDataHeader.add("QUOTES");
-        listDataHeader.add("HELP");
-
-        List<String> category = new ArrayList<>();
-        category.add(Leep.getCategory1(getContext()));
-        category.add(Leep.getCategory2(getContext()));
-        category.add(Leep.getCategory3(getContext()));
-
-        List<String> quote = new ArrayList<>();
-        quote.add(Leep.getQuote1(getContext()));
-        System.out.println("Quote 1: " +Leep.getQuote1(getContext()));
-        quote.add(Leep.getQuote2(getContext()));
-        System.out.println("Quote 2: " + Leep.getQuote2(getContext()));
-        quote.add(Leep.getQuote3(getContext()));
-
-        List<String> help = new ArrayList<>();
-        help.add("Info om hur appen fungerar");
-
-
-        listHash.put(listDataHeader.get(0), category);
-        listHash.put(listDataHeader.get(1), quote);
-        listHash.put(listDataHeader.get(2), help);
-    }
-*/
-
-
 }}

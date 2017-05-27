@@ -20,14 +20,16 @@ public class QuotesService implements IQuotesService{
     List<String> quotes = new ArrayList<String>();
     Random rand = new Random();
     MainActivity mA;
+    Context context;
 
-    public QuotesService() {
+    public QuotesService(Context context) {
         mA = new MainActivity();
+        this.context = context;
 
         //Lägger till några quotes så att de finns per default.
-        quotes.add("Fuck you");
-        quotes.add("Life sucks, deal with it");
-        quotes.add("Rumpnisse");
+        quotes.add(Leep.getQuote1(context));
+        quotes.add(Leep.getQuote2(context));
+        quotes.add(Leep.getQuote3(context));
     }
 
     public String getQuote() {
