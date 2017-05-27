@@ -20,9 +20,9 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
     private String [] date;
 
 
-    public StatisticsDateAdapter (Context context, String [] monthsList) {
+    public StatisticsDateAdapter (Context context, String [] dateList) {
         this.context = context;
-        date = monthsList;
+        date = dateList;
     }
 
     @Override
@@ -47,6 +47,7 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
             public void onClick(View view){
                 recyclerItemIndex = position;
                 notifyDataSetChanged();
+                dateOfBtn = position;
             }
         });
 
@@ -72,4 +73,9 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
         }
 
     }
+    private int dateOfBtn;
+    public String getDateOfBtn () {
+        return date[dateOfBtn];
+    }
+
 }

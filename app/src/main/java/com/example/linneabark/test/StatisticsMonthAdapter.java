@@ -45,6 +45,7 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             public void onClick(View view){
                 recyclerItemIndex = position;
                 notifyDataSetChanged();
+                monthOfBtn = position;
             }
         });
 
@@ -69,5 +70,9 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             btn = (Button) itemView.findViewById(R.id.item);
         }
 
+    }
+    private int monthOfBtn;
+    public String getMonthOfBtn () {
+        return months[monthOfBtn];
     }
 }

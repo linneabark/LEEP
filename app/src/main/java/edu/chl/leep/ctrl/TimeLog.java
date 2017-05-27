@@ -23,6 +23,8 @@ import edu.chl.leep.model.ActivityRow;
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
+
+import com.example.linneabark.test.Convert;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
@@ -50,6 +52,7 @@ public class TimeLog extends Fragment {
     private TextView time_txt;
     private CategoryHashMap cHM = new CategoryHashMap();
     SaveActivity saveActivity = new SaveActivity();
+    Convert convert = new Convert();
     TimeLogModel timeLogModel;
     private Time time;
     Context mContext;
@@ -154,11 +157,12 @@ public class TimeLog extends Fragment {
                 stopActivity = System.currentTimeMillis();
 
                 saveActivity.addActivity(new ActivityRow(
+                        Leep.getUSER(),
                         saveDate.calculateYearToString(),
                         saveDate.calculateMonthToString(),
                         saveDate.calculateDayToString(),
-                        startActivity,
-                        (stopActivity - startActivity),
+                        convert.longToString(startActivity),
+                        convert.longToString(stopActivity - startActivity),
                         Leep.getCategory(mContext, getPosition())));
 
                 System.out.println("THIS CATEGORYY????:" + Leep.getCategory(mContext,getPosition()));
