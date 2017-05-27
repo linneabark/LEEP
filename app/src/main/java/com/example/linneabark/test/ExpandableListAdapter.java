@@ -25,7 +25,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private int lastExpandedGroupPosition = -1;
     private ExpandableListView listView;
     private HashMap<String, List<String>> listHashMap;
-
     private ImageButton button;
 
     public ExpandableListAdapter (Context context, List <String> listDataHeader,
@@ -107,8 +106,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
-
-
+    
     @Override
     public void onGroupExpanded(int groupPosition) {
         if (groupPosition!= lastExpandedGroupPosition && groupPosition != -1){

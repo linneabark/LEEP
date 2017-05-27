@@ -196,7 +196,6 @@ public class SettingsController extends Fragment{
         });
     }
 
-
     private void showQuotesPopUpOne() {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
