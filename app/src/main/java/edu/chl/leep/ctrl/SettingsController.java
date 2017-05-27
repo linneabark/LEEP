@@ -43,7 +43,7 @@ public class SettingsController extends Fragment{
     private Button exitButtonQuotes;
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
-    private ImageButton testButton;
+    private ImageButton popUpButton;
 
     public SettingsController() {
         // Required empty public constructor
@@ -69,8 +69,8 @@ public class SettingsController extends Fragment{
     }
 
     public void choosePopUp(View v){
-        testButton = (ImageButton) v.findViewById(R.id.list_item_button);
-        testString = testButton.getTag().toString();
+        popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
+        testString = popUpButton.getTag().toString();
 
         if (getExpanded() == 1){
             if(Integer.valueOf(testString) == 0) {
