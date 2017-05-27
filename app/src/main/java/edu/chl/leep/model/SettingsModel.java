@@ -55,5 +55,12 @@ public class SettingsModel {
         listHash.put(listDataHeader.get(1), quote);
         listHash.put(listDataHeader.get(2), help);
     }
-    
+
+    public List getListDataHeader(){
+        return listDataHeader;
+    }
+
+    public HashMap getListHash(){
+        return listHash;
+    }
 }

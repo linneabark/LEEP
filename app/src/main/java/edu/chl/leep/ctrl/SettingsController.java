@@ -60,14 +60,12 @@ public class SettingsController extends Fragment{
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
-        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash, listView);
-        listView.setAdapter(listAdapter);
-        System.out.println("Listview, sett: " + listView);
-
         sm = new SettingsModel(getContext());
         sm.initData();
-
+        listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
+        listAdapter = new ExpandableListAdapter(getActivity(), sm.getListDataHeader(), sm.getListHash(), listView);
+        listView.setAdapter(listAdapter);
+        System.out.println("Listview, sett: " + listView);
 
        return rootView;
     }
@@ -328,8 +326,8 @@ public class SettingsController extends Fragment{
         }
         return 0;
 
-    }
 
+        /*
     //method that adds headers and items in the expandablelistview
     private void initData() {
         listDataHeader = new ArrayList<>();
@@ -359,7 +357,7 @@ public class SettingsController extends Fragment{
         listHash.put(listDataHeader.get(1), quote);
         listHash.put(listDataHeader.get(2), help);
     }
+*/
 
 
-
-}
+}}
