@@ -37,7 +37,7 @@ public class SettingsController extends Fragment{
     private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
     private EditText quotesEdit;
-    private String testString;
+    private String buttonTag;
     private Button exitButtonHelp;
     private Button exitButtonCategory;
     private Button exitButtonQuotes;
@@ -70,20 +70,20 @@ public class SettingsController extends Fragment{
 
     public void choosePopUp(View v){
         popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
-        testString = popUpButton.getTag().toString();
+        buttonTag = popUpButton.getTag().toString();
 
         if (getExpanded() == 1){
-            if(Integer.valueOf(testString) == 0) {
+            if(Integer.valueOf(buttonTag) == 0) {
                 showCategoryPopUpOne();
-            }else if (Integer.valueOf(testString) == 1){
+            }else if (Integer.valueOf(buttonTag) == 1){
                 showCategoryPopUpTwo();
             }else {
                 showCategoryPopUpThree();
             }
         }else if(getExpanded() == 2){
-            if(Integer.valueOf(testString) == 0) {
+            if(Integer.valueOf(buttonTag) == 0) {
                 showQuotesPopUpOne();
-            }else if(Integer.valueOf(testString) == 1){
+            }else if(Integer.valueOf(buttonTag) == 1){
                 showQuotesPopUpTwo();
             }else{
                 showQuotesPopUpThree();
