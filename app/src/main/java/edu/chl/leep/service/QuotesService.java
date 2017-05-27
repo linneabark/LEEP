@@ -25,9 +25,9 @@ public class QuotesService implements IQuotesService{
         mA = new MainActivity();
 
         //Lägger till några quotes så att de finns per default.
-        quotes.add(Leep.getQuote1(mA.getContext()));
-        quotes.add(Leep.getQuote2(mA.getContext()));
-        quotes.add(Leep.getQuote3(mA.getContext()));
+        quotes.add("Fuck you");
+        quotes.add("Life sucks, deal with it");
+        quotes.add("Rumpnisse");
     }
 
     public String getQuote() {

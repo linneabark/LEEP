@@ -115,6 +115,7 @@ public class SettingsController extends Fragment{
                 Leep.setCategory1(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
 
+
             }
         });
 
