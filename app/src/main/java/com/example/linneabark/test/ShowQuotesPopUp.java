@@ -21,7 +21,7 @@ public class ShowQuotesPopUp {
     private Button exitButtonQuotes;
     private EditText quotesEdit;
 
-    public void showQuotesPopUpOne(final Context context, Activity activity) {
+    public void showQuotesPopUp(final Context context, Activity activity, final String buttontag) {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((activity));
         LayoutInflater inflater = activity.getLayoutInflater();
@@ -32,13 +32,13 @@ public class ShowQuotesPopUp {
         helpDialog.show();
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(Leep.getQuote1(context), TextView.BufferType.EDITABLE);
+        quotesEdit.setText(chooseQuote(buttontag, context), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Leep.setQuote1(context, quotesEdit.getText().toString());
+                setQuote(context, buttontag);
                 helpDialog.dismiss();
             }
         });
@@ -52,66 +52,24 @@ public class ShowQuotesPopUp {
         });
     }
 
-    public void showQuotesPopUpTwo(final Context context, Activity activity) {
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((activity));
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
-        helpBuilder.setView(quotesLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(Leep.getQuote2(context), TextView.BufferType.EDITABLE);
-
-        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
-        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setQuote2(context, quotesEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
-        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
+    private String chooseQuote(String buttontag, Context context){
+        if (Integer.valueOf(buttontag) == 0){
+            return Leep.getQuote1(context);
+        }else if (Integer.valueOf(buttontag) == 1){
+            return Leep.getQuote2(context);
+        }else{
+            return Leep.getQuote3(context);
+        }
     }
 
-    public void showQuotesPopUpThree(final Context context, Activity activity) {
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((activity));
-        LayoutInflater inflater = activity.getLayoutInflater();
-        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
-        helpBuilder.setView(quotesLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(Leep.getQuote3(context), TextView.BufferType.EDITABLE);
-
-        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
-        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setQuote3(context, quotesEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
-        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
+    private void setQuote(Context context, String buttonTag){
+        if (Integer.valueOf(buttonTag) == 0){
+            Leep.setQuote1(context, quotesEdit.getText().toString());
+        }   else if(Integer.valueOf(buttonTag) == 1){
+            Leep.setQuote2(context, quotesEdit.getText().toString());
+        }else {
+            Leep.setQuote3(context, quotesEdit.getText().toString());
+        }
     }
 
 }

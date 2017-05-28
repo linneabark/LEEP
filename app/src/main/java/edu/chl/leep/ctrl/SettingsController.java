@@ -55,19 +55,11 @@ public class SettingsController extends Fragment{
         if (getExpanded() == 1){
             popUpCategory.showCategoryPopUp(getContext(), getActivity(), buttonTag);
         }else if(getExpanded() == 2){
-            if(Integer.valueOf(buttonTag) == 0) {
-                popUpQuote.showQuotesPopUpOne(getContext(), getActivity());
-            }else if(Integer.valueOf(buttonTag) == 1){
-                popUpQuote.showQuotesPopUpTwo(getContext(), getActivity());
-            }else{
-                popUpQuote.showQuotesPopUpThree(getContext(), getActivity());
-            }
+            popUpQuote.showQuotesPopUp(getContext(), getActivity(), buttonTag);
         }else{
             popUpHelp.showHelpPopUp(getActivity());
         }
     }
-
-
 
     public int getExpanded(){
 

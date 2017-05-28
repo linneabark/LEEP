@@ -52,7 +52,7 @@ public class ShowCategoryPopUp {
 
     }
 
-    public String chooseCategory(String buttontag, Context context){
+    private String chooseCategory(String buttontag, Context context){
         if (Integer.valueOf(buttontag) == 0){
             return Leep.getCategory1(context);
         }else if (Integer.valueOf(buttontag) == 1){
@@ -62,7 +62,7 @@ public class ShowCategoryPopUp {
         }
     }
 
-    public void setCategory(Context context, String buttonTag){
+    private void setCategory(Context context, String buttonTag){
         if (Integer.valueOf(buttonTag) == 0){
         Leep.setCategory1(context, categoryEdit.getText().toString());
     }   else if(Integer.valueOf(buttonTag) == 1){
