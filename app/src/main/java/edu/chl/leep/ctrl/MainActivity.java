@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
         settings = new SettingsController();
-        switch (item.getItemId()) {
 
         switch (id) {
             case R.id.settings_id:
