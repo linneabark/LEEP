@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
 import com.example.linneabark.test.ShowCategoryPopUp;
+import com.example.linneabark.test.ShowQuotesPopUp;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.SettingsModel;
@@ -34,7 +35,8 @@ public class SettingsController extends Fragment{
     private ImageButton popUpButton;
     private SettingsModel settingsModel;
 
-    private ShowCategoryPopUp popUp;
+    private ShowCategoryPopUp popUpCategory;
+    private ShowQuotesPopUp popUpQuote;
 
     public SettingsController() {
         // Required empty public constructor
@@ -58,213 +60,28 @@ public class SettingsController extends Fragment{
     public void choosePopUp(View v){
         popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
         buttonTag = popUpButton.getTag().toString();
-        popUp = new ShowCategoryPopUp();
+        popUpCategory = new ShowCategoryPopUp();
+        popUpQuote = new ShowQuotesPopUp();
 
         if (getExpanded() == 1){
             if(Integer.valueOf(buttonTag) == 0) {
-                popUp.showCategoryPopUpOne(getContext(), getActivity());
+                popUpCategory.showCategoryPopUpOne(getContext(), getActivity());
             }else if (Integer.valueOf(buttonTag) == 1){
-                popUp.showCategoryPopUpTwo(getContext(), getActivity());
+                popUpCategory.showCategoryPopUpTwo(getContext(), getActivity());
             }else {
-                popUp.showCategoryPopUpThree(getContext(), getActivity());
+                popUpCategory.showCategoryPopUpThree(getContext(), getActivity());
             }
         }else if(getExpanded() == 2){
             if(Integer.valueOf(buttonTag) == 0) {
-                showQuotesPopUpOne();
+                popUpQuote.showQuotesPopUpOne(getContext(), getActivity());
             }else if(Integer.valueOf(buttonTag) == 1){
-                showQuotesPopUpTwo();
+                popUpQuote.showQuotesPopUpTwo(getContext(), getActivity());
             }else{
-                showQuotesPopUpThree();
+                popUpQuote.showQuotesPopUpThree(getContext(), getActivity());
             }
         }else{
             showHelpPopUp();
         }
-    }
-/*
-    private void showCategoryPopUpOne(){
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
-        helpBuilder.setView(categoryLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
-        categoryEdit.setText(Leep.getCategory1(getContext()), TextView.BufferType.EDITABLE);
-
-        saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
-        saveButtonCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setCategory1(getContext(), categoryEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
-        exitButtonCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
-    }*/
-/*
-    private void showCategoryPopUpTwo(){
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
-        helpBuilder.setView(categoryLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
-        categoryEdit.setText(Leep.getCategory2(getContext()), TextView.BufferType.EDITABLE);
-
-        saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
-        saveButtonCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setCategory2(getContext(), categoryEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
-        exitButtonCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
-    }*/
-/*
-    private void showCategoryPopUpThree(){
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
-        helpBuilder.setView(categoryLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
-        categoryEdit.setText(Leep.getCategory3(getContext()), TextView.BufferType.EDITABLE);
-
-        saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
-        saveButtonCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setCategory3(getContext(), categoryEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonCategory = (Button) categoryLayout.findViewById(R.id.close_button_category);
-        exitButtonCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
-    }
-*/
-    private void showQuotesPopUpOne() {
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
-        helpBuilder.setView(quotesLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(Leep.getQuote1(getContext()), TextView.BufferType.EDITABLE);
-
-        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
-        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setQuote1(getContext(), quotesEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
-        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
-    }
-
-    private void showQuotesPopUpTwo() {
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
-        helpBuilder.setView(quotesLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(Leep.getQuote2(getContext()), TextView.BufferType.EDITABLE);
-
-        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
-        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setQuote2(getContext(), quotesEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
-        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
-    }
-
-    private void showQuotesPopUpThree() {
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
-        helpBuilder.setView(quotesLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-
-        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(Leep.getQuote3(getContext()), TextView.BufferType.EDITABLE);
-
-        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
-        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Leep.setQuote3(getContext(), quotesEdit.getText().toString());
-                helpDialog.dismiss();
-            }
-        });
-
-        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
-        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
     }
 
     private void showHelpPopUp() {
