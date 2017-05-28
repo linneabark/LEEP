@@ -195,7 +195,7 @@ public class Leep {
     //input.getText().toString(); in the other class and pass it as a string
 
     //all the setters
-    public static void setUsername(Context context, String input) {
+    private static void setUsername(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Username", input);
 
@@ -203,7 +203,7 @@ public class Leep {
 
     }
 
-    public static void setEmail(Context context, String input) {
+    private static void setEmail(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Email", input);
 
@@ -211,7 +211,7 @@ public class Leep {
 
     }
 
-    public static void setPassword(Context context, String input) {
+    private static void setPassword(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Password", input);
 
