@@ -20,7 +20,7 @@ public class Time {
     private static Time instance; //CC vill att den deklareras till new Time();
     private long value;
     private Timer timer;
-    private long lastTime;
+    private long totalTime;
     private static Activity mainActivity;
     private static TextView time_txt;
 
@@ -65,7 +65,7 @@ public class Time {
     }
 
     public void stopTimer(){
-        lastTime = value;
+        totalTime = value;
         value = 0;
         updateText(instance.toString());
         timer.cancel();
@@ -88,7 +88,7 @@ public class Time {
     public long getTime(){
         return value;
     }
-    public long getLastTime(){return lastTime;}
+    public long getTotalTime(){return totalTime;}
 
     public void updateText(final String text) {
         if(time_txt != null) {

@@ -157,8 +157,6 @@ public class TimeLog extends Fragment {
         time = Time.getInstance(getActivity(), time_txt);
 
 
-        updateText(time.toString());
-
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,14 +183,10 @@ public class TimeLog extends Fragment {
                         saveDate.calculateMonthToString(),
                         saveDate.calculateDayToString(),
                         convert.longToString(startActivity),
-                        convert.longToString(stopActivity - startActivity),
+                        convert.longToString(time.getTotalTime()),
                         Leep.getCategory(mContext, getPosition())));
 
-
-                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();
-                long value = (stopActivity - startActivity);
-                System.out.println("hEJEJEJEJ:" + saveDate.calculateTimeToString((time.getLastTime())));
-                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(time.getLastTime()), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -236,12 +230,5 @@ public class TimeLog extends Fragment {
         return rootView;
     }
 
-    public void updateText(final String text) {
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                time_txt.setText(text);
 
-            }
-        });
-    }
 }
