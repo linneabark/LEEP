@@ -27,7 +27,7 @@ public class FileService implements Serializable {
 
     //For save
     public void saveActivityRowListSharedPref (Context context, List<ActivityRowModel> saveSharedList) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), Context.MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(saveSharedList);
@@ -38,7 +38,7 @@ public class FileService implements Serializable {
 
     //For load
     private List<ActivityRowModel> loadActivityRowListSharedPref(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedPreferences.getString("myJson", "");
         if (json.isEmpty()) {
