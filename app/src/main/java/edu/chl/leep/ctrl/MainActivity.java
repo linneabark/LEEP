@@ -15,10 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.linneabark.test.R;
-import com.example.linneabark.test.SaveActivityRowList;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
 
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private SettingsController settings;
 
     private MainActivityModel mainActivityModel;
-    private SaveActivityRowList saveActivityRowList;
+    private FileService fileService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
         mainActivityModel = new MainActivityModel();
-        saveActivityRowList = new SaveActivityRowList();
+        fileService = new FileService();
         leep = new Leep();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.account_id:
 
-                saveActivityRowList.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
+                fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
                 SaveActivity.activityRowList.clear();
 
                 mainActivityModel.logOutUser(mContext);

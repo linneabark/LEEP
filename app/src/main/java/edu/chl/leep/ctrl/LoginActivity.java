@@ -8,13 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.linneabark.test.R;
-import com.example.linneabark.test.SaveActivityRowList;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.LoginActivityModel;
+import edu.chl.leep.service.FileService;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -29,6 +28,7 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     private Context mContext;
     private static Leep leep;
     private LoginActivityModel loginActivityModel;
+    private FileService fileService;
     private Button registerButton;
     private Button loginButton;
 
@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
 
         mContext = this;
         loginActivityModel = new LoginActivityModel();
+        fileService = new FileService();
 
         if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
@@ -62,9 +63,8 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
 
                 if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
                     eM.setText("Password or username does not match!");
-                    SaveActivityRowList.putTheValuesInActivityRowList(mContext);
-
                 } else {
+                    fileService.putTheValuesInActivityRowList(mContext);
                     loginActivityModel.rememberUser(mContext, rB);
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(LoginToMain);
