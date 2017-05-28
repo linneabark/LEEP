@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
+import com.example.linneabark.test.ShowCategoryPopUp;
+
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.SettingsModel;
 /**
@@ -31,6 +33,8 @@ public class SettingsController extends Fragment{
     private Button saveButtonQuotes;
     private ImageButton popUpButton;
     private SettingsModel settingsModel;
+
+    private ShowCategoryPopUp popUp;
 
     public SettingsController() {
         // Required empty public constructor
@@ -54,14 +58,15 @@ public class SettingsController extends Fragment{
     public void choosePopUp(View v){
         popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
         buttonTag = popUpButton.getTag().toString();
+        popUp = new ShowCategoryPopUp();
 
         if (getExpanded() == 1){
             if(Integer.valueOf(buttonTag) == 0) {
-                showCategoryPopUpOne();
+                popUp.showCategoryPopUpOne(getContext(), getActivity());
             }else if (Integer.valueOf(buttonTag) == 1){
-                showCategoryPopUpTwo();
+                popUp.showCategoryPopUpTwo(getContext(), getActivity());
             }else {
-                showCategoryPopUpThree();
+                popUp.showCategoryPopUpThree(getContext(), getActivity());
             }
         }else if(getExpanded() == 2){
             if(Integer.valueOf(buttonTag) == 0) {
@@ -75,7 +80,7 @@ public class SettingsController extends Fragment{
             showHelpPopUp();
         }
     }
-
+/*
     private void showCategoryPopUpOne(){
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
@@ -105,8 +110,8 @@ public class SettingsController extends Fragment{
                 helpDialog.dismiss();
             }
         });
-    }
-
+    }*/
+/*
     private void showCategoryPopUpTwo(){
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
@@ -136,8 +141,8 @@ public class SettingsController extends Fragment{
                 helpDialog.dismiss();
             }
         });
-    }
-
+    }*/
+/*
     private void showCategoryPopUpThree(){
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
@@ -168,7 +173,7 @@ public class SettingsController extends Fragment{
             }
         });
     }
-
+*/
     private void showQuotesPopUpOne() {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
