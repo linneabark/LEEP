@@ -22,7 +22,6 @@ import edu.chl.leep.service.FileService;
 
 public class RegisterActivity extends AppCompatActivity {
     //TODO change name to RegisterActivityCtrl
-
     private EditText mail;
     private EditText userName;
     private EditText password;
@@ -31,16 +30,13 @@ public class RegisterActivity extends AppCompatActivity {
     private Button register;
     private Button backButton;
     public static User newUser;
-
     private Context mContext;
     private RegisterActivityModel registerActivityModel;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-
 
         mContext = this;
         registerActivityModel = new RegisterActivityModel();
@@ -53,11 +49,11 @@ public class RegisterActivity extends AppCompatActivity {
         register = (Button) this.findViewById(R.id.register);
         backButton = (Button) this.findViewById(R.id.backButton);
 
-
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage) || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
+                if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage)
+                        || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
 
                 } else{ //if everything is okay, save the information and finish the activity
 
@@ -74,26 +70,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                     MainActivity.leep.register();
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
-
                     finish();
-
                 }
-
-
             }
         });
-
-
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                finish();
             }
             });
-
     }
-
-
-
-
 }

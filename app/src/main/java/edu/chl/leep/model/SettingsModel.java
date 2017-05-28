@@ -16,7 +16,6 @@ public class SettingsModel {
 
     public SettingsModel(Context context){
         this.context = context;
-
     }
 
     //Method that adds groups and children in the expandablelistview
