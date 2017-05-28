@@ -1,15 +1,11 @@
 package edu.chl.leep.model;
 
-import android.app.Activity;
-import android.content.Context;
-
 import org.junit.Test;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import edu.chl.leep.ctrl.MainActivity;
-import edu.chl.leep.ctrl.TimeLog;
+import edu.chl.leep.ctrl.MainActivityController;
 
 import static org.junit.Assert.*;
 
@@ -20,7 +16,7 @@ public class TimeTest {
 
     @Test
     public void startTimer() throws Exception {
-        final Time time = Time.getInstance(new MainActivity());
+        final Time time = Time.getInstance(new MainActivityController());
         assertTrue(time.getTime() == 0);
 
         time.startTimer();
@@ -36,7 +32,7 @@ public class TimeTest {
 
     @Test
     public void stopTimer() throws Exception {
-        final Time time = Time.getInstance(new MainActivity());
+        final Time time = Time.getInstance(new MainActivityController());
         time.startTimer();
         Timer timer = new Timer();
 

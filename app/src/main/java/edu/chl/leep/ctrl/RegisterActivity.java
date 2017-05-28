@@ -11,10 +11,8 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.RegisterActivityModel;
 import edu.chl.leep.model.User;
-import edu.chl.leep.service.FileService;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -58,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else{ //if everything is okay, save the information and finish the activity
 
                     // TODO User user = new User(name, email)
-                    //MainActivity.leep.register(user);
+                    //MainActivityController.leep.register(user);
                     //FilseSERVICE. SAVE
 
                     newUser = new User(
@@ -68,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
                             password.getText().toString(),
                             mContext);
 
-                    MainActivity.leep.register();
+                    MainActivityController.leep.register();
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();
                 }

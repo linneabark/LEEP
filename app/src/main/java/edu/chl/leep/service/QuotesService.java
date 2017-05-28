@@ -1,14 +1,11 @@
 package edu.chl.leep.service;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import edu.chl.leep.ctrl.MainActivity;
-import edu.chl.leep.ctrl.SettingsController;
 import edu.chl.leep.model.Leep;
 
 /**

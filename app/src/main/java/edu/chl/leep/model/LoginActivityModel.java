@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 /**
  * Created by Eli on 2017-05-24.
- A model class which contains some methods used in LoginActivity*/
+ A model class which contains some methods used in LoginActivityController*/
 
 public class LoginActivityModel {
 

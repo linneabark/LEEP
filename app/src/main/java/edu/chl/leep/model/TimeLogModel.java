@@ -4,9 +4,6 @@ import android.content.Context;
 
 import java.util.Calendar;
 
-import edu.chl.leep.ctrl.MainActivity;
-import edu.chl.leep.ctrl.TimeLog;
-
 /**
  * Created by Eli on 2017-05-24.
  A model class which contains some methods used in TimeLog*/

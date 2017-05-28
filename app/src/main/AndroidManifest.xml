@@ -11,11 +11,11 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
 
     >
-        <activity android:name="edu.chl.leep.ctrl.MainActivity">
+        <activity android:name="edu.chl.leep.ctrl.MainActivityController">
         </activity>
 
         <activity android:name="edu.chl.leep.ctrl.RegisterActivity"
-            android:parentActivityName="edu.chl.leep.ctrl.LoginActivity">
+            android:parentActivityName="edu.chl.leep.ctrl.LoginActivityController">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="edu.chl.leep.ctrl.LoginActivity">
+        <activity android:name="edu.chl.leep.ctrl.LoginActivityController">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
