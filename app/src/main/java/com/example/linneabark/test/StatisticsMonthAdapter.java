@@ -16,12 +16,8 @@ import edu.chl.leep.model.StatisticsModel;
 public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonthAdapter.ViewHolder> {
     private String [] months;
     private int recyclerItemIndex = 0;
-
-
     private StatisticsDateAdapter statisticsDateAdapter;
     private StatisticsModel statisticsModel;
-
-
 
     public StatisticsMonthAdapter (String [] monthsList, StatisticsDateAdapter sDA) {
         months = monthsList;
@@ -30,12 +26,9 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //is used to inflate the layout for your list item.
-        //TextView view = (TextView)LayoutInflater.from(parent.getContext()).inflate(android.R.layout.simple_list_item_2, parent, false);
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.costume_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
-
         statisticsModel = new StatisticsModel();
 
         return viewHolder;
@@ -43,10 +36,7 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        //configures your layouts for the list item (e.g. setting text to a TextView)
-        ((ViewHolder)holder).btn.setText(months[position]);
-
-        //Direkt kopiering till statisticsDateAdapter
+        holder.btn.setText(months[position]);
         holder.btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

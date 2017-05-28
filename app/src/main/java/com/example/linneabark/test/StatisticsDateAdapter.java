@@ -32,11 +32,9 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //is used to inflate the layout for your list item.
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.costume_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
-
         statisticsModel = new StatisticsModel();
 
         return viewHolder;
@@ -44,10 +42,7 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        //configures your layouts for the list item (e.g. setting text to a TextView)
-        ((ViewHolder)holder).btn.setText(date.get(position));
-
-        //Direkt kopiering av StatisticsMonthAdapter
+        holder.btn.setText(date.get(position));
         holder.btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -64,8 +59,6 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
             holder.btn.setBackgroundColor(Color.WHITE);
         }
     }
-
-
 
     @Override
     public int getItemCount() {

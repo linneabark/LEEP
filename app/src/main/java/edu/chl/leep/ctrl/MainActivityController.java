@@ -13,9 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.example.linneabark.test.R;
-
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
 import edu.chl.leep.service.FileService;
@@ -25,12 +23,10 @@ import edu.chl.leep.service.SaveActivity;
  * MainActivityController is the controller class which handles the fragment and menu, as well as popups
  */
 public class MainActivityController extends AppCompatActivity {
-//TODO name to xCtrl, maybe
 
     public static LeepModel leep;
     private Context mContext;
     private SettingsController settings;
-
     private MainActivityModel mainActivityModel;
     private FileService fileService;
 

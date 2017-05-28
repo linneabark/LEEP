@@ -14,7 +14,7 @@ import edu.chl.leep.model.LeepModel;
 /**
  * Created by linneabark on 2017-05-28.
  *
- * Class that decidecs which shows "quotes"-popup to show
+ * Class that decidecs which "quotes"-popup to show
  */
 
 public class ShowQuotesPopUp {

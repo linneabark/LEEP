@@ -19,8 +19,7 @@ import edu.chl.leep.service.FileService;
  * Created by Eli on 2017-05-08.
  */
 
-public class LoginActivityController extends AppCompatActivity { //TODO change name to LoginActivityCtrl
-
+public class LoginActivityController extends AppCompatActivity {
     private EditText userName;
     private EditText passWord;
     private TextView eM; //errorMessage
@@ -37,10 +36,7 @@ public class LoginActivityController extends AppCompatActivity { //TODO change n
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
-
-        //Måste kunna kommas åt i hela programmet, sätt public static
         getInstance();
-
         mContext = this;
         loginActivityModel = new LoginActivityModel();
         fileService = new FileService();
@@ -56,8 +52,6 @@ public class LoginActivityController extends AppCompatActivity { //TODO change n
         passWord = (EditText) this.findViewById(R.id.password);
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
-
-        System.out.println(LeepModel.getKeepLoginState(mContext));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

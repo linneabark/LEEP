@@ -1,6 +1,5 @@
 package com.example.linneabark.test;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,7 +25,6 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //is used to inflate the layout for your list item.
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.display_activity,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
@@ -36,10 +34,8 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        //configures your layouts for the list item (e.g. setting text to a TextView)
-        ((ViewHolder)holder).txtActivity.setText(activity.get(position));
+        holder.txtActivity.setText(activity.get(position));
 
-        //Direkt kopiering av StatisticsMonthAdapter
         holder.txtActivity.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){

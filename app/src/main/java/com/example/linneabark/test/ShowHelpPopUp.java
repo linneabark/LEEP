@@ -9,7 +9,7 @@ import android.widget.Button;
 /**
  * Created by linneabark on 2017-05-28.
  *
-* Class that decidecs which shows "help"-popup
+* Class that which shows "help"-popup
  */
 
 public class ShowHelpPopUp {
