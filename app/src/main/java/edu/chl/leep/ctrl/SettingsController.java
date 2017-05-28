@@ -44,7 +44,7 @@ public class SettingsController extends Fragment{
        return rootView;
     }
 
-    //Decides wich popup to show
+    //Decides which popup to show
     public void choosePopUp(View v){
         popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
         buttonTag = popUpButton.getTag().toString();
@@ -53,13 +53,7 @@ public class SettingsController extends Fragment{
         popUpHelp = new ShowHelpPopUp();
 
         if (getExpanded() == 1){
-            if(Integer.valueOf(buttonTag) == 0) {
-                popUpCategory.showCategoryPopUpOne(getContext(), getActivity());
-            }else if (Integer.valueOf(buttonTag) == 1){
-                popUpCategory.showCategoryPopUpTwo(getContext(), getActivity());
-            }else {
-                popUpCategory.showCategoryPopUpThree(getContext(), getActivity());
-            }
+            popUpCategory.showCategoryPopUp(getContext(), getActivity(), buttonTag);
         }else if(getExpanded() == 2){
             if(Integer.valueOf(buttonTag) == 0) {
                 popUpQuote.showQuotesPopUpOne(getContext(), getActivity());
