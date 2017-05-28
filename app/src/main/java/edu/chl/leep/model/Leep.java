@@ -120,6 +120,39 @@ public class Leep {
         return getUserInfos(context).getString("Category 3", "");
     }
 
+    public static String getQuote1(Context context) {
+        return getUserInfos(context).getString("Quote 1", "");
+    }
+
+    public static String getQuote2(Context context){
+        return getUserInfos(context).getString("Quote 2", "");
+    }
+
+    public static String getQuote3 (Context context){
+        return  getUserInfos(context).getString("Quote 3", "");
+    }
+
+    public static void setQuote1(Context context, String input) {
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Quote 1", input);
+
+        editor.apply();
+    }
+
+    public static void setQuote2(Context context, String input){
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Quote 2", input);
+
+        editor.apply();
+    }
+
+    public static void setQuote3(Context context, String input){
+        SharedPreferences.Editor editor = getUserInfos(context).edit();
+        editor.putString("Quote 3", input);
+
+        editor.apply();
+    }
+
     public static void setCategory(Context context, String input, int x){
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Category " + x, input);
@@ -215,7 +248,6 @@ public class Leep {
     public static int getKeepLoginState(Context context) {
         return getUserInfo(context).getInt("RadioButton", 0);
     }
-
 
 
 }

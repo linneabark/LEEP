@@ -1,5 +1,4 @@
 package edu.chl.leep.ctrl;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -10,56 +9,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import edu.chl.leep.model.Leep;
-import edu.chl.leep.service.IQuotesService;
-import edu.chl.leep.service.QuotesService;
-
+import edu.chl.leep.model.SettingsModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment{
-    //TODO SettingsCtrl
+public class SettingsController extends Fragment{
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
-    private List<String> listDataHeader;
-    private HashMap<String, List<String>> listHash;
     private EditText categoryEdit;
     private EditText quotesEdit;
-
-    private TextView tv;
-    private String testString;
-
-    private QuotesService qs;
+    private String buttonTag;
     private Button exitButtonHelp;
     private Button exitButtonCategory;
     private Button exitButtonQuotes;
-
     private Button saveButtonCategory;
     private Button saveButtonQuotes;
+    private ImageButton popUpButton;
+    private SettingsModel settingsModel;
 
-    private RelativeLayout rl;
-    private String string;
-
-    private TextView testText;
-
-    private ImageButton testButton;
-
-
-
-
-
-    public Settings() {
+    public SettingsController() {
         // Required empty public constructor
     }
 
@@ -67,13 +40,11 @@ public class Settings extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-
+        settingsModel = new SettingsModel(getContext());
+        settingsModel.initData();
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
-        initData();
-        listAdapter = new ExpandableListAdapter(getActivity(), listDataHeader, listHash, listView);
+        listAdapter = new ExpandableListAdapter(getActivity(), settingsModel.getListDataHeader(), settingsModel.getListHash(), listView);
         listView.setAdapter(listAdapter);
         System.out.println("Listview, sett: " + listView);
 
@@ -81,20 +52,25 @@ public class Settings extends Fragment{
     }
 
     public void choosePopUp(View v){
-        testButton = (ImageButton) v.findViewById(R.id.list_item_button);
-        System.out.println("Button " + testButton.getTag());
-        testString = testButton.getTag().toString();
+        popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
+        buttonTag = popUpButton.getTag().toString();
 
         if (getExpanded() == 1){
-            if(Integer.valueOf(testString) == 0) {
+            if(Integer.valueOf(buttonTag) == 0) {
                 showCategoryPopUpOne();
-            }else if (Integer.valueOf(testString) == 1){
+            }else if (Integer.valueOf(buttonTag) == 1){
                 showCategoryPopUpTwo();
             }else {
                 showCategoryPopUpThree();
             }
         }else if(getExpanded() == 2){
-            showQuotesPopUp();
+            if(Integer.valueOf(buttonTag) == 0) {
+                showQuotesPopUpOne();
+            }else if(Integer.valueOf(buttonTag) == 1){
+                showQuotesPopUpTwo();
+            }else{
+                showQuotesPopUpThree();
+            }
         }else{
             showHelpPopUp();
         }
@@ -107,10 +83,8 @@ public class Settings extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory1(getContext()), TextView.BufferType.EDITABLE);
@@ -121,7 +95,6 @@ public class Settings extends Fragment{
             public void onClick(View v) {
                 Leep.setCategory1(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
 
@@ -141,10 +114,8 @@ public class Settings extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory2(getContext()), TextView.BufferType.EDITABLE);
@@ -155,7 +126,6 @@ public class Settings extends Fragment{
             public void onClick(View v) {
                 Leep.setCategory2(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
 
@@ -175,10 +145,8 @@ public class Settings extends Fragment{
         View categoryLayout = inflater.inflate(R.layout.pop_up_category, null);
         helpBuilder.setView(categoryLayout);
 
-
         final AlertDialog helpDialog = helpBuilder.create();
         helpDialog.show();
-
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
         categoryEdit.setText(Leep.getCategory3(getContext()), TextView.BufferType.EDITABLE);
@@ -189,7 +157,6 @@ public class Settings extends Fragment{
             public void onClick(View v) {
                 Leep.setCategory3(getContext(), categoryEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
 
@@ -202,8 +169,7 @@ public class Settings extends Fragment{
         });
     }
 
-
-    private void showQuotesPopUp() {
+    private void showQuotesPopUpOne() {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -214,17 +180,78 @@ public class Settings extends Fragment{
         helpDialog.show();
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(qs.getQuote1(), TextView.BufferType.EDITABLE);
+        quotesEdit.setText(Leep.getQuote1(getContext()), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Leep.setQuote1(getContext(), quotesEdit.getText().toString());
                 helpDialog.dismiss();
-
             }
         });
 
+        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
+        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
+    }
+
+    private void showQuotesPopUpTwo() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
+        helpBuilder.setView(quotesLayout);
+
+        final AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
+        quotesEdit.setText(Leep.getQuote2(getContext()), TextView.BufferType.EDITABLE);
+
+        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
+        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Leep.setQuote2(getContext(), quotesEdit.getText().toString());
+                helpDialog.dismiss();
+            }
+        });
+
+        exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
+        exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                helpDialog.dismiss();
+            }
+        });
+    }
+
+    private void showQuotesPopUpThree() {
+
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder((getActivity()));
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        View quotesLayout = inflater.inflate(R.layout.pop_up_quotes, null);
+        helpBuilder.setView(quotesLayout);
+
+        final AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+
+        quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
+        quotesEdit.setText(Leep.getQuote3(getContext()), TextView.BufferType.EDITABLE);
+
+        saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
+        saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Leep.setQuote3(getContext(), quotesEdit.getText().toString());
+                helpDialog.dismiss();
+            }
+        });
 
         exitButtonQuotes = (Button) quotesLayout.findViewById(R.id.close_button_quotes);
         exitButtonQuotes.setOnClickListener(new View.OnClickListener() {
@@ -263,39 +290,4 @@ public class Settings extends Fragment{
             return 3;
         }
         return 0;
-
-    }
-
-
-        //method that adds headers and items in the expandablelistview
-    private void initData() {
-        listDataHeader = new ArrayList<>();
-        listHash = new HashMap<>();
-        //iqs = new QuotesService();
-        qs = new QuotesService();
-
-        listDataHeader.add("CATEGORIES");
-        listDataHeader.add("QUOTES");
-        listDataHeader.add("HELP");
-
-        List<String> category = new ArrayList<>();
-        category.add(Leep.getCategory1(getContext()));
-        category.add(Leep.getCategory2(getContext()));
-        category.add(Leep.getCategory3(getContext()));
-
-        List<String> quote = new ArrayList<>();
-        quote.add(qs.getQuote1());
-        quote.add(qs.getQuote2());
-        quote.add(qs.getQuote3());
-
-        List<String> help = new ArrayList<>();
-        help.add("Info om hur appen fungerar");
-
-
-        listHash.put(listDataHeader.get(0), category);
-        listHash.put(listDataHeader.get(1), quote);
-        listHash.put(listDataHeader.get(2), help);
-    }
-
-
-}
+}}

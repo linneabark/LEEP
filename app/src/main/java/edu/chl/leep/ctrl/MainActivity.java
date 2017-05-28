@@ -6,18 +6,14 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
-import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
 import com.example.linneabark.test.SaveActivityRowList;
 
@@ -30,18 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
     //private AccountController account = new AccountController();
 
-
     public static Leep leep;
     private Context mContext;
-    private Settings testSettings;
-    private Settings settings;
+    private SettingsController settings;
 
     MainActivityModel mainActivityModel;
     SaveActivityRowList saveActivityRowList;
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
+        System.out.println("Context: " + mContext);
         mainActivityModel = new MainActivityModel();
         saveActivityRowList = new SaveActivityRowList();
 
@@ -76,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
-        settings = new Settings();
+        settings = new SettingsController();
         switch (item.getItemId()) {
             case R.id.settings_id:
                 nextFrag = settings;

@@ -46,11 +46,11 @@ import edu.chl.leep.model.Time;
 public class TimeLog extends Fragment {
     //TODO TimeLogCtrl
 
-    private TextView quoteDisplay;
-    private QuotesService quote = new QuotesService();
-    private SaveDate saveDate = new SaveDate();
-    private TextView testText;
+    //TODO gör variablerna private
 
+    private TextView quoteDisplay;
+    private QuotesService quote = new QuotesService(getContext());
+    private SaveDate saveDate = new SaveDate();
 
     private long stopActivity;
     private long startActivity;
@@ -75,10 +75,14 @@ public class TimeLog extends Fragment {
         // Required empty public constructor
     }
 
+
+    //TODO lägg upp ovanför konstruktor
+
     Spinner spinner;
 
     public int position;
 
+    //TODO move method so that it's under onCreateView
     public void setPosition(int value){
         position = value;
 
@@ -93,6 +97,7 @@ public class TimeLog extends Fragment {
 
 
 
+    //TODO make smaller methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
@@ -105,6 +110,8 @@ public class TimeLog extends Fragment {
 
         //check whether or not the categories has been initialized with a name yet, should be in a seperate method
        timeLogModel.checkCategoryStatus(mContext);
+
+        timeLogModel.checkQuoteStatus(mContext);
 
         /**SPINNER **/
 

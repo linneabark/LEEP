@@ -10,6 +10,10 @@ import java.util.Calendar;
 
 public class TimeLogModel {
 
+    private String quote1 = "Quote 1";
+    private String quote2 = "Quote 2";
+    private String quote3 = "Quote 3";
+
     private Calendar cal = Calendar.getInstance();
 
     private String category1 = "Category 1";
@@ -40,7 +44,12 @@ public class TimeLogModel {
         return minute;
     }
 
-    public void getList(){
+    public void checkQuoteStatus(Context mcontext){
+        if(((Leep.getQuote1(mcontext)).equals("")) && ((Leep.getQuote2(mcontext)).equals(""))
+                && ((Leep.getQuote3(mcontext)).equals(""))) {
+            Leep.setQuote1(mcontext, quote1);
+            Leep.setQuote2(mcontext, quote2);
+            Leep.setQuote3(mcontext, quote3);
+        }
 
-    }
-}
+}}
