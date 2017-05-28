@@ -2,18 +2,17 @@ package edu.chl.leep.model;
 
 import android.app.Activity;
 import android.widget.TextView;
-
 import edu.chl.leep.utils.ConvertUtils;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
  * Created by Eli on 2017-05-04.
- A class which runs a timer, starts and stops a timertask*/
+ * A class which runs a timer, starts and stops a timertask
+ */
 
 public class TimeModel {
-    private static TimeModel instance; //CC vill att den deklareras till new TimeModel();
+    private static TimeModel instance;
     private long value;
     private Timer timer;
     private long totalTime;
@@ -25,7 +24,6 @@ public class TimeModel {
         timer = new Timer();
     }
 
-    //use this if a textview must be manipulated
     public static TimeModel getInstance(Activity activity, TextView txt){
         if(instance == null){
             instance = new TimeModel();
@@ -35,7 +33,6 @@ public class TimeModel {
         return instance;
     }
 
-    //use this if you don't care about a text being updated
     public static TimeModel getInstance(Activity activity){
         if(instance == null){
             instance = new TimeModel();
@@ -65,7 +62,6 @@ public class TimeModel {
         value = 0;
         updateText(instance.toString());
         timer.cancel();
-        //timer = new Timer();
     }
 
     private void incTime(){

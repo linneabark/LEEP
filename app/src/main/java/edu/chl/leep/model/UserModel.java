@@ -9,8 +9,6 @@ import android.content.Context;
 public class UserModel {
 
     public static String USER_INFO = "UserInfo";
-
-
     static String theUser = "";
     static String user;
     static String userName;
@@ -28,9 +26,4 @@ public class UserModel {
         this.mContext = mContext;
 
     }
-
-
-    //TODO ska innehålla namn, password, email m.m
-
-
 }

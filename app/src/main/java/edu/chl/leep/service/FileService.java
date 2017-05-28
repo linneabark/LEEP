@@ -27,15 +27,12 @@ public class FileService implements Serializable {
     public void saveActivityRowListSharedPref (Context context, List<ActivityRowModel> saveSharedList) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), context.MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
-
         Gson gson = new Gson();
-
         String json = gson.toJson(saveSharedList);
         sharedPrefEditor.putString("myJson", json);
         sharedPrefEditor.commit();
 
     }
-
 
     //For load
     private List<ActivityRowModel> loadActivityRowListSharedPref(Context context) {
@@ -65,21 +62,7 @@ public class FileService implements Serializable {
         }
     }
 
-
-
-    /*spara user info som en lista i en textfil
-    användarnamn
-    lösenord
-    email
-
-    openSavedActivities() kommer skicka in användarnamnet som filnamn,
-    och därefter skapa en fil med aktiviteterna till det användarnamnet
-     */
-
-    //Flyttades hit pga Hacht
-    public static SharedPreferences getPrefPreviousUser(Context context) { //or is it getPrefs?
-        //TODO flytta till fileservice, allt som har med att skriva ut
-
+    public static SharedPreferences getPrefPreviousUser(Context context) {
         return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
     }
 
