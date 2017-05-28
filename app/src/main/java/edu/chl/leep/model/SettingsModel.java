@@ -19,7 +19,7 @@ public class SettingsModel {
 
     }
 
-    //method that adds headers and items in the expandablelistview
+    //Method that adds groups and children in the expandablelistview
     public void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();

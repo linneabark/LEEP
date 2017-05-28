@@ -52,12 +52,16 @@ public class TimeLog extends Fragment {
     private long stopActivity;
     private long startActivity;
     private TextView time_txt;
+
+    //TODO radera denna variabel
     private CategoryHashMap cHM = new CategoryHashMap();
-    SaveActivity saveActivity = new SaveActivity();
-    Convert convert = new Convert();
-    TimeLogModel timeLogModel;
+
+    //TODO funkar saveactovity som den ska?
+    private SaveActivity saveActivity = new SaveActivity();
+    private Convert convert = new Convert();
+    private TimeLogModel timeLogModel;
     private Time time;
-    Context mContext;
+    private Context mContext;
 
 
     /** Timer variables */
