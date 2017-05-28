@@ -6,12 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.List;
 
-import edu.chl.leep.ctrl.Statistics;
 
 /**
  * Created by Evelina on 2017-05-16.
@@ -20,7 +17,7 @@ import edu.chl.leep.ctrl.Statistics;
 public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsActivityAdapter.ViewHolder>{
 
     private int recyclerItemIndex = 0;
-    Context context;
+     Context context;
     private List <String> activity;
 
 
@@ -35,6 +32,7 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.display_activity,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
+
         return viewHolder;
     }
 

@@ -20,6 +20,9 @@ import edu.chl.leep.service.SaveActivity;
 
 public class SaveActivityRowList {
 
+    //For load
+    private static List<ActivityRow> loadSharedList;
+
     //For save
     public static void saveActivityRowListSharedPref (Context context, List<ActivityRow> saveSharedList) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Leep.getUSER(), context.MODE_PRIVATE);
@@ -33,25 +36,17 @@ public class SaveActivityRowList {
 
     }
 
-    //For load
-    private static List<ActivityRow> loadSharedList;
     public static List<ActivityRow> loadActivityRowListSharedPref(Context context) {
 
-
         SharedPreferences sharedPreferences = context.getSharedPreferences(Leep.getUSER(), context.MODE_PRIVATE);
-
         Gson gson = new Gson();
-
         String json = sharedPreferences.getString("myJson", "");
-
         if (json.isEmpty()) {
             loadSharedList = new ArrayList<>();
         } else {
             Type type = new TypeToken<List<ActivityRow>>() {}.getType();
-
             loadSharedList = gson.fromJson(json, type);
         }
-
         return loadSharedList;
     }
 
