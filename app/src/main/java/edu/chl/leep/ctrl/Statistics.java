@@ -75,7 +75,7 @@ public class Statistics extends Fragment {
     //Declare pie-chart
     PieChart pieChart;
 
-    static long totalTimeOfEveryting;
+    //static long totalTimeOfEveryting;
 
     public String [] insertCategoryPieChart (List<String> categoryList){
         xcategory = new String [statisticsModel.getTotalOfCategoryList().size()];
@@ -158,7 +158,7 @@ public class Statistics extends Fragment {
     }*/
 
 
-    String [] listOfActivity = {"hej", "på", "dig", "din", "lilla", "grej", "vad", "gör", "en", "sak", "som", "dig"};
+    //String [] listOfActivity = {"hej", "på", "dig", "din", "lilla", "grej", "vad", "gör", "en", "sak", "som", "dig"};
 
 
     StatisticsActivityAdapter statisticsActivityAdapter = new StatisticsActivityAdapter(mainActivity.getContext(),  statisticsModel.reformListToDisplay());

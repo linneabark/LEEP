@@ -1,16 +1,13 @@
 package com.example.linneabark.test;
-
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +22,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private int lastExpandedGroupPosition = -1;
     private ExpandableListView listView;
     private HashMap<String, List<String>> listHashMap;
-
     private ImageButton button;
 
     public ExpandableListAdapter (Context context, List <String> listDataHeader,
@@ -34,12 +30,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.listView=listView;
         this.context = context;
         this.listDataHeader=listDataHeader;
-
         this.listHashMap=listHashMap;
-
-
     }
-
 
     @Override
     public int getGroupCount() {
@@ -112,21 +104,13 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return true;
     }
 
-
     @Override
     public void onGroupExpanded(int groupPosition) {
-        System.out.println("Listview, exp: " + listView);
-
         if (groupPosition!= lastExpandedGroupPosition && groupPosition != -1){
             listView.collapseGroup(lastExpandedGroupPosition);
-
         }
         lastExpandedGroupPosition = groupPosition;
         super.onGroupExpanded(groupPosition);
     }
-
-
-
-
 
 }

@@ -185,7 +185,7 @@ public class StatisticsModel {
 
     //vi börjar med day. när man väljer dag under statistic.
     //då är en månad vald och då skall endast dagarna som månaden är kunna väljas.
-
+/*
     public List<String> getAllDays (StatisticsMonthAdapter sMA) {
 
         int intMonth= FindWhichMonth.numberOfMonth(monthBtn);
@@ -200,7 +200,7 @@ public class StatisticsModel {
             }
         }
         return allDaysForSpecificMonth;
-    }
+    }*/
 
  /*   public void findAllDaysForSpecificMonth() {
 
@@ -310,7 +310,7 @@ public class StatisticsModel {
 
 
 
-    public void everythingfromspecifikday () {
+  /*  public void everythingfromspecifikday () {
 
         //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
         List<ActivityRow> saveAllActivityForADay = new ArrayList<>();
@@ -325,8 +325,8 @@ public class StatisticsModel {
                 }
             }
         }
-    }
-
+    }*/
+/*
     //en metod som ser till att alla dagar läggs till i listan.
     private boolean continueTo (int i) {
         if (userActivityList.get(i).getDay().equals(lastDayOfMore)) {
@@ -361,7 +361,7 @@ public class StatisticsModel {
                 }
             }
         }
-    }
+    }*/
 
     //behöver en metod som kolalr vilken månad det är och sedan tar fram alla dagar som finns i denna.
     //vill vi att den skall kolla de 5 lagrade dagarna eller typ 1-5, 2-6 osv och även om man bara lagrat en dag?
