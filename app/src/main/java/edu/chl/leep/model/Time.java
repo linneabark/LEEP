@@ -10,7 +10,7 @@ import java.util.TimerTask;
 
 /**
  * Created by Eli on 2017-05-04.
- */
+ A class which runs a timer, starts and stops a timertask*/
 
 public class Time {
     private static Time instance; //CC vill att den deklareras till new Time();
