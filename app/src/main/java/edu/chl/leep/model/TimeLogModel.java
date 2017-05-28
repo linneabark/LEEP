@@ -9,7 +9,7 @@ import edu.chl.leep.ctrl.TimeLog;
 
 /**
  * Created by Eli on 2017-05-24.
- */
+ A model class which contains some methods used in TimeLog*/
 
 public class TimeLogModel {
 
@@ -22,8 +22,6 @@ public class TimeLogModel {
     private String category1 = "Category 1";
     private String category2 = "Category 2";
     private String category3 = "Category 3";
-
-    TimeLog tL = new TimeLog();
 
     public void checkCategoryStatus(Context mContext) {
 

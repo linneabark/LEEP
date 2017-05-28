@@ -6,12 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.List;
 
-import edu.chl.leep.ctrl.Statistics;
 
 /**
  * Created by Evelina on 2017-05-16.
@@ -20,12 +17,10 @@ import edu.chl.leep.ctrl.Statistics;
 public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsActivityAdapter.ViewHolder>{
 
     private int recyclerItemIndex = 0;
-    Context context;
     private List <String> activity;
 
 
-    public StatisticsActivityAdapter (Context context, List<String> activityList) {
-        this.context = context;
+    public StatisticsActivityAdapter (List<String> activityList) {
         activity = activityList;
     }
 
@@ -35,6 +30,7 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.display_activity,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
+
         return viewHolder;
     }
 
@@ -54,8 +50,6 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
 
         if(recyclerItemIndex==position) {
             holder.txtActivity.setBackgroundColor(Color.LTGRAY);
-            //example beneath
-            //holder.btn.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
             holder.txtActivity.setBackgroundColor(Color.WHITE);
         }
@@ -66,13 +60,12 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
         return activity.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtActivity;
-        public ViewHolder(View v){
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtActivity;
+        private ViewHolder(View v){
             super(v);
             txtActivity = (TextView) itemView.findViewById(R.id.txtActivity);
         }
-
     }
 
     public void swapList (List<String> changedList) {

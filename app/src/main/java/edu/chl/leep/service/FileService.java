@@ -4,7 +4,11 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.Leep;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,6 +17,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,71 +27,49 @@ import java.util.List;
  */
 
 public class FileService implements Serializable {
+    //For load
+    private static List<ActivityRow> loadSharedList;
 
+    //For save
+    public void saveActivityRowListSharedPref (Context context, List<ActivityRow> saveSharedList) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Leep.getUSER(), context.MODE_PRIVATE);
+        SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
 
-    String SAVED_INFO = "savedInfo.txt";
+        Gson gson = new Gson();
 
-    private static String activityFolder = "Activities";
+        String json = gson.toJson(saveSharedList);
+        sharedPrefEditor.putString("myJson", json);
+        sharedPrefEditor.commit();
 
-
-    public static String saveActivityToTxt(String filename, List<ActivityRow> list, Context mContext) { //filename aka username
-
-        ContextWrapper cw = new ContextWrapper(mContext);
-        File directory = cw.getDir(activityFolder, Context.MODE_PRIVATE);
-        File myPath = new File(directory, (filename + ".txt"));
-        FileOutputStream fos = null;
-        ObjectOutputStream oos = null;
-        try {
-            fos = new FileOutputStream(myPath);
-            // Use the compress method on the BitMap object to write image to the OutputStream
-
-            //list.toArray().toString();
-            //FileOutputStream fos = mContext.openFileOutput((filename +".txt"), Context.MODE_PRIVATE);
-            oos = new ObjectOutputStream(fos);
-            oos.writeObject(list);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if ((null != oos) || (null != fos))
-                try {
-                    fos.close();
-                    oos.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-        }
-
-        System.out.println("IS THIS THE LIST???: " + list);
-        return directory.getAbsolutePath();
     }
 
 
-    public static List getActivityFromTxt(String filename, Context context) {
-        ContextWrapper cw = new ContextWrapper(context);
-        /*File directory = cw.getDir("users", Context.MODE_PRIVATE);
-        File myPath=new File(directory,filename + ".txt");*/
-
-        String path = (cw.getFilesDir().getPath());
-
-
-        List<ActivityRow> list = null;
-
-        try {
-            File f = new File(path, (filename + ".txt"));
-            FileInputStream fis = new FileInputStream(f);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-
-            list = ((List<ActivityRow>) ois.readObject());
-            ois.close();
-            fis.close();
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+    //For load
+    private List<ActivityRow> loadActivityRowListSharedPref(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Leep.getUSER(), context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("myJson", "");
+        if (json.isEmpty()) {
+            loadSharedList = new ArrayList<>();
+        } else {
+            Type type = new TypeToken<List<ActivityRow>>() {}.getType();
+            loadSharedList = gson.fromJson(json, type);
         }
+        return loadSharedList;
+    }
 
-        System.out.println("THE RETRIEVED LIST: " + list);
-        return list;
+    //For load
+    public void putTheValuesInActivityRowList (Context context) {
+        System.out.println("Klass SaveActivityRowList, metod putTheValuesInActivityRowList.");
+        loadActivityRowListSharedPref(context);
+
+        for (int i = 0; i < loadSharedList.size(); i++) {
+            System.out.println("Klass SaveActivityRowList, metod putTheValuesInActivityRowList. " +
+                    "loadSharedList ('the loaded list') contains: " + loadSharedList.get(i).getUserName() +  " " + loadSharedList.get(i).getStartTime());
+            SaveActivity.addActivity(loadSharedList.get(i));
+            System.out.println("Klass SaveActivityRowList, metod putTheValuesInActivityRowList. " +
+                    "ActivityRowlist ('the main list') contains: " + SaveActivity.activityRowList.get(i).getUserName() +  " " + SaveActivity.activityRowList.get(i).getStartTime());
+        }
     }
 
 

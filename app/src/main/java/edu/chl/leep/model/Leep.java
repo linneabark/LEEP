@@ -44,6 +44,7 @@ public class Leep {
     //TODO getters
 
     public static void register(){
+        System.out.println("Skriver den ut här?");
         Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
         Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
         Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
@@ -194,7 +195,7 @@ public class Leep {
     //input.getText().toString(); in the other class and pass it as a string
 
     //all the setters
-    public static void setUsername(Context context, String input) {
+    private static void setUsername(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Username", input);
 
@@ -202,7 +203,7 @@ public class Leep {
 
     }
 
-    public static void setEmail(Context context, String input) {
+    private static void setEmail(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Email", input);
 
@@ -210,7 +211,7 @@ public class Leep {
 
     }
 
-    public static void setPassword(Context context, String input) {
+    private static void setPassword(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Password", input);
 

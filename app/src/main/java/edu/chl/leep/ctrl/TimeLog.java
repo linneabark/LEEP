@@ -25,7 +25,6 @@ import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
 
-import com.example.linneabark.test.Convert;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
@@ -36,7 +35,7 @@ import edu.chl.leep.model.Time;
 
 /**
  * A simple {@link Fragment} subclass.
- */
+ A controller class which handles the start and stop of the timer*/
 public class TimeLog extends Fragment {
     //TODO TimeLogCtrl
 
@@ -44,13 +43,13 @@ public class TimeLog extends Fragment {
 
     private TextView quoteDisplay;
     private QuotesService quote;
-    private ConvertUtils convertUtils = new ConvertUtils();
+    private ConvertUtils convertUtils;
 
     private long stopActivity;
     private long startActivity;
     private TextView time_txt;
 
-    private Convert convert = new Convert();
+
     private TimeLogModel timeLogModel;
     private Time time;
     private Context mContext;
@@ -68,6 +67,11 @@ public class TimeLog extends Fragment {
     }
 
 
+    //TODO lägg upp ovanför konstruktor
+
+    //TODO move method so that it's under onCreateView
+
+
     //TODO make smaller methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,6 +80,7 @@ public class TimeLog extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
 
+        convertUtils = new ConvertUtils();
         timeLogModel = new TimeLogModel();
 
         timeLogModel.checkCategoryStatus(mContext);
@@ -144,8 +149,8 @@ public class TimeLog extends Fragment {
                         convertUtils.calculateYearToString(),
                         convertUtils.calculateMonthToString(),
                         convertUtils.calculateDayToString(),
-                        convert.longToString(startActivity),
-                        convert.longToString(time.getTotalTime()),
+                        convertUtils.longToString(startActivity),
+                        convertUtils.longToString(time.getTotalTime()),
                         Leep.getCategory(mContext, getPosition())));
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();

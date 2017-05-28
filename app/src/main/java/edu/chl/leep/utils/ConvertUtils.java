@@ -65,5 +65,11 @@ public class ConvertUtils {
 
         return dateFormatDay.format(date);
     }
+
+    public String longToString(long longNumber){
+        String longAsString = Long.toString(longNumber);
+        return longAsString;
+    }
+
 }
 

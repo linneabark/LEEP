@@ -1,5 +1,6 @@
 package edu.chl.leep.ctrl;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,77 +37,44 @@ import java.util.List;
  */
 public class Statistics extends Fragment {
     //TODO StatisticsCtrl
-    public Statistics() {
-        // Required empty public constructor
-    }
-    private FindWhichMonth findWhichMonth = new FindWhichMonth();
-
-    private static MainActivity mainActivity = new MainActivity();
-    private StatisticsModel statisticsModel = new StatisticsModel();
+    private FindWhichMonth findWhichMonth;
+    private MainActivity mainActivity;
+    private StatisticsModel statisticsModel;
 
     private RecyclerView recyclerMonth;
     private RecyclerView recyclerDate;
     private RecyclerView recyclerActivity;
 
     private Button btnDay;
-    private Button btnXDays;
     private Button btnMonth;
+
+    //Declare pie-chart
+    private PieChart pieChart;
 
     private float [] yvalue;
     private String [] xcategory;
 
-    private PieChart pieChart;
+    StatisticsActivityAdapter statisticsActivityAdapter;
+    StatisticsDateAdapter statisticsDateAdapter;
+    StatisticsMonthAdapter statisticsMonthAdapter;
 
-    public String [] insertCategoryPieChart (List<String> categoryList){
-        xcategory = new String [statisticsModel.getTotalOfCategoryList().size()];
-        System.out.println("categprylist size" + categoryList.size());
-         for (int i = 0; i < categoryList.size(); i++) {
-             xcategory [i] = categoryList.get(i);
-         }
-        System.out.println("xcategory" + xcategory.length);
-         return xcategory;
+    public Statistics() {
+        // Required empty public constructor
     }
-
-    public float [] insertTotalTimePieChart (List<Long> totalTimeList){
-        yvalue = new float[totalTimeList.size()];
-        System.out.println("totaltimelist size" + totalTimeList.size());
-        for (int i = 0; i < totalTimeList.size(); i++) {
-            float totalTimeValue = Float.valueOf(totalTimeList.get(i));
-            System.out.println("totaltimevalue --> "+ totalTimeValue);
-            yvalue [i] = totalTimeValue;
-        }
-        System.out.println("yvalue" + yvalue.length);
-        return yvalue;
-    }
-
-
-    public static List<String> date = new ArrayList<>();
-    public static List <String> assList () {
-        date.add("01");
-        date.add("02");
-        date.add("03");
-        date.add("04");
-        date.add("06");
-        date.add("07");
-        date.add("08");
-        date.add("09");
-        date.add("10");
-
-        return date;
-    }
-
-    StatisticsActivityAdapter statisticsActivityAdapter = new StatisticsActivityAdapter(mainActivity.getContext(),  statisticsModel.reformListToDisplay());
-    StatisticsDateAdapter statisticsDateAdapter = new StatisticsDateAdapter(mainActivity.getContext(), assList(), statisticsActivityAdapter);
-    StatisticsMonthAdapter statisticsMonthAdapter = new StatisticsMonthAdapter(mainActivity.getContext(), findWhichMonth.months, statisticsDateAdapter);
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_statistics, container, false);
+
+        findWhichMonth = new FindWhichMonth();
+        mainActivity = new MainActivity();
+        statisticsModel = new StatisticsModel();
+
+        statisticsActivityAdapter  = new StatisticsActivityAdapter(statisticsModel.reformListToDisplay());
+        statisticsDateAdapter = new StatisticsDateAdapter(assList(), statisticsActivityAdapter);
+        statisticsMonthAdapter = new StatisticsMonthAdapter(findWhichMonth.months, statisticsDateAdapter);
 /**/
         //to display the months
         recyclerMonth = (RecyclerView) rootview.findViewById(R.id.recyclerMonth);
@@ -119,7 +87,6 @@ public class Statistics extends Fragment {
         recyclerDate.setAdapter(statisticsDateAdapter);
 
         btnDay = (Button) rootview.findViewById(R.id.btnDay);
-        btnXDays = (Button) rootview.findViewById(R.id.btnXDays);
         btnMonth = (Button) rootview.findViewById(R.id.btnMonth);
 
         btnDay.setBackgroundColor(Color.LTGRAY);
@@ -132,13 +99,7 @@ public class Statistics extends Fragment {
                 statisticsModel.setWhichBtn("btnDay");
             }
         });
-        btnXDays.setOnClickListener(new Button.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doButtonsWhite();
-                giveButtonColor(v,btnXDays);
-            }
-        });
+
         btnMonth.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,8 +130,6 @@ public class Statistics extends Fragment {
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-
-
                 //e.toString().indexOf("(sum) ");man behöver detta pga att programmet skriver ut detta. Inget vi valt.
                 int pos = e.toString().indexOf("y: ");
                 String precent = e.toString().substring(pos + 3);
@@ -187,7 +146,6 @@ public class Statistics extends Fragment {
                 //För att skriva ut det snyggt...
                 //För att få flera rader, lägg till "\n" där det önskas
                 // Toast.makeText(mainActivity.getContext(), ("" + whichCategory + ": " + precent + " %."), Toast.LENGTH_LONG).show();
-
             }
 
             @Override
@@ -241,7 +199,6 @@ public class Statistics extends Fragment {
 
     }
 
-
     public void giveButtonColor (View view, Button btn) {
         if (view == btn) {
             btn.setBackgroundColor(Color.LTGRAY);
@@ -250,8 +207,46 @@ public class Statistics extends Fragment {
 
     public void doButtonsWhite () {
         btnDay.setBackgroundColor(Color.WHITE);
-        btnXDays.setBackgroundColor(Color.WHITE);
         btnMonth.setBackgroundColor(Color.WHITE);
     }
+
+    public String [] insertCategoryPieChart (List<String> categoryList){
+        xcategory = new String [statisticsModel.getTotalOfCategoryList().size()];
+        System.out.println("categprylist size" + categoryList.size());
+        for (int i = 0; i < categoryList.size(); i++) {
+            xcategory [i] = categoryList.get(i);
+        }
+        System.out.println("xcategory" + xcategory.length);
+        return xcategory;
+    }
+
+    public float [] insertTotalTimePieChart (List<Long> totalTimeList){
+        yvalue = new float[totalTimeList.size()];
+        System.out.println("totaltimelist size" + totalTimeList.size());
+        for (int i = 0; i < totalTimeList.size(); i++) {
+            float totalTimeValue = Float.valueOf(totalTimeList.get(i));
+            System.out.println("totaltimevalue --> "+ totalTimeValue);
+            yvalue [i] = totalTimeValue;
+        }
+        System.out.println("yvalue" + yvalue.length);
+        return yvalue;
+    }
+
+
+    public static List<String> date = new ArrayList<>();
+    public static List <String> assList () {
+        date.add("01");
+        date.add("02");
+        date.add("03");
+        date.add("04");
+        date.add("06");
+        date.add("07");
+        date.add("08");
+        date.add("09");
+        date.add("10");
+
+        return date;
+    }
+
 
 }
