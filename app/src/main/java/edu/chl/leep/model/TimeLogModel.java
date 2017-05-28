@@ -23,8 +23,6 @@ public class TimeLogModel {
     private String category2 = "Category 2";
     private String category3 = "Category 3";
 
-    TimeLog tL = new TimeLog();
-
     public void checkCategoryStatus(Context mContext) {
 
         if ((Leep.getCategory1(mContext).equals("")) && (Leep.getCategory2(mContext).equals(""))
