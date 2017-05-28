@@ -12,16 +12,13 @@ import edu.chl.leep.service.FileService;
 
 /**
  * Created by linneabark on 2017-05-22.
+ *
+ * Class that holds information about the users
  */
 
 public class LeepModel {
 
-   // UserModel actual
-    // List<Activity>
     public LeepModel(){
-        String userName;
-        String password;
-
     }
 
     public static List<String> getCategoryList(Context mContext){
@@ -32,39 +29,22 @@ public class LeepModel {
         categoryList.add(getCategory3(mContext));
 
         return categoryList;
-
     }
 
-    // getActitivire
-
-    //TODO metod: register(UserModel)
-    //TODO metod: login(UserModel)
-
-    //TODO getters
-
     public static void register(){
-        System.out.println("Skriver den ut här?");
         LeepModel.setUSER(RegisterActivityController.newUser.user); //sets the "user folder with the same name as username"
         LeepModel.setUsername(UserModel.mContext, RegisterActivityController.newUser.userName);
         LeepModel.setPassword(UserModel.mContext, RegisterActivityController.newUser.password);
         LeepModel.setEmail(UserModel.mContext, RegisterActivityController.newUser.email);
-
     }
-
 
     public static void setUSER(String input){
         UserModel.theUser = input;
     }
 
-
-
-    //all the getter
     public static String getUSER(){
-        String y = UserModel.theUser;
-        return y;
+        return UserModel.theUser;
     }
-
-    //Fluttat från AccountDetails pga Hacht
 
     public static String getPreviousUser(Context context) {
         return FileService.getPrefPreviousUser(context).getString("user", "");
@@ -77,10 +57,7 @@ public class LeepModel {
         editor.apply();
     }
 
-    //Flyttat från AccountDetails
-
     //HANDLE THE USER INFO
-
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
         System.out.println("Context: " + context);
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
@@ -89,8 +66,6 @@ public class LeepModel {
     private static SharedPreferences getUserInfo(Context context) { //or is it getPrefs?
         return context.getSharedPreferences(UserModel.USER_INFO, Context.MODE_PRIVATE);
     }
-
-    //gets the specific key and value in it
 
     public static String getUsername(Context context) {
         return getUserInfos(context).getString("Username", "");
@@ -102,8 +77,6 @@ public class LeepModel {
     public static String getEmail(Context context) {
         return getUserInfos(context).getString("Email", "");
     }
-
-    //the categories
 
     public static String getCategory(Context context, int x) {
         return getUserInfos(context).getString("Category "+x, "");
@@ -121,6 +94,7 @@ public class LeepModel {
         return getUserInfos(context).getString("Category 3", "");
     }
 
+    //the quotes
     public static String getQuote1(Context context) {
         return getUserInfos(context).getString("Quote 1", "");
     }
@@ -154,52 +128,32 @@ public class LeepModel {
         editor.apply();
     }
 
-    public static void setCategory(Context context, String input, int x){
-        SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Category " + x, input);
-
-        editor.apply();
-    }
-
-
     public static void setCategory1(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Category 1", input);
 
         editor.apply();
-
     }
-
-
 
     public static void setCategory2(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Category 2", input);
 
         editor.apply();
-
     }
-
 
     public static void setCategory3(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Category 3", input);
 
         editor.apply();
-
     }
 
-
-    //maybe change to be able to setUsername without having to define a EditText?
-    //input.getText().toString(); in the other class and pass it as a string
-
-    //all the setters
     private static void setUsername(Context context, String input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
         editor.putString("Username", input);
 
         editor.apply();
-
     }
 
     private static void setEmail(Context context, String input) {
@@ -207,7 +161,6 @@ public class LeepModel {
         editor.putString("Email", input);
 
         editor.apply();
-
     }
 
     private static void setPassword(Context context, String input) {
@@ -215,14 +168,9 @@ public class LeepModel {
         editor.putString("Password", input);
 
         editor.apply();
-
     }
 
-
-
-
     //keeps track of wether or not the user is already logged in or not
-
     public static void setKeepLoginStateToZero(Context context, int x){
         SharedPreferences.Editor editor = getUserInfo(context).edit();
 
@@ -232,16 +180,11 @@ public class LeepModel {
 
     public static void setKeepLoginState(Context context, RadioButton input) {
 
-
         SharedPreferences.Editor editor = getUserInfo(context).edit();
-
         boolean checked = input.isChecked();
-
         if (checked) {
-
             editor.putInt("RadioButton", 1);
         }else
-
             editor.putInt("RadioButton", 0);
         editor.apply();
     }
@@ -249,8 +192,6 @@ public class LeepModel {
     public static int getKeepLoginState(Context context) {
         return getUserInfo(context).getInt("RadioButton", 0);
     }
-
-
 }
 
 
