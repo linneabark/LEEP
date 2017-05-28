@@ -32,7 +32,7 @@ public class ShowQuotesPopUp {
         helpDialog.show();
 
         quotesEdit = (EditText) quotesLayout.findViewById(R.id.edit_text_quotes);
-        quotesEdit.setText(chooseQuote(buttontag, context), TextView.BufferType.EDITABLE);
+        quotesEdit.setText(getQuote(buttontag, context), TextView.BufferType.EDITABLE);
 
         saveButtonQuotes = (Button) quotesLayout.findViewById(R.id.save_button_quotes);
         saveButtonQuotes.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,8 @@ public class ShowQuotesPopUp {
         });
     }
 
-    private String chooseQuote(String buttontag, Context context){
+    //
+    private String getQuote(String buttontag, Context context){
         if (Integer.valueOf(buttontag) == 0){
             return Leep.getQuote1(context);
         }else if (Integer.valueOf(buttontag) == 1){

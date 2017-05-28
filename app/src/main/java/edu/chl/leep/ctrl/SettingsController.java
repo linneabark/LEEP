@@ -61,6 +61,7 @@ public class SettingsController extends Fragment{
         }
     }
 
+    //Returns which groups is expanded
     public int getExpanded(){
 
         if (listView.isGroupExpanded(0)){

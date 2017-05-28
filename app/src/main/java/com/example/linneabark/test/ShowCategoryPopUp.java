@@ -31,7 +31,7 @@ public class ShowCategoryPopUp {
         helpDialog.show();
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
-        categoryEdit.setText(chooseCategory(buttonTag, context), TextView.BufferType.EDITABLE);
+        categoryEdit.setText(getCategory(buttonTag, context), TextView.BufferType.EDITABLE);
 
         saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
         saveButtonCategory.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class ShowCategoryPopUp {
 
     }
 
-    private String chooseCategory(String buttontag, Context context){
+    private String getCategory(String buttontag, Context context){
         if (Integer.valueOf(buttontag) == 0){
             return Leep.getCategory1(context);
         }else if (Integer.valueOf(buttontag) == 1){
