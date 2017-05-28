@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Created by linneabark on 2017-05-06.
+ *
+ * Adapter class for the expandablelistvies groups and children
  */
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
