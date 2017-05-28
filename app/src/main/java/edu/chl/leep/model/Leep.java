@@ -82,6 +82,7 @@ public class Leep {
     //HANDLE THE USER INFO
 
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
+        System.out.println("Context: " + context);
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
     }
 

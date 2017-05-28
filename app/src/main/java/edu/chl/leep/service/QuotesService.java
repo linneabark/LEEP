@@ -25,6 +25,7 @@ public class QuotesService{
     public QuotesService(Context context) {
         mA = new MainActivity();
         this.context = context;
+        System.out.println("Context constructor: " +context);
 
         addQuote();
     }
@@ -42,10 +43,8 @@ public class QuotesService{
 
     //Denna kod kanske borde tas bort och självaste add raden borde finnas i inställninagr där man tar han om inputen.
     public void addQuote(){
-        quotes.add("Hej");
-        quotes.add("På");
-        quotes.add("Dig");
+        quotes.add(Leep.getQuote1(context));
+        quotes.add(Leep.getQuote2(context));
+        quotes.add(Leep.getQuote3(context));
     }
-
-
 }

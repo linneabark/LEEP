@@ -46,7 +46,7 @@ public class TimeLog extends Fragment {
     //TODO gör variablerna private
 
     private TextView quoteDisplay;
-    private QuotesService quote = new QuotesService(getContext());
+    private QuotesService quote;
     private SaveDate saveDate = new SaveDate();
 
     private long stopActivity;
@@ -102,6 +102,9 @@ public class TimeLog extends Fragment {
        timeLogModel.checkCategoryStatus(mContext);
 
         timeLogModel.checkQuoteStatus(mContext);
+
+        quote = new QuotesService(getContext());
+        System.out.println("Timelog context: " + getContext());
 
         /**SPINNER **/
 
