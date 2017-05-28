@@ -18,8 +18,10 @@ public class LoginActivityModel {
     public boolean compareUserInfo(Context mContext, EditText userName, EditText passWord) {
 
         Leep.setUSER(userName.getText().toString());
-        System.out.println("Leep.getUserName: " + Leep.getUsername(mContext));
-        System.out.println("Leep.getpassword: " + Leep.getPassword(mContext));
+
+        if(userName.getText().toString().equals("") || passWord.getText().toString().equals("")){
+            return false;
+        }
 
         if ((userName.getText().toString().equals(Leep.getUsername(mContext))) && (passWord.getText().toString().equals(Leep.getPassword(mContext)))) {
             return true;

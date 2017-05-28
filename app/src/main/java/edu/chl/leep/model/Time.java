@@ -3,14 +3,10 @@ package edu.chl.leep.model;
 import android.app.Activity;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import edu.chl.leep.ctrl.TimeLog;
-import edu.chl.leep.utils.SaveDate;
+import edu.chl.leep.utils.ConvertUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Eli on 2017-05-04.
@@ -20,7 +16,7 @@ public class Time {
     private static Time instance; //CC vill att den deklareras till new Time();
     private long value;
     private Timer timer;
-    private long lastTime;
+    private long totalTime;
     private static Activity mainActivity;
     private static TextView time_txt;
 
@@ -51,7 +47,7 @@ public class Time {
     private class UpdateTimeTask extends TimerTask {
         @Override
         public void run() {
-            SaveDate sd = new SaveDate();
+            ConvertUtils sd = new ConvertUtils();
             updateText(sd.calculateTimeToString(value));
             instance.incTime();
         }
@@ -65,7 +61,7 @@ public class Time {
     }
 
     public void stopTimer(){
-        lastTime = value;
+        totalTime = value;
         value = 0;
         updateText(instance.toString());
         timer.cancel();
@@ -81,14 +77,14 @@ public class Time {
     }
 
     public String toString(){
-        SaveDate sd = new SaveDate();
+        ConvertUtils sd = new ConvertUtils();
         return sd.calculateTimeToString(value);
     }
 
     public long getTime(){
         return value;
     }
-    public long getLastTime(){return lastTime;}
+    public long getTotalTime(){return totalTime;}
 
     public void updateText(final String text) {
         if(time_txt != null) {

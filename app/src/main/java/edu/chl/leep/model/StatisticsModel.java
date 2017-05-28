@@ -1,7 +1,5 @@
 package edu.chl.leep.model;
 
-import android.view.View;
-
 import com.example.linneabark.test.StatisticsActivityAdapter;
 import com.example.linneabark.test.StatisticsDateAdapter;
 import com.example.linneabark.test.StatisticsMonthAdapter;
@@ -11,6 +9,7 @@ import java.util.List;
 
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.FindWhichMonth;
+import edu.chl.leep.utils.ConvertUtils;
 
 /**
  * Created by Evelinas on 2017-05-26.
@@ -423,11 +422,16 @@ public class StatisticsModel {
         return allActivitys;
     }
 
+
+
     static void activityToString (List <String> allActivitys, List<ActivityRow> activityRowList, int indexFromForLoop){
+        ConvertUtils sd = new ConvertUtils();
         long stopTime = Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()))
                 + Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime()));
 
-        String s = allActivityRowsForSpecificMonth.get(indexFromForLoop).getCategoryName() + "          " + allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime() + " - " + stopTime;
+        String s = allActivityRowsForSpecificMonth.get(indexFromForLoop).getCategoryName()
+                + "          " +
+                sd.calculateStringToLong(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()) + " - " + stopTime;
 
         allActivitys.add(s);
 

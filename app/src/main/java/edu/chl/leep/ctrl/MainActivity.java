@@ -19,24 +19,18 @@ import com.example.linneabark.test.SaveActivityRowList;
 
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.MainActivityModel;
-
 import edu.chl.leep.service.SaveActivity;
-
-import edu.chl.leep.model.Time;
 
 
 public class MainActivity extends AppCompatActivity {
 //TODO name to xCtrl, maybe
 
-
-    //private AccountController account = new AccountController();
-
     public static Leep leep;
     private Context mContext;
     private SettingsController settings;
 
-    MainActivityModel mainActivityModel;
-    SaveActivityRowList saveActivityRowList;
+    private MainActivityModel mainActivityModel;
+    private SaveActivityRowList saveActivityRowList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +38,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
-        System.out.println("Context: " + mContext);
         mainActivityModel = new MainActivityModel();
         saveActivityRowList = new SaveActivityRowList();
-
-
-
-
-
-        System.out.println("this.mContext: " + mContext);
-
         leep = new Leep();
-
-        //if the value is 0 start login in again
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -91,10 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.account_id:
 
-                System.out.println("Håller på att logga ut.");
-                for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
-                    System.out.println("activityRowList ('the main list for activiys') innehåller: " + SaveActivity.activityRowList.get(i).getUserName() + " " + SaveActivity.activityRowList.get(i).getStartTime());
-                }
                 saveActivityRowList.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
                 SaveActivity.activityRowList.clear();
 

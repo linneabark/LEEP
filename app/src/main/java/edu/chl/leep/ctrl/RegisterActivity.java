@@ -32,8 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Button backButton;
     public static User newUser;
 
-    Context mContext;
-    RegisterActivityModel registerActivityModel;
+    private Context mContext;
+    private RegisterActivityModel registerActivityModel;
 
 
     @Override
@@ -57,10 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-
-
                 if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage) || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
-
 
                 } else{ //if everything is okay, save the information and finish the activity
 
@@ -76,15 +73,6 @@ public class RegisterActivity extends AppCompatActivity {
                             mContext);
 
                     MainActivity.leep.register();
-
-                    //Ändra till User
-/*
-                    Leep.setUSER(userName.getText().toString()); //sets the "user folder with the same name as username"
-                    Leep.setUsername(mContext, userName.getText().toString());
-                    Leep.setPassword(mContext, password.getText().toString());
-                    Leep.setEmail(mContext, mail.getText().toString());
-
-*/
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
 
                     finish();
