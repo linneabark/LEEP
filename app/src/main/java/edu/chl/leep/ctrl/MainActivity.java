@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         return changeFragment(item.getItemId());
     }
 
-
     public void showPopUp(View v){
         settings.choosePopUp(v);
     }

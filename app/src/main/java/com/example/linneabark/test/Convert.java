@@ -10,5 +10,17 @@ public class Convert {
         String longAsString = Long.toString(longNumber);
         return longAsString;
     }
+
+    public Long stringToLong(String string) {
+        long longNumber = -1;
+        try {
+            longNumber = Long.parseLong(string);
+            //Annars Long.ValueOf(string)
+            System.out.println("long longNumber = " + 1);
+        } catch (NumberFormatException nFormatExeption) {
+            System.out.println("NumberFormatExeption: " + nFormatExeption.getMessage() + " exception end.");
+        }
+        return longNumber;
+    }
 }
 
