@@ -154,7 +154,7 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        time = Time.getInstance(this);
+        time = Time.getInstance(getActivity(), time_txt);
 
 
         updateText(time.toString());
@@ -188,29 +188,11 @@ public class TimeLog extends Fragment {
                         convert.longToString(stopActivity - startActivity),
                         Leep.getCategory(mContext, getPosition())));
 
-                System.out.println("THIS CATEGORYY????:" + Leep.getCategory(mContext,getPosition()));
-
-/*
-                FileService.saveActivityToTxt(Leep.getUsername(mContext), SaveActivity.activityRowList, mContext);
-
-                System.out.println("Which filename: "+ Leep.getUsername(mContext));
-                System.out.println("Which filename2: "+ Leep.getUSER());
-
-                List<ActivityRow> list = FileService.getActivityFromTxt(Leep.getUsername(mContext), mContext);
-
-                //System.out.println(list);
-                */
-                //writeAndReadFile = new WriteAndReadFile(mContext);
-
-                System.out.println("Vad är tiden som startades precis? : " + convert.longToString(startActivity));
-
-                System.out.println("var är element 1 i saveActivity. activityRowList: " + saveActivity.activityRowList.get(0).getStartTime());
-                //writeAndReadFile.writeArrayToFile(saveActivity.activityRowList);
-
-               // getTheSavedList = writeAndReadFile.getArrayFromFile();
-                System.out.println("vad är första elemetet i getTheSavedList: " + saveActivity.activityRowList.get(0).getStartTime());
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();
+                long value = (stopActivity - startActivity);
+                System.out.println("hEJEJEJEJ:" + saveDate.calculateTimeToString((time.getLastTime())));
+                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(time.getLastTime()), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -232,7 +214,6 @@ public class TimeLog extends Fragment {
                         mTimeSetListener, timeLogModel.getHour(), timeLogModel.getMinute(), true);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
                 timePickerDialog.setTitle("Set time to start count down.");
                 timePickerDialog.show();
             }
@@ -248,7 +229,7 @@ public class TimeLog extends Fragment {
                 txtTimer.setText(text);
                 */
 
-                time.startCountDown(hourOfDay, minute);
+               // time.startCountDown(hourOfDay, minute);
             }
         };
 

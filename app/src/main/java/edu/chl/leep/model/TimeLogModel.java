@@ -4,6 +4,9 @@ import android.content.Context;
 
 import java.util.Calendar;
 
+import edu.chl.leep.ctrl.MainActivity;
+import edu.chl.leep.ctrl.TimeLog;
+
 /**
  * Created by Eli on 2017-05-24.
  */
@@ -20,6 +23,8 @@ public class TimeLogModel {
     private String category2 = "Category 2";
     private String category3 = "Category 3";
 
+    TimeLog tL = new TimeLog();
+
     public void checkCategoryStatus(Context mContext) {
 
         if ((Leep.getCategory1(mContext).equals("")) && (Leep.getCategory2(mContext).equals(""))
@@ -31,7 +36,16 @@ public class TimeLogModel {
         }
     }
 
-    public int getHour(){
+    public boolean timeIs24() {
+        long curTime = System.currentTimeMillis();
+
+        if (curTime <= 86400000) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getHour() {
 
         int hour = cal.get(Calendar.HOUR);
 
@@ -39,7 +53,7 @@ public class TimeLogModel {
         return hour;
     }
 
-    public int getMinute(){
+    public int getMinute() {
         int minute = cal.get(Calendar.MINUTE);
         return minute;
     }
@@ -53,3 +67,4 @@ public class TimeLogModel {
         }
 
 }}
+
