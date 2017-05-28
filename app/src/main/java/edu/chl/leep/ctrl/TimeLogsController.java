@@ -36,7 +36,7 @@ import edu.chl.leep.utils.ConvertUtils;
 /**
  * A simple {@link Fragment} subclass.
  A controller class which handles the start and stop of the timer*/
-public class TimeLogController extends Fragment {
+public class TimeLogsController extends Fragment {
 
     private TextView quoteDisplay;
     private QuotesService quote;
@@ -58,7 +58,7 @@ public class TimeLogController extends Fragment {
     Spinner spinner;
     public int position;
 
-    public TimeLogController() {
+    public TimeLogsController() {
         // Required empty public constructor
     }
 

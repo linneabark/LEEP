@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 /**
  * Created by Eli on 2017-05-24.
- * A model class which contains some methods used in TimeLogController
+ * A model class which contains some methods used in TimeLogsController
  * */
 
 public class TimeLogModel {
