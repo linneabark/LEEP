@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 /**
  * Created by Eli on 2017-05-24.
- A model class which contains some methods used in RegisterActivity*/
+ A model class which contains some methods used in RegisterActivityController*/
 
 public class RegisterActivityModel {
 

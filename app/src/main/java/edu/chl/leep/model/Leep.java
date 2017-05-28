@@ -2,13 +2,12 @@ package edu.chl.leep.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.EditText;
 import android.widget.RadioButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.leep.ctrl.RegisterActivity;
+import edu.chl.leep.ctrl.RegisterActivityController;
 import edu.chl.leep.service.FileService;
 
 /**
@@ -45,10 +44,10 @@ public class Leep {
 
     public static void register(){
         System.out.println("Skriver den ut här?");
-        Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
-        Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
-        Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
-        Leep.setEmail(User.mContext, RegisterActivity.newUser.email);
+        Leep.setUSER(RegisterActivityController.newUser.user); //sets the "user folder with the same name as username"
+        Leep.setUsername(User.mContext, RegisterActivityController.newUser.userName);
+        Leep.setPassword(User.mContext, RegisterActivityController.newUser.password);
+        Leep.setEmail(User.mContext, RegisterActivityController.newUser.email);
 
     }
 

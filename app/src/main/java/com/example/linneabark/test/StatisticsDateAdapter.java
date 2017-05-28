@@ -1,21 +1,15 @@
 package com.example.linneabark.test;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.leep.ctrl.Statistics;
-import edu.chl.leep.model.ActivityRow;
 import edu.chl.leep.model.StatisticsModel;
-import edu.chl.leep.utils.FindWhichMonth;
 
 /**
  * Created by Evelina on 2017-05-12.

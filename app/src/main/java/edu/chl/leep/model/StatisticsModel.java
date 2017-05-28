@@ -206,7 +206,7 @@ public class StatisticsModel {
         for(int i= 0; i < userActivityList.size(); i++ ){
 
             int intMonthFromList = Integer.valueOf(takeAwayFirstZeros(userActivityList.get(i).getMonth()));
-            //int intDayFromList = Integer.valueOf(Statistics.takeAwayFirstZeros(Statistics.userActivityList.get(i).getDay()));
+            //int intDayFromList = Integer.valueOf(StatisticsController.takeAwayFirstZeros(StatisticsController.userActivityList.get(i).getDay()));
             if (whichBtn.equals("btnDay")) {
                 if (intMonthFromList == intMonth) {
                     if(!(allDays.contains(userActivityList.get(i).getDay()))) {

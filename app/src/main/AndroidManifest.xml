@@ -14,7 +14,7 @@
         <activity android:name="edu.chl.leep.ctrl.MainActivityController">
         </activity>
 
-        <activity android:name="edu.chl.leep.ctrl.RegisterActivity"
+        <activity android:name="edu.chl.leep.ctrl.RegisterActivityController"
             android:parentActivityName="edu.chl.leep.ctrl.LoginActivityController">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

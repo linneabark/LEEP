@@ -3,7 +3,7 @@ package com.example.linneabark.test.unused;
 import com.example.linneabark.test.unused.CreateAccount;
 
 public class AccountCheck {
-    // RegisterActivity registerActivity = new RegisterActivity();
+    // RegisterActivityController registerActivity = new RegisterActivityController();
     private CreateAccount createAccount;
 
     private String password; // Ska bytas ut, finns endast så koden går att köra

@@ -75,7 +75,7 @@ public class LoginActivityController extends AppCompatActivity { //TODO change n
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toy = new Intent(LoginActivityController.this, RegisterActivity.class);
+                Intent toy = new Intent(LoginActivityController.this, RegisterActivityController.class);
                 startActivity(toy);
             }
 

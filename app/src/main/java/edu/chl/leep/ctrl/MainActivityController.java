@@ -70,10 +70,10 @@ public class MainActivityController extends AppCompatActivity {
                 nextFrag = settings;
                 break;
             case R.id.statistics_id:
-                nextFrag = new Statistics();
+                nextFrag = new StatisticsController();
                 break;
             case R.id.timelog_id:
-                nextFrag = new TimeLog();
+                nextFrag = new TimeLogController();
                 break;
             case R.id.account_id:
 
