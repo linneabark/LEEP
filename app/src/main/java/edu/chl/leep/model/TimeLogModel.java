@@ -1,12 +1,12 @@
 package edu.chl.leep.model;
 
 import android.content.Context;
-
 import java.util.Calendar;
 
 /**
  * Created by Eli on 2017-05-24.
- A model class which contains some methods used in TimeLogController*/
+ * A model class which contains some methods used in TimeLogController
+ * */
 
 public class TimeLogModel {
 
@@ -31,20 +31,8 @@ public class TimeLogModel {
         }
     }
 
-    public boolean timeIs24() {
-        long curTime = System.currentTimeMillis();
-
-        if (curTime <= 86400000) {
-            return true;
-        }
-        return false;
-    }
-
     public int getHour() {
-
         int hour = cal.get(Calendar.HOUR);
-
-
         return hour;
     }
 

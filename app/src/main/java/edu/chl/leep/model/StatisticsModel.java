@@ -72,8 +72,6 @@ public class StatisticsModel {
     }
 
 
-
-
     public List <String> reformListToDisplay () {
         System.out.println("reformListToDisplay SM");
         giveValuesToDefaultStatisticList();
@@ -97,7 +95,6 @@ public class StatisticsModel {
 
         System.out.println("userActivityList i giveValuesToDefaultStatisticsList : listans size --> " + userActivityList.size());
 
-        //Find the greatest year
         for (int i = 0; i < userActivityList.size(); i++) {
             int yearFromList = intYearFromList(userActivityList,i);
             if (yearFromList > year) {
@@ -141,7 +138,6 @@ public class StatisticsModel {
     }
 
     public void totalForActivity (List<ActivityRowModel> oneList) {
-        long j;
         long totalTimeOfEveryting = 0;
 
         //For loopen gör så att man kan gå igenom alla objekt från en månad
