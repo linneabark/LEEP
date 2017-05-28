@@ -12,10 +12,10 @@ import edu.chl.leep.ctrl.MainActivityController;
 public class MainActivityModel {
 
     public void logOutUser(Context mContext){
-        Leep.setKeepLoginStateToZero(mContext, 0);
-        Time time = Time.getInstance((MainActivityController)mContext);
+        LeepModel.setKeepLoginStateToZero(mContext, 0);
+        TimeModel time = TimeModel.getInstance((MainActivityController)mContext);
         time.stopTimer();
-        Toast.makeText(mContext, ("Logged out " + Leep.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, ("Logged out " + LeepModel.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
     }
 
 }

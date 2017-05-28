@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.FileService;
 
@@ -26,7 +26,7 @@ public class LoginActivityController extends AppCompatActivity { //TODO change n
     private TextView eM; //errorMessage
     private RadioButton rB; //keep the login
     private Context mContext;
-    private static Leep leep;
+    private static LeepModel leep;
     private LoginActivityModel loginActivityModel;
     private FileService fileService;
     private Button registerButton;
@@ -57,7 +57,7 @@ public class LoginActivityController extends AppCompatActivity { //TODO change n
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
-        System.out.println(Leep.getKeepLoginState(mContext));
+        System.out.println(LeepModel.getKeepLoginState(mContext));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -83,9 +83,9 @@ public class LoginActivityController extends AppCompatActivity { //TODO change n
 
     });
         }
-    public static Leep getInstance(){
+    public static LeepModel getInstance(){
         if(leep == null){
-            leep = new Leep();
+            leep = new LeepModel();
         }
         return leep;
     }

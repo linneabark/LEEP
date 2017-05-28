@@ -7,7 +7,7 @@ import java.util.TimerTask;
  * Created by Evelina on 2017-05-05.
  */
 // TODO till timer
-public class CountDown {
+public class CountDownModel {
     static long time;
     static Timer timer;
 

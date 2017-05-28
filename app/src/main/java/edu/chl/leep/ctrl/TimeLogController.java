@@ -19,17 +19,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import edu.chl.leep.model.ActivityRow;
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.ActivityRowModel;
+import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.TimeLogModel;
+import edu.chl.leep.model.TimeModel;
 import edu.chl.leep.service.QuotesService;
 
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.ConvertUtils;
-import edu.chl.leep.model.Time;
-
 
 
 /**
@@ -50,7 +49,7 @@ public class TimeLogController extends Fragment {
 
 
     private TimeLogModel timeLogModel;
-    private Time time;
+    private TimeModel time;
     private Context mContext;
 
     /** Timer variables */ //TODO remove?
@@ -89,7 +88,7 @@ public class TimeLogController extends Fragment {
         /**SPINNER **/
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, Leep.getCategoryList(mContext));
+        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, LeepModel.getCategoryList(mContext));
         array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(array);
 
@@ -119,7 +118,7 @@ public class TimeLogController extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        time = Time.getInstance(getActivity(), time_txt);
+        time = TimeModel.getInstance(getActivity(), time_txt);
 
 
         startClock.setOnClickListener(new OnClickListener() {
@@ -142,14 +141,14 @@ public class TimeLogController extends Fragment {
 
                 stopActivity = System.currentTimeMillis();
 
-                SaveActivity.addActivity(new ActivityRow(
-                        Leep.getUSER(),
+                SaveActivity.addActivity(new ActivityRowModel(
+                        LeepModel.getUSER(),
                         convertUtils.calculateYearToString(),
                         convertUtils.calculateMonthToString(),
                         convertUtils.calculateDayToString(),
                         convertUtils.longToString(startActivity),
                         convertUtils.longToString(time.getTotalTime()),
-                        Leep.getCategory(mContext, getPosition())));
+                        LeepModel.getCategory(mContext, getPosition())));
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
 

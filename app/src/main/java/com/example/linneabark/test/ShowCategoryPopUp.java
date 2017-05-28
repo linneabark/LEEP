@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 
 /**
  * Created by linneabark on 2017-05-28.
@@ -54,21 +54,21 @@ public class ShowCategoryPopUp {
 
     private String getCategory(String buttontag, Context context){
         if (Integer.valueOf(buttontag) == 0){
-            return Leep.getCategory1(context);
+            return LeepModel.getCategory1(context);
         }else if (Integer.valueOf(buttontag) == 1){
-            return Leep.getCategory2(context);
+            return LeepModel.getCategory2(context);
         }else{
-            return Leep.getCategory3(context);
+            return LeepModel.getCategory3(context);
         }
     }
 
     private void setCategory(Context context, String buttonTag){
         if (Integer.valueOf(buttonTag) == 0){
-        Leep.setCategory1(context, categoryEdit.getText().toString());
+        LeepModel.setCategory1(context, categoryEdit.getText().toString());
     }   else if(Integer.valueOf(buttonTag) == 1){
-            Leep.setCategory2(context, categoryEdit.getText().toString());
+            LeepModel.setCategory2(context, categoryEdit.getText().toString());
         }else {
-            Leep.setCategory3(context, categoryEdit.getText().toString());
+            LeepModel.setCategory3(context, categoryEdit.getText().toString());
         }
 
 }}

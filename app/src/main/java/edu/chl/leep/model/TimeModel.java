@@ -12,23 +12,23 @@ import java.util.TimerTask;
  * Created by Eli on 2017-05-04.
  A class which runs a timer, starts and stops a timertask*/
 
-public class Time {
-    private static Time instance; //CC vill att den deklareras till new Time();
+public class TimeModel {
+    private static TimeModel instance; //CC vill att den deklareras till new TimeModel();
     private long value;
     private Timer timer;
     private long totalTime;
     private static Activity mainActivity;
     private static TextView time_txt;
 
-    private Time(){
+    private TimeModel(){
         value = 0;
         timer = new Timer();
     }
 
     //use this if a textview must be manipulated
-    public static Time getInstance(Activity activity, TextView txt){
+    public static TimeModel getInstance(Activity activity, TextView txt){
         if(instance == null){
-            instance = new Time();
+            instance = new TimeModel();
         }
         mainActivity = activity;
         time_txt = txt;
@@ -36,9 +36,9 @@ public class Time {
     }
 
     //use this if you don't care about a text being updated
-    public static Time getInstance(Activity activity){
+    public static TimeModel getInstance(Activity activity){
         if(instance == null){
-            instance = new Time();
+            instance = new TimeModel();
         }
         mainActivity = activity;
         return instance;

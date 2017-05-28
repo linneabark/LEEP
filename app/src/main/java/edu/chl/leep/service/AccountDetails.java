@@ -18,7 +18,7 @@ public class AccountDetails {
 
     private SharedPreferences sharedPreferences;
 
-    // TODO till User
+    // TODO till UserModel
     private static String USER_INFO = "UserInfo";
 
     static String theUser = "";

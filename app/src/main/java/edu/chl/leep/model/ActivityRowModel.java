@@ -7,7 +7,7 @@ import java.util.Date;
  * Created by Evelina on 2017-05-05.
  */
 
-public class ActivityRow implements Serializable {
+public class ActivityRowModel implements Serializable {
     // TODO Single activity
     private String userName;
     private String year;
@@ -18,7 +18,7 @@ public class ActivityRow implements Serializable {
     private String categoryName;
 
 
-    public ActivityRow (String userName, String year, String month, String day, String startTime, String totalTime, String categoryName) {
+    public ActivityRowModel(String userName, String year, String month, String day, String startTime, String totalTime, String categoryName) {
         this.userName = userName;
         this.year = year;
         this.month = month;

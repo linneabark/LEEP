@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 
 /**
  * Created by Evelina on 2017-05-05.
@@ -35,8 +35,8 @@ public class QuotesService{
 
     //Denna kod kanske borde tas bort och självaste add raden borde finnas i inställninagr där man tar han om inputen.
     public void addQuote(){
-        quotes.add(Leep.getQuote1(context));
-        quotes.add(Leep.getQuote2(context));
-        quotes.add(Leep.getQuote3(context));
+        quotes.add(LeepModel.getQuote1(context));
+        quotes.add(LeepModel.getQuote2(context));
+        quotes.add(LeepModel.getQuote3(context));
     }
 }

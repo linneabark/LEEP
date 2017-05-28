@@ -22,12 +22,12 @@ public class TimeLogModel {
 
     public void checkCategoryStatus(Context mContext) {
 
-        if ((Leep.getCategory1(mContext).equals("")) && (Leep.getCategory2(mContext).equals(""))
-                && (Leep.getCategory3(mContext).equals(""))) {
+        if ((LeepModel.getCategory1(mContext).equals("")) && (LeepModel.getCategory2(mContext).equals(""))
+                && (LeepModel.getCategory3(mContext).equals(""))) {
 
-            Leep.setCategory1(mContext, category1);
-            Leep.setCategory2(mContext, category2);
-            Leep.setCategory3(mContext, category3);
+            LeepModel.setCategory1(mContext, category1);
+            LeepModel.setCategory2(mContext, category2);
+            LeepModel.setCategory3(mContext, category3);
         }
     }
 
@@ -54,11 +54,11 @@ public class TimeLogModel {
     }
 
     public void checkQuoteStatus(Context mcontext){
-        if(((Leep.getQuote1(mcontext)).equals("")) && ((Leep.getQuote2(mcontext)).equals(""))
-                && ((Leep.getQuote3(mcontext)).equals(""))) {
-            Leep.setQuote1(mcontext, quote1);
-            Leep.setQuote2(mcontext, quote2);
-            Leep.setQuote3(mcontext, quote3);
+        if(((LeepModel.getQuote1(mcontext)).equals("")) && ((LeepModel.getQuote2(mcontext)).equals(""))
+                && ((LeepModel.getQuote3(mcontext)).equals(""))) {
+            LeepModel.setQuote1(mcontext, quote1);
+            LeepModel.setQuote2(mcontext, quote2);
+            LeepModel.setQuote3(mcontext, quote3);
         }
 
 }}

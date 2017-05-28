@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 
 /**
  * Created by linneabark on 2017-05-28.
@@ -52,21 +52,21 @@ public class ShowQuotesPopUp {
 
     private String getQuote(String buttontag, Context context){
         if (Integer.valueOf(buttontag) == 0){
-            return Leep.getQuote1(context);
+            return LeepModel.getQuote1(context);
         }else if (Integer.valueOf(buttontag) == 1){
-            return Leep.getQuote2(context);
+            return LeepModel.getQuote2(context);
         }else{
-            return Leep.getQuote3(context);
+            return LeepModel.getQuote3(context);
         }
     }
 
     private void setQuote(Context context, String buttonTag){
         if (Integer.valueOf(buttonTag) == 0){
-            Leep.setQuote1(context, quotesEdit.getText().toString());
+            LeepModel.setQuote1(context, quotesEdit.getText().toString());
         }   else if(Integer.valueOf(buttonTag) == 1){
-            Leep.setQuote2(context, quotesEdit.getText().toString());
+            LeepModel.setQuote2(context, quotesEdit.getText().toString());
         }else {
-            Leep.setQuote3(context, quotesEdit.getText().toString());
+            LeepModel.setQuote3(context, quotesEdit.getText().toString());
         }
     }
 }

@@ -1,8 +1,6 @@
 package edu.chl.leep.model;
 
 import com.example.linneabark.test.StatisticsActivityAdapter;
-import com.example.linneabark.test.StatisticsDateAdapter;
-import com.example.linneabark.test.StatisticsMonthAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +25,11 @@ public class StatisticsModel {
 
 
 
-    private List <ActivityRow> defaultStatisticList = new ArrayList<>();
+    private List <ActivityRowModel> defaultStatisticList = new ArrayList<>();
     //listan för specifik user.
-    private List<ActivityRow> userActivityList = SaveActivity.activityRowList;
+    private List<ActivityRowModel> userActivityList = SaveActivity.activityRowList;
     //sparar alla aktiviteter från en specifik månad.
-    private List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
+    private List <ActivityRowModel> allActivityRowsForSpecificMonth = new ArrayList<>();
 
     // en lista för att spara alla olika kategrier som använts
     private List<String> totalOfCategoryList = new ArrayList<>();
@@ -43,13 +41,13 @@ public class StatisticsModel {
         return string;
     }
 
-    private int intYearFromList (List<ActivityRow> list, int positionInList) {
+    private int intYearFromList (List<ActivityRowModel> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getYear()));
     }
-    private int intMonthFromList (List<ActivityRow> list, int positionInList) {
+    private int intMonthFromList (List<ActivityRowModel> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getMonth()));
     }
-    private int intDayFromList (List<ActivityRow> list, int positionInList) {
+    private int intDayFromList (List<ActivityRowModel> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getDay()));
     }
 
@@ -91,7 +89,7 @@ public class StatisticsModel {
     }
 
 
-    private List<ActivityRow> giveValuesToDefaultStatisticList () {
+    private List<ActivityRowModel> giveValuesToDefaultStatisticList () {
         System.out.println("giveValuesToDefaultStatisticList SM");
         int year = 0;
         int month = 0;
@@ -142,7 +140,7 @@ public class StatisticsModel {
         return defaultStatisticList;
     }
 
-    public void totalForActivity (List<ActivityRow> oneList) {
+    public void totalForActivity (List<ActivityRowModel> oneList) {
         long j;
         long totalTimeOfEveryting = 0;
 
@@ -239,7 +237,7 @@ public class StatisticsModel {
 
     public  List<String> getAllActivitys (StatisticsActivityAdapter statisticsActivityAdapter) {
         List <String> allActivitys = new ArrayList<>();
-        List <ActivityRow> activityRowList = new ArrayList<>();
+        List <ActivityRowModel> activityRowList = new ArrayList<>();
 
         System.out.println("Klass statisticsDateAdapter, metod getAllActivitys.");
         int intDate = Integer.valueOf(takeAwayFirstZeros(dateBtn));
@@ -278,7 +276,7 @@ public class StatisticsModel {
         return allActivitys;
     }
 
-    private void activityToString (List <String> allActivitys, List<ActivityRow> activityRowList, int indexFromForLoop){
+    private void activityToString (List <String> allActivitys, List<ActivityRowModel> activityRowList, int indexFromForLoop){
         ConvertUtils sd = new ConvertUtils();
         long stopTime = Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()))
                 + Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime()));

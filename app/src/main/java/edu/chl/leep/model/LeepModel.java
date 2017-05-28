@@ -14,11 +14,11 @@ import edu.chl.leep.service.FileService;
  * Created by linneabark on 2017-05-22.
  */
 
-public class Leep {
+public class LeepModel {
 
-   // User actual
+   // UserModel actual
     // List<Activity>
-    public Leep(){
+    public LeepModel(){
         String userName;
         String password;
 
@@ -37,30 +37,30 @@ public class Leep {
 
     // getActitivire
 
-    //TODO metod: register(User)
-    //TODO metod: login(User)
+    //TODO metod: register(UserModel)
+    //TODO metod: login(UserModel)
 
     //TODO getters
 
     public static void register(){
         System.out.println("Skriver den ut här?");
-        Leep.setUSER(RegisterActivityController.newUser.user); //sets the "user folder with the same name as username"
-        Leep.setUsername(User.mContext, RegisterActivityController.newUser.userName);
-        Leep.setPassword(User.mContext, RegisterActivityController.newUser.password);
-        Leep.setEmail(User.mContext, RegisterActivityController.newUser.email);
+        LeepModel.setUSER(RegisterActivityController.newUser.user); //sets the "user folder with the same name as username"
+        LeepModel.setUsername(UserModel.mContext, RegisterActivityController.newUser.userName);
+        LeepModel.setPassword(UserModel.mContext, RegisterActivityController.newUser.password);
+        LeepModel.setEmail(UserModel.mContext, RegisterActivityController.newUser.email);
 
     }
 
 
     public static void setUSER(String input){
-        User.theUser = input;
+        UserModel.theUser = input;
     }
 
 
 
     //all the getter
     public static String getUSER(){
-        String y = User.theUser;
+        String y = UserModel.theUser;
         return y;
     }
 
@@ -87,7 +87,7 @@ public class Leep {
     }
 
     private static SharedPreferences getUserInfo(Context context) { //or is it getPrefs?
-        return context.getSharedPreferences(User.USER_INFO, Context.MODE_PRIVATE);
+        return context.getSharedPreferences(UserModel.USER_INFO, Context.MODE_PRIVATE);
     }
 
     //gets the specific key and value in it

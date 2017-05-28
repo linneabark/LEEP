@@ -30,14 +30,14 @@ public class SettingsModel {
         listDataHeader.add("HELP");
 
         List<String> category = new ArrayList<>();
-        category.add(Leep.getCategory1(context));
-        category.add(Leep.getCategory2(context));
-        category.add(Leep.getCategory3(context));
+        category.add(LeepModel.getCategory1(context));
+        category.add(LeepModel.getCategory2(context));
+        category.add(LeepModel.getCategory3(context));
 
         List<String> quote = new ArrayList<>();
-        quote.add(Leep.getQuote1(context));
-        quote.add(Leep.getQuote2(context));
-        quote.add(Leep.getQuote3(context));
+        quote.add(LeepModel.getQuote1(context));
+        quote.add(LeepModel.getQuote2(context));
+        quote.add(LeepModel.getQuote3(context));
 
         List<String> help = new ArrayList<>();
         help.add("Info om hur appen fungerar");

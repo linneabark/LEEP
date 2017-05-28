@@ -16,7 +16,7 @@ import android.view.View;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
@@ -27,7 +27,7 @@ import edu.chl.leep.service.SaveActivity;
 public class MainActivityController extends AppCompatActivity {
 //TODO name to xCtrl, maybe
 
-    public static Leep leep;
+    public static LeepModel leep;
     private Context mContext;
     private SettingsController settings;
 
@@ -42,7 +42,7 @@ public class MainActivityController extends AppCompatActivity {
         mContext = this;
         mainActivityModel = new MainActivityModel();
         fileService = new FileService();
-        leep = new Leep();
+        leep = new LeepModel();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
