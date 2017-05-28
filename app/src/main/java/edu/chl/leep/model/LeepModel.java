@@ -32,10 +32,10 @@ public class LeepModel {
     }
 
     public static void register(){
-        LeepModel.setUSER(RegisterActivityController.newUser.user); //sets the "user folder with the same name as username"
-        LeepModel.setUsername(UserModel.mContext, RegisterActivityController.newUser.userName);
-        LeepModel.setPassword(UserModel.mContext, RegisterActivityController.newUser.password);
-        LeepModel.setEmail(UserModel.mContext, RegisterActivityController.newUser.email);
+        LeepModel.setUSER(UserModel.user); //sets the "user folder with the same name as username"
+        LeepModel.setUsername(UserModel.mContext, UserModel.userName);
+        LeepModel.setPassword(UserModel.mContext, UserModel.password);
+        LeepModel.setEmail(UserModel.mContext, UserModel.email);
     }
 
     public static void setUSER(String input){

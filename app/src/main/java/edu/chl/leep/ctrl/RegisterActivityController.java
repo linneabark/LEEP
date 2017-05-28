@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
+import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.RegisterActivityModel;
 import edu.chl.leep.model.UserModel;
 
@@ -60,7 +61,7 @@ public class RegisterActivityController extends AppCompatActivity {
                             password.getText().toString(),
                             mContext);
 
-                    MainActivityController.leep.register();
+                    LeepModel.register();
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
