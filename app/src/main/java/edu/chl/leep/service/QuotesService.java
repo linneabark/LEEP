@@ -17,13 +17,11 @@ import edu.chl.leep.model.Leep;
 
 public class QuotesService{
     //QuotesService is stored in a list
-    List<String> quotes = new ArrayList<String>();
-    Random rand = new Random();
-    MainActivity mA;
-    Context context;
+    private List<String> quotes = new ArrayList<String>();
+    private Random rand = new Random();
+    private Context context;
 
     public QuotesService(Context context) {
-        mA = new MainActivity();
         this.context = context;
         System.out.println("Context constructor: " +context);
 
