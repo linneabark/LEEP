@@ -21,7 +21,6 @@ public class ShowQuotesPopUp {
     private Button exitButtonQuotes;
     private EditText quotesEdit;
 
-
     public void showQuotesPopUpOne(final Context context, Activity activity) {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder((activity));

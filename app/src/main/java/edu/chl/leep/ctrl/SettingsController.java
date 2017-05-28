@@ -1,7 +1,6 @@
 package edu.chl.leep.ctrl;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import com.example.linneabark.test.ExpandableListAdapter;
 import com.example.linneabark.test.R;
 import com.example.linneabark.test.ShowCategoryPopUp;
+import com.example.linneabark.test.ShowHelpPopUp;
 import com.example.linneabark.test.ShowQuotesPopUp;
-
-import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.SettingsModel;
 /**
  * A simple {@link Fragment} subclass.
@@ -24,19 +21,12 @@ public class SettingsController extends Fragment{
 
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
-    private EditText categoryEdit;
-    private EditText quotesEdit;
     private String buttonTag;
-    private Button exitButtonHelp;
-    private Button exitButtonCategory;
-    private Button exitButtonQuotes;
-    private Button saveButtonCategory;
-    private Button saveButtonQuotes;
     private ImageButton popUpButton;
     private SettingsModel settingsModel;
-
     private ShowCategoryPopUp popUpCategory;
     private ShowQuotesPopUp popUpQuote;
+    private ShowHelpPopUp popUpHelp;
 
     public SettingsController() {
         // Required empty public constructor
@@ -62,6 +52,7 @@ public class SettingsController extends Fragment{
         buttonTag = popUpButton.getTag().toString();
         popUpCategory = new ShowCategoryPopUp();
         popUpQuote = new ShowQuotesPopUp();
+        popUpHelp = new ShowHelpPopUp();
 
         if (getExpanded() == 1){
             if(Integer.valueOf(buttonTag) == 0) {
@@ -80,26 +71,8 @@ public class SettingsController extends Fragment{
                 popUpQuote.showQuotesPopUpThree(getContext(), getActivity());
             }
         }else{
-            showHelpPopUp();
+            popUpHelp.showHelpPopUp(getActivity());
         }
-    }
-
-    private void showHelpPopUp() {
-
-        final AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        final View helpLayout = inflater.inflate(R.layout.pop_up_help, null);
-        helpBuilder.setView(helpLayout);
-
-        final AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
-        exitButtonHelp = (Button) helpLayout.findViewById(R.id.done_button_help);
-        exitButtonHelp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                helpDialog.dismiss();
-            }
-        });
     }
 
     public int getExpanded(){
