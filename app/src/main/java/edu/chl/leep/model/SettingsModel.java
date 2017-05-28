@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * Created by linneabark on 2017-05-27.
+ *
+ * A model class which contains the data shown in Settings expandablelistview
  */
 
 public class SettingsModel {
