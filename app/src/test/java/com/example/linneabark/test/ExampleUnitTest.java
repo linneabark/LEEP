@@ -1,11 +1,6 @@
 package com.example.linneabark.test;
 
-import android.content.Context;
-
 import org.junit.Test;
-
-import edu.chl.leep.ctrl.MainActivity;
-import edu.chl.leep.model.TimeLogModel;
 
 import static org.junit.Assert.*;
 

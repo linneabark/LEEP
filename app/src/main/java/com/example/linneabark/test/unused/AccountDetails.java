@@ -18,9 +18,9 @@ public class AccountDetails {
 
     private SharedPreferences sharedPreferences;
 
-    // TODO till User
+    // TODO till UserModel
 
-    //Flyttat till User
+    //Flyttat till UserModel
     /*
     private static String USER_INFO = "UserInfo";
 
@@ -34,7 +34,7 @@ public class AccountDetails {
         // Blank
     }
 
-    //Flyttat till Leep
+    //Flyttat till LeepModel
     /*
     public static void setUSER(String input){
         theUser = input;
@@ -60,7 +60,7 @@ public class AccountDetails {
         return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
     }*/
 
-    //Flyttat till Leep
+    //Flyttat till LeepModel
     /*
     public static String getPreviousUser(Context context) {
         return getPrefPreviousUser(context).getString("user", "");

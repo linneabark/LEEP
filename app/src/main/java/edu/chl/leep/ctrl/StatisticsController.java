@@ -1,6 +1,5 @@
 package edu.chl.leep.ctrl;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,12 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import edu.chl.leep.model.ActivityRow;
-import edu.chl.leep.model.Leep;
+
 import edu.chl.leep.model.StatisticsModel;
 import edu.chl.leep.utils.FindWhichMonth;
 import com.example.linneabark.test.R;
-import edu.chl.leep.service.SaveActivity;
+
 import android.widget.Button;
 
 import com.example.linneabark.test.StatisticsActivityAdapter;
@@ -35,30 +33,28 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Statistics extends Fragment {
-    //TODO StatisticsCtrl
+public class StatisticsController extends Fragment {
     private FindWhichMonth findWhichMonth;
-    private MainActivity mainActivity;
+    private MainActivityController mainActivity;
     private StatisticsModel statisticsModel;
 
     private RecyclerView recyclerMonth;
     private RecyclerView recyclerDate;
     private RecyclerView recyclerActivity;
+    public static List<String> date;
+
 
     private Button btnDay;
     private Button btnMonth;
-
-    //Declare pie-chart
     private PieChart pieChart;
-
     private float [] yvalue;
     private String [] xcategory;
 
-    StatisticsActivityAdapter statisticsActivityAdapter;
-    StatisticsDateAdapter statisticsDateAdapter;
-    StatisticsMonthAdapter statisticsMonthAdapter;
+    private StatisticsActivityAdapter statisticsActivityAdapter;
+    private StatisticsDateAdapter statisticsDateAdapter;
+    private StatisticsMonthAdapter statisticsMonthAdapter;
 
-    public Statistics() {
+    public StatisticsController() {
         // Required empty public constructor
     }
 
@@ -69,19 +65,18 @@ public class Statistics extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         findWhichMonth = new FindWhichMonth();
-        mainActivity = new MainActivity();
+        mainActivity = new MainActivityController();
         statisticsModel = new StatisticsModel();
+        date =new ArrayList<>();
 
         statisticsActivityAdapter  = new StatisticsActivityAdapter(statisticsModel.reformListToDisplay());
         statisticsDateAdapter = new StatisticsDateAdapter(assList(), statisticsActivityAdapter);
         statisticsMonthAdapter = new StatisticsMonthAdapter(findWhichMonth.months, statisticsDateAdapter);
-/**/
-        //to display the months
+
         recyclerMonth = (RecyclerView) rootview.findViewById(R.id.recyclerMonth);
         recyclerMonth.setLayoutManager(new LinearLayoutManager(mainActivity.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerMonth.setAdapter(statisticsMonthAdapter);
 
-        //to display all the dates there where logged in a specific month.
         recyclerDate = (RecyclerView) rootview.findViewById(R.id.recyclerDate);
         recyclerDate.setLayoutManager(new LinearLayoutManager(mainActivity.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerDate.setAdapter(statisticsDateAdapter);
@@ -116,9 +111,7 @@ public class Statistics extends Fragment {
         insertCategoryPieChart(statisticsModel.getTotalOfCategoryList());
         insertTotalTimePieChart(statisticsModel.getTotalTimeList());
 
-        //The PieChart
         pieChart = (PieChart) rootview.findViewById(R.id.pieChart);
-        //set propeties
         pieChart.setRotationEnabled(true);
         pieChart.setHoleRadius(50f);
         pieChart.setCenterText("Activity in percent");
@@ -126,14 +119,11 @@ public class Statistics extends Fragment {
 
         addDataToChart(pieChart);
 
-        //pieChart listener så när man trycker på en pajbit så kommer de upp en text.
         pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                //e.toString().indexOf("(sum) ");man behöver detta pga att programmet skriver ut detta. Inget vi valt.
                 int pos = e.toString().indexOf("y: ");
                 String precent = e.toString().substring(pos + 3);
-
                 for (int i = 0; i < yvalue.length; i++) {
                     if (yvalue[i] == Float.parseFloat(precent)) {
                         pos = i;
@@ -155,30 +145,21 @@ public class Statistics extends Fragment {
         return rootview;
     }
 
-    //behöver ej in-parametern / typ-parametrn när variabeln ligger i denna klassen. Flyttar vi dock ut metoden eller dyligt måste det finnas en in-parameter.
     private void addDataToChart(PieChart pieChart) {
         ArrayList<PieEntry> yEntrys = new ArrayList<>();
         ArrayList<String> xEntrys = new ArrayList<>();
 
-        //Loppar igenom de procentuella värderna och lägger till  yEntry arraylist
         for(int i = 0; i < yvalue.length; i++) {
             yEntrys.add(new PieEntry(yvalue[i] , i));
         }
-        //Lägger till categorinamnet i xEntry arraylisten
         for(int i = 0; i < xcategory.length; i++) {
             xEntrys.add(xcategory[i]);
         }
 
-        //skapar the data set
-
         PieDataSet pieDataSet = new PieDataSet(yEntrys, "Activitys precent");
-        //Avståndet mellan de olika pajbitarna
         pieDataSet.setSliceSpace(2);
-        //Storleken på den procentuella summan
         pieDataSet.setValueTextSize(12);
 
-        //Lägger till färgerna, koppla ihop dessa med kategorierna
-        //add colors to the dataset
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.GRAY);
         colors.add(Color.RED);
@@ -187,12 +168,10 @@ public class Statistics extends Fragment {
 
         pieDataSet.setColors(colors);
 
-        //add legend to the chart. Förklarar hur mann gör allt: https://github.com/PhilJay/MPAndroidChart/wiki/Legend
         Legend legend = pieChart.getLegend();
         legend.setForm(Legend.LegendForm.CIRCLE);
         legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
 
-        //create pie data object
         PieData pieData = new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
@@ -233,7 +212,7 @@ public class Statistics extends Fragment {
     }
 
 
-    public static List<String> date = new ArrayList<>();
+
     public static List <String> assList () {
         date.add("01");
         date.add("02");

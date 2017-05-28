@@ -19,58 +19,49 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import edu.chl.leep.model.ActivityRow;
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.ActivityRowModel;
+import edu.chl.leep.model.CountDownModel;
+import edu.chl.leep.model.LeepModel;
+
 import edu.chl.leep.model.TimeLogModel;
+import edu.chl.leep.model.TimerModel;
 import edu.chl.leep.service.QuotesService;
 
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.ConvertUtils;
-import edu.chl.leep.model.Time;
-
 
 
 /**
  * A simple {@link Fragment} subclass.
  A controller class which handles the start and stop of the timer*/
-public class TimeLog extends Fragment {
-    //TODO TimeLogCtrl
-
-    //TODO gör variablerna private
+public class TimeLogController extends Fragment {
 
     private TextView quoteDisplay;
     private QuotesService quote;
     private ConvertUtils convertUtils;
 
-    private long stopActivity;
+    public long stopActivity;
     private long startActivity;
     private TextView time_txt;
 
-
     private TimeLogModel timeLogModel;
-    private Time time;
+    private TimerModel time;
     private Context mContext;
 
-    /** Timer variables */ //TODO remove?
+    private CountDownModel countDown;
     private ImageButton timerButton;
     public TextView txtCountDown;
+    private Button stopTimer;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
     Spinner spinner;
     public int position;
 
-    public TimeLog() {
+    public TimeLogController() {
         // Required empty public constructor
     }
 
-
-    //TODO lägg upp ovanför konstruktor
-
-    //TODO move method so that it's under onCreateView
-
-
-    //TODO make smaller methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
@@ -89,7 +80,7 @@ public class TimeLog extends Fragment {
         /**SPINNER **/
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, Leep.getCategoryList(mContext));
+        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, LeepModel.getCategoryList(mContext));
         array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(array);
 
@@ -107,7 +98,6 @@ public class TimeLog extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         }
 
@@ -119,17 +109,14 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        time = Time.getInstance(getActivity(), time_txt);
-
+        time = TimerModel.getInstance(getActivity(), time_txt);
 
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 time.startTimer();
-
                 startActivity = System.currentTimeMillis();
-
                 Toast.makeText(mContext, "Activity started!", Toast.LENGTH_SHORT).show();
 
             }
@@ -141,15 +128,14 @@ public class TimeLog extends Fragment {
                 time.stopTimer();
 
                 stopActivity = System.currentTimeMillis();
-
-                SaveActivity.addActivity(new ActivityRow(
-                        Leep.getUSER(),
+                SaveActivity.addActivity(new ActivityRowModel(
+                        LeepModel.getUSER(),
                         convertUtils.calculateYearToString(),
                         convertUtils.calculateMonthToString(),
                         convertUtils.calculateDayToString(),
                         convertUtils.longToString(startActivity),
                         convertUtils.longToString(time.getTotalTime()),
-                        Leep.getCategory(mContext, getPosition())));
+                        LeepModel.getCategory(mContext, getPosition())));
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
 
@@ -157,16 +143,16 @@ public class TimeLog extends Fragment {
         });
 
         quoteDisplay.setText(quote.getQuote());
-
-        /** Timer, count down */ //TODO remove??
-        // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
         txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
         timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
+        stopTimer = (Button) rootView.findViewById(R.id.stopTimerButton);
+
+        stopTimer.setVisibility(View.INVISIBLE);
 
         timerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                stopTimer.setVisibility(View.VISIBLE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -181,20 +167,23 @@ public class TimeLog extends Fragment {
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                /*
-                System.out.println("hourofday " + hourOfDay);
-                System.out.println("minute " + minute);
-                String text = "Hour " + hourOfDay + ", minute " + minute + ".";
-                txtTimer.setText(text);
-                */
+                long total = hourOfDay * 3600000 + minute * 60000;
 
-               // time.startCountDown(hourOfDay, minute);
+                countDown = CountDownModel.getInstance(getActivity(),txtCountDown, total);
+                countDown.startCountDown();
             }
         };
 
+        stopTimer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countDown.stopTimer();
+                stopTimer.setVisibility(View.INVISIBLE);
+            }
+        });
+
         return rootView;
     }
-
 
     public void setPosition(int value){
         position = value;
@@ -203,8 +192,4 @@ public class TimeLog extends Fragment {
     public int getPosition(){
         return position;
     }
-
-
-
-
 }
