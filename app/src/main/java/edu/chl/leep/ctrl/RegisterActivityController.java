@@ -16,10 +16,10 @@ import edu.chl.leep.model.UserModel;
 
 /**
  * Created by Eli on 2017-05-08.
- Is the controller class which handles the register view */
+ * Is the controller class which handles the register view
+ */
 
 public class RegisterActivityController extends AppCompatActivity {
-    //TODO change name to RegisterActivityCtrl
     private EditText mail;
     private EditText userName;
     private EditText password;
@@ -35,10 +35,8 @@ public class RegisterActivityController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-
         mContext = this;
         registerActivityModel = new RegisterActivityModel();
-
         mail = (EditText) this.findViewById(R.id.mail);
         userName = (EditText) this.findViewById(R.id.setUserName);
         password = (EditText) this.findViewById(R.id.setPassword);
@@ -51,13 +49,9 @@ public class RegisterActivityController extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage)
-                        || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
+                        || !registerActivityModel.checkEmail(mail, errorMessage)){
 
-                } else{ //if everything is okay, save the information and finish the activity
-
-                    // TODO UserModel user = new UserModel(name, email)
-                    //MainActivityController.leep.register(user);
-                    //FilseSERVICE. SAVE
+                } else{
 
                     newUser = new UserModel(
                             userName.getText().toString(),

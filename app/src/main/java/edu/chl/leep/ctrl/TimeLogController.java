@@ -35,24 +35,19 @@ import edu.chl.leep.utils.ConvertUtils;
  * A simple {@link Fragment} subclass.
  A controller class which handles the start and stop of the timer*/
 public class TimeLogController extends Fragment {
-    //TODO TimeLogCtrl
-
-    //TODO gör variablerna private
 
     private TextView quoteDisplay;
     private QuotesService quote;
     private ConvertUtils convertUtils;
 
-    private long stopActivity;
+    public long stopActivity;
     private long startActivity;
     private TextView time_txt;
-
 
     private TimeLogModel timeLogModel;
     private TimeModel time;
     private Context mContext;
 
-    /** Timer variables */ //TODO remove?
     private ImageButton timerButton;
     public TextView txtCountDown;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
@@ -63,13 +58,6 @@ public class TimeLogController extends Fragment {
         // Required empty public constructor
     }
 
-
-    //TODO lägg upp ovanför konstruktor
-
-    //TODO move method so that it's under onCreateView
-
-
-    //TODO make smaller methods
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              final Bundle savedInstanceState) {
@@ -106,7 +94,6 @@ public class TimeLogController extends Fragment {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         }
 
@@ -120,15 +107,12 @@ public class TimeLogController extends Fragment {
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
         time = TimeModel.getInstance(getActivity(), time_txt);
 
-
         startClock.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 time.startTimer();
-
                 startActivity = System.currentTimeMillis();
-
                 Toast.makeText(mContext, "Activity started!", Toast.LENGTH_SHORT).show();
 
             }
@@ -140,7 +124,6 @@ public class TimeLogController extends Fragment {
                 time.stopTimer();
 
                 stopActivity = System.currentTimeMillis();
-
                 SaveActivity.addActivity(new ActivityRowModel(
                         LeepModel.getUSER(),
                         convertUtils.calculateYearToString(),
@@ -156,17 +139,12 @@ public class TimeLogController extends Fragment {
         });
 
         quoteDisplay.setText(quote.getQuote());
-
-        /** Timer, count down */ //TODO remove??
-        // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
         txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
         timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
 
         timerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mTimeSetListener, timeLogModel.getHour(), timeLogModel.getMinute(), true);
@@ -183,7 +161,6 @@ public class TimeLogController extends Fragment {
 
             }
         };
-
         return rootView;
     }
 
