@@ -128,7 +128,7 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        time = Time.getInstance(this);
+        time = Time.getInstance(getActivity(), time_txt);
 
 
         updateText(time.toString());
@@ -168,7 +168,7 @@ public class TimeLog extends Fragment {
                 long value = (stopActivity - startActivity);
                 System.out.println("hEJEJEJEJ:" + saveDate.calculateTimeToString((time.getLastTime())));
                 Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(time.getLastTime()), Toast.LENGTH_SHORT).show();
-gi
+
             }
         });
 
@@ -204,7 +204,7 @@ gi
                 txtTimer.setText(text);
                 */
 
-                time.startCountDown(hourOfDay, minute);
+               // time.startCountDown(hourOfDay, minute);
             }
         };
 

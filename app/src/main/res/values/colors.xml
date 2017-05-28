@@ -18,6 +18,7 @@
 
     <!-- TIMELOG !-->
     <color name="colorTimeLogPage">#4bf185</color>
+    <color name="lightGrey">#e7e8eb</color>
 
     <!-- STATISTICS !-->
 
