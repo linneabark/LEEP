@@ -181,7 +181,7 @@ public class TimeLog extends Fragment {
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-             
+
             }
         };
 
