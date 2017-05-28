@@ -1,5 +1,6 @@
 package edu.chl.leep.ctrl;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,30 +37,14 @@ import java.util.List;
  */
 public class Statistics extends Fragment {
     //TODO StatisticsCtrl
+
+
     public Statistics() {
         // Required empty public constructor
     }
-    private FindWhichMonth findWhichMonth = new FindWhichMonth();
-    private SaveActivity saveActivity = new SaveActivity();
-
-
-    static MainActivity mainActivity = new MainActivity();
-
-    StatisticsModel statisticsModel = new StatisticsModel();
-/*
-    private List <ActivityRow> defaultStatisticList = new ArrayList<>();
-    //listan för specifik user.
-    public static List<ActivityRow> userActivityList = new ArrayList<>();
-    //sparar alla datum som finns på den förvalda månaden och skall sedan kunna dispalaya dessa i en lista av något slag.
-    List<String> allDaysForSpecificMonth = new ArrayList<>();
-    //sparar alla aktiviteter från en specifik månad.
-    public static List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
-
-    // en lista för att spara alla olika kategrier som använts
-    public static List<String> totalOfCategoryList = new ArrayList<>();
-    //En lista för att spara all sammanlagd tid för en kategori.
-    public static List<Long> totalTimeList = new ArrayList<>();
-    */
+    private FindWhichMonth findWhichMonth;
+    static MainActivity mainActivity;
+    StatisticsModel statisticsModel;
 
     RecyclerView recyclerMonth;
     RecyclerView recyclerDate;
@@ -74,6 +59,10 @@ public class Statistics extends Fragment {
 
     //Declare pie-chart
     PieChart pieChart;
+
+    StatisticsActivityAdapter statisticsActivityAdapter = new StatisticsActivityAdapter(mainActivity.getContext(),  statisticsModel.reformListToDisplay());
+    StatisticsDateAdapter statisticsDateAdapter = new StatisticsDateAdapter(mainActivity.getContext(), assList(), statisticsActivityAdapter);
+    StatisticsMonthAdapter statisticsMonthAdapter = new StatisticsMonthAdapter(mainActivity.getContext(), findWhichMonth.months, statisticsDateAdapter);
 
     //static long totalTimeOfEveryting;
 
@@ -161,9 +150,7 @@ public class Statistics extends Fragment {
     //String [] listOfActivity = {"hej", "på", "dig", "din", "lilla", "grej", "vad", "gör", "en", "sak", "som", "dig"};
 
 
-    StatisticsActivityAdapter statisticsActivityAdapter = new StatisticsActivityAdapter(mainActivity.getContext(),  statisticsModel.reformListToDisplay());
-    StatisticsDateAdapter statisticsDateAdapter = new StatisticsDateAdapter(mainActivity.getContext(), assList(), statisticsActivityAdapter);
-    StatisticsMonthAdapter statisticsMonthAdapter = new StatisticsMonthAdapter(mainActivity.getContext(), findWhichMonth.months, statisticsDateAdapter);
+
 
 
 
