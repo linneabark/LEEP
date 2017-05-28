@@ -1,37 +1,79 @@
 package edu.chl.leep.model;
 
+import android.app.Activity;
+import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
+import edu.chl.leep.utils.ConvertUtils;
 
 /**
- * Created by Evelina on 2017-05-05.
+ * Created by Paulina Palmberg on 2017-05-28.
  */
-// TODO till timer
+
 public class CountDown {
-    static long time;
-    static Timer timer;
+    private static CountDown instance;
+    private Timer timer;
+    private long total;
+    private static Activity mainActivity;
+    private static TextView timeText;
 
-    void CountDown () {
-        long secs = 90; // Måste Hämta minuterna och sekunderna som blivit valt.
-        int delay = 1000;
-        int period = 1000;
+    public CountDown(long total) {
+        this.total = total;
         timer = new Timer();
-        time = secs;// om secs blir en String. Integer.parseInt(secs);
-
-        timer.scheduleAtFixedRate(
-                new TimerTask(){public void run() {startCountDown();}},
-                delay,
-                period);
     }
 
-    private final long startCountDown () {
-        if (time == 1) {
-            timer.cancel();
+    public static CountDown getInstance(Activity activity, TextView txt, long total) {
+        if(instance == null){
+            instance = new CountDown(total);
         }
-        return --time;
+        mainActivity = activity;
+        timeText = txt;
+        return instance;
     }
 
-    public void updateTimer () {
-        //En metod som displayar timerns count down. Rudolf vet hur man gör för hennes stoppur.
+    public void startCountDown() {
+        timer.cancel();
+        timer = new Timer();
+        timer.schedule(new Update(),0,1000);
+    }
+
+    public void stopTimer() {
+        System.out.println("Kommer till Stop Timer");
+        timer.cancel();
+        total = 0;
+        updateText(timeToString());
+        instance = null;
+    }
+
+    private class Update extends TimerTask {
+        @Override
+        public void run() {
+            updateText(timeToString());
+            instance.decTime();
+
+        }
+    }
+
+    private void decTime() {
+        if (total == 0 || total < 0) {
+            stopTimer();
+            return;
+        }
+        total = total - 1000;
+    }
+
+    private String timeToString() {
+        ConvertUtils sd = new ConvertUtils();
+        return sd.calculateTimeToString(total);
+    }
+
+    private void updateText(final String text) {
+        if(timeText != null) {
+            mainActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    timeText.setText(text);
+                }
+            });
+        }
     }
 }

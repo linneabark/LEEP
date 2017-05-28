@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.CountDown;
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
@@ -54,8 +55,10 @@ public class TimeLog extends Fragment {
     private Context mContext;
 
     /** Timer variables */ //TODO remove?
+    private CountDown countDown;
     private ImageButton timerButton;
     public TextView txtCountDown;
+    private Button stopTimer;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
     Spinner spinner;
     public int position;
@@ -162,11 +165,14 @@ public class TimeLog extends Fragment {
         // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
         txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
         timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
+        stopTimer = (Button) rootView.findViewById(R.id.stopTimerButton);
+
+        stopTimer.setVisibility(View.INVISIBLE);
 
         timerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                stopTimer.setVisibility(View.VISIBLE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -181,13 +187,23 @@ public class TimeLog extends Fragment {
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                long total = hourOfDay * 3600000 + minute * 60000;
 
+                countDown = CountDown.getInstance(getActivity(),txtCountDown, total);
+                countDown.startCountDown();
             }
         };
 
+        stopTimer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countDown.stopTimer();
+                stopTimer.setVisibility(View.INVISIBLE);
+            }
+        });
+
         return rootView;
     }
-
 
     public void setPosition(int value){
         position = value;
@@ -196,8 +212,4 @@ public class TimeLog extends Fragment {
     public int getPosition(){
         return position;
     }
-
-
-
-
 }
