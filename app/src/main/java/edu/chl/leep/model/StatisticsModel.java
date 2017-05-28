@@ -127,10 +127,6 @@ public class StatisticsModel {
         return day;
     }
 
-    public int getMonth(){
-        return month;
-    }
-
     private List<ActivityRowModel> giveValuesToDefaultStatisticList () {
         //Find the greatest year in the list
         year =   greatestYear(year);
