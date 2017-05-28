@@ -2,13 +2,8 @@ package edu.chl.leep.model;
 
 import android.app.Activity;
 import android.widget.TextView;
-
-import com.example.linneabark.test.R;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
-import edu.chl.leep.ctrl.TimeLog;
 import edu.chl.leep.utils.ConvertUtils;
 
 /**
@@ -16,17 +11,15 @@ import edu.chl.leep.utils.ConvertUtils;
  */
 
 public class CountDown {
-
     private static CountDown instance;
     private Timer timer;
-    private long total; // totaltid för timer
+    private long total;
     private static Activity mainActivity;
     private static TextView timeText;
 
-    TimeLog timeLog;
-
     public CountDown(long total) {
         this.total = total;
+        timer = new Timer();
     }
 
     public static CountDown getInstance(Activity activity, TextView txt, long total) {
@@ -39,41 +32,42 @@ public class CountDown {
     }
 
     public void startCountDown() {
-//        System.out.println("Jag kommer till startCountDown!!");
-//        timer.cancel();
+        timer.cancel();
         timer = new Timer();
         timer.schedule(new Update(),0,1000);
     }
 
+    public void stopTimer() {
+        System.out.println("Kommer till Stop Timer");
+        timer.cancel();
+        total = 0;
+        updateText(timeToString());
+        instance = null;
+    }
 
     private class Update extends TimerTask {
         @Override
         public void run() {
-            // timeLog = new TimeLog();
-            System.out.println("Jag kommer till run()!!");
-            System.out.println("Tid: " + timeToString());
-            if (total == 1000) {
-                timer.cancel();
-                /** Ska låta så man vet att timern tagit slut!! */
-            }
-            // timeLog.txtCountDown.setText(timeToString());
-            // timeLog.updateTextLabel(timeToString());
-            updateText(toString());
-            decTime();
+            updateText(timeToString());
+            instance.decTime();
+
         }
     }
 
     private void decTime() {
+        if (total == 0 || total < 0) {
+            stopTimer();
+            return;
+        }
         total = total - 1000;
     }
 
-    public String timeToString() {
-        System.out.println("toString");
+    private String timeToString() {
         ConvertUtils sd = new ConvertUtils();
         return sd.calculateTimeToString(total);
     }
 
-    public void updateText(final String text) {
+    private void updateText(final String text) {
         if(timeText != null) {
             mainActivity.runOnUiThread(new Runnable() {
                 public void run() {

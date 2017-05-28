@@ -58,6 +58,7 @@ public class TimeLog extends Fragment {
     private CountDown countDown;
     private ImageButton timerButton;
     public TextView txtCountDown;
+    private Button stopTimer;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
     Spinner spinner;
     public int position;
@@ -164,11 +165,14 @@ public class TimeLog extends Fragment {
         // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
         txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
         timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
+        stopTimer = (Button) rootView.findViewById(R.id.stopTimerButton);
+
+        stopTimer.setVisibility(View.INVISIBLE);
 
         timerButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                stopTimer.setVisibility(View.VISIBLE);
 
                 TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
@@ -183,28 +187,22 @@ public class TimeLog extends Fragment {
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                /*
-                System.out.println("hourofday " + hourOfDay);
-                System.out.println("minute " + minute);
-                String text = "Hour " + hourOfDay + ", minute " + minute + ".";
-                txtCountDown.setText(text);
-                */
+                long total = hourOfDay * 3600000 + minute * 60000;
 
-                long total = hourOfDay * 3600 + minute * 60;
-
-                System.out.println("Jag kommer hit när jag trycker på ok" + hourOfDay + " " + minute);
-                // countDown = new CountDown(hourOfDay, minute, txtCountDown);
-                // countDown.startCountDown();
-                startTimer(total);
+                countDown = CountDown.getInstance(getActivity(),txtCountDown, total);
+                countDown.startCountDown();
             }
         };
 
-        return rootView;
-    }
+        stopTimer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                countDown.stopTimer();
+                stopTimer.setVisibility(View.INVISIBLE);
+            }
+        });
 
-    private void startTimer(long total) {
-        countDown = new CountDown(total); // hourOfDay, minute, txtCountDown);
-        countDown.startCountDown();
+        return rootView;
     }
 
     public void setPosition(int value){
@@ -214,9 +212,4 @@ public class TimeLog extends Fragment {
     public int getPosition(){
         return position;
     }
-
-    public void updateTextLabel(String text) {
-        txtCountDown.setText(text);
-    }
-
 }
