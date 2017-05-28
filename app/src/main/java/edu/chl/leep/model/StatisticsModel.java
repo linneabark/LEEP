@@ -1,8 +1,6 @@
 package edu.chl.leep.model;
 
 import com.example.linneabark.test.StatisticsActivityAdapter;
-import com.example.linneabark.test.StatisticsDateAdapter;
-import com.example.linneabark.test.StatisticsMonthAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,33 +21,33 @@ public class StatisticsModel {
     private String dateBtn;
     private String monthBtn;
 
-    private FindWhichMonth findWhichMonth = new FindWhichMonth();
+    private FindWhichMonth findWhichMonth;
+    private List <ActivityRowModel> defaultStatisticList;
+    private List<ActivityRowModel> userActivityList;
+    private List <ActivityRowModel> allActivityRowsForSpecificMonth;
+    private List<String> totalOfCategoryList;
+    private List<Long> totalTimeList;
 
-
-
-    private List <ActivityRow> defaultStatisticList = new ArrayList<>();
-    //listan för specifik user.
-    private List<ActivityRow> userActivityList = SaveActivity.activityRowList;
-    //sparar alla aktiviteter från en specifik månad.
-    private List <ActivityRow> allActivityRowsForSpecificMonth = new ArrayList<>();
-
-    // en lista för att spara alla olika kategrier som använts
-    private List<String> totalOfCategoryList = new ArrayList<>();
-    //En lista för att spara all sammanlagd tid för en kategori.
-    private List<Long> totalTimeList = new ArrayList<>();
-
+    public StatisticsModel(){
+        findWhichMonth = new FindWhichMonth();
+        defaultStatisticList = new ArrayList<>();
+        userActivityList = SaveActivity.activityRowList;
+        allActivityRowsForSpecificMonth = new ArrayList<>();
+        totalOfCategoryList = new ArrayList<>();
+        totalTimeList = new ArrayList<>();
+    }
     private String takeAwayFirstZeros (String string) {
         string = string.replaceFirst("^0+(?!$)", "");
         return string;
     }
 
-    private int intYearFromList (List<ActivityRow> list, int positionInList) {
+    private int intYearFromList (List<ActivityRowModel> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getYear()));
     }
-    private int intMonthFromList (List<ActivityRow> list, int positionInList) {
+    private int intMonthFromList (List<ActivityRowModel> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getMonth()));
     }
-    private int intDayFromList (List<ActivityRow> list, int positionInList) {
+    private int intDayFromList (List<ActivityRowModel> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getDay()));
     }
 
@@ -74,8 +72,6 @@ public class StatisticsModel {
     }
 
 
-
-
     public List <String> reformListToDisplay () {
         System.out.println("reformListToDisplay SM");
         giveValuesToDefaultStatisticList();
@@ -91,7 +87,7 @@ public class StatisticsModel {
     }
 
 
-    private List<ActivityRow> giveValuesToDefaultStatisticList () {
+    private List<ActivityRowModel> giveValuesToDefaultStatisticList () {
         System.out.println("giveValuesToDefaultStatisticList SM");
         int year = 0;
         int month = 0;
@@ -99,7 +95,6 @@ public class StatisticsModel {
 
         System.out.println("userActivityList i giveValuesToDefaultStatisticsList : listans size --> " + userActivityList.size());
 
-        //Find the greatest year
         for (int i = 0; i < userActivityList.size(); i++) {
             int yearFromList = intYearFromList(userActivityList,i);
             if (yearFromList > year) {
@@ -142,8 +137,7 @@ public class StatisticsModel {
         return defaultStatisticList;
     }
 
-    public void totalForActivity (List<ActivityRow> oneList) {
-        long j;
+    public void totalForActivity (List<ActivityRowModel> oneList) {
         long totalTimeOfEveryting = 0;
 
         //For loopen gör så att man kan gå igenom alla objekt från en månad
@@ -206,7 +200,7 @@ public class StatisticsModel {
         for(int i= 0; i < userActivityList.size(); i++ ){
 
             int intMonthFromList = Integer.valueOf(takeAwayFirstZeros(userActivityList.get(i).getMonth()));
-            //int intDayFromList = Integer.valueOf(Statistics.takeAwayFirstZeros(Statistics.userActivityList.get(i).getDay()));
+            //int intDayFromList = Integer.valueOf(StatisticsController.takeAwayFirstZeros(StatisticsController.userActivityList.get(i).getDay()));
             if (whichBtn.equals("btnDay")) {
                 if (intMonthFromList == intMonth) {
                     if(!(allDays.contains(userActivityList.get(i).getDay()))) {
@@ -239,7 +233,7 @@ public class StatisticsModel {
 
     public  List<String> getAllActivitys (StatisticsActivityAdapter statisticsActivityAdapter) {
         List <String> allActivitys = new ArrayList<>();
-        List <ActivityRow> activityRowList = new ArrayList<>();
+        List <ActivityRowModel> activityRowList = new ArrayList<>();
 
         System.out.println("Klass statisticsDateAdapter, metod getAllActivitys.");
         int intDate = Integer.valueOf(takeAwayFirstZeros(dateBtn));
@@ -278,7 +272,7 @@ public class StatisticsModel {
         return allActivitys;
     }
 
-    private void activityToString (List <String> allActivitys, List<ActivityRow> activityRowList, int indexFromForLoop){
+    private void activityToString (List <String> allActivitys, List<ActivityRowModel> activityRowList, int indexFromForLoop){
         ConvertUtils sd = new ConvertUtils();
         long stopTime = Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()))
                 + Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime()));

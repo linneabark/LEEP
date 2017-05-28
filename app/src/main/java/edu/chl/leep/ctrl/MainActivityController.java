@@ -13,24 +13,20 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-
 import com.example.linneabark.test.R;
-
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
 
 /**
- * MainActivity is the controller class which handles the fragment and menu, as well as popups
+ * MainActivityController is the controller class which handles the fragment and menu, as well as popups
  */
-public class MainActivity extends AppCompatActivity {
-//TODO name to xCtrl, maybe
+public class MainActivityController extends AppCompatActivity {
 
-    public static Leep leep;
+    public static LeepModel leep;
     private Context mContext;
     private SettingsController settings;
-
     private MainActivityModel mainActivityModel;
     private FileService fileService;
 
@@ -42,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         mainActivityModel = new MainActivityModel();
         fileService = new FileService();
-        leep = new Leep();
+        leep = new LeepModel();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -70,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = settings;
                 break;
             case R.id.statistics_id:
-                nextFrag = new Statistics();
+                nextFrag = new StatisticsController();
                 break;
             case R.id.timelog_id:
-                nextFrag = new TimeLog();
+                nextFrag = new TimeLogController();
                 break;
             case R.id.account_id:
 
@@ -81,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 SaveActivity.activityRowList.clear();
 
                 mainActivityModel.logOutUser(mContext);
-                Intent MainToLogin = new Intent(MainActivity.this, LoginActivity.class);
+                Intent MainToLogin = new Intent(MainActivityController.this, LoginActivityController.class);
                 startActivity(MainToLogin);
 
         }

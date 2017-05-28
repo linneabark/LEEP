@@ -1,10 +1,6 @@
 package edu.chl.leep.service;
 
-import edu.chl.leep.model.ActivityRow;
-
-import android.util.AttributeSet;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import edu.chl.leep.model.ActivityRowModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,11 +11,9 @@ import java.util.List;
 
 public class SaveActivity {
 
-    //TODO Slå ihop med fileservice
+    public static List<ActivityRowModel> activityRowList = new ArrayList<>();
 
-    public static List<ActivityRow> activityRowList = new ArrayList<>();
-
-    public static void addActivity (ActivityRow activityRow) {
+    public static void addActivity (ActivityRowModel activityRow) {
         activityRowList.add(activityRow);
     }
 }

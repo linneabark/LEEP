@@ -5,7 +5,6 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
 /**
  * Created by Eli on 2017-05-03.
  */
@@ -20,29 +19,22 @@ public class ConvertUtils {
 
     public String calculateTimeToString(long curTimeMillis){
 
-
         if(curTimeMillis >= 359999000){
             return "99:59:59";
         }
-
         int seconds = (int) ((curTimeMillis / 1000) % 60);
         int minutes = (int) ((curTimeMillis / MILLIS_TO_MINUTES) % 60);
         int hours = (int) ((curTimeMillis / MILLIS_TO_HOURS));
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
-
-
     }
 
     public String calculateStringToLong(String str){
         return calculateTimeToString(Long.valueOf(str));
-
-
     }
 
     public String calculateDateToString(Date date){
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-
         String str = formatter.format(date);
 
         return str;

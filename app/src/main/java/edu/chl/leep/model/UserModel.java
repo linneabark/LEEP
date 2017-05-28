@@ -6,11 +6,9 @@ import android.content.Context;
  * Created by linneabark on 2017-05-22.
  */
 
-public class User {
+public class UserModel {
 
     public static String USER_INFO = "UserInfo";
-
-
     static String theUser = "";
     static String user;
     static String userName;
@@ -19,7 +17,7 @@ public class User {
     static Context mContext;
 
 
-    public User(String user, String userName, String email, String password, Context mContext){
+    public UserModel(String user, String userName, String email, String password, Context mContext){
 
         this.user = user;
         this.userName = userName;
@@ -28,9 +26,4 @@ public class User {
         this.mContext = mContext;
 
     }
-
-
-    //TODO ska innehålla namn, password, email m.m
-
-
 }

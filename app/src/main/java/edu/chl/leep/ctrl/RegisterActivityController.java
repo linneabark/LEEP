@@ -11,17 +11,15 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.RegisterActivityModel;
-import edu.chl.leep.model.User;
-import edu.chl.leep.service.FileService;
+import edu.chl.leep.model.UserModel;
 
 /**
  * Created by Eli on 2017-05-08.
- Is the controller class which handles the register view */
+ * Is the controller class which handles the register view
+ */
 
-public class RegisterActivity extends AppCompatActivity {
-    //TODO change name to RegisterActivityCtrl
+public class RegisterActivityController extends AppCompatActivity {
     private EditText mail;
     private EditText userName;
     private EditText password;
@@ -29,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView errorMessage;
     private Button register;
     private Button backButton;
-    public static User newUser;
+    public static UserModel newUser;
     private Context mContext;
     private RegisterActivityModel registerActivityModel;
 
@@ -37,10 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
-
         mContext = this;
         registerActivityModel = new RegisterActivityModel();
-
         mail = (EditText) this.findViewById(R.id.mail);
         userName = (EditText) this.findViewById(R.id.setUserName);
         password = (EditText) this.findViewById(R.id.setPassword);
@@ -53,22 +49,18 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage)
-                        || !registerActivityModel.checkEmail(mail, errorMessage)){ //if the passwords does not match, the errormessages will tell
+                        || !registerActivityModel.checkEmail(mail, errorMessage)){
 
-                } else{ //if everything is okay, save the information and finish the activity
+                } else{
 
-                    // TODO User user = new User(name, email)
-                    //MainActivity.leep.register(user);
-                    //FilseSERVICE. SAVE
-
-                    newUser = new User(
+                    newUser = new UserModel(
                             userName.getText().toString(),
                             userName.getText().toString(),
                             mail.getText().toString(),
                             password.getText().toString(),
                             mContext);
 
-                    MainActivity.leep.register();
+                    MainActivityController.leep.register();
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();
                 }

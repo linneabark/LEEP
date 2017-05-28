@@ -14,6 +14,8 @@ import com.example.linneabark.test.ShowQuotesPopUp;
 import edu.chl.leep.model.SettingsModel;
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * Class the shows an expandablelistview and controls its popups
  */
 public class SettingsController extends Fragment{
 

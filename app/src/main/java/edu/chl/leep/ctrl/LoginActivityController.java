@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.model.Leep;
+import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.FileService;
 
@@ -19,14 +19,13 @@ import edu.chl.leep.service.FileService;
  * Created by Eli on 2017-05-08.
  */
 
-public class LoginActivity extends AppCompatActivity { //TODO change name to LoginActivityCtrl
-
+public class LoginActivityController extends AppCompatActivity {
     private EditText userName;
     private EditText passWord;
     private TextView eM; //errorMessage
     private RadioButton rB; //keep the login
     private Context mContext;
-    private static Leep leep;
+    private static LeepModel leep;
     private LoginActivityModel loginActivityModel;
     private FileService fileService;
     private Button registerButton;
@@ -37,16 +36,13 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
-
-        //Måste kunna kommas åt i hela programmet, sätt public static
         getInstance();
-
         mContext = this;
         loginActivityModel = new LoginActivityModel();
         fileService = new FileService();
 
         if(loginActivityModel.userWasLoggedIn(mContext)){
-            Intent toy = new Intent(LoginActivity.this, MainActivity.class);
+            Intent toy = new Intent(LoginActivityController.this, MainActivityController.class);
             startActivity(toy);
         }
 
@@ -57,8 +53,6 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
-        System.out.println(Leep.getKeepLoginState(mContext));
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -67,7 +61,7 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
                 } else {
                     fileService.putTheValuesInActivityRowList(mContext);
                     loginActivityModel.rememberUser(mContext, rB);
-                    Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
                     startActivity(LoginToMain);
                 }
             }
@@ -75,7 +69,7 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toy = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent toy = new Intent(LoginActivityController.this, RegisterActivityController.class);
                 startActivity(toy);
             }
 
@@ -83,9 +77,9 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
 
     });
         }
-    public static Leep getInstance(){
+    public static LeepModel getInstance(){
         if(leep == null){
-            leep = new Leep();
+            leep = new LeepModel();
         }
         return leep;
     }

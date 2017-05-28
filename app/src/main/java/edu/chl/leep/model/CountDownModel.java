@@ -10,21 +10,21 @@ import edu.chl.leep.utils.ConvertUtils;
  * Created by Paulina Palmberg on 2017-05-28.
  */
 
-public class CountDown {
-    private static CountDown instance;
+public class CountDownModel {
+    private static CountDownModel instance;
     private Timer timer;
     private long total;
     private static Activity mainActivity;
     private static TextView timeText;
 
-    public CountDown(long total) {
+    public CountDownModel(long total) {
         this.total = total;
         timer = new Timer();
     }
 
-    public static CountDown getInstance(Activity activity, TextView txt, long total) {
+    public static CountDownModel getInstance(Activity activity, TextView txt, long total) {
         if(instance == null){
-            instance = new CountDown(total);
+            instance = new CountDownModel(total);
         }
         mainActivity = activity;
         timeText = txt;
