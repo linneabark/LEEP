@@ -15,7 +15,7 @@ import edu.chl.leep.model.Leep;
  * Created by Evelina on 2017-05-05.
  */
 
-public class QuotesService implements IQuotesService{
+public class QuotesService{
     //QuotesService is stored in a list
     List<String> quotes = new ArrayList<String>();
     Random rand = new Random();
@@ -26,10 +26,7 @@ public class QuotesService implements IQuotesService{
         mA = new MainActivity();
         this.context = context;
 
-        //Lägger till några quotes så att de finns per default.
-        quotes.add("Hej");
-        quotes.add("På");
-        quotes.add("Dig");
+        addQuote();
     }
 
     public String getQuote() {
@@ -44,8 +41,10 @@ public class QuotesService implements IQuotesService{
     }
 
     //Denna kod kanske borde tas bort och självaste add raden borde finnas i inställninagr där man tar han om inputen.
-    public void addQuote(String inputQuote){
-        quotes.add(inputQuote);
+    public void addQuote(){
+        quotes.add("Hej");
+        quotes.add("På");
+        quotes.add("Dig");
     }
 
 
