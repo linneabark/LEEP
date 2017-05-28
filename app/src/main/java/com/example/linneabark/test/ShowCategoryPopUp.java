@@ -13,6 +13,9 @@ import edu.chl.leep.model.LeepModel;
 
 /**
  * Created by linneabark on 2017-05-28.
+ *
+ *
+ * Class that decidecs which "category"-popup to show
  */
 
 public class ShowCategoryPopUp {
