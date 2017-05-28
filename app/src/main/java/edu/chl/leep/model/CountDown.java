@@ -1,37 +1,85 @@
 package edu.chl.leep.model;
 
+import android.app.Activity;
+import android.widget.TextView;
+
+import com.example.linneabark.test.R;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
+import edu.chl.leep.ctrl.TimeLog;
+import edu.chl.leep.utils.ConvertUtils;
+
 /**
- * Created by Evelina on 2017-05-05.
+ * Created by Paulina Palmberg on 2017-05-28.
  */
-// TODO till timer
+
 public class CountDown {
-    static long time;
-    static Timer timer;
 
-    void CountDown () {
-        long secs = 90; // Måste Hämta minuterna och sekunderna som blivit valt.
-        int delay = 1000;
-        int period = 1000;
-        timer = new Timer();
-        time = secs;// om secs blir en String. Integer.parseInt(secs);
+    private static CountDown instance;
+    private Timer timer;
+    private long total; // totaltid för timer
+    private static Activity mainActivity;
+    private static TextView timeText;
 
-        timer.scheduleAtFixedRate(
-                new TimerTask(){public void run() {startCountDown();}},
-                delay,
-                period);
+    TimeLog timeLog;
+
+    public CountDown(long total) {
+        this.total = total;
     }
 
-    private final long startCountDown () {
-        if (time == 1) {
-            timer.cancel();
+    public static CountDown getInstance(Activity activity, TextView txt, long total) {
+        if(instance == null){
+            instance = new CountDown(total);
         }
-        return --time;
+        mainActivity = activity;
+        timeText = txt;
+        return instance;
     }
 
-    public void updateTimer () {
-        //En metod som displayar timerns count down. Rudolf vet hur man gör för hennes stoppur.
+    public void startCountDown() {
+//        System.out.println("Jag kommer till startCountDown!!");
+//        timer.cancel();
+        timer = new Timer();
+        timer.schedule(new Update(),0,1000);
+    }
+
+
+    private class Update extends TimerTask {
+        @Override
+        public void run() {
+            // timeLog = new TimeLog();
+            System.out.println("Jag kommer till run()!!");
+            System.out.println("Tid: " + timeToString());
+            if (total == 1000) {
+                timer.cancel();
+                /** Ska låta så man vet att timern tagit slut!! */
+            }
+            // timeLog.txtCountDown.setText(timeToString());
+            // timeLog.updateTextLabel(timeToString());
+            updateText(toString());
+            decTime();
+        }
+    }
+
+    private void decTime() {
+        total = total - 1000;
+    }
+
+    public String timeToString() {
+        System.out.println("toString");
+        ConvertUtils sd = new ConvertUtils();
+        return sd.calculateTimeToString(total);
+    }
+
+    public void updateText(final String text) {
+        if(timeText != null) {
+            mainActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    timeText.setText(text);
+                }
+            });
+        }
     }
 }

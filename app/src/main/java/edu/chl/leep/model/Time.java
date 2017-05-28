@@ -72,10 +72,6 @@ public class Time {
         value = value + 1000;
     }
 
-    private void decTime() {
-        value = value - 1000;
-    }
-
     public String toString(){
         ConvertUtils sd = new ConvertUtils();
         return sd.calculateTimeToString(value);

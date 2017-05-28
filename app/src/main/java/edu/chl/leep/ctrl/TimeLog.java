@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityRow;
+import edu.chl.leep.model.CountDown;
 import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
@@ -55,9 +56,11 @@ public class TimeLog extends Fragment {
     private Context mContext;
 
     /** Timer variables */ //TODO remove?
+    private CountDown countDown;
     private ImageButton timerButton;
     public TextView txtCountDown;
-    private TimePickerDialog.OnTimeSetListener mTimeSetListener; Spinner spinner;
+    private TimePickerDialog.OnTimeSetListener mTimeSetListener;
+    Spinner spinner;
     public int position;
 
     public TimeLog() {
@@ -179,16 +182,25 @@ public class TimeLog extends Fragment {
                 System.out.println("hourofday " + hourOfDay);
                 System.out.println("minute " + minute);
                 String text = "Hour " + hourOfDay + ", minute " + minute + ".";
-                txtTimer.setText(text);
+                txtCountDown.setText(text);
                 */
 
-               // time.startCountDown(hourOfDay, minute);
+                long total = hourOfDay * 3600 + minute * 60;
+
+                System.out.println("Jag kommer hit när jag trycker på ok" + hourOfDay + " " + minute);
+                // countDown = new CountDown(hourOfDay, minute, txtCountDown);
+                // countDown.startCountDown();
+                startTimer(total);
             }
         };
 
         return rootView;
     }
 
+    private void startTimer(long total) {
+        countDown = new CountDown(total); // hourOfDay, minute, txtCountDown);
+        countDown.startCountDown();
+    }
 
     public void setPosition(int value){
         position = value;
@@ -198,7 +210,8 @@ public class TimeLog extends Fragment {
         return position;
     }
 
-
-
+    public void updateTextLabel(String text) {
+        txtCountDown.setText(text);
+    }
 
 }
