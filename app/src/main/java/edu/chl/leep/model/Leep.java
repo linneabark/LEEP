@@ -44,6 +44,7 @@ public class Leep {
     //TODO getters
 
     public static void register(){
+        System.out.println("Skriver den ut här?");
         Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
         Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
         Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
