@@ -12,9 +12,6 @@ public class User {
 
 
     static String theUser = "";
-    static String category1 = "Category1";
-    static String category2 = "Category2";
-    static String category3 = "Category3";
     static String user;
     static String userName;
     static String email;

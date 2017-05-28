@@ -10,12 +10,12 @@ import java.util.Date;
  * Created by Eli on 2017-05-03.
  */
 
-public class SaveDate {
+public class ConvertUtils {
     private final static long MILLIS_TO_MINUTES = 60000;
     private final static long MILLIS_TO_HOURS = 3600000;
     Date date = new Date();
 
-    public SaveDate(){
+    public ConvertUtils(){
     }
 
     public String calculateTimeToString(long curTimeMillis){
@@ -30,6 +30,12 @@ public class SaveDate {
         int hours = (int) ((curTimeMillis / MILLIS_TO_HOURS));
 
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+
+
+    }
+
+    public String calculateStringToLong(String str){
+        return calculateTimeToString(Long.valueOf(str));
 
 
     }
