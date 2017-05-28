@@ -23,8 +23,6 @@ public class QuotesService{
 
     public QuotesService(Context context) {
         this.context = context;
-        System.out.println("Context constructor: " +context);
-
         addQuote();
     }
 
@@ -32,7 +30,6 @@ public class QuotesService{
         //Chooses a random number after the amount of quotes
         //Takes a number between 0 and size-1
         int randQuoteIndex = rand.nextInt(quotes.size());
-        System.out.println("randQuoteIndex: " + randQuoteIndex);
         //To get a random quote
         String randQuote = quotes.get(randQuoteIndex);
         System.out.println(randQuote);

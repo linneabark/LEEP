@@ -181,14 +181,7 @@ public class TimeLog extends Fragment {
         mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                /*
-                System.out.println("hourofday " + hourOfDay);
-                System.out.println("minute " + minute);
-                String text = "Hour " + hourOfDay + ", minute " + minute + ".";
-                txtTimer.setText(text);
-                */
-
-               // time.startCountDown(hourOfDay, minute);
+             
             }
         };
 
