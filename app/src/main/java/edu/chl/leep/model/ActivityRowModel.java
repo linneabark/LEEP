@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 /**
  * Created by Evelina on 2017-05-05.
+ *
+ * A class where the ActivityRowObject are being created from.
  */
 
 public class ActivityRowModel implements Serializable {

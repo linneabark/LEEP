@@ -11,6 +11,8 @@ import edu.chl.leep.model.StatisticsModel;
 
 /**
  * Created by Evelina on 2017-05-12.
+ *
+ * A Adapter class which contains some methods to change the month view in fragment_statistics.xml and are being used in StatisticsController
  */
 
 public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonthAdapter.ViewHolder> {

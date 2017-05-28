@@ -16,7 +16,9 @@ import java.util.List;
 
 
 /**
- * Created by Eli on 2017-05-15.
+ * Created by Evelina on 2017-05-28.
+ *
+ *  A class which stores and load list with SharedPreferences so that the activities can be retrieved after the program where being closed
  */
 
 public class FileService implements Serializable {

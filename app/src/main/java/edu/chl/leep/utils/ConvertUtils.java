@@ -7,6 +7,8 @@ import java.util.Date;
 
 /**
  * Created by Eli on 2017-05-03.
+ *
+ * A class which converts longs to string to a format that we requires and the opposite
  */
 
 public class ConvertUtils {

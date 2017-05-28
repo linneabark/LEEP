@@ -25,9 +25,12 @@ import edu.chl.leep.model.LeepModel;
 
 import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.model.TimerModel;
+import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.QuotesService;
 
 import com.example.linneabark.test.R;
+
+import java.io.File;
 
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.ConvertUtils;
@@ -48,6 +51,8 @@ public class TimeLogController extends Fragment {
 
     private TimeLogModel timeLogModel;
     private TimerModel time;
+    private FileService fileService;
+
     private Context mContext;
 
     private CountDownModel countDown;
@@ -69,6 +74,7 @@ public class TimeLogController extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
 
+        fileService = new FileService();
         convertUtils = new ConvertUtils();
         timeLogModel = new TimeLogModel();
 
@@ -78,7 +84,6 @@ public class TimeLogController extends Fragment {
         quote = new QuotesService(getContext());
 
         /**SPINNER **/
-
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
         ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, LeepModel.getCategoryList(mContext));
         array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -104,7 +109,6 @@ public class TimeLogController extends Fragment {
         );
 
         /**TIMER **/
-
         quoteDisplay = (TextView) rootView.findViewById(R.id.quoteDisplay);
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
@@ -136,6 +140,21 @@ public class TimeLogController extends Fragment {
                         convertUtils.longToString(startActivity),
                         convertUtils.longToString(time.getTotalTime()),
                         LeepModel.getCategory(mContext, getPosition())));
+
+for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
+    System.out.println("activityRowList before save, contains: " + SaveActivity.activityRowList.get(i).getStartTime());
+}
+
+                //save the list with SharedPrefs.
+                fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
+                SaveActivity.activityRowList.clear();
+
+                //load the list from SharedPrefs.
+                fileService.putTheValuesInActivityRowList(mContext);
+
+                for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
+                    System.out.println("activityRowList after load contains: " + SaveActivity.activityRowList.get(i).getStartTime());
+                }
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
 

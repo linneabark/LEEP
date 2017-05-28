@@ -2,6 +2,8 @@ package edu.chl.leep.utils;
 
 /**
  * Created by Evelina on 2017-05-06.
+ *
+ *  A class which contains the months of a year, and a method that gives the number of a month
  */
 
 public class FindWhichMonth {

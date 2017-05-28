@@ -4,6 +4,7 @@ import android.content.Context;
 
 /**
  * Created by linneabark on 2017-05-22.
+ * A model class which contains some methods used in LoginActivityController
  */
 
 public class UserModel {

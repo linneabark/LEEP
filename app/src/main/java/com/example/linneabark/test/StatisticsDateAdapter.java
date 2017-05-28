@@ -13,6 +13,8 @@ import edu.chl.leep.model.StatisticsModel;
 
 /**
  * Created by Evelina on 2017-05-12.
+ *
+ * A Adapter class which contains some methods to change the view of dates in fragment_statistics.xml and are being used in StatisticsController
  */
 
 public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAdapter.ViewHolder>{

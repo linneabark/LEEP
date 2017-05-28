@@ -8,6 +8,8 @@ import edu.chl.leep.utils.ConvertUtils;
 
 /**
  * Created by Paulina Palmberg on 2017-05-28.
+ *
+ * A model class with some methods used for the count down in TimeLogController.
  */
 
 public class CountDownModel {

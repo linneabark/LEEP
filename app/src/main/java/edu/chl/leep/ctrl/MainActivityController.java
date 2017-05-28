@@ -73,8 +73,9 @@ public class MainActivityController extends AppCompatActivity {
                 break;
             case R.id.account_id:
 
-                fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
-                SaveActivity.activityRowList.clear();
+                //save the list with SharedPrefs.
+                //fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
+                //SaveActivity.activityRowList.clear();
 
                 mainActivityModel.logOutUser(mContext);
                 Intent MainToLogin = new Intent(MainActivityController.this, LoginActivityController.class);

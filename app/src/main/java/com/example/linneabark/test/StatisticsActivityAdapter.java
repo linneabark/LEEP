@@ -11,6 +11,8 @@ import java.util.List;
 
 /**
  * Created by Evelina on 2017-05-16.
+ *
+ * A Adapter class which contains some methods to change the view of the activities in fragment_statistics.xml and are being used in StatisticsController
  */
 
 public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsActivityAdapter.ViewHolder>{

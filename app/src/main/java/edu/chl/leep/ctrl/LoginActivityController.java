@@ -14,6 +14,7 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.FileService;
+import edu.chl.leep.service.SaveActivity;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -41,6 +42,7 @@ public class LoginActivityController extends AppCompatActivity {
         loginActivityModel = new LoginActivityModel();
         fileService = new FileService();
 
+
         if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivityController.this, MainActivityController.class);
             startActivity(toy);
@@ -59,11 +61,22 @@ public class LoginActivityController extends AppCompatActivity {
                 if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
                     eM.setText("Password or username does not match!");
                 } else {
-                    fileService.putTheValuesInActivityRowList(mContext);
+                    //load the list from SharedPrefs.
+                    //fileService.putTheValuesInActivityRowList(mContext);
                     loginActivityModel.rememberUser(mContext, rB);
                     Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
+
+                    System.out.println("user: " + LeepModel.getUSER());
+                    //load the list from SharedPrefs.
+                    fileService.putTheValuesInActivityRowList(mContext);
+                    System.out.println("innan for loop i logAC");
+                    for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
+                        System.out.println("activityRow contains" + SaveActivity.activityRowList.get(i).getStartTime());
+                    }
+
                     startActivity(LoginToMain);
                 }
+
             }
         });
         registerButton.setOnClickListener(new View.OnClickListener() {

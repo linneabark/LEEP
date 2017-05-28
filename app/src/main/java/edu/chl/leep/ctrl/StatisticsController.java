@@ -32,6 +32,8 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
+ *
+ * A controller class which are making the view look at it is supposed to be.
  */
 public class StatisticsController extends Fragment {
     private FindWhichMonth findWhichMonth;

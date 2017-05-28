@@ -11,6 +11,8 @@ import edu.chl.leep.utils.ConvertUtils;
 
 /**
  * Created by Evelinas on 2017-05-26.
+ *
+ * A model class which contains methods that are being used in StatisticsController, and the three Statistics...Adapters
  */
 
 public class StatisticsModel {

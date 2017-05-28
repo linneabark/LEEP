@@ -8,6 +8,8 @@ import edu.chl.leep.model.LeepModel;
 
 /**
  * Created by Evelina on 2017-05-05.
+ *
+ * A class which contains some methods to deal with quotes that are being displays in fragment_timelog.xml
  */
 
 public class QuotesService{
@@ -27,7 +29,7 @@ public class QuotesService{
         return randQuote;
     }
 
-    public void addQuote(){
+    private void addQuote(){
         quotes.add(LeepModel.getQuote1(context));
         quotes.add(LeepModel.getQuote2(context));
         quotes.add(LeepModel.getQuote3(context));
