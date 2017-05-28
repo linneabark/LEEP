@@ -30,10 +30,6 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     private static Leep leep;
     private LoginActivityModel loginActivityModel;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
