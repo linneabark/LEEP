@@ -25,7 +25,6 @@ public class QuotesService{
     public String getQuote() {
         int randQuoteIndex = rand.nextInt(quotes.size());
         String randQuote = quotes.get(randQuoteIndex);
-        System.out.println(randQuote);
         return randQuote;
     }
 

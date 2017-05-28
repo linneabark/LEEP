@@ -19,12 +19,10 @@ public class UserModel {
 
 
     public UserModel(String user, String userName, String email, String password, Context mContext){
-
         this.user = user;
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.mContext = mContext;
-
     }
 }

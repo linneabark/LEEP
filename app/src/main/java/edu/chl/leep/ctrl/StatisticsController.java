@@ -43,7 +43,6 @@ public class StatisticsController extends Fragment {
     private RecyclerView recyclerMonth;
     private RecyclerView recyclerDate;
     private RecyclerView recyclerActivity;
-    public static List<String> date;
 
 
     private Button btnDay;
@@ -60,6 +59,9 @@ public class StatisticsController extends Fragment {
         // Required empty public constructor
     }
 
+    public void hej() {
+
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,10 +71,9 @@ public class StatisticsController extends Fragment {
         findWhichMonth = new FindWhichMonth();
         mainActivity = new MainActivityController();
         statisticsModel = new StatisticsModel();
-        date =new ArrayList<>();
 
         statisticsActivityAdapter  = new StatisticsActivityAdapter(statisticsModel.reformListToDisplay());
-        statisticsDateAdapter = new StatisticsDateAdapter(assList(), statisticsActivityAdapter);
+        statisticsDateAdapter = new StatisticsDateAdapter(statisticsModel.getAllDays(), statisticsActivityAdapter);
         statisticsMonthAdapter = new StatisticsMonthAdapter(findWhichMonth.months, statisticsDateAdapter);
 
         recyclerMonth = (RecyclerView) rootview.findViewById(R.id.recyclerMonth);
@@ -193,41 +194,18 @@ public class StatisticsController extends Fragment {
 
     public String [] insertCategoryPieChart (List<String> categoryList){
         xcategory = new String [statisticsModel.getTotalOfCategoryList().size()];
-        System.out.println("categprylist size" + categoryList.size());
         for (int i = 0; i < categoryList.size(); i++) {
             xcategory [i] = categoryList.get(i);
         }
-        System.out.println("xcategory" + xcategory.length);
         return xcategory;
     }
 
     public float [] insertTotalTimePieChart (List<Long> totalTimeList){
         yvalue = new float[totalTimeList.size()];
-        System.out.println("totaltimelist size" + totalTimeList.size());
         for (int i = 0; i < totalTimeList.size(); i++) {
             float totalTimeValue = Float.valueOf(totalTimeList.get(i));
-            System.out.println("totaltimevalue --> "+ totalTimeValue);
             yvalue [i] = totalTimeValue;
         }
-        System.out.println("yvalue" + yvalue.length);
         return yvalue;
     }
-
-
-
-    public static List <String> assList () {
-        date.add("01");
-        date.add("02");
-        date.add("03");
-        date.add("04");
-        date.add("06");
-        date.add("07");
-        date.add("08");
-        date.add("09");
-        date.add("10");
-
-        return date;
-    }
-
-
 }

@@ -30,8 +30,6 @@ import edu.chl.leep.service.QuotesService;
 
 import com.example.linneabark.test.R;
 
-import java.io.File;
-
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.ConvertUtils;
 
@@ -94,7 +92,6 @@ public class TimeLogController extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-
                 //parent.getItemAtPosition(position);
 
                 setPosition(position+1);
@@ -141,23 +138,10 @@ public class TimeLogController extends Fragment {
                         convertUtils.longToString(time.getTotalTime()),
                         LeepModel.getCategory(mContext, getPosition())));
 
-for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
-    System.out.println("activityRowList before save, contains: " + SaveActivity.activityRowList.get(i).getStartTime());
-}
-
                 //save the list with SharedPrefs.
                 fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
-                SaveActivity.activityRowList.clear();
-
-                //load the list from SharedPrefs.
-                fileService.putTheValuesInActivityRowList(mContext);
-
-                for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
-                    System.out.println("activityRowList after load contains: " + SaveActivity.activityRowList.get(i).getStartTime());
-                }
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
-
             }
         });
 

@@ -40,7 +40,6 @@ public class CountDownModel {
     }
 
     public void stopTimer() {
-        System.out.println("Kommer till Stop Timer");
         timer.cancel();
         total = 0;
         updateText(timeToString());

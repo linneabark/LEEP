@@ -44,6 +44,8 @@ public class LoginActivityController extends AppCompatActivity {
 
 
         if(loginActivityModel.userWasLoggedIn(mContext)){
+            getSavedActivitys(mContext);
+
             Intent toy = new Intent(LoginActivityController.this, MainActivityController.class);
             startActivity(toy);
         }
@@ -57,23 +59,14 @@ public class LoginActivityController extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
                     eM.setText("Password or username does not match!");
                 } else {
-                    //load the list from SharedPrefs.
-                    //fileService.putTheValuesInActivityRowList(mContext);
                     loginActivityModel.rememberUser(mContext, rB);
+
+                    getSavedActivitys(mContext);
+
                     Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
-
-                    System.out.println("user: " + LeepModel.getUSER());
-                    //load the list from SharedPrefs.
-                    fileService.putTheValuesInActivityRowList(mContext);
-                    System.out.println("innan for loop i logAC");
-                    for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
-                        System.out.println("activityRow contains" + SaveActivity.activityRowList.get(i).getStartTime());
-                    }
-
                     startActivity(LoginToMain);
                 }
 
@@ -95,5 +88,12 @@ public class LoginActivityController extends AppCompatActivity {
             leep = new LeepModel();
         }
         return leep;
+    }
+
+    private void getSavedActivitys(Context context){
+        //rensa lista om det fanns något innan man loggade ut.
+        SaveActivity.activityRowList.clear();
+        //load the list from SharedPrefs.
+        fileService.putTheValuesInActivityRowList(context);
     }
 }

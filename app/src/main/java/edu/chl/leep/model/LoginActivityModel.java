@@ -33,7 +33,6 @@ public class LoginActivityModel {
     }
 
     public void rememberUser(Context mContext, RadioButton rB){
-
         LeepModel.setKeepLoginState(mContext, rB);
         LeepModel.setPreviousUser(mContext, LeepModel.getUSER());
 

@@ -52,15 +52,10 @@ public class FileService implements Serializable {
 
     //For load
     public void putTheValuesInActivityRowList (Context context) {
-        System.out.println("Klass SaveActivityRowList, metod putTheValuesInActivityRowList.");
         loadActivityRowListSharedPref(context);
 
         for (int i = 0; i < loadSharedList.size(); i++) {
-            System.out.println("Klass SaveActivityRowList, metod putTheValuesInActivityRowList. " +
-                    "loadSharedList ('the loaded list') contains: " + loadSharedList.get(i).getUserName() +  " " + loadSharedList.get(i).getStartTime());
             SaveActivity.addActivity(loadSharedList.get(i));
-            System.out.println("Klass SaveActivityRowList, metod putTheValuesInActivityRowList. " +
-                    "ActivityRowlist ('the main list') contains: " + SaveActivity.activityRowList.get(i).getUserName() +  " " + SaveActivity.activityRowList.get(i).getStartTime());
         }
     }
 

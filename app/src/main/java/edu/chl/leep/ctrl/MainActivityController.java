@@ -16,8 +16,6 @@ import android.view.View;
 import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
-import edu.chl.leep.service.FileService;
-import edu.chl.leep.service.SaveActivity;
 
 /**
  * MainActivityController is the controller class which handles the fragment and menu, as well as popups
@@ -28,7 +26,6 @@ public class MainActivityController extends AppCompatActivity {
     private Context mContext;
     private SettingsController settings;
     private MainActivityModel mainActivityModel;
-    private FileService fileService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +34,12 @@ public class MainActivityController extends AppCompatActivity {
 
         mContext = this;
         mainActivityModel = new MainActivityModel();
-        fileService = new FileService();
         leep = new LeepModel();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         changeFragment(R.id.timelog_id);
-
     }
 
     @Override
@@ -72,15 +67,9 @@ public class MainActivityController extends AppCompatActivity {
                 nextFrag = new TimeLogController();
                 break;
             case R.id.account_id:
-
-                //save the list with SharedPrefs.
-                //fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
-                //SaveActivity.activityRowList.clear();
-
                 mainActivityModel.logOutUser(mContext);
                 Intent MainToLogin = new Intent(MainActivityController.this, LoginActivityController.class);
                 startActivity(MainToLogin);
-
         }
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
@@ -99,6 +88,4 @@ public class MainActivityController extends AppCompatActivity {
     public Context getContext(){
         return mContext;
     }
-
-
 }

@@ -76,20 +76,12 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
     }
 
     public void swapList (List<String> changedList) {
-        System.out.println("klass statisticsDateAdapter, metod swapList. Kommer jag hit?");
-        System.out.println("vad är date just nu? size är --> " +  date.size());
         if(date != null) {
-            System.out.println("kommer jag in i if?");
             date.clear();
-            System.out.println("is the clear metod removing? date.size() --> " + date.size());
             date.addAll(changedList);
-            System.out.println("date size after if --> " + date.size());
         } else {
-            System.out.println("Eller komme rjag in i else?");
             date = changedList;
         }
-
-        System.out.println("date listan innehåller: " + date.toString());
         notifyDataSetChanged();
     }
 }

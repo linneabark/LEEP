@@ -67,16 +67,10 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
     }
 
     public void swapList (List<String> changedList) {
-        System.out.println("klass statisticsactivityAdapter, ,etod swapList. Kommer jag hit?");
-        System.out.println("vad är date just nu? size är --> " +  activity.size());
         if(activity != null) {
-            System.out.println("kommer jag in i if?");
             activity.clear();
-            System.out.println("is the clear metod removing? activ ity.size() --> " + activity.size());
             activity.addAll(changedList);
-            System.out.println("activity size after if --> " + activity.size());
         } else {
-            System.out.println("Eller komme rjag in i else?");
             activity = changedList;
         }
         notifyDataSetChanged();

@@ -7,7 +7,6 @@ import android.widget.RadioButton;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.leep.ctrl.RegisterActivityController;
 import edu.chl.leep.service.FileService;
 
 /**
@@ -59,7 +58,6 @@ public class LeepModel {
 
     //HANDLE THE USER INFO
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
-        System.out.println("Context: " + context);
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
     }
 
