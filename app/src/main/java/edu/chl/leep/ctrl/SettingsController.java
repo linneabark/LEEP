@@ -44,6 +44,7 @@ public class SettingsController extends Fragment{
        return rootView;
     }
 
+    //Decides wich popup to show
     public void choosePopUp(View v){
         popUpButton = (ImageButton) v.findViewById(R.id.list_item_button);
         buttonTag = popUpButton.getTag().toString();
@@ -71,6 +72,8 @@ public class SettingsController extends Fragment{
             popUpHelp.showHelpPopUp(getActivity());
         }
     }
+
+
 
     public int getExpanded(){
 
