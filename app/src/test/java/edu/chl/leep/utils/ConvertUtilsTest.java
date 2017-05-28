@@ -9,10 +9,10 @@ import static org.junit.Assert.*;
 /**
  * Created by Eli on 2017-05-25.
  */
-public class SaveDateTest {
+public class ConvertUtilsTest {
     @Test
     public void calculateTimeToString() throws Exception {
-        SaveDate sd = new SaveDate();
+        ConvertUtils sd = new ConvertUtils();
         long time1 = 3600000;
         assertTrue(sd.calculateTimeToString(time1).equals("01:00:00"));
         long time2 = 0;
@@ -29,7 +29,7 @@ public class SaveDateTest {
 
     @Test
     public void calculateDateToString() throws Exception {
-        SaveDate sd = new SaveDate();
+        ConvertUtils sd = new ConvertUtils();
         Date date = new Date();
         assertTrue(sd.calculateDateToString(date).equals("2017-05-26"));
 
