@@ -122,29 +122,6 @@ public class StatisticsController extends Fragment {
 
         addDataToChart(pieChart);
 
-        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(Entry e, Highlight h) {
-                int pos = e.toString().indexOf("y: ");
-                String precent = e.toString().substring(pos + 3);
-                for (int i = 0; i < yvalue.length; i++) {
-                    if (yvalue[i] == Float.parseFloat(precent)) {
-                        pos = i;
-                        break;
-                    }
-                }
-
-                String whichCategory = xcategory[pos];
-
-                //För att skriva ut det snyggt...
-                //För att få flera rader, lägg till "\n" där det önskas
-                // Toast.makeText(mainActivity.getContext(), ("" + whichCategory + ": " + precent + " %."), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNothingSelected() {}
-        });
-
         return rootview;
     }
 
