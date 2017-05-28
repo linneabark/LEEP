@@ -21,21 +21,21 @@ public class StatisticsModel {
     private String dateBtn;
     private String monthBtn;
 
-    private FindWhichMonth findWhichMonth = new FindWhichMonth();
+    private FindWhichMonth findWhichMonth;
+    private List <ActivityRowModel> defaultStatisticList;
+    private List<ActivityRowModel> userActivityList;
+    private List <ActivityRowModel> allActivityRowsForSpecificMonth;
+    private List<String> totalOfCategoryList;
+    private List<Long> totalTimeList;
 
-
-
-    private List <ActivityRowModel> defaultStatisticList = new ArrayList<>();
-    //listan för specifik user.
-    private List<ActivityRowModel> userActivityList = SaveActivity.activityRowList;
-    //sparar alla aktiviteter från en specifik månad.
-    private List <ActivityRowModel> allActivityRowsForSpecificMonth = new ArrayList<>();
-
-    // en lista för att spara alla olika kategrier som använts
-    private List<String> totalOfCategoryList = new ArrayList<>();
-    //En lista för att spara all sammanlagd tid för en kategori.
-    private List<Long> totalTimeList = new ArrayList<>();
-
+    public StatisticsModel(){
+        findWhichMonth = new FindWhichMonth();
+        defaultStatisticList = new ArrayList<>();
+        userActivityList = SaveActivity.activityRowList;
+        allActivityRowsForSpecificMonth = new ArrayList<>();
+        totalOfCategoryList = new ArrayList<>();
+        totalTimeList = new ArrayList<>();
+    }
     private String takeAwayFirstZeros (String string) {
         string = string.replaceFirst("^0+(?!$)", "");
         return string;

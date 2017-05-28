@@ -17,7 +17,8 @@ public class LoginActivityModel {
         if(userName.getText().toString().equals("") || passWord.getText().toString().equals("")){
             return false;
         }
-        if ((userName.getText().toString().equals(LeepModel.getUsername(mContext))) && (passWord.getText().toString().equals(LeepModel.getPassword(mContext)))) {
+        if ((userName.getText().toString().equals(LeepModel.getUsername(mContext))) &&
+                (passWord.getText().toString().equals(LeepModel.getPassword(mContext)))) {
             return true;
         }
         return false;
@@ -33,7 +34,7 @@ public class LoginActivityModel {
 
     public void rememberUser(Context mContext, RadioButton rB){
 
-        LeepModel.setKeepLoginState(mContext, rB);//see whether or not the radiobutton is checked(1 = true, 0 = false)
+        LeepModel.setKeepLoginState(mContext, rB);
         LeepModel.setPreviousUser(mContext, LeepModel.getUSER());
 
         Toast.makeText(mContext, ("Logged in " + LeepModel.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();

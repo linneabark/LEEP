@@ -1,14 +1,12 @@
 package edu.chl.leep.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Evelina on 2017-05-05.
  */
 
 public class ActivityRowModel implements Serializable {
-    // TODO Single activity
     private String userName;
     private String year;
     private String month;
@@ -17,8 +15,8 @@ public class ActivityRowModel implements Serializable {
     private String totalTime;
     private String categoryName;
 
-
-    public ActivityRowModel(String userName, String year, String month, String day, String startTime, String totalTime, String categoryName) {
+    public ActivityRowModel(String userName, String year, String month, String day,
+                            String startTime, String totalTime, String categoryName) {
         this.userName = userName;
         this.year = year;
         this.month = month;
