@@ -4,8 +4,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import com.example.linneabark.test.ExpandableListAdapter;
@@ -42,7 +40,6 @@ public class SettingsController extends Fragment{
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
         listAdapter = new ExpandableListAdapter(getActivity(), settingsModel.getListDataHeader(), settingsModel.getListHash(), listView);
         listView.setAdapter(listAdapter);
-        System.out.println("Listview, sett: " + listView);
 
        return rootView;
     }

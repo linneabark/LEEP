@@ -1,7 +1,6 @@
 package com.example.linneabark.test;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
