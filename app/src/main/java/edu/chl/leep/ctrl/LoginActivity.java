@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     private Button registerButton;
     private Button loginButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

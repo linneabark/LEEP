@@ -34,7 +34,7 @@ import edu.chl.leep.model.Time;
 
 /**
  * A simple {@link Fragment} subclass.
- */
+ A controller class which handles the start and stop of the timer*/
 public class TimeLog extends Fragment {
     //TODO TimeLogCtrl
 

@@ -20,7 +20,7 @@ public class TimeTest {
 
     @Test
     public void startTimer() throws Exception {
-        final Time time = Time.getInstance(new TimeLog());
+        final Time time = Time.getInstance(new MainActivity());
         assertTrue(time.getTime() == 0);
 
         time.startTimer();
@@ -36,7 +36,7 @@ public class TimeTest {
 
     @Test
     public void stopTimer() throws Exception {
-        final Time time = Time.getInstance();
+        final Time time = Time.getInstance(new MainActivity());
         time.startTimer();
         Timer timer = new Timer();
 
@@ -50,10 +50,4 @@ public class TimeTest {
             }
         },0,1000);
     }
-
-    @Test
-    public void startCountDown() throws Exception {
-
-    }
-
 }

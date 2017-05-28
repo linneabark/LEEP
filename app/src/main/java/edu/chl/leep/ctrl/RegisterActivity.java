@@ -18,7 +18,7 @@ import edu.chl.leep.service.FileService;
 
 /**
  * Created by Eli on 2017-05-08.
- */
+ Is the controller class which handles the register view */
 
 public class RegisterActivity extends AppCompatActivity {
     //TODO change name to RegisterActivityCtrl
