@@ -22,15 +22,13 @@ import edu.chl.leep.model.LoginActivityModel;
 
 public class LoginActivity extends AppCompatActivity { //TODO change name to LoginActivityCtrl
 
-    static final int REGISTER_REQUEST_CODE = 1;
-
-    EditText userName;
-    EditText passWord;
-    TextView eM; //errorMessage
-    RadioButton rB; //keep the login
-    Context mContext;
+    private EditText userName;
+    private EditText passWord;
+    private TextView eM; //errorMessage
+    private RadioButton rB; //keep the login
+    private Context mContext;
     private static Leep leep;
-    LoginActivityModel loginActivityModel;
+    private LoginActivityModel loginActivityModel;
 
 
 
@@ -47,13 +45,10 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         mContext = this;
         loginActivityModel = new LoginActivityModel();
 
-
-
         if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
         }
-
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -65,23 +60,23 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
         System.out.println(Leep.getKeepLoginState(mContext));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
-                                           public void onClick(View v) {
+            public void onClick(View v) {
 
-                                               if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) { //if the password or username does not match
+                if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
 
-                                                   eM.setText("Password or username does not match!");
+                    eM.setText("Password or username does not match!");
 
-                                               } else {
-                                                   loginActivityModel.rememberUser(mContext, rB);
+                    SaveActivityRowList.putTheValuesInActivityRowList(mContext);
 
-                                                   SaveActivityRowList.putTheValuesInActivityRowList(mContext);
 
-                                                   Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
-                                                   startActivity(LoginToMain);
-                                               }
+                } else {
+                    loginActivityModel.rememberUser(mContext, rB);
 
-                                           }
-                                       });
+                    Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(LoginToMain);
+                }
+            }
+        });
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override

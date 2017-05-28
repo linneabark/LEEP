@@ -21,17 +21,16 @@ import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.MainActivityModel;
 import edu.chl.leep.service.SaveActivity;
 
+
 public class MainActivity extends AppCompatActivity {
 //TODO name to xCtrl, maybe
-
-    //private AccountController account = new AccountController();
 
     public static Leep leep;
     private Context mContext;
     private SettingsController settings;
 
-    MainActivityModel mainActivityModel;
-    SaveActivityRowList saveActivityRowList;
+    private MainActivityModel mainActivityModel;
+    private SaveActivityRowList saveActivityRowList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,18 +38,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
-        System.out.println("Context: " + mContext);
         mainActivityModel = new MainActivityModel();
         saveActivityRowList = new SaveActivityRowList();
-
-        System.out.println("this.mContext: " + mContext);
-
         leep = new Leep();
-
-        //if the value is 0 start login in again
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        changeFragment(R.id.timelog_id);
 
     }
 
@@ -61,14 +56,14 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
+    private boolean changeFragment(int id){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
         settings = new SettingsController();
-        switch (item.getItemId()) {
+
+        switch (id) {
             case R.id.settings_id:
                 nextFrag = settings;
                 break;
@@ -79,12 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 nextFrag = new TimeLog();
                 break;
             case R.id.account_id:
-                System.out.println("Håller på att logga ut.");
-                for(int i = 0; i < SaveActivity.activityRowList.size(); i++){
-                    System.out.println("activityRowList ('the main list for activiys') innehåller: " + SaveActivity.activityRowList.get(i).getUserName() + " " + SaveActivity.activityRowList.get(i).getStartTime());
-                }
+
                 saveActivityRowList.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
                 SaveActivity.activityRowList.clear();
+
                 mainActivityModel.logOutUser(mContext);
                 Intent MainToLogin = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(MainToLogin);
@@ -93,6 +86,11 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return changeFragment(item.getItemId());
     }
 
 

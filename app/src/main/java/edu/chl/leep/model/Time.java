@@ -1,6 +1,9 @@
 package edu.chl.leep.model;
 
-import edu.chl.leep.ctrl.TimeLog;
+import android.app.Activity;
+import android.widget.TextView;
+
+import edu.chl.leep.utils.ConvertUtils;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,88 +13,87 @@ import java.util.TimerTask;
  */
 
 public class Time {
-
-    private static final long MILLIS_TO_MINUTES = 60;
-    private static final long MILLIS_TO_HOURS = 3600;
     private static Time instance; //CC vill att den deklareras till new Time();
     private long value;
-    private static TimeLog tL;
     private Timer timer;
-
-    private long timerValue;
-    TimeLog timeLog;
+    private long totalTime;
+    private static Activity mainActivity;
+    private static TextView time_txt;
 
     private Time(){
         value = 0;
         timer = new Timer();
     }
 
-    public Time(int hours, int minutes) {
-        value = hours * 3600 + minutes * 60;
-        timer = new Timer();
-    }
-
-    public static Time getInstance(TimeLog timeLog){
+    //use this if a textview must be manipulated
+    public static Time getInstance(Activity activity, TextView txt){
         if(instance == null){
             instance = new Time();
         }
-        tL = timeLog;
+        mainActivity = activity;
+        time_txt = txt;
         return instance;
     }
 
-    TimerTask tt;
+    //use this if you don't care about a text being updated
+    public static Time getInstance(Activity activity){
+        if(instance == null){
+            instance = new Time();
+        }
+        mainActivity = activity;
+        return instance;
+    }
+
+    private class UpdateTimeTask extends TimerTask {
+        @Override
+        public void run() {
+            ConvertUtils sd = new ConvertUtils();
+            updateText(sd.calculateTimeToString(value));
+            instance.incTime();
+        }
+    }
 
     public void startTimer(){
         value = 0;
         timer.cancel();
         timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                tL.updateText(instance.toString());
-                System.out.println(instance.toString());
-                instance.incTime();
-            }
-        },0,1000);
+        timer.schedule(new UpdateTimeTask(),0,1000);
     }
 
     public void stopTimer(){
+        totalTime = value;
         value = 0;
-        tL.updateText(instance.toString());
+        updateText(instance.toString());
         timer.cancel();
         //timer = new Timer();
     }
 
     private void incTime(){
-        value = value + 1;
-    }
-
-    public void startCountDown(int hours, int minutes) {
-        instance = new Time(hours, minutes);
-        timer.cancel();
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (timerValue == 1) {
-                    timer.cancel();
-                }
-                timeLog.txtCountDown.setText(Time.this.toString());
-                decTime();
-            }
-        },0, 1000);
+        value = value + 1000;
     }
 
     private void decTime() {
-        value = value - 1;
+        value = value - 1000;
     }
 
     public String toString(){
-        //long value = System.currentTimeMillis() - tlStartTime;
-        int seconds = (int) ((value % 60));
-        int minutes = (int) ((value / MILLIS_TO_MINUTES) % 60);
-        int hours = (int) ((value / MILLIS_TO_HOURS)%24);
+        ConvertUtils sd = new ConvertUtils();
+        return sd.calculateTimeToString(value);
+    }
 
-        return (String.format("%02d:%02d:%02d", hours, minutes, seconds));
+    public long getTime(){
+        return value;
+    }
+    public long getTotalTime(){return totalTime;}
+
+    public void updateText(final String text) {
+        if(time_txt != null) {
+            mainActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    time_txt.setText(text);
+
+                }
+            });
+        }
     }
 }

@@ -35,9 +35,8 @@ public class SaveActivityRowList {
 
     //For load
     private static List<ActivityRow> loadSharedList;
-    public static List<ActivityRow> loadActivityRowListSharedPref(Context context) {
 
-
+    private static List<ActivityRow> loadActivityRowListSharedPref(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Leep.getUSER(), context.MODE_PRIVATE);
 
         Gson gson = new Gson();

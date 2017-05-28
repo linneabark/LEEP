@@ -5,7 +5,10 @@ package edu.chl.leep.service;
  */
 
 public interface IQuotesService {
-    public String getQuote() ;
+
+    //TODO ska vi ha detta interfacet?
+
+    //public String getQuote() ;
 
     public void addQuote(String inputQuote);
 

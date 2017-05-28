@@ -24,21 +24,13 @@ import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.service.QuotesService;
 
-import com.example.linneabark.test.Convert;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
-import edu.chl.leep.service.FileService;
-import edu.chl.leep.utils.SaveDate;
-
-import com.example.linneabark.test.WriteAndReadFile;
-import com.example.linneabark.test.unused.CategoryHashMap;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
+import edu.chl.leep.utils.ConvertUtils;
 import edu.chl.leep.model.Time;
+
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,27 +41,24 @@ public class TimeLog extends Fragment {
     //TODO gör variablerna private
 
     private TextView quoteDisplay;
-    private QuotesService quote = new QuotesService(getContext());
-    private SaveDate saveDate = new SaveDate();
+    private QuotesService quote;
+    private ConvertUtils convertUtils;
 
     private long stopActivity;
     private long startActivity;
     private TextView time_txt;
-    private CategoryHashMap cHM = new CategoryHashMap();
-    SaveActivity saveActivity = new SaveActivity();
-    Convert convert = new Convert();
-    TimeLogModel timeLogModel;
+
+
+    private TimeLogModel timeLogModel;
     private Time time;
-    Context mContext;
+    private Context mContext;
 
-    WriteAndReadFile writeAndReadFile;
-
-
-    /** Timer variables */
+    /** Timer variables */ //TODO remove?
     private ImageButton timerButton;
-    private TextView txtTimer;
     public TextView txtCountDown;
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
+    Spinner spinner;
+    public int position;
 
     public TimeLog() {
         // Required empty public constructor
@@ -78,23 +67,7 @@ public class TimeLog extends Fragment {
 
     //TODO lägg upp ovanför konstruktor
 
-    Spinner spinner;
-
-    public int position;
-
     //TODO move method so that it's under onCreateView
-    public void setPosition(int value){
-        position = value;
-
-        System.out.println(value);
-    }
-
-    public int getPosition(){
-        return position;
-    }
-
-    List<ActivityRow> getTheSavedList = new ArrayList<ActivityRow>();
-
 
 
     //TODO make smaller methods
@@ -105,16 +78,15 @@ public class TimeLog extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
         mContext = getActivity();
 
+        convertUtils = new ConvertUtils();
         timeLogModel = new TimeLogModel();
 
-
-        //check whether or not the categories has been initialized with a name yet, should be in a seperate method
-       timeLogModel.checkCategoryStatus(mContext);
-
+        timeLogModel.checkCategoryStatus(mContext);
         timeLogModel.checkQuoteStatus(mContext);
 
-        /**SPINNER **/
+        quote = new QuotesService(getContext());
 
+        /**SPINNER **/
 
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
         ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, Leep.getCategoryList(mContext));
@@ -147,10 +119,8 @@ public class TimeLog extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        time = Time.getInstance(this);
+        time = Time.getInstance(getActivity(), time_txt);
 
-
-        updateText(time.toString());
 
         startClock.setOnClickListener(new OnClickListener() {
             @Override
@@ -172,45 +142,23 @@ public class TimeLog extends Fragment {
 
                 stopActivity = System.currentTimeMillis();
 
-                saveActivity.addActivity(new ActivityRow(
+                SaveActivity.addActivity(new ActivityRow(
                         Leep.getUSER(),
-                        saveDate.calculateYearToString(),
-                        saveDate.calculateMonthToString(),
-                        saveDate.calculateDayToString(),
-                        convert.longToString(startActivity),
-                        convert.longToString(stopActivity - startActivity),
+                        convertUtils.calculateYearToString(),
+                        convertUtils.calculateMonthToString(),
+                        convertUtils.calculateDayToString(),
+                        convertUtils.longToString(startActivity),
+                        convertUtils.longToString(time.getTotalTime()),
                         Leep.getCategory(mContext, getPosition())));
 
-                System.out.println("THIS CATEGORYY????:" + Leep.getCategory(mContext,getPosition()));
-
-/*
-                FileService.saveActivityToTxt(Leep.getUsername(mContext), SaveActivity.activityRowList, mContext);
-
-                System.out.println("Which filename: "+ Leep.getUsername(mContext));
-                System.out.println("Which filename2: "+ Leep.getUSER());
-
-                List<ActivityRow> list = FileService.getActivityFromTxt(Leep.getUsername(mContext), mContext);
-
-                //System.out.println(list);
-                */
-                //writeAndReadFile = new WriteAndReadFile(mContext);
-
-                System.out.println("Vad är tiden som startades precis? : " + convert.longToString(startActivity));
-
-                System.out.println("var är element 1 i saveActivity. activityRowList: " + saveActivity.activityRowList.get(0).getStartTime());
-                //writeAndReadFile.writeArrayToFile(saveActivity.activityRowList);
-
-               // getTheSavedList = writeAndReadFile.getArrayFromFile();
-                System.out.println("vad är första elemetet i getTheSavedList: " + saveActivity.activityRowList.get(0).getStartTime());
-
-                Toast.makeText(mContext, "Activity saved. Duration: " + saveDate.calculateTimeToString(stopActivity - startActivity), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
 
             }
         });
 
         quoteDisplay.setText(quote.getQuote());
 
-        /** Timer, count down */
+        /** Timer, count down */ //TODO remove??
         // txtTimer = (TextView) rootView.findViewById(R.id.txtTimer);
         txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
         timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
@@ -225,7 +173,6 @@ public class TimeLog extends Fragment {
                         mTimeSetListener, timeLogModel.getHour(), timeLogModel.getMinute(), true);
 
                 timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
                 timePickerDialog.setTitle("Set time to start count down.");
                 timePickerDialog.show();
             }
@@ -241,19 +188,23 @@ public class TimeLog extends Fragment {
                 txtTimer.setText(text);
                 */
 
-                time.startCountDown(hourOfDay, minute);
+               // time.startCountDown(hourOfDay, minute);
             }
         };
 
         return rootView;
     }
 
-    public void updateText(final String text) {
-        getActivity().runOnUiThread(new Runnable() {
-            public void run() {
-                time_txt.setText(text);
 
-            }
-        });
+    public void setPosition(int value){
+        position = value;
     }
+
+    public int getPosition(){
+        return position;
+    }
+
+
+
+
 }

@@ -19,7 +19,7 @@ public class SettingsModel {
 
     }
 
-    //method that adds headers and items in the expandablelistview
+    //Method that adds groups and children in the expandablelistview
     public void initData() {
         listDataHeader = new ArrayList<>();
         listHash = new HashMap<>();
@@ -35,9 +35,7 @@ public class SettingsModel {
 
         List<String> quote = new ArrayList<>();
         quote.add(Leep.getQuote1(context));
-        System.out.println("Quote 1: " +Leep.getQuote1(context));
         quote.add(Leep.getQuote2(context));
-        System.out.println("Quote 2: " + Leep.getQuote2(context));
         quote.add(Leep.getQuote3(context));
 
         List<String> help = new ArrayList<>();

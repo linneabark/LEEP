@@ -82,16 +82,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:id="@+id/category"
+            android:layout_marginTop="20dp"
 
             />
        <Spinner
             android:id="@+id/spinner"
             android:layout_width="300dp"
+           android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/plainWhite"
-           />
+            android:paddingTop="10dp"
+           android:paddingBottom="10dp"
+            android:background="@color/lightGrey"
 
+           />
 
         <!--<TextView
             android:id="@+id/testText"
@@ -106,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="80dp"
             android:gravity="center"
             android:text="No quote is defined yet!"
             android:textSize="30dp"

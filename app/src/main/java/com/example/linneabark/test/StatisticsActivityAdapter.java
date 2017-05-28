@@ -20,12 +20,10 @@ import edu.chl.leep.ctrl.Statistics;
 public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsActivityAdapter.ViewHolder>{
 
     private int recyclerItemIndex = 0;
-    Context context;
     private List <String> activity;
 
 
-    public StatisticsActivityAdapter (Context context, List<String> activityList) {
-        this.context = context;
+    public StatisticsActivityAdapter (List<String> activityList) {
         activity = activityList;
     }
 
@@ -54,8 +52,6 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
 
         if(recyclerItemIndex==position) {
             holder.txtActivity.setBackgroundColor(Color.LTGRAY);
-            //example beneath
-            //holder.btn.setBackgroundColor(Color.parseColor("#ffffff"));
         } else {
             holder.txtActivity.setBackgroundColor(Color.WHITE);
         }
@@ -66,13 +62,12 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
         return activity.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtActivity;
-        public ViewHolder(View v){
+    class ViewHolder extends RecyclerView.ViewHolder {
+        private TextView txtActivity;
+        private ViewHolder(View v){
             super(v);
             txtActivity = (TextView) itemView.findViewById(R.id.txtActivity);
         }
-
     }
 
     public void swapList (List<String> changedList) {

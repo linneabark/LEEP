@@ -13,7 +13,7 @@ public class FindWhichMonth {
     -vill man åt andra hållet så tar man indexOf och från namnet och då
     -får man indexet ur arrayen och tar man plus ett så får man månadens nummer
     */
-    public static String [] months = {"Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
+    public String [] months = {"Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
                                         "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."};
 
     public String nameOfMonth (String day) {
@@ -25,7 +25,7 @@ public class FindWhichMonth {
     }
 
     //int numberMonth = -1 och numberMonth = 1 + i ; är nog onödigt tydliga.
-    public static int numberOfMonth (String day) {
+    public int numberOfMonth (String day) {
         int numberMonth = -1;
         for (int i = 0; i < months.length; i++){
             if (day.equals(months[i])) {

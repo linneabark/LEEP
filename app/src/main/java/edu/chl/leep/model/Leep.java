@@ -44,6 +44,7 @@ public class Leep {
     //TODO getters
 
     public static void register(){
+        System.out.println("Skriver den ut här?");
         Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
         Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
         Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
@@ -82,6 +83,7 @@ public class Leep {
     //HANDLE THE USER INFO
 
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
+        System.out.println("Context: " + context);
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
     }
 
