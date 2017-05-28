@@ -11,8 +11,6 @@ import java.util.List;
 
 public class SaveActivity {
 
-    //TODO Slå ihop med fileservice
-
     public static List<ActivityRowModel> activityRowList = new ArrayList<>();
 
     public static void addActivity (ActivityRowModel activityRow) {
