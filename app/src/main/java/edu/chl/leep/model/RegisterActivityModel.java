@@ -4,7 +4,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * Created by Eli on 2017-05-23.
+ * Created by Eli on 2017-05-24.
  */
 
 public class RegisterActivityModel {

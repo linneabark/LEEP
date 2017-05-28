@@ -6,34 +6,31 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.linneabark.test.R;
+import com.example.linneabark.test.SaveActivityRowList;
 
 import edu.chl.leep.model.Leep;
-import edu.chl.leep.service.AccountDetails;
+import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.service.SaveActivity;
+
 
 public class MainActivity extends AppCompatActivity {
-
-    //private AccountController account = new AccountController();
-
+//TODO name to xCtrl, maybe
 
     public static Leep leep;
     private Context mContext;
+    private SettingsController settings;
 
-    public Context getContext(){
-        return mContext;
-    }
-
+    private MainActivityModel mainActivityModel;
+    private SaveActivityRowList saveActivityRowList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +38,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
-
+        mainActivityModel = new MainActivityModel();
+        saveActivityRowList = new SaveActivityRowList();
         leep = new Leep();
-        //if the value is 0 start login in again
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-
-        //MenuItem logOut = getItemId(R.id.account_id);
-
-
+        changeFragment(R.id.timelog_id);
 
     }
 
@@ -62,15 +56,16 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
 
+    private boolean changeFragment(int id){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
-        switch (item.getItemId()) {
+        settings = new SettingsController();
+
+        switch (id) {
             case R.id.settings_id:
-                nextFrag = new Settings();
+                nextFrag = settings;
                 break;
             case R.id.statistics_id:
                 nextFrag = new Statistics();
@@ -80,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.account_id:
 
-                AccountDetails.setKeepLoginStateToZero(mContext, 0);
-                Toast.makeText(mContext, ("Logged out " + AccountDetails.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
+                saveActivityRowList.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
+                SaveActivity.activityRowList.clear();
 
-
-                Intent toy = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(toy);
+                mainActivityModel.logOutUser(mContext);
+                Intent MainToLogin = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(MainToLogin);
 
         }
         transaction.add(R.id.fragment_container, nextFrag);
@@ -93,30 +88,19 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
-    public void showCategoryPopUp(View v){
-
-
-        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
-
-
-        LayoutInflater inflater = this.getLayoutInflater();
-
-        //if() {
-            View categoryLayout = inflater.inflate(R.layout.pop_up_window_category, null);
-            helpBuilder.setView(categoryLayout);
-       /* }else if() {
-
-            View quotesLayout = inflater.inflate(R.layout.pop_up_window_quotes, null);
-            helpBuilder.setView(quotesLayout);
-        }else{
-            View helpLayout = inflater.inflate(R.layout.pop_up_window_help, null);
-            helpBuilder.setView(helpLayout);
-        }
-*/
-        AlertDialog helpDialog = helpBuilder.create();
-        helpDialog.show();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return changeFragment(item.getItemId());
     }
-    //method that adds headers and items in the expandablelistview
+
+
+    public void showPopUp(View v){
+        settings.choosePopUp(v);
+    }
+
+    public Context getContext(){
+        return mContext;
+    }
+
 
 }

@@ -2,6 +2,7 @@ package edu.chl.leep.service;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.SharedPreferences;
 
 import edu.chl.leep.model.ActivityRow;
 
@@ -19,21 +20,19 @@ import java.util.List;
  * Created by Eli on 2017-05-15.
  */
 
-public class FileService implements Serializable{
+public class FileService implements Serializable {
+
 
     String SAVED_INFO = "savedInfo.txt";
 
     private static String activityFolder = "Activities";
 
 
-
-
-
     public static String saveActivityToTxt(String filename, List<ActivityRow> list, Context mContext) { //filename aka username
 
         ContextWrapper cw = new ContextWrapper(mContext);
         File directory = cw.getDir(activityFolder, Context.MODE_PRIVATE);
-        File myPath =new File(directory, (filename + ".txt"));
+        File myPath = new File(directory, (filename + ".txt"));
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {
@@ -47,14 +46,14 @@ public class FileService implements Serializable{
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally{
-            if((null != oos) || (null != fos))
-            try{
-                fos.close();
-                oos.close();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+        } finally {
+            if ((null != oos) || (null != fos))
+                try {
+                    fos.close();
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
         }
 
@@ -78,19 +77,18 @@ public class FileService implements Serializable{
             FileInputStream fis = new FileInputStream(f);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            list = ((List <ActivityRow> )ois.readObject());
+            list = ((List<ActivityRow>) ois.readObject());
             ois.close();
             fis.close();
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
         }
 
-            catch(ClassNotFoundException | IOException e ){
-                e.printStackTrace();
-            }
-
-            System.out.println("THE RETRIEVED LIST: " + list);
-            return list;
-        }
+        System.out.println("THE RETRIEVED LIST: " + list);
+        return list;
     }
+
+
 
     /*spara user info som en lista i en textfil
     användarnamn
@@ -101,5 +99,12 @@ public class FileService implements Serializable{
     och därefter skapa en fil med aktiviteterna till det användarnamnet
      */
 
+    //Flyttades hit pga Hacht
+    public static SharedPreferences getPrefPreviousUser(Context context) { //or is it getPrefs?
+        //TODO flytta till fileservice, allt som har med att skriva ut
+
+        return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
+    }
 
 
+}

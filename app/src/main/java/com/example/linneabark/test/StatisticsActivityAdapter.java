@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.List;
+
+import edu.chl.leep.ctrl.Statistics;
+
 /**
  * Created by Evelina on 2017-05-16.
  */
@@ -17,12 +21,12 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
 
     private int recyclerItemIndex = 0;
     Context context;
-    private String [] activity;
+    private List <String> activity;
 
 
-    public StatisticsActivityAdapter (Context context, String [] monthsList) {
+    public StatisticsActivityAdapter (Context context, List<String> activityList) {
         this.context = context;
-        activity = monthsList;
+        activity = activityList;
     }
 
     @Override
@@ -37,7 +41,7 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         //configures your layouts for the list item (e.g. setting text to a TextView)
-        ((ViewHolder)holder).txtActivity.setText(activity[position]);
+        ((ViewHolder)holder).txtActivity.setText(activity.get(position));
 
         //Direkt kopiering av StatisticsMonthAdapter
         holder.txtActivity.setOnClickListener(new View.OnClickListener(){
@@ -59,7 +63,7 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
 
     @Override
     public int getItemCount() {
-        return activity.length;
+        return activity.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -69,5 +73,21 @@ public class StatisticsActivityAdapter extends RecyclerView.Adapter<StatisticsAc
             txtActivity = (TextView) itemView.findViewById(R.id.txtActivity);
         }
 
+    }
+
+    public void swapList (List<String> changedList) {
+        System.out.println("klass statisticsactivityAdapter, ,etod swapList. Kommer jag hit?");
+        System.out.println("vad är date just nu? size är --> " +  activity.size());
+        if(activity != null) {
+            System.out.println("kommer jag in i if?");
+            activity.clear();
+            System.out.println("is the clear metod removing? activ ity.size() --> " + activity.size());
+            activity.addAll(changedList);
+            System.out.println("activity size after if --> " + activity.size());
+        } else {
+            System.out.println("Eller komme rjag in i else?");
+            activity = changedList;
+        }
+        notifyDataSetChanged();
     }
 }

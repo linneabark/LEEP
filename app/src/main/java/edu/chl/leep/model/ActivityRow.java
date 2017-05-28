@@ -9,15 +9,17 @@ import java.util.Date;
 
 public class ActivityRow implements Serializable {
     // TODO Single activity
+    private String userName;
     private String year;
     private String month;
     private String day;
-    private long startTime;
-    private long totalTime;
+    private String startTime;
+    private String totalTime;
     private String categoryName;
 
 
-    public ActivityRow (String year, String month, String day, long startTime, long totalTime, String categoryName) {
+    public ActivityRow (String userName, String year, String month, String day, String startTime, String totalTime, String categoryName) {
+        this.userName = userName;
         this.year = year;
         this.month = month;
         this.day= day;
@@ -25,11 +27,11 @@ public class ActivityRow implements Serializable {
         this.totalTime = totalTime;
         this.categoryName = categoryName;
     }
-
+    public String getUserName () {return userName;}
     public String getYear () {return year;}
     public String getMonth () {return month;}
     public String getDay () {return day;}
-    public long getStartTime () {return startTime;}
-    public long getTotalTime () {return totalTime;}
+    public String getStartTime () {return startTime;}
+    public String getTotalTime () {return totalTime;}
     public String getCategoryName () {return categoryName;}
 }

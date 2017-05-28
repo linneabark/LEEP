@@ -11,24 +11,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.linneabark.test.R;
+import com.example.linneabark.test.SaveActivityRowList;
 
+import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.LoginActivityModel;
-import edu.chl.leep.service.AccountDetails;
 
 /**
  * Created by Eli on 2017-05-08.
  */
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity { //TODO change name to LoginActivityCtrl
 
-    static final int REGISTER_REQUEST_CODE = 1;
+    private EditText userName;
+    private EditText passWord;
+    private TextView eM; //errorMessage
+    private RadioButton rB; //keep the login
+    private Context mContext;
+    private static Leep leep;
+    private LoginActivityModel loginActivityModel;
 
-    EditText userName;
-    EditText passWord;
-    TextView eM; //errorMessage
-    RadioButton rB; //keep the login
-    Context mContext;
-    LoginActivityModel loginActivityModel;
+
 
 
 
@@ -37,18 +39,16 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
 
-        //TODO new Leep();
         //Måste kunna kommas åt i hela programmet, sätt public static
+        getInstance();
 
         mContext = this;
         loginActivityModel = new LoginActivityModel();
-
 
         if(loginActivityModel.userWasLoggedIn(mContext)){
             Intent toy = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(toy);
         }
-
 
         Button registerButton = (Button) this.findViewById(R.id.registerButton);
         Button loginButton = (Button) this.findViewById(R.id.loginButton);
@@ -57,26 +57,26 @@ public class LoginActivity extends AppCompatActivity {
         rB = (RadioButton) this.findViewById(R.id.radioButton);
         eM = (TextView) this.findViewById(R.id.errormessage_login);
 
-        System.out.println(AccountDetails.getKeepLoginState(mContext));
+        System.out.println(Leep.getKeepLoginState(mContext));
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) { //if the password or username does not match
+                if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
 
                     eM.setText("Password or username does not match!");
 
-                } else {
+                    SaveActivityRowList.putTheValuesInActivityRowList(mContext);
 
-                   loginActivityModel.setUserSettings(mContext, rB);
+
+                } else {
+                    loginActivityModel.rememberUser(mContext, rB);
 
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(LoginToMain);
                 }
-
             }
         });
-
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,9 +87,21 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(toy);
 
             }
-        });
 
 
+
+    });
+
+        }
+    public static Leep getInstance(){
+        if(leep == null){
+            leep = new Leep();
+        }
+
+        return leep;
     }
+
+
+
 
 }

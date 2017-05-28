@@ -1,93 +1,89 @@
-package edu.chl.leep.model;
+package com.example.linneabark.test.unused;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.leep.ctrl.RegisterActivity;
-import edu.chl.leep.service.FileService;
-
 /**
- * Created by linneabark on 2017-05-22.
+ * Created by Eli on 2017-05-10.
  */
 
-public class Leep {
+public class AccountDetails {
 
-   // User actual
-    // List<Activity>
-    public Leep(){
-        String userName;
-        String password;
+    private SharedPreferences sharedPreferences;
 
+    // TODO till User
+
+    //Flyttat till User
+    /*
+    private static String USER_INFO = "UserInfo";
+
+    static String theUser = "";
+    static String category1 = "Category1";
+    static String category2 = "Category2";
+    static String category3 = "Category3";
+*/
+
+    public void AccountDetails() {
+        // Blank
     }
 
-    public static List<String> getCategoryList(Context mContext){
-        List<String> categoryList = new ArrayList<>();
-
-        categoryList.add(getCategory1(mContext));
-        categoryList.add(getCategory2(mContext));
-        categoryList.add(getCategory3(mContext));
-
-        return categoryList;
-
-    }
-
-    // getActitivire
-
-    //TODO metod: register(User)
-    //TODO metod: login(User)
-
-    //TODO getters
-
-    public static void register(){
-        Leep.setUSER(RegisterActivity.newUser.user); //sets the "user folder with the same name as username"
-        Leep.setUsername(User.mContext, RegisterActivity.newUser.userName);
-        Leep.setPassword(User.mContext, RegisterActivity.newUser.password);
-        Leep.setEmail(User.mContext, RegisterActivity.newUser.email);
-
-    }
-
-
+    //Flyttat till Leep
+    /*
     public static void setUSER(String input){
-        User.theUser = input;
+        theUser = input;
     }
 
 
 
     //all the getter
     public static String getUSER(){
-        String y = User.theUser;
+        String y = theUser;
         return y;
     }
+    */
 
-    //Fluttat från AccountDetails pga Hacht
+    //HANDLE PREVIOUS USER
 
+
+    //Flyttat till fileservice
+    /*
+    private static SharedPreferences getPrefPreviousUser(Context context) { //or is it getPrefs?
+        //TODO flytta till fileservice, allt som har med att skriva ut
+
+        return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
+    }*/
+
+    //Flyttat till Leep
+    /*
     public static String getPreviousUser(Context context) {
-        return FileService.getPrefPreviousUser(context).getString("user", "");
+        return getPrefPreviousUser(context).getString("user", "");
     }
 
     public static void setPreviousUser(Context context, String input){
-        SharedPreferences.Editor editor = FileService.getPrefPreviousUser(context).edit();
+        SharedPreferences.Editor editor = getPrefPreviousUser(context).edit();
         editor.putString("user", input);
 
         editor.apply();
-    }
+    }*/
 
-    //Flyttat från AccountDetails
+    //Flyttat till LEEP
 
+    /*
     //HANDLE THE USER INFO
 
     private static SharedPreferences getUserInfos(Context context) { //or is it getPrefs?
-        System.out.println("Context: " + context);
         return context.getSharedPreferences(getUSER(), Context.MODE_PRIVATE);
     }
 
     private static SharedPreferences getUserInfo(Context context) { //or is it getPrefs?
-        return context.getSharedPreferences(User.USER_INFO, Context.MODE_PRIVATE);
+        return context.getSharedPreferences(USER_INFO, Context.MODE_PRIVATE);
     }
 
     //gets the specific key and value in it
@@ -119,39 +115,6 @@ public class Leep {
 
     public static String getCategory3(Context context) {
         return getUserInfos(context).getString("Category 3", "");
-    }
-
-    public static String getQuote1(Context context) {
-        return getUserInfos(context).getString("Quote 1", "");
-    }
-
-    public static String getQuote2(Context context){
-        return getUserInfos(context).getString("Quote 2", "");
-    }
-
-    public static String getQuote3 (Context context){
-        return  getUserInfos(context).getString("Quote 3", "");
-    }
-
-    public static void setQuote1(Context context, String input) {
-        SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Quote 1", input);
-
-        editor.apply();
-    }
-
-    public static void setQuote2(Context context, String input){
-        SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Quote 2", input);
-
-        editor.apply();
-    }
-
-    public static void setQuote3(Context context, String input){
-        SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Quote 3", input);
-
-        editor.apply();
     }
 
     public static void setCategory(Context context, String input, int x){
@@ -194,25 +157,25 @@ public class Leep {
     //input.getText().toString(); in the other class and pass it as a string
 
     //all the setters
-    public static void setUsername(Context context, String input) {
+    public static void setUsername(Context context, EditText input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Username", input);
+        editor.putString("Username", input.getText().toString());
 
         editor.apply();
 
     }
 
-    public static void setEmail(Context context, String input) {
+    public static void setEmail(Context context, EditText input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Email", input);
+        editor.putString("Email", input.getText().toString());
 
         editor.apply();
 
     }
 
-    public static void setPassword(Context context, String input) {
+    public static void setPassword(Context context, EditText input) {
         SharedPreferences.Editor editor = getUserInfos(context).edit();
-        editor.putString("Password", input);
+        editor.putString("Password", input.getText().toString());
 
         editor.apply();
 
@@ -242,7 +205,7 @@ public class Leep {
             editor.putInt("RadioButton", 1);
         }else
 
-            editor.putInt("RadioButton", 0);
+        editor.putInt("RadioButton", 0);
         editor.apply();
     }
 
@@ -251,6 +214,10 @@ public class Leep {
     }
 
 
+*/
 }
+
+
+
 
 

@@ -8,6 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import edu.chl.leep.ctrl.MainActivity;
+import edu.chl.leep.ctrl.Statistics;
+import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.utils.FindWhichMonth;
+
 /**
  * Created by Evelina on 2017-05-12.
  */
@@ -16,10 +24,15 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
     Context context;
     private String [] months;
 
+    StatisticsDateAdapter statisticsDateAdapter;
+    StatisticsModel statisticsModel = new StatisticsModel();
 
-    public StatisticsMonthAdapter (Context context, String [] monthsList) {
+
+
+    public StatisticsMonthAdapter (Context context, String [] monthsList, StatisticsDateAdapter sDA) {
         this.context = context;
         months = monthsList;
+        statisticsDateAdapter = sDA;
     }
 
     @Override
@@ -44,7 +57,11 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
+                //monthOfBtn = position;
+                statisticsModel.setMonthBtn(months[position]);
+                statisticsDateAdapter.swapList(statisticsModel.getAllDays());
                 notifyDataSetChanged();
+
             }
         });
 
@@ -70,4 +87,11 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
         }
 
     }
+    //private int monthOfBtn;
+    //public String getMonthOfBtn () {
+      //  return months[monthOfBtn];
+    //}
+
+
+
 }
