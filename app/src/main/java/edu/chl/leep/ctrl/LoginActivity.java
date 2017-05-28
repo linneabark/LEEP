@@ -29,10 +29,8 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
     private Context mContext;
     private static Leep leep;
     private LoginActivityModel loginActivityModel;
-
-
-
-
+    private Button registerButton;
+    private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,8 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
             startActivity(toy);
         }
 
-        Button registerButton = (Button) this.findViewById(R.id.registerButton);
-        Button loginButton = (Button) this.findViewById(R.id.loginButton);
+        registerButton = (Button) this.findViewById(R.id.registerButton);
+        loginButton = (Button) this.findViewById(R.id.loginButton);
         userName = (EditText) this.findViewById(R.id.userName);
         passWord = (EditText) this.findViewById(R.id.password);
         rB = (RadioButton) this.findViewById(R.id.radioButton);
@@ -63,45 +61,31 @@ public class LoginActivity extends AppCompatActivity { //TODO change name to Log
             public void onClick(View v) {
 
                 if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
-
                     eM.setText("Password or username does not match!");
-
                     SaveActivityRowList.putTheValuesInActivityRowList(mContext);
-
 
                 } else {
                     loginActivityModel.rememberUser(mContext, rB);
-
                     Intent LoginToMain = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(LoginToMain);
                 }
             }
         });
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent toy = new Intent(LoginActivity.this, RegisterActivity.class);
-
                 startActivity(toy);
-
             }
 
 
 
     });
-
         }
     public static Leep getInstance(){
         if(leep == null){
             leep = new Leep();
         }
-
         return leep;
     }
-
-
-
-
 }
