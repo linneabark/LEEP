@@ -193,7 +193,6 @@ public class StatisticsModel {
 
 
     public List<String> getAllDays () {
-
         int count = 0;
         List <String> allDays = new ArrayList<>();
         System.out.println("Klass statisticsMomthAdapter, metod getAllDays.");
