@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 /**
  * Created by Eli on 2017-05-25.
- */
+ Is a Util class which converts Longs to String in the format vi want, and the other way around*/
 public class ConvertUtilsTest {
     @Test
     public void calculateTimeToString() throws Exception {

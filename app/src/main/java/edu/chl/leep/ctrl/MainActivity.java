@@ -21,7 +21,9 @@ import edu.chl.leep.model.Leep;
 import edu.chl.leep.model.MainActivityModel;
 import edu.chl.leep.service.SaveActivity;
 
-
+/**
+ * MainActivity is the controller class which handles the fragment and menu, as well as popups
+ */
 public class MainActivity extends AppCompatActivity {
 //TODO name to xCtrl, maybe
 

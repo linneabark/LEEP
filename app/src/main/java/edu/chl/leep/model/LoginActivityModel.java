@@ -11,7 +11,7 @@ import edu.chl.leep.ctrl.MainActivity;
 
 /**
  * Created by Eli on 2017-05-24.
- */
+ A model class which contains some methods used in LoginActivity*/
 
 public class LoginActivityModel {
 
