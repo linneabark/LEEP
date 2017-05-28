@@ -13,7 +13,7 @@ public class MainActivityModel {
 
     public void logOutUser(Context mContext){
         LeepModel.setKeepLoginStateToZero(mContext, 0);
-        TimeModel time = TimeModel.getInstance((MainActivityController)mContext);
+        TimerModel time = TimerModel.getInstance((MainActivityController)mContext);
         time.stopTimer();
         Toast.makeText(mContext, ("Logged out " + LeepModel.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
     }

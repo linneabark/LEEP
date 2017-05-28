@@ -24,7 +24,7 @@ import edu.chl.leep.model.CountDownModel;
 import edu.chl.leep.model.LeepModel;
 
 import edu.chl.leep.model.TimeLogModel;
-import edu.chl.leep.model.TimeModel;
+import edu.chl.leep.model.TimerModel;
 import edu.chl.leep.service.QuotesService;
 
 import com.example.linneabark.test.R;
@@ -36,7 +36,7 @@ import edu.chl.leep.utils.ConvertUtils;
 /**
  * A simple {@link Fragment} subclass.
  A controller class which handles the start and stop of the timer*/
-public class TimeLogsController extends Fragment {
+public class TimeLogController extends Fragment {
 
     private TextView quoteDisplay;
     private QuotesService quote;
@@ -47,7 +47,7 @@ public class TimeLogsController extends Fragment {
     private TextView time_txt;
 
     private TimeLogModel timeLogModel;
-    private TimeModel time;
+    private TimerModel time;
     private Context mContext;
 
     private CountDownModel countDown;
@@ -58,7 +58,7 @@ public class TimeLogsController extends Fragment {
     Spinner spinner;
     public int position;
 
-    public TimeLogsController() {
+    public TimeLogController() {
         // Required empty public constructor
     }
 
@@ -109,7 +109,7 @@ public class TimeLogsController extends Fragment {
         Button stopClock = (Button) rootView.findViewById(R.id.stopClock_btn);
         final Button startClock = (Button) rootView.findViewById(R.id.startClock_btn);
         time_txt = (TextView) rootView.findViewById(R.id.clock_txt);
-        time = TimeModel.getInstance(getActivity(), time_txt);
+        time = TimerModel.getInstance(getActivity(), time_txt);
 
         startClock.setOnClickListener(new OnClickListener() {
             @Override

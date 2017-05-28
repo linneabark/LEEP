@@ -16,7 +16,7 @@ public class TimeTest {
 
     @Test
     public void startTimer() throws Exception {
-        final TimeModel time = TimeModel.getInstance(new MainActivityController());
+        final TimerModel time = TimerModel.getInstance(new MainActivityController());
         assertTrue(time.getTime() == 0);
 
         time.startTimer();
@@ -32,7 +32,7 @@ public class TimeTest {
 
     @Test
     public void stopTimer() throws Exception {
-        final TimeModel time = TimeModel.getInstance(new MainActivityController());
+        final TimerModel time = TimerModel.getInstance(new MainActivityController());
         time.startTimer();
         Timer timer = new Timer();
 

@@ -11,31 +11,31 @@ import java.util.TimerTask;
  * A class which runs a timer, starts and stops a timertask
  */
 
-public class TimeModel {
-    private static TimeModel instance;
+public class TimerModel {
+    private static TimerModel instance;
     private long value;
     private Timer timer;
     private long totalTime;
     private static Activity mainActivity;
     private static TextView time_txt;
 
-    private TimeModel(){
+    private TimerModel(){
         value = 0;
         timer = new Timer();
     }
 
-    public static TimeModel getInstance(Activity activity, TextView txt){
+    public static TimerModel getInstance(Activity activity, TextView txt){
         if(instance == null){
-            instance = new TimeModel();
+            instance = new TimerModel();
         }
         mainActivity = activity;
         time_txt = txt;
         return instance;
     }
 
-    public static TimeModel getInstance(Activity activity){
+    public static TimerModel getInstance(Activity activity){
         if(instance == null){
-            instance = new TimeModel();
+            instance = new TimerModel();
         }
         mainActivity = activity;
         return instance;
