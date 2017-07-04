@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
-import com.example.linneabark.test.ExpandableListAdapter;
+import edu.chl.leep.adapter.ExpandableListAdapter;
 import com.example.linneabark.test.R;
 import com.example.linneabark.test.ShowCategoryPopUp;
 import com.example.linneabark.test.ShowHelpPopUp;

@@ -27,6 +27,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private int lastExpandedGroupPosition = -1;
     private ExpandableListView listView;
     private HashMap<String, List<String>> listHashMap;
+    private ImageButton button;
 
     public ExpandableListAdapter (Context context, List <String> listDataHeader,
                                   HashMap <String, List<String>> listHashMap,
@@ -92,7 +93,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null){
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_item, null);
-            ImageButton button = (ImageButton) convertView.findViewById(R.id.list_item_button);
+            button = (ImageButton) convertView.findViewById(R.id.list_item_button);
             button.setTag(childPosition);
 
         }

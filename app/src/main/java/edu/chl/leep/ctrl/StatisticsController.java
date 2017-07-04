@@ -15,17 +15,14 @@ import com.example.linneabark.test.R;
 
 import android.widget.Button;
 
-import com.example.linneabark.test.StatisticsActivityAdapter;
-import com.example.linneabark.test.StatisticsDateAdapter;
-import com.example.linneabark.test.StatisticsMonthAdapter;
+import edu.chl.leep.adapter.StatisticsActivityAdapter;
+import edu.chl.leep.adapter.StatisticsDateAdapter;
+import edu.chl.leep.adapter.StatisticsMonthAdapter;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;

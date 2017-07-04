@@ -1,6 +1,6 @@
 package edu.chl.leep.model;
 
-import com.example.linneabark.test.StatisticsActivityAdapter;
+import edu.chl.leep.adapter.StatisticsActivityAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
