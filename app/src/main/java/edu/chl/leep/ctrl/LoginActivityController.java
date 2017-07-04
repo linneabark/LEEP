@@ -15,6 +15,7 @@ import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
+import edu.chl.leep.utils.Intents;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -33,6 +34,7 @@ public class LoginActivityController extends AppCompatActivity {
     private Button loginButton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +48,7 @@ public class LoginActivityController extends AppCompatActivity {
         if(loginActivityModel.userWasLoggedIn(mContext)){
             getSavedActivitys(mContext);
 
-            Intent toy = new Intent(LoginActivityController.this, MainActivityController.class);
-            startActivity(toy);
+            startActivity(Intents.ToMain(mContext));
         }
 
         registerButton = (Button) this.findViewById(R.id.registerButton);
@@ -66,8 +67,13 @@ public class LoginActivityController extends AppCompatActivity {
 
                     getSavedActivitys(mContext);
 
-                    Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
-                    startActivity(LoginToMain);
+                    //Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
+                    //startActivity(LoginToMain);
+
+                    startActivity(Intents.ToMain(mContext));
+                    // or
+                    //startActivityForResult(intent, 1024);
+
                 }
 
             }
@@ -75,8 +81,9 @@ public class LoginActivityController extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toy = new Intent(LoginActivityController.this, RegisterActivityController.class);
-                startActivity(toy);
+
+                startActivity(Intents.ToRegister(mContext));
+
             }
 
 
