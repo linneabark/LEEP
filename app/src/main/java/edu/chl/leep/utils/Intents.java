@@ -9,6 +9,8 @@ import edu.chl.leep.ctrl.RegisterActivityController;
 
 /**
  * Created by Eli on 2017-07-04.
+ *
+ * A class to change between Activities
  */
 
 public class Intents {

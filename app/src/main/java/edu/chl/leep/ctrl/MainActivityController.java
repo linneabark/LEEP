@@ -16,6 +16,7 @@ import android.view.View;
 import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.utils.Intents;
 
 /**
  * MainActivityController is the controller class which handles the fragment and menu, as well as popups
@@ -50,7 +51,7 @@ public class MainActivityController extends AppCompatActivity {
     }
 
 
-    private boolean changeFragment(int id){
+    private boolean changeFragment(int id){ //kopplad till alla controllers, hur ändra?
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
@@ -68,8 +69,9 @@ public class MainActivityController extends AppCompatActivity {
                 break;
             case R.id.account_id:
                 mainActivityModel.logOutUser(mContext);
-                Intent MainToLogin = new Intent(MainActivityController.this, LoginActivityController.class);
-                startActivity(MainToLogin);
+                startActivity(Intents.ToLogIn(mContext));
+
+
         }
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
