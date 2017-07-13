@@ -1,7 +1,8 @@
 package edu.chl.leep.model;
 
-import android.content.Context;
 import java.util.Calendar;
+
+import edu.chl.leep.utils.Contexts;
 
 /**
  * Created by Eli on 2017-05-24.
@@ -20,14 +21,14 @@ public class TimeLogModel {
     private String category2 = "Category 2";
     private String category3 = "Category 3";
 
-    public void checkCategoryStatus(Context mContext) {
+    public void checkCategoryStatus() {
 
-        if ((LeepModel.getCategory1(mContext).equals("")) && (LeepModel.getCategory2(mContext).equals(""))
-                && (LeepModel.getCategory3(mContext).equals(""))) {
+        if ((LeepModel.getCategory1().equals("")) && (LeepModel.getCategory2().equals(""))
+                && (LeepModel.getCategory3().equals(""))) {
 
-            LeepModel.setCategory1(mContext, category1);
-            LeepModel.setCategory2(mContext, category2);
-            LeepModel.setCategory3(mContext, category3);
+            LeepModel.setCategory1(category1);
+            LeepModel.setCategory2( category2);
+            LeepModel.setCategory3( category3);
         }
     }
 
@@ -41,12 +42,12 @@ public class TimeLogModel {
         return minute;
     }
 
-    public void checkQuoteStatus(Context mcontext){
-        if(((LeepModel.getQuote1(mcontext)).equals("")) && ((LeepModel.getQuote2(mcontext)).equals(""))
-                && ((LeepModel.getQuote3(mcontext)).equals(""))) {
-            LeepModel.setQuote1(mcontext, quote1);
-            LeepModel.setQuote2(mcontext, quote2);
-            LeepModel.setQuote3(mcontext, quote3);
+    public void checkQuoteStatus(){
+        if(((LeepModel.getQuote1()).equals("")) && ((LeepModel.getQuote2()).equals(""))
+                && ((LeepModel.getQuote3()).equals(""))) {
+            LeepModel.setQuote1( quote1);
+            LeepModel.setQuote2( quote2);
+            LeepModel.setQuote3( quote3);
         }
 
 }}

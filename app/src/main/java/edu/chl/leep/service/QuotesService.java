@@ -29,8 +29,8 @@ public class QuotesService{
     }
 
     private void addQuote(){
-        quotes.add(LeepModel.getQuote1(context));
-        quotes.add(LeepModel.getQuote2(context));
-        quotes.add(LeepModel.getQuote3(context));
+        quotes.add(LeepModel.getQuote1());
+        quotes.add(LeepModel.getQuote2());
+        quotes.add(LeepModel.getQuote3());
     }
 }

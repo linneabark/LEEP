@@ -54,21 +54,21 @@ public class ShowQuotesPopUp {
 
     private String getQuote(String buttontag, Context context){
         if (Integer.valueOf(buttontag) == 0){
-            return LeepModel.getQuote1(context);
+            return LeepModel.getQuote1();
         }else if (Integer.valueOf(buttontag) == 1){
-            return LeepModel.getQuote2(context);
+            return LeepModel.getQuote2();
         }else{
-            return LeepModel.getQuote3(context);
+            return LeepModel.getQuote3();
         }
     }
 
     private void setQuote(Context context, String buttonTag){
         if (Integer.valueOf(buttonTag) == 0){
-            LeepModel.setQuote1(context, quotesEdit.getText().toString());
+            LeepModel.setQuote1(quotesEdit.getText().toString());
         }   else if(Integer.valueOf(buttonTag) == 1){
-            LeepModel.setQuote2(context, quotesEdit.getText().toString());
+            LeepModel.setQuote2(quotesEdit.getText().toString());
         }else {
-            LeepModel.setQuote3(context, quotesEdit.getText().toString());
+            LeepModel.setQuote3(quotesEdit.getText().toString());
         }
     }
 }

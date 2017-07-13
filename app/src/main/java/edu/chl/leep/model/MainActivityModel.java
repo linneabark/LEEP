@@ -1,9 +1,9 @@
 package edu.chl.leep.model;
 
-import android.content.Context;
 import android.widget.Toast;
 
 import edu.chl.leep.ctrl.MainActivityController;
+import edu.chl.leep.utils.Contexts;
 
 /**
  * Created by Eli on 2017-05-24.
@@ -11,11 +11,11 @@ import edu.chl.leep.ctrl.MainActivityController;
 
 public class MainActivityModel {
 
-    public void logOutUser(Context mContext){
-        LeepModel.setKeepLoginStateToZero(mContext, 0);
-        TimerModel time = TimerModel.getInstance((MainActivityController)mContext);
+    public void logOutUser(){
+        LeepModel.setKeepLoginStateToZero( 0);
+        TimerModel time = TimerModel.getInstance((MainActivityController) Contexts.getContexts());
         time.stopTimer();
-        Toast.makeText(mContext, ("Logged out " + LeepModel.getUsername(mContext)+"!"),Toast.LENGTH_SHORT).show();
+        Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
     }
 
 }

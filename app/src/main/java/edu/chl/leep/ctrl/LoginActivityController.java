@@ -1,6 +1,5 @@
 package edu.chl.leep.ctrl;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +14,7 @@ import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
+import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.Intents;
 
 /**
@@ -40,12 +40,15 @@ public class LoginActivityController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
         getInstance();
+
         mContext = this;
+        Contexts.setContexts(mContext);
+
         loginActivityModel = new LoginActivityModel();
         fileService = new FileService();
 
 
-        if(loginActivityModel.userWasLoggedIn(mContext)){
+        if(loginActivityModel.userWasLoggedIn()){
             getSavedActivitys(mContext);
 
             startActivity(Intents.ToMain(mContext));
@@ -60,10 +63,10 @@ public class LoginActivityController extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
+                if (!loginActivityModel.compareUserInfo(userName, passWord)) {
                     eM.setText("Password or username does not match!");
                 } else {
-                    loginActivityModel.rememberUser(mContext, rB);
+                    loginActivityModel.rememberUser(rB);
 
                     getSavedActivitys(mContext);
 

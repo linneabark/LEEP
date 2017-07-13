@@ -1,8 +1,10 @@
 package edu.chl.leep.model;
-import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import edu.chl.leep.utils.Contexts;
 
 /**
  * Created by linneabark on 2017-05-27.
@@ -14,11 +16,10 @@ public class SettingsModel {
 
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;
-    private Context context;
 
-    public SettingsModel(Context context){
+    /*public SettingsModel(Context context){
         this.context = context;
-    }
+    }*/
 
     //Method that adds groups and children in the expandablelistview
     public void initData() {
@@ -30,14 +31,14 @@ public class SettingsModel {
         listDataHeader.add("HELP");
 
         List<String> category = new ArrayList<>();
-        category.add(LeepModel.getCategory1(context));
-        category.add(LeepModel.getCategory2(context));
-        category.add(LeepModel.getCategory3(context));
+        category.add(LeepModel.getCategory1());
+        category.add(LeepModel.getCategory2());
+        category.add(LeepModel.getCategory3());
 
         List<String> quote = new ArrayList<>();
-        quote.add(LeepModel.getQuote1(context));
-        quote.add(LeepModel.getQuote2(context));
-        quote.add(LeepModel.getQuote3(context));
+        quote.add(LeepModel.getQuote1());
+        quote.add(LeepModel.getQuote2());
+        quote.add(LeepModel.getQuote3());
 
         List<String> help = new ArrayList<>();
         help.add("Info om hur appen fungerar");

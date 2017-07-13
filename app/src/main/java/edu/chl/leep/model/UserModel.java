@@ -2,9 +2,11 @@ package edu.chl.leep.model;
 
 import android.content.Context;
 
+import edu.chl.leep.utils.Contexts;
+
 /**
  * Created by linneabark on 2017-05-22.
- * A model class which contains some methods used in LoginActivityController
+ * A class which describes what a user is
  */
 
 public class UserModel {
@@ -15,14 +17,12 @@ public class UserModel {
     static String userName;
     static String email;
     static String password;
-    static Context mContext;
 
 
-    public UserModel(String user, String userName, String email, String password, Context mContext){
+    public UserModel(String user, String userName, String email, String password){
         this.user = user;
         this.userName = userName;
         this.email = email;
         this.password = password;
-        this.mContext = mContext;
     }
 }

@@ -2,7 +2,6 @@
 package edu.chl.leep.ctrl;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +15,7 @@ import android.view.View;
 import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.Intents;
 
 /**
@@ -27,19 +27,25 @@ public class MainActivityController extends AppCompatActivity {
     private Context mContext;
     private SettingsController settings;
     private MainActivityModel mainActivityModel;
+   // Fragments fragments = new Fragments();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mContext = this;
+        mContext = this.getContext();
+        Contexts.setContexts(mContext);
+
         mainActivityModel = new MainActivityModel();
         leep = new LeepModel();
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        //fragments.changeFragment(R.id.timelog_id);
         changeFragment(R.id.timelog_id);
     }
 
@@ -68,7 +74,7 @@ public class MainActivityController extends AppCompatActivity {
                 nextFrag = new TimeLogController();
                 break;
             case R.id.account_id:
-                mainActivityModel.logOutUser(mContext);
+                mainActivityModel.logOutUser();
                 startActivity(Intents.ToLogIn(mContext));
 
 

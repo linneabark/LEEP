@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.FindWhichMonth;
 import com.example.linneabark.test.R;
 
@@ -51,7 +52,6 @@ public class StatisticsController extends Fragment {
     private StatisticsActivityAdapter statisticsActivityAdapter;
     private StatisticsDateAdapter statisticsDateAdapter;
     private StatisticsMonthAdapter statisticsMonthAdapter;
-
     Context mContext;
 
     public StatisticsController() {
@@ -61,6 +61,7 @@ public class StatisticsController extends Fragment {
     public void hej() {
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,6 +69,9 @@ public class StatisticsController extends Fragment {
         View rootview = inflater.inflate(R.layout.fragment_statistics, container, false);
 
        mContext = this.getContext();
+
+       Contexts.setContexts(mContext);
+
 
 
         findWhichMonth = new FindWhichMonth();
