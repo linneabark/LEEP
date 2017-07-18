@@ -2,8 +2,6 @@ package edu.chl.leep.model;
 
 import java.util.Calendar;
 
-import edu.chl.leep.utils.Contexts;
-
 /**
  * Created by Eli on 2017-05-24.
  * A model class which contains some methods used in TimeLogController

@@ -1,7 +1,6 @@
 package edu.chl.leep.model;
 
 import android.content.SharedPreferences;
-import android.widget.RadioButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,14 +175,13 @@ public class LeepModel {
         editor.apply();
     }
 
-    public static void setKeepLoginState(RadioButton input) {
+    public static void setKeepLoginState(boolean input) {
 
         SharedPreferences.Editor editor = getUserInfo().edit();
-        boolean checked = input.isChecked();
-        if (checked) {
-            editor.putInt("RadioButton", 1);
+        if (input) {
+            editor.putBoolean("RadioButton", true);
         }else
-            editor.putInt("RadioButton", 0);
+            editor.putBoolean("RadioButton", false);
         editor.apply();
     }
 

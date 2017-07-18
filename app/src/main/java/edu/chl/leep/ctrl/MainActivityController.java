@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
@@ -76,6 +78,8 @@ public class MainActivityController extends AppCompatActivity {
             case R.id.account_id:
                 mainActivityModel.logOutUser();
                 startActivity(Intents.ToLogIn(mContext));
+                Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
+
 
 
         }

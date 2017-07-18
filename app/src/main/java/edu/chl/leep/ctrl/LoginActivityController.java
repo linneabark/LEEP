@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
@@ -49,7 +50,7 @@ public class LoginActivityController extends AppCompatActivity {
 
 
         if(loginActivityModel.userWasLoggedIn()){
-            getSavedActivitys(mContext);
+            getSavedActivitys();
 
             startActivity(Intents.ToMain(mContext));
         }
@@ -63,12 +64,15 @@ public class LoginActivityController extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!loginActivityModel.compareUserInfo(userName, passWord)) {
+                if (!loginActivityModel.compareUserInfo(userName.getText().toString(), passWord.getText().toString())) {
                     eM.setText("Password or username does not match!");
                 } else {
-                    loginActivityModel.rememberUser(rB);
 
-                    getSavedActivitys(mContext);
+                    boolean checked = rB.isChecked();
+                    loginActivityModel.rememberUser(checked);
+
+                    Toast.makeText(mContext, ("Logged in " + LeepModel.getUsername() + "!"), Toast.LENGTH_SHORT).show();
+                    getSavedActivitys();
 
                     //Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
                     //startActivity(LoginToMain);
@@ -100,10 +104,10 @@ public class LoginActivityController extends AppCompatActivity {
         return leep;
     }
 
-    private void getSavedActivitys(Context context){
+    private void getSavedActivitys(){
         //rensa lista om det fanns något innan man loggade ut.
         SaveActivity.activityRowList.clear();
         //load the list from SharedPrefs.
-        fileService.putTheValuesInActivityRowList(context);
+        fileService.putTheValuesInActivityRowList(Contexts.getContexts());
     }
 }

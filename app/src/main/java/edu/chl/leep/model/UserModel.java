@@ -1,12 +1,8 @@
 package edu.chl.leep.model;
 
-import android.content.Context;
-
-import edu.chl.leep.utils.Contexts;
-
 /**
  * Created by linneabark on 2017-05-22.
- * A class which describes what a user is
+ * A class which describes what a user in the LEEP app is
  */
 
 public class UserModel {

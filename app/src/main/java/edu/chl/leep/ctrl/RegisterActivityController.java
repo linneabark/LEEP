@@ -53,8 +53,16 @@ public class RegisterActivityController extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage)
-                        || !registerActivityModel.checkEmail(mail, errorMessage)){
+                if(!registerActivityModel.comparePasswords(password.getText().toString(), repeatPassword.getText().toString())
+                        ){
+                    errorMessage.setText("Passwords does not match!");
+
+                    if( !registerActivityModel.checkEmail(mail.getText().toString())) {
+
+                        errorMessage.setText("Not a valid email!");
+                    }
+
+
 
                 } else{
 
@@ -64,7 +72,7 @@ public class RegisterActivityController extends AppCompatActivity {
                             mail.getText().toString(),
                             password.getText().toString());
 
-                    LeepModel.register();
+                    registerActivityModel.registerUser(newUser);
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
