@@ -18,6 +18,7 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
 import edu.chl.leep.utils.Contexts;
+import edu.chl.leep.utils.Fragments;
 import edu.chl.leep.utils.Intents;
 
 /**
@@ -29,7 +30,7 @@ public class MainActivityController extends AppCompatActivity {
     private Context mContext;
     private SettingsController settings;
     private MainActivityModel mainActivityModel;
-   // Fragments fragments = new Fragments();
+    Fragments fragments = new Fragments();
 
 
 
@@ -38,17 +39,21 @@ public class MainActivityController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mContext = this.getContext();
+        mContext = this.getApplicationContext();
         Contexts.setContexts(mContext);
 
         mainActivityModel = new MainActivityModel();
         leep = new LeepModel();
 
+
+
+        Fragments.setFragmentManager(getSupportFragmentManager());
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        //fragments.changeFragment(R.id.timelog_id);
-        changeFragment(R.id.timelog_id);
+        //changeFragment(R.id.timelog_id);
+        Fragments.changeFragment(R.id.timelog_id);
     }
 
     @Override
@@ -59,7 +64,7 @@ public class MainActivityController extends AppCompatActivity {
     }
 
 
-    private boolean changeFragment(int id){ //kopplad till alla controllers, hur ändra?
+  /*private boolean changeFragment(int id){ //kopplad till alla controllers, hur ändra?
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
@@ -86,18 +91,16 @@ public class MainActivityController extends AppCompatActivity {
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return changeFragment(item.getItemId());
+        return Fragments.changeFragment(item.getItemId());
+        //return fragments.changeFragment(item.getItemId());
     }
 
     public void showPopUp(View v){
         settings.choosePopUp(v);
     }
 
-    public Context getContext(){
-        return mContext;
-    }
 }

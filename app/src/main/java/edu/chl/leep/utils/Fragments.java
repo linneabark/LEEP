@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
@@ -11,26 +12,28 @@ import edu.chl.leep.ctrl.MainActivityController;
 import edu.chl.leep.ctrl.SettingsController;
 import edu.chl.leep.ctrl.StatisticsController;
 import edu.chl.leep.ctrl.TimeLogController;
+import edu.chl.leep.model.LeepModel;
+import edu.chl.leep.model.MainActivityModel;
 
 /**
  * Created by Eli on 2017-07-04.
  */
 
-public class Fragments extends MainActivityController {
+public class Fragments {
 
-    private SettingsController settings;
-    Context mContext;
+    static public FragmentManager fragmentManager;
 
+    public static void setFragmentManager(FragmentManager fM){
+        fragmentManager = fM;
+    }
 
-    /*public boolean changeFragment(int id){ //kopplad till alla controllers, hur ändra?
-        FragmentManager fragmentManager = getSupportFragmentManager();
+    public static boolean changeFragment(int id){ //kopplad till alla controllers, hur ändra?
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment nextFrag = new Fragment();
-        settings = new SettingsController();
-        mContext = this.getContext();
 
         switch (id) {
             case R.id.settings_id:
+               SettingsController settings = new SettingsController();
                 nextFrag = settings;
                 break;
             case R.id.statistics_id:
@@ -40,13 +43,17 @@ public class Fragments extends MainActivityController {
                 nextFrag = new TimeLogController();
                 break;
             case R.id.account_id:
-                //mainActivityModel.logOutUser(mContext);
-                startActivity(Intents.ToLogIn(mContext));
+                MainActivityModel mainActivityModel = new MainActivityModel();
+                mainActivityModel.logOutUser();
+                Contexts.getContexts().startActivity(Intents.ToLogIn(Contexts.getContexts()));
+               // Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
+
 
 
         }
         transaction.add(R.id.fragment_container, nextFrag);
         transaction.commit();
         return true;
-    }*/
+    }
+
 }
