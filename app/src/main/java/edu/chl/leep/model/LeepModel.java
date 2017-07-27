@@ -169,7 +169,7 @@ public class LeepModel {
 
     //keeps track of wether or not the user is already logged in or not
     public static void setKeepLoginStateToFalse(){
-        SharedPreferences.Editor editor = getUserInfgio().edit();
+        SharedPreferences.Editor editor = getUserInfo().edit();
 
         editor.putInt("RadioButton", 1);
         editor.apply();
