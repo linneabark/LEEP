@@ -72,6 +72,7 @@ public class RegisterActivityController extends AppCompatActivity {
                             mail.getText().toString(),
                             password.getText().toString());
 
+
                     registerActivityModel.registerUser(newUser);
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();

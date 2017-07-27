@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package edu.chl.leep.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.LeepModel;
 

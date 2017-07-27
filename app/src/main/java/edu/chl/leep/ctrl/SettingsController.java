@@ -8,9 +8,9 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import edu.chl.leep.adapter.ExpandableListAdapter;
 import com.example.linneabark.test.R;
-import com.example.linneabark.test.ShowCategoryPopUp;
-import com.example.linneabark.test.ShowHelpPopUp;
-import com.example.linneabark.test.ShowQuotesPopUp;
+import edu.chl.leep.utils.ShowCategoryPopUp;
+import edu.chl.leep.utils.ShowHelpPopUp;
+import edu.chl.leep.utils.ShowQuotesPopUp;
 import edu.chl.leep.model.SettingsModel;
 
 /**
