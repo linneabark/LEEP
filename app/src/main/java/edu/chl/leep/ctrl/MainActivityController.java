@@ -28,7 +28,7 @@ public class MainActivityController extends AppCompatActivity {
 
     public static LeepModel leep;
     private Context mContext;
-    private SettingsController settings;
+    //private SettingsController settings;
     private MainActivityModel mainActivityModel;
     Fragments fragments = new Fragments();
 
@@ -41,6 +41,7 @@ public class MainActivityController extends AppCompatActivity {
 
         mContext = this.getApplicationContext();
         Contexts.setContexts(mContext);
+        //settings = new SettingsController();
 
         mainActivityModel = new MainActivityModel();
         leep = new LeepModel();
@@ -64,35 +65,6 @@ public class MainActivityController extends AppCompatActivity {
     }
 
 
-  /*private boolean changeFragment(int id){ //kopplad till alla controllers, hur ändra?
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fragment nextFrag = new Fragment();
-        settings = new SettingsController();
-
-        switch (id) {
-            case R.id.settings_id:
-                nextFrag = settings;
-                break;
-            case R.id.statistics_id:
-                nextFrag = new StatisticsController();
-                break;
-            case R.id.timelog_id:
-                nextFrag = new TimeLogController();
-                break;
-            case R.id.account_id:
-                mainActivityModel.logOutUser();
-                startActivity(Intents.ToLogIn(mContext));
-                Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
-
-
-
-        }
-        transaction.add(R.id.fragment_container, nextFrag);
-        transaction.commit();
-        return true;
-    }*/
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return Fragments.changeFragment(item.getItemId());
@@ -100,7 +72,16 @@ public class MainActivityController extends AppCompatActivity {
     }
 
     public void showPopUp(View v){
-        settings.choosePopUp(v);
+        Fragments.showPopUps(v);
+    }
+
+    public void logOut(){
+        MainActivityModel mainActivityModel = new MainActivityModel();
+        mainActivityModel.logOutUser();
+        Contexts.getContexts().startActivity(Intents.ToLogIn(Contexts.getContexts()));
+        Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
+
+
     }
 
 }

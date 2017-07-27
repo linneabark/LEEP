@@ -185,8 +185,8 @@ public class LeepModel {
         editor.apply();
     }
 
-    public static int getKeepLoginState() {
-        return getUserInfo().getInt("RadioButton", 0);
+    public static boolean getKeepLoginState() {
+        return getUserInfo().getBoolean("RadioButton", false);
     }
 }
 
