@@ -11,7 +11,7 @@ import edu.chl.leep.utils.Contexts;
 public class MainActivityModel {
 
     public void logOutUser(){
-        LeepModel.setKeepLoginStateToZero( 0);
+        LeepModel.setKeepLoginStateToFalse();
         TimerModel time = TimerModel.getInstance((MainActivityController) Contexts.getContexts());
         time.stopTimer();
     }

@@ -21,7 +21,7 @@ public class LoginActivityModel {
     }
 
     public boolean userWasLoggedIn(){
-        if(LeepModel.getKeepLoginState() == true){
+        if(LeepModel.getKeepLoginState() == 0){
             LeepModel.setUSER(LeepModel.getPreviousUser());
             return true;
         }

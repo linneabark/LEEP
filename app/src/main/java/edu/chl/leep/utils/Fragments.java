@@ -41,11 +41,11 @@ public class Fragments {
                 nextFrag = new TimeLogController();
                 break;
             case R.id.account_id:
-               /* MainActivityController mainActivityController = new MainActivityController();
+               /*MainActivityController mainActivityController = new MainActivityController();
                 mainActivityController.logOut();*/
 
                 //Hålla ett objekt av model elr inte? nedanför gör, ovanför inte
-                MainActivityModel mainActivityModel = new MainActivityModel();
+               MainActivityModel mainActivityModel = new MainActivityModel();
                 mainActivityModel.logOutUser();
                 Contexts.getContexts().startActivity(Intents.ToLogIn(Contexts.getContexts()));
                // Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();

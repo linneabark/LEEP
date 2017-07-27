@@ -168,10 +168,10 @@ public class LeepModel {
     }
 
     //keeps track of wether or not the user is already logged in or not
-    public static void setKeepLoginStateToZero(int x){
-        SharedPreferences.Editor editor = getUserInfo().edit();
+    public static void setKeepLoginStateToFalse(){
+        SharedPreferences.Editor editor = getUserInfgio().edit();
 
-        editor.putInt("RadioButton", x);
+        editor.putInt("RadioButton", 1);
         editor.apply();
     }
 
@@ -179,14 +179,16 @@ public class LeepModel {
 
         SharedPreferences.Editor editor = getUserInfo().edit();
         if (input) {
-            editor.putBoolean("RadioButton", true);
-        }else
-            editor.putBoolean("RadioButton", false);
-        editor.apply();
+            editor.putInt("RadioButton", 0);
+            editor.apply();
+        }if(!input) {
+            editor.putInt("RadioButton", 1);
+            editor.apply();
+        }
     }
 
-    public static boolean getKeepLoginState() {
-        return getUserInfo().getBoolean("RadioButton", false);
+    public static int getKeepLoginState() {
+        return getUserInfo().getInt("RadioButton", 0);
     }
 }
 
