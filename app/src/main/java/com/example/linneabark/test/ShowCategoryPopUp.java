@@ -42,6 +42,7 @@ public class ShowCategoryPopUp {
             public void onClick(View v) {
                 setCategory(context, buttonTag);
                 helpDialog.dismiss();
+
             }
         });
 
