@@ -190,6 +190,8 @@ public class LeepModel {
     public static int getKeepLoginState() {
         return getUserInfo().getInt("RadioButton", 0);
     }
+
+
 }
 
 
