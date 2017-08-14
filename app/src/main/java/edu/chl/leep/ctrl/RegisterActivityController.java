@@ -14,6 +14,7 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.RegisterActivityModel;
 import edu.chl.leep.model.UserModel;
+import edu.chl.leep.utils.Contexts;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -36,7 +37,10 @@ public class RegisterActivityController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register);
+
         mContext = this;
+        Contexts.setContexts(mContext);
+
         registerActivityModel = new RegisterActivityModel();
         mail = (EditText) this.findViewById(R.id.mail);
         userName = (EditText) this.findViewById(R.id.setUserName);
@@ -49,8 +53,16 @@ public class RegisterActivityController extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(!registerActivityModel.comparePasswords(password, repeatPassword, errorMessage)
-                        || !registerActivityModel.checkEmail(mail, errorMessage)){
+                if(!registerActivityModel.comparePasswords(password.getText().toString(), repeatPassword.getText().toString())
+                        ){
+                    errorMessage.setText("Passwords does not match!");
+
+                    if( !registerActivityModel.checkEmail(mail.getText().toString())) {
+
+                        errorMessage.setText("Not a valid email!");
+                    }
+
+
 
                 } else{
 
@@ -58,10 +70,10 @@ public class RegisterActivityController extends AppCompatActivity {
                             userName.getText().toString(),
                             userName.getText().toString(),
                             mail.getText().toString(),
-                            password.getText().toString(),
-                            mContext);
+                            password.getText().toString());
 
-                    LeepModel.register();
+
+                    registerActivityModel.registerUser(newUser);
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();
                 }

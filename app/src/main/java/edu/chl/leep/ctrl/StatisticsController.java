@@ -1,5 +1,6 @@
 package edu.chl.leep.ctrl;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,22 +11,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.FindWhichMonth;
 import com.example.linneabark.test.R;
 
 import android.widget.Button;
 
-import com.example.linneabark.test.StatisticsActivityAdapter;
-import com.example.linneabark.test.StatisticsDateAdapter;
-import com.example.linneabark.test.StatisticsMonthAdapter;
+import edu.chl.leep.adapter.StatisticsActivityAdapter;
+import edu.chl.leep.adapter.StatisticsDateAdapter;
+import edu.chl.leep.adapter.StatisticsMonthAdapter;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,6 @@ import java.util.List;
  */
 public class StatisticsController extends Fragment {
     private FindWhichMonth findWhichMonth;
-    private MainActivityController mainActivity;
     private StatisticsModel statisticsModel;
 
     private RecyclerView recyclerMonth;
@@ -54,6 +52,7 @@ public class StatisticsController extends Fragment {
     private StatisticsActivityAdapter statisticsActivityAdapter;
     private StatisticsDateAdapter statisticsDateAdapter;
     private StatisticsMonthAdapter statisticsMonthAdapter;
+    Context mContext;
 
     public StatisticsController() {
         // Required empty public constructor
@@ -62,14 +61,20 @@ public class StatisticsController extends Fragment {
     public void hej() {
 
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootview = inflater.inflate(R.layout.fragment_statistics, container, false);
 
+       mContext = this.getContext();
+
+       Contexts.setContexts(mContext);
+
+
+
         findWhichMonth = new FindWhichMonth();
-        mainActivity = new MainActivityController();
         statisticsModel = new StatisticsModel();
 
         statisticsActivityAdapter  = new StatisticsActivityAdapter(statisticsModel.reformListToDisplay());
@@ -77,11 +82,13 @@ public class StatisticsController extends Fragment {
         statisticsMonthAdapter = new StatisticsMonthAdapter(findWhichMonth.months, statisticsDateAdapter);
 
         recyclerMonth = (RecyclerView) rootview.findViewById(R.id.recyclerMonth);
-        recyclerMonth.setLayoutManager(new LinearLayoutManager(mainActivity.getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        //changed mainActivity.getContext() to mContext
+        recyclerMonth.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         recyclerMonth.setAdapter(statisticsMonthAdapter);
 
         recyclerDate = (RecyclerView) rootview.findViewById(R.id.recyclerDate);
-        recyclerDate.setLayoutManager(new LinearLayoutManager(mainActivity.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerDate.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         recyclerDate.setAdapter(statisticsDateAdapter);
 
         btnDay = (Button) rootview.findViewById(R.id.btnDay);
@@ -108,7 +115,7 @@ public class StatisticsController extends Fragment {
         });
 
         recyclerActivity = (RecyclerView) rootview.findViewById(R.id.recyclerActivity);
-        recyclerActivity.setLayoutManager(new LinearLayoutManager(mainActivity.getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerActivity.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         recyclerActivity.setAdapter(statisticsActivityAdapter);
 
         insertCategoryPieChart(statisticsModel.getTotalOfCategoryList());

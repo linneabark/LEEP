@@ -2,7 +2,6 @@
 package edu.chl.leep.ctrl;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,9 +12,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
+
 import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.MainActivityModel;
+import edu.chl.leep.utils.Contexts;
+import edu.chl.leep.utils.Fragments;
+import edu.chl.leep.utils.Intents;
 
 /**
  * MainActivityController is the controller class which handles the fragment and menu, as well as popups
@@ -24,22 +28,33 @@ public class MainActivityController extends AppCompatActivity {
 
     public static LeepModel leep;
     private Context mContext;
-    private SettingsController settings;
+    //private SettingsController settings;
     private MainActivityModel mainActivityModel;
+    Fragments fragments = new Fragments();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mContext = this;
+        mContext = this.getApplicationContext();
+        Contexts.setContexts(mContext);
+        //settings = new SettingsController();
+
         mainActivityModel = new MainActivityModel();
         leep = new LeepModel();
+
+
+
+        Fragments.setFragmentManager(getSupportFragmentManager());
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        changeFragment(R.id.timelog_id);
+        //changeFragment(R.id.timelog_id);
+        Fragments.changeFragment(R.id.timelog_id);
     }
 
     @Override
@@ -50,42 +65,23 @@ public class MainActivityController extends AppCompatActivity {
     }
 
 
-    private boolean changeFragment(int id){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fragment nextFrag = new Fragment();
-        settings = new SettingsController();
-
-        switch (id) {
-            case R.id.settings_id:
-                nextFrag = settings;
-                break;
-            case R.id.statistics_id:
-                nextFrag = new StatisticsController();
-                break;
-            case R.id.timelog_id:
-                nextFrag = new TimeLogController();
-                break;
-            case R.id.account_id:
-                mainActivityModel.logOutUser(mContext);
-                Intent MainToLogin = new Intent(MainActivityController.this, LoginActivityController.class);
-                startActivity(MainToLogin);
-        }
-        transaction.add(R.id.fragment_container, nextFrag);
-        transaction.commit();
-        return true;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        return changeFragment(item.getItemId());
+        return Fragments.changeFragment(item.getItemId());
+        //return fragments.changeFragment(item.getItemId());
     }
 
     public void showPopUp(View v){
-        settings.choosePopUp(v);
+        Fragments.showPopUps(v);
     }
 
-    public Context getContext(){
-        return mContext;
+    public void logOut(){
+        MainActivityModel mainActivityModel = new MainActivityModel();
+        mainActivityModel.logOutUser();
+        Contexts.getContexts().startActivity(Intents.ToLogIn(Contexts.getContexts()));
+        Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
+
+
     }
+
 }

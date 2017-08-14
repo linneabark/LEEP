@@ -1,6 +1,5 @@
 package edu.chl.leep.ctrl;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 
@@ -15,6 +15,8 @@ import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
+import edu.chl.leep.utils.Contexts;
+import edu.chl.leep.utils.Intents;
 
 /**
  * Created by Eli on 2017-05-08.
@@ -33,21 +35,24 @@ public class LoginActivityController extends AppCompatActivity {
     private Button loginButton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_login);
         getInstance();
+
         mContext = this;
+        Contexts.setContexts(mContext);
+
         loginActivityModel = new LoginActivityModel();
         fileService = new FileService();
 
 
-        if(loginActivityModel.userWasLoggedIn(mContext)){
-            getSavedActivitys(mContext);
+        if(loginActivityModel.userWasLoggedIn()){
+            getSavedActivitys();
 
-            Intent toy = new Intent(LoginActivityController.this, MainActivityController.class);
-            startActivity(toy);
+            startActivity(Intents.ToMain(mContext));
         }
 
         registerButton = (Button) this.findViewById(R.id.registerButton);
@@ -59,15 +64,23 @@ public class LoginActivityController extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (!loginActivityModel.compareUserInfo(mContext, userName, passWord)) {
+                if (!loginActivityModel.compareUserInfo(userName.getText().toString(), passWord.getText().toString())) {
                     eM.setText("Password or username does not match!");
                 } else {
-                    loginActivityModel.rememberUser(mContext, rB);
 
-                    getSavedActivitys(mContext);
+                    boolean checked = rB.isChecked();
+                    loginActivityModel.rememberUser(checked);
 
-                    Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
-                    startActivity(LoginToMain);
+                    Toast.makeText(mContext, ("Logged in " + LeepModel.getUsername() + "!"), Toast.LENGTH_SHORT).show();
+                    getSavedActivitys();
+
+                    //Intent LoginToMain = new Intent(LoginActivityController.this, MainActivityController.class);
+                    //startActivity(LoginToMain);
+
+                    startActivity(Intents.ToMain(mContext));
+                    // or
+                    //startActivityForResult(intent, 1024);
+
                 }
 
             }
@@ -75,8 +88,9 @@ public class LoginActivityController extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent toy = new Intent(LoginActivityController.this, RegisterActivityController.class);
-                startActivity(toy);
+
+                startActivity(Intents.ToRegister(mContext));
+
             }
 
 
@@ -90,10 +104,10 @@ public class LoginActivityController extends AppCompatActivity {
         return leep;
     }
 
-    private void getSavedActivitys(Context context){
+    private void getSavedActivitys(){
         //rensa lista om det fanns något innan man loggade ut.
         SaveActivity.activityRowList.clear();
         //load the list from SharedPrefs.
-        fileService.putTheValuesInActivityRowList(context);
+        fileService.putTheValuesInActivityRowList(Contexts.getContexts());
     }
 }

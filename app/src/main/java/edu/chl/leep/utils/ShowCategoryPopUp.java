@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package edu.chl.leep.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.LeepModel;
 
@@ -34,13 +36,13 @@ public class ShowCategoryPopUp {
         helpDialog.show();
 
         categoryEdit = (EditText) categoryLayout.findViewById(R.id.edit_text_category);
-        categoryEdit.setText(getCategory(buttonTag, context), TextView.BufferType.EDITABLE);
+        categoryEdit.setText(getCategory(buttonTag), TextView.BufferType.EDITABLE);
 
         saveButtonCategory = (Button) categoryLayout.findViewById(R.id.save_button_category);
         saveButtonCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setCategory(context, buttonTag);
+                setCategory(buttonTag);
                 helpDialog.dismiss();
 
             }
@@ -56,23 +58,23 @@ public class ShowCategoryPopUp {
 
     }
 
-    private String getCategory(String buttontag, Context context){
+    private String getCategory(String buttontag){
         if (Integer.valueOf(buttontag) == 0){
-            return LeepModel.getCategory1(context);
+            return LeepModel.getCategory1();
         }else if (Integer.valueOf(buttontag) == 1){
-            return LeepModel.getCategory2(context);
+            return LeepModel.getCategory2();
         }else{
-            return LeepModel.getCategory3(context);
+            return LeepModel.getCategory3();
         }
     }
 
-    private void setCategory(Context context, String buttonTag){
+    private void setCategory( String buttonTag){
         if (Integer.valueOf(buttonTag) == 0){
-        LeepModel.setCategory1(context, categoryEdit.getText().toString());
+        LeepModel.setCategory1( categoryEdit.getText().toString());
     }   else if(Integer.valueOf(buttonTag) == 1){
-            LeepModel.setCategory2(context, categoryEdit.getText().toString());
+            LeepModel.setCategory2(categoryEdit.getText().toString());
         }else {
-            LeepModel.setCategory3(context, categoryEdit.getText().toString());
+            LeepModel.setCategory3(categoryEdit.getText().toString());
         }
 
 }}

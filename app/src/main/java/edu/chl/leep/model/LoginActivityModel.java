@@ -1,41 +1,37 @@
 package edu.chl.leep.model;
 
-import android.content.Context;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Toast;
-
 /**
  * Created by Eli on 2017-05-24.
  A model class which contains some methods used in LoginActivityController*/
 
 public class LoginActivityModel {
 
-    public boolean compareUserInfo(Context mContext, EditText userName, EditText passWord) {
 
-        LeepModel.setUSER(userName.getText().toString());
-        if(userName.getText().toString().equals("") || passWord.getText().toString().equals("")){
+    public boolean compareUserInfo(String userName, String passWord) {
+
+        LeepModel.setUSER(userName);
+        if(userName.equals("") || passWord.equals("")){
             return false;
         }
-        if ((userName.getText().toString().equals(LeepModel.getUsername(mContext))) &&
-                (passWord.getText().toString().equals(LeepModel.getPassword(mContext)))) {
+        if ((userName.equals(LeepModel.getUsername())) &&
+                (passWord.equals(LeepModel.getPassword()))) {
             return true;
         }
         return false;
     }
 
-    public boolean userWasLoggedIn(Context mContext){
-        if(LeepModel.getKeepLoginState(mContext) == 1){
-            LeepModel.setUSER(LeepModel.getPreviousUser(mContext));
+    public boolean userWasLoggedIn(){
+        if(LeepModel.getKeepLoginState() == 0){
+            LeepModel.setUSER(LeepModel.getPreviousUser());
             return true;
         }
         return false;
     }
 
-    public void rememberUser(Context mContext, RadioButton rB){
-        LeepModel.setKeepLoginState(mContext, rB);
-        LeepModel.setPreviousUser(mContext, LeepModel.getUSER());
-
-        Toast.makeText(mContext, ("Logged in " + LeepModel.getUsername(mContext) + "!"), Toast.LENGTH_SHORT).show();
+    public void rememberUser(Boolean checked){
+        LeepModel.setKeepLoginState(checked);
+        LeepModel.setPreviousUser(LeepModel.getUSER());
     }
+
+
 }

@@ -1,7 +1,5 @@
 package edu.chl.leep.model;
 
-import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by Eli on 2017-05-24.
@@ -10,21 +8,24 @@ import android.widget.TextView;
 
 public class RegisterActivityModel {
 
-    public boolean comparePasswords(EditText password, EditText repeatPassword, TextView errorMessage) {
-        if (password.getText().toString().equals(repeatPassword.getText().toString())) {
+    public boolean comparePasswords(String password, String repeatPassword) {
+        if (password.equals(repeatPassword)) {
             return true;
         }
-        errorMessage.setText("Passwords does not match!");
+
         return false;
     }
 
-    public boolean checkEmail(EditText mail, TextView errorMessage){
-        if((mail.getText().toString().contains("@")) && (mail.getText().toString().contains("."))){
+    public boolean checkEmail(String mail){
+        if((mail.contains("@")) && (mail.contains("."))){
             return true;
 
         }
-        errorMessage.setText("Not a valid email!");
         return false;
 
+    }
+
+    public void registerUser(UserModel user){
+        LeepModel.register();
     }
 }

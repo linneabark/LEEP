@@ -1,4 +1,4 @@
-package com.example.linneabark.test;
+package edu.chl.leep.adapter;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.linneabark.test.R;
+
 import java.util.HashMap;
 import java.util.List;
 

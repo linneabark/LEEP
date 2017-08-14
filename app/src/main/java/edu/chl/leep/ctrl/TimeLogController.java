@@ -31,6 +31,7 @@ import edu.chl.leep.service.QuotesService;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
+import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.ConvertUtils;
 
 
@@ -70,20 +71,23 @@ public class TimeLogController extends Fragment {
                              final Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_time_log, container, false);
+
         mContext = getActivity();
+        Contexts.setContexts(mContext);
+
 
         fileService = new FileService();
         convertUtils = new ConvertUtils();
         timeLogModel = new TimeLogModel();
 
-        timeLogModel.checkCategoryStatus(mContext);
-        timeLogModel.checkQuoteStatus(mContext);
+        timeLogModel.checkCategoryStatus();
+        timeLogModel.checkQuoteStatus();
 
         quote = new QuotesService(getContext());
 
         /**SPINNER **/
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
-        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, LeepModel.getCategoryList(mContext));
+        ArrayAdapter<String> array = new ArrayAdapter<>(mContext, android.R.layout.simple_spinner_item, LeepModel.getCategoryList());
         array.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(array);
 
@@ -136,7 +140,7 @@ public class TimeLogController extends Fragment {
                         convertUtils.calculateDayToString(),
                         convertUtils.longToString(startActivity),
                         convertUtils.longToString(time.getTotalTime()),
-                        LeepModel.getCategory(mContext, getPosition())));
+                        LeepModel.getCategory(getPosition())));
 
                 //save the list with SharedPrefs.
                 fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
