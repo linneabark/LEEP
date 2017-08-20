@@ -18,7 +18,7 @@ import edu.chl.leep.model.MainActivityModel;
 
 public class Fragments {
 
-    static public FragmentManager fragmentManager;
+    static public FragmentManager fragmentManager; //TODO private?? den under med gäller alla instansvariabler i alla klasser
     static SettingsController settings;
 
     public static void setFragmentManager(FragmentManager fM){

@@ -29,7 +29,6 @@ public class RegisterActivityController extends AppCompatActivity {
     private TextView errorMessage;
     private Button register;
     private Button backButton;
-    public static UserModel newUser;
     private Context mContext;
     private RegisterActivityModel registerActivityModel;
 
@@ -62,18 +61,14 @@ public class RegisterActivityController extends AppCompatActivity {
                         errorMessage.setText("Not a valid email!");
                     }
 
-
-
                 } else{
 
-                    newUser = new UserModel(
-                            userName.getText().toString(),
+                    LeepModel.register(new UserModel(
                             userName.getText().toString(),
                             mail.getText().toString(),
-                            password.getText().toString());
+                            password.getText().toString())
+                    );
 
-
-                    registerActivityModel.registerUser(newUser);
                     Toast.makeText(mContext, "Account created!", Toast.LENGTH_SHORT).show();
                     finish();
                 }
@@ -85,4 +80,5 @@ public class RegisterActivityController extends AppCompatActivity {
             }
             });
     }
+
 }

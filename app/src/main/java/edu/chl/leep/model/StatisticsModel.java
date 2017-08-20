@@ -15,7 +15,7 @@ import edu.chl.leep.utils.ConvertUtils;
  * A model class which contains methods that are being used in StatisticsController, and the three Statistics...Adapters
  */
 
-public class StatisticsModel {
+public class StatisticsModel { //TODO transform to service, skala av
 
     private long oldTimeOfActivity = 0;
 
@@ -30,9 +30,9 @@ public class StatisticsModel {
     //har månad i int.
 
     private FindWhichMonth findWhichMonth;
-    private List <ActivityRowModel> defaultStatisticList;
-    private List<ActivityRowModel> userActivityList;
-    private List <ActivityRowModel> allActivityRowsForSpecificMonth;
+    private List <ActivityObject> defaultStatisticList;
+    private List<ActivityObject> userActivityList;
+    private List <ActivityObject> allActivityRowsForSpecificMonth;
     private List<String> totalOfCategoryList;
     private List<Long> totalTimeList;
 
@@ -44,18 +44,18 @@ public class StatisticsModel {
         totalOfCategoryList = new ArrayList<>();
         totalTimeList = new ArrayList<>();
     }
-    private String takeAwayFirstZeros (String string) {
+    private String takeAwayFirstZeros (String string) { //TODO, spara månader i int , representationen kanändras med nolla innan.
         string = string.replaceFirst("^0+(?!$)", "");
         return string;
     }
 
-    private int intYearFromList (List<ActivityRowModel> list, int positionInList) {
+    private int intYearFromList (List<ActivityObject> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getYear()));
     }
-    private int intMonthFromList (List<ActivityRowModel> list, int positionInList) {
+    private int intMonthFromList (List<ActivityObject> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getMonth()));
     }
-    private int intDayFromList (List<ActivityRowModel> list, int positionInList) {
+    private int intDayFromList (List<ActivityObject> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getDay()));
     }
 
@@ -93,7 +93,7 @@ public class StatisticsModel {
         return listToDisplay;
     }
 
-    private int greatestYear(int year){
+    private int greatestYear(int year){ //TODO serivice som stuvar om datan. service klass har ej instance variabler men bara beräkningar
         for (int i = 0; i < userActivityList.size(); i++) {
             int yearFromList = intYearFromList(userActivityList,i);
             if (yearFromList > year) {
@@ -126,8 +126,9 @@ public class StatisticsModel {
         }
         return day;
     }
+    //TODO view delarna hanterar datan för att se bra ut på utskrift
 
-    private List<ActivityRowModel> giveValuesToDefaultStatisticList () {
+    private List<ActivityObject> giveValuesToDefaultStatisticList () {
         //Find the greatest year in the list
         year =   greatestYear(year);
 
@@ -148,7 +149,7 @@ public class StatisticsModel {
         return defaultStatisticList;
     }
 
-    public void totalForActivity (List<ActivityRowModel> oneList) {
+    public void totalForActivity (List<ActivityObject> oneList) {
         long totalTimeOfEveryting = 0;
 
         for (int i = 0; i < oneList.size(); i++){
@@ -176,7 +177,7 @@ public class StatisticsModel {
 
         oldTimeOfActivity = totalTimeOfActivity;
     }
-
+    //TODO, model och statistic skall ej jobba tsm. Controller hanterar listorna och skickar dem vidare. Rådatan i modelen
     public List<String> getAllDays () {
         int count = 0;
         int intMonth;
@@ -212,7 +213,7 @@ public class StatisticsModel {
 
     public  List<String> getAllActivitys (StatisticsActivityAdapter statisticsActivityAdapter) {
         List <String> allActivitys = new ArrayList<>();
-        List <ActivityRowModel> activityRowList = new ArrayList<>();
+        List <ActivityObject> activityRowList = new ArrayList<>();
 
         int intDate = Integer.valueOf(takeAwayFirstZeros(dateBtn));
 
@@ -240,7 +241,7 @@ public class StatisticsModel {
         return allActivitys;
     }
 
-    private void activityToString (List <String> allActivitys, List<ActivityRowModel> activityRowList, int indexFromForLoop){
+    private void activityToString (List <String> allActivitys, List<ActivityObject> activityRowList, int indexFromForLoop){
         ConvertUtils sd = new ConvertUtils();
         long stopTime = Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()))
                 + Long.valueOf(takeAwayFirstZeros(allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime()));

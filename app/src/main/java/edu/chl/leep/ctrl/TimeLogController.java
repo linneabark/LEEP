@@ -19,8 +19,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import edu.chl.leep.model.ActivityRowModel;
-import edu.chl.leep.model.CountDownModel;
+import edu.chl.leep.model.ActivityObject;
 import edu.chl.leep.model.LeepModel;
 
 import edu.chl.leep.model.TimeLogModel;
@@ -54,11 +53,6 @@ public class TimeLogController extends Fragment {
 
     private Context mContext;
 
-    private CountDownModel countDown;
-    private ImageButton timerButton;
-    public TextView txtCountDown;
-    private Button stopTimer;
-    private TimePickerDialog.OnTimeSetListener mTimeSetListener;
     Spinner spinner;
     public int position;
 
@@ -133,7 +127,7 @@ public class TimeLogController extends Fragment {
                 time.stopTimer();
 
                 stopActivity = System.currentTimeMillis();
-                SaveActivity.addActivity(new ActivityRowModel(
+                SaveActivity.addActivity(new ActivityObject(
                         LeepModel.getUSER(),
                         convertUtils.calculateYearToString(),
                         convertUtils.calculateMonthToString(),
@@ -150,44 +144,6 @@ public class TimeLogController extends Fragment {
         });
 
         quoteDisplay.setText(quote.getQuote());
-        txtCountDown = (TextView) rootView.findViewById(R.id.timerText);
-        timerButton = (ImageButton) rootView.findViewById(R.id.timerButton);
-        stopTimer = (Button) rootView.findViewById(R.id.stopTimerButton);
-
-        stopTimer.setVisibility(View.INVISIBLE);
-
-        timerButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopTimer.setVisibility(View.VISIBLE);
-
-                TimePickerDialog timePickerDialog = new TimePickerDialog(mContext,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mTimeSetListener, timeLogModel.getHour(), timeLogModel.getMinute(), true);
-
-                timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                timePickerDialog.setTitle("Set time to start count down.");
-                timePickerDialog.show();
-            }
-        });
-
-        mTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                long total = hourOfDay * 3600000 + minute * 60000;
-
-                countDown = CountDownModel.getInstance(getActivity(),txtCountDown, total);
-                countDown.startCountDown();
-            }
-        };
-
-        stopTimer.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                countDown.stopTimer();
-                stopTimer.setVisibility(View.INVISIBLE);
-            }
-        });
 
         return rootView;
     }

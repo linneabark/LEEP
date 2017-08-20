@@ -20,7 +20,6 @@ public class TimeLogModel {
     private String category3 = "Category 3";
 
     public void checkCategoryStatus() {
-
         if ((LeepModel.getCategory1().equals("")) && (LeepModel.getCategory2().equals(""))
                 && (LeepModel.getCategory3().equals(""))) {
 

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import edu.chl.leep.model.ActivityRowModel;
+import edu.chl.leep.model.ActivityObject;
 import edu.chl.leep.model.LeepModel;
 
 import java.io.Serializable;
@@ -23,11 +23,11 @@ import java.util.List;
 
 public class FileService implements Serializable {
     //For load
-    private static List<ActivityRowModel> loadSharedList;
+    private static List<ActivityObject> loadSharedList;
 
     //For save
-    public void saveActivityRowListSharedPref (Context context, List<ActivityRowModel> saveSharedList) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), Context.MODE_PRIVATE);
+    public void saveActivityRowListSharedPref (Context context, List<ActivityObject> saveSharedList) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER().getLogin(), Context.MODE_PRIVATE);
         SharedPreferences.Editor sharedPrefEditor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(saveSharedList);
@@ -37,17 +37,23 @@ public class FileService implements Serializable {
     }
 
     //For load
-    private List<ActivityRowModel> loadActivityRowListSharedPref(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER(), Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("myJson", "");
-        if (json.isEmpty()) {
-            loadSharedList = new ArrayList<>();
+    private List<ActivityObject> loadActivityRowListSharedPref(Context context) {
+        if (LeepModel.getUSER() == null){
+            System.out.println("get user i leep model är null");
+            return loadSharedList = new ArrayList<>();
         } else {
-            Type type = new TypeToken<List<ActivityRowModel>>() {}.getType();
-            loadSharedList = gson.fromJson(json, type);
+            SharedPreferences sharedPreferences = context.getSharedPreferences(LeepModel.getUSER().getLogin(), Context.MODE_PRIVATE);
+            Gson gson = new Gson();
+            String json = sharedPreferences.getString("myJson", "");
+            if (json.isEmpty()) {
+                loadSharedList = new ArrayList<>();
+            } else {
+                Type type = new TypeToken<List<ActivityObject>>() {
+                }.getType();
+                loadSharedList = gson.fromJson(json, type);
+            }
+            return loadSharedList;
         }
-        return loadSharedList;
     }
 
     //For load
@@ -59,9 +65,6 @@ public class FileService implements Serializable {
         }
     }
 
-    public static SharedPreferences getPrefPreviousUser(Context context) {
-        return context.getSharedPreferences("previousUser", Context.MODE_PRIVATE);
-    }
 
 
 }

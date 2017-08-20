@@ -1,6 +1,6 @@
 package edu.chl.leep.service;
 
-import edu.chl.leep.model.ActivityRowModel;
+import edu.chl.leep.model.ActivityObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +13,9 @@ import java.util.List;
 
 public class SaveActivity {
 
-    public static List<ActivityRowModel> activityRowList = new ArrayList<>();
+    public static List<ActivityObject> activityRowList = new ArrayList<>();
 
-    public static void addActivity (ActivityRowModel activityRow) {
+    public static void addActivity (ActivityObject activityRow) {
         activityRowList.add(activityRow);
     }
 }

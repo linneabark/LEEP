@@ -8,8 +8,9 @@ import java.io.Serializable;
  * A class where the ActivityRowObject are being created from.
  */
 
-public class ActivityRowModel implements Serializable {
-    private String userName;
+public class ActivityObject implements Serializable { //TODO change name
+
+    private UserModel user; //TODO change to user object from usermodel
     private String year;
     private String month;
     private String day;
@@ -17,9 +18,9 @@ public class ActivityRowModel implements Serializable {
     private String totalTime;
     private String categoryName;
 
-    public ActivityRowModel(String userName, String year, String month, String day,
-                            String startTime, String totalTime, String categoryName) {
-        this.userName = userName;
+    public ActivityObject(UserModel user, String year, String month, String day,
+                          String startTime, String totalTime, String categoryName) { //TODO skicka in userobjekt
+        this.user = user;
         this.year = year;
         this.month = month;
         this.day= day;
@@ -27,7 +28,7 @@ public class ActivityRowModel implements Serializable {
         this.totalTime = totalTime;
         this.categoryName = categoryName;
     }
-    public String getUserName () {return userName;}
+    public UserModel getUser() {return user;}
     public String getYear () {return year;}
     public String getMonth () {return month;}
     public String getDay () {return day;}

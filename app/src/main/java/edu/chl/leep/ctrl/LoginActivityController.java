@@ -13,6 +13,7 @@ import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.LoginActivityModel;
+import edu.chl.leep.model.UserModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
 import edu.chl.leep.utils.Contexts;
@@ -48,6 +49,11 @@ public class LoginActivityController extends AppCompatActivity {
         loginActivityModel = new LoginActivityModel();
         fileService = new FileService();
 
+        if(LeepModel.getUSER() == null) {
+            LeepModel.register(new UserModel("","",""));
+        }
+
+
 
         if(loginActivityModel.userWasLoggedIn()){
             getSavedActivitys();
@@ -64,6 +70,8 @@ public class LoginActivityController extends AppCompatActivity {
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                LeepModel.checkUser(userName.getText().toString());
                 if (!loginActivityModel.compareUserInfo(userName.getText().toString(), passWord.getText().toString())) {
                     eM.setText("Password or username does not match!");
                 } else {

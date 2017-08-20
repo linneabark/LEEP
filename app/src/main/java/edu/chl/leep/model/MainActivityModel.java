@@ -12,7 +12,7 @@ public class MainActivityModel {
 
     public void logOutUser(){
         LeepModel.setKeepLoginStateToFalse();
-        TimerModel time = TimerModel.getInstance((MainActivityController) Contexts.getContexts());
+        TimerModel time = TimerModel.getInstance((MainActivityController) Contexts.getContexts()); //TODO bort med ctrl
         time.stopTimer();
     }
 

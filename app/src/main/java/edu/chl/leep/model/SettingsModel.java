@@ -11,7 +11,7 @@ import java.util.List;
  * A model class which contains the data shown in Settings expandablelistview
  */
 
-public class SettingsModel {
+public class SettingsModel { //TODO splitta classen
 
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;

@@ -1,13 +1,12 @@
-package edu.chl.leep.model;
+package edu.chl.leep.service;
+
+import edu.chl.leep.model.LeepModel;
 
 /**
- * Created by Eli on 2017-05-24.
- A model class which contains some methods used in LoginActivityController*/
+ * Created by linneabark on 2017-08-20.
+ */
 
-public class LoginActivityModel {
-
-    //TODO kan göras till service
-
+public class UserInfoService {
 
     public boolean compareUserInfo(String userName, String passWord) {
 
@@ -33,6 +32,4 @@ public class LoginActivityModel {
         LeepModel.setKeepLoginState(checked);
         LeepModel.setPreviousUser();
     }
-
-
 }

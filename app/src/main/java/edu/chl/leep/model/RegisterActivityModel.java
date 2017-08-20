@@ -6,7 +6,7 @@ package edu.chl.leep.model;
  * A model class which contains some methods used in RegisterActivityController
  */
 
-public class RegisterActivityModel {
+public class RegisterActivityModel { //TODO rename and move to utils
 
     public boolean comparePasswords(String password, String repeatPassword) {
         if (password.equals(repeatPassword)) {
@@ -25,7 +25,4 @@ public class RegisterActivityModel {
 
     }
 
-    public void registerUser(UserModel user){
-        LeepModel.register();
-    }
 }
