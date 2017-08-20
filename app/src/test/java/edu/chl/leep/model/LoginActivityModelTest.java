@@ -15,7 +15,7 @@ public class LoginActivityModelTest {
 
         LoginActivityModel lAM = new LoginActivityModel();
 
-        UserModel uM = new UserModel("Helga", "Helga", "helga@gmail.se", "helgaspassword");
+        UserModel uM = new UserModel("Helga", "helga@gmail.se", "helgaspassword");
 
         boolean userBooleanFalse = lAM.compareUserInfo("Helga", "helgaslosenord"); //The method will return false
         assertEquals(false, userBooleanFalse);

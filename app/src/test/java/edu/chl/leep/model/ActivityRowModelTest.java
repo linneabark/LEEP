@@ -12,7 +12,7 @@ public class ActivityRowModelTest {
 
     @Test
     public void activityRow () throws Exception {
-        ActivityObject aRM = new ActivityObject("Sven", "2017", "05", "25", "12334565", "2000", "Studier");
+        ActivityObject aRM = new ActivityObject(new UserModel("Sven", "sensson@hej.se", "svensson"), "2017", "05", "25", "12334565", "2000", "Studier");
 
         assertTrue(aRM.getUser().equals("Sven"));
         assertTrue(aRM.getYear().equals("2017"));

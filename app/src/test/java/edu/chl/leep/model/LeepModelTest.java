@@ -25,9 +25,9 @@ public class LeepModelTest {
 
     @Test
     public void userInfo () throws  Exception {
-        UserModel uM = new UserModel("Sven", "Sven", "sven@gmail.se", "svenslosenord");
+        UserModel uM = new UserModel("Sven", "sven@gmail.se", "svenslosenord");
 
-        lM.register();
+        lM.register(uM);
 
         assertTrue(lM.getUsername().equals("Sven"));
         assertTrue(lM.getEmail().equals("sven@gmail.se"));
