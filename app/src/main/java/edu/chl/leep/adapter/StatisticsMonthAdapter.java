@@ -45,7 +45,7 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
-                statisticsModel.setMonthBtn(months[position]);
+                statisticsModel.setMonthBtn(String.valueOf(months[position]));
                 statisticsDateAdapter.swapList(statisticsModel.getAllDays());
                 notifyDataSetChanged();
             }

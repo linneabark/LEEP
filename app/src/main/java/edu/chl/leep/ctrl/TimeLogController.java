@@ -129,11 +129,11 @@ public class TimeLogController extends Fragment {
                 stopActivity = System.currentTimeMillis();
                 SaveActivity.addActivity(new ActivityObject(
                         LeepModel.getUSER(),
-                        convertUtils.calculateYearToString(),
-                        convertUtils.calculateMonthToString(),
-                        convertUtils.calculateDayToString(),
-                        convertUtils.longToString(startActivity),
-                        convertUtils.longToString(time.getTotalTime()),
+                        Integer.valueOf(convertUtils.calculateYearToString()),
+                        Integer.valueOf(convertUtils.calculateMonthToString()),
+                        Integer.valueOf(convertUtils.calculateDayToString()),
+                        Long.valueOf(convertUtils.longToString(startActivity)),
+                        Long.valueOf(convertUtils.longToString(time.getTotalTime())),
                         LeepModel.getCategory(getPosition())));
 
                 //save the list with SharedPrefs.

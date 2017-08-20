@@ -31,9 +31,12 @@ public class ConvertUtils {
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
+    /*
+    //The method doesn't do what the metod name describes
     public String calculateStringToLong(String str){
         return calculateTimeToString(Long.valueOf(str));
     }
+   */
 
     public String calculateDateToString(Date date){
         Format formatter = new SimpleDateFormat("yyyy-MM-dd");

@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.linneabark.test.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.chl.leep.model.StatisticsModel;
@@ -22,14 +23,14 @@ import edu.chl.leep.model.StatisticsModel;
 public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAdapter.ViewHolder>{
 
     private int recyclerItemIndex = 0;
-    private List<String> date;
+    private List<Integer> date;
 
     private StatisticsActivityAdapter statisticsActivityAdapter;
     private StatisticsModel statisticsModel;
 
 
 
-    public StatisticsDateAdapter (List<String> dateList, StatisticsActivityAdapter sAA) {
+    public StatisticsDateAdapter (List<Integer> dateList, StatisticsActivityAdapter sAA) {
         date = dateList;
         statisticsActivityAdapter = sAA;
     }
@@ -46,12 +47,12 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        holder.btn.setText(date.get(position));
+        holder.btn.setText(String.valueOf(date.get(position)));
         holder.btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
-                statisticsModel.setDateBtn(date.get(position));
+                statisticsModel.setDateBtn(String.valueOf(date.get(position)));
                 statisticsActivityAdapter.swapList(statisticsModel.getAllActivitys(statisticsActivityAdapter));
                 notifyDataSetChanged();
             }
@@ -77,7 +78,11 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
         }
     }
 
-    public void swapList (List<String> changedList) {
+    public void swapList (List<Integer> changedList) {
+        List <String> stringList = new ArrayList<>();
+        for(int i = 0; i < changedList.size(); i++){
+            stringList.add(String.valueOf(changedList.get(i)));
+        }
         if(date != null) {
             date.clear();
             date.addAll(changedList);

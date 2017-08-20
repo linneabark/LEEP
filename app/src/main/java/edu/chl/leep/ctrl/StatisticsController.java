@@ -77,6 +77,10 @@ public class StatisticsController extends Fragment {
         findWhichMonth = new FindWhichMonth();
         statisticsModel = new StatisticsModel();
 
+        List<String> hej = new ArrayList<>();
+        hej.add("heeej");
+        hej.add("pååååå");
+
         statisticsActivityAdapter  = new StatisticsActivityAdapter(statisticsModel.reformListToDisplay());
         statisticsDateAdapter = new StatisticsDateAdapter(statisticsModel.getAllDays(), statisticsActivityAdapter);
         statisticsMonthAdapter = new StatisticsMonthAdapter(findWhichMonth.months, statisticsDateAdapter);
