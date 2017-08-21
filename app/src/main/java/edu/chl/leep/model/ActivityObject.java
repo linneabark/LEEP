@@ -11,15 +11,15 @@ import java.io.Serializable;
 public class ActivityObject implements Serializable { //TODO change name
 
     private UserModel user; //TODO change to user object from usermodel
-    private String year;
-    private String month;
-    private String day;
-    private String startTime;
-    private String totalTime;
+    private int year;
+    private int month;
+    private int day;
+    private long startTime;
+    private long totalTime;
     private String categoryName;
 
-    public ActivityObject(UserModel user, String year, String month, String day,
-                          String startTime, String totalTime, String categoryName) { //TODO skicka in userobjekt
+    public ActivityObject(UserModel user, int year, int month, int day,
+                          long startTime, long totalTime, String categoryName) { //TODO skicka in userobjekt
         this.user = user;
         this.year = year;
         this.month = month;
@@ -29,10 +29,10 @@ public class ActivityObject implements Serializable { //TODO change name
         this.categoryName = categoryName;
     }
     public UserModel getUser() {return user;}
-    public String getYear () {return year;}
-    public String getMonth () {return month;}
-    public String getDay () {return day;}
-    public String getStartTime () {return startTime;}
-    public String getTotalTime () {return totalTime;}
+    public int getYear () {return year;}
+    public int getMonth () {return month;}
+    public int getDay () {return day;}
+    public long getStartTime () {return startTime;}
+    public long getTotalTime () {return totalTime;}
     public String getCategoryName () {return categoryName;}
 }
