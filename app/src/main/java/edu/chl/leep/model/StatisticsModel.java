@@ -251,6 +251,7 @@ public class StatisticsModel { //TODO transform to service, skala av
         return allActivitys;
     }
 
+    //handlar bara om vyn från listor med rätt information
     private void activityToString (List <String> allActivitys, List<ActivityObject> activityRowList, int indexFromForLoop){
         long stopTime = allActivityRowsForSpecificMonth.get(indexFromForLoop).getStartTime()
                 + allActivityRowsForSpecificMonth.get(indexFromForLoop).getTotalTime();
