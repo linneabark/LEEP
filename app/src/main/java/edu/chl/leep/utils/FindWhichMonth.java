@@ -1,5 +1,7 @@
 package edu.chl.leep.utils;
 
+import java.util.Calendar;
+
 /**
  * Created by Evelina on 2017-05-06.
  *
@@ -7,6 +9,8 @@ package edu.chl.leep.utils;
  */
 
 public class FindWhichMonth {
+
+    private Calendar cal = Calendar.getInstance();
 
     public String [] months = {"Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
                                         "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."};
@@ -20,5 +24,15 @@ public class FindWhichMonth {
             }
         }
         return -1;
+    }
+
+    public int getHour() {
+        int hour = cal.get(Calendar.HOUR);
+        return hour;
+    }
+
+    public int getMinute() {
+        int minute = cal.get(Calendar.MINUTE);
+        return minute;
     }
 }
