@@ -12,10 +12,10 @@ import android.widget.Toast;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.LeepModel;
-import edu.chl.leep.model.LoginActivityModel;
 import edu.chl.leep.model.UserModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.SaveActivity;
+import edu.chl.leep.service.UserInfoService;
 import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.Intents;
 
@@ -30,7 +30,7 @@ public class LoginActivityController extends AppCompatActivity {
     private RadioButton rB; //keep the login
     private Context mContext;
     private static LeepModel leep;
-    private LoginActivityModel loginActivityModel;
+    private UserInfoService uis;
     private FileService fileService;
     private Button registerButton;
     private Button loginButton;
@@ -46,7 +46,7 @@ public class LoginActivityController extends AppCompatActivity {
         mContext = this;
         Contexts.setContexts(mContext);
 
-        loginActivityModel = new LoginActivityModel();
+        uis = new UserInfoService();
         fileService = new FileService();
 
         if(LeepModel.getUSER() == null) {
@@ -55,7 +55,7 @@ public class LoginActivityController extends AppCompatActivity {
 
 
 
-        if(loginActivityModel.userWasLoggedIn()){
+        if(uis.userWasLoggedIn()){
             getSavedActivitys();
 
             startActivity(Intents.ToMain(mContext));
@@ -72,12 +72,12 @@ public class LoginActivityController extends AppCompatActivity {
             public void onClick(View v) {
 
                 LeepModel.checkUser(userName.getText().toString());
-                if (!loginActivityModel.compareUserInfo(userName.getText().toString(), passWord.getText().toString())) {
+                if (!uis.compareUserInfo(userName.getText().toString(), passWord.getText().toString())) {
                     eM.setText("Password or username does not match!");
                 } else {
 
                     boolean checked = rB.isChecked();
-                    loginActivityModel.rememberUser(checked);
+                    uis.rememberUser(checked);
 
                     Toast.makeText(mContext, ("Logged in " + LeepModel.getUsername() + "!"), Toast.LENGTH_SHORT).show();
                     getSavedActivitys();

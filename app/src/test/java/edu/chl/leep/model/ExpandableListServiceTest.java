@@ -4,14 +4,16 @@ import org.junit.Test;
 
 import java.util.List;
 
+import edu.chl.leep.service.ExpandableListService;
+
 import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Evelinas on 2017-08-12.
  */
 
-public class SettingsModelTest {
-    SettingsModel sM = new SettingsModel();
+public class ExpandableListServiceTest {
+    ExpandableListService sM = new ExpandableListService();
 
     public void giveValuesInitData () throws Exception {
         //Gives input so we for sure ´can se the that this works

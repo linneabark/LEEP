@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.chl.leep.ctrl.MainActivityController;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.utils.Contexts;
 
@@ -21,7 +22,6 @@ public class LeepModel {
 
     public LeepModel(){
 
-
     }
 
     public static List<String> getCategoryList(){
@@ -34,13 +34,6 @@ public class LeepModel {
         return categoryList;
     }
 
-   /* public static void register(UserModel input){
-
-        LeepModel.setUSER(input); //sets the "user folder with the same name as username"
-        LeepModel.setSPUsername(input);
-        LeepModel.setSPPassword(input);
-        LeepModel.setSPEmail(input);
-    }   */
 
     public static void register (UserModel newUser) {
         setUser(newUser);
@@ -49,6 +42,11 @@ public class LeepModel {
         setSPPassword(newUser);
         setSPEmail(newUser);
     }
+
+
+
+
+
     public static UserModel getUSER(){
         return user;
     }
@@ -81,8 +79,6 @@ public class LeepModel {
     private static SharedPreferences getUserInfo() { //or is it getPrefs?
         return Contexts.getContexts().getSharedPreferences(checkUserName, Contexts.getContexts().MODE_PRIVATE);
     }
-
-
 
 
     public static String getUsername() {

@@ -10,7 +10,6 @@ import edu.chl.leep.ctrl.MainActivityController;
 import edu.chl.leep.ctrl.SettingsController;
 import edu.chl.leep.ctrl.StatisticsController;
 import edu.chl.leep.ctrl.TimeLogController;
-import edu.chl.leep.model.MainActivityModel;
 
 /**
  * Created by Eli on 2017-07-04.

@@ -1,8 +1,10 @@
-package edu.chl.leep.model;
+package edu.chl.leep.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import edu.chl.leep.model.LeepModel;
 
 
 /**
@@ -11,7 +13,7 @@ import java.util.List;
  * A model class which contains the data shown in Settings expandablelistview
  */
 
-public class SettingsModel { //TODO splitta classen
+public class ExpandableListService { //TODO splitta classen
 
     private List<String> listDataHeader;
     private HashMap<String, List<String>> listHash;

@@ -1,9 +1,6 @@
 package edu.chl.leep.ctrl;
 
-import android.app.TimePickerDialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,15 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import edu.chl.leep.model.ActivityObject;
 import edu.chl.leep.model.LeepModel;
 
-import edu.chl.leep.model.TimeLogModel;
 import edu.chl.leep.model.TimerModel;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.QuotesService;
@@ -30,6 +24,7 @@ import edu.chl.leep.service.QuotesService;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.service.SaveActivity;
+import edu.chl.leep.service.UserInfoService;
 import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.ConvertUtils;
 
@@ -47,7 +42,6 @@ public class TimeLogController extends Fragment {
     private long startActivity;
     private TextView time_txt;
 
-    private TimeLogModel timeLogModel;
     private TimerModel time;
     private FileService fileService;
 
@@ -72,10 +66,10 @@ public class TimeLogController extends Fragment {
 
         fileService = new FileService();
         convertUtils = new ConvertUtils();
-        timeLogModel = new TimeLogModel();
+        UserInfoService uis = new UserInfoService();
 
-        timeLogModel.checkCategoryStatus();
-        timeLogModel.checkQuoteStatus();
+        uis.checkCategoryStatus();
+        uis.checkQuoteStatus();
 
         quote = new QuotesService(getContext());
 

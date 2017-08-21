@@ -8,10 +8,11 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import edu.chl.leep.adapter.ExpandableListAdapter;
 import com.example.linneabark.test.R;
+
+import edu.chl.leep.service.ExpandableListService;
 import edu.chl.leep.utils.ShowCategoryPopUp;
 import edu.chl.leep.utils.ShowHelpPopUp;
 import edu.chl.leep.utils.ShowQuotesPopUp;
-import edu.chl.leep.model.SettingsModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,7 +25,7 @@ public class SettingsController extends Fragment{
     private ExpandableListAdapter listAdapter;
     private String buttonTag;
     private ImageButton popUpButton;
-    private SettingsModel settingsModel;
+    private ExpandableListService expandableListService;
     private ShowCategoryPopUp popUpCategory;
     private ShowQuotesPopUp popUpQuote;
     private ShowHelpPopUp popUpHelp;
@@ -39,10 +40,10 @@ public class SettingsController extends Fragment{
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
-        settingsModel = new SettingsModel();
-        settingsModel.initData();
+        expandableListService = new ExpandableListService();
+        expandableListService.initData();
         listView = (ExpandableListView) rootView.findViewById(R.id.lvExp);
-        listAdapter = new ExpandableListAdapter(getActivity(), settingsModel.getListDataHeader(), settingsModel.getListHash(), listView);
+        listAdapter = new ExpandableListAdapter(getActivity(), expandableListService.getListDataHeader(), expandableListService.getListHash(), listView);
         listView.setAdapter(listAdapter);
 
        return rootView;
