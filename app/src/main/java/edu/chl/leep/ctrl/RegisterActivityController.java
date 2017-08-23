@@ -13,7 +13,7 @@ import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.UserModel;
-import edu.chl.leep.service.UserInfoService;
+import edu.chl.leep.service.RegisterService;
 import edu.chl.leep.utils.Contexts;
 
 /**
@@ -29,9 +29,10 @@ public class RegisterActivityController extends AppCompatActivity {
     private TextView errorMessage;
     private Button register;
     private Button backButton;
+
     private Context mContext;
-    //private RegisterActivityModel registerActivityModel;
-    private UserInfoService uis;
+
+    private RegisterService registerService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,8 @@ public class RegisterActivityController extends AppCompatActivity {
         mContext = this;
         Contexts.setContexts(mContext);
 
-        uis = new UserInfoService();
+        registerService = new RegisterService();
+
         mail = (EditText) this.findViewById(R.id.mail);
         userName = (EditText) this.findViewById(R.id.setUserName);
         password = (EditText) this.findViewById(R.id.setPassword);
@@ -53,11 +55,11 @@ public class RegisterActivityController extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(!uis.comparePasswords(password.getText().toString(), repeatPassword.getText().toString())
+                if(!registerService.comparePasswords(password.getText().toString(), repeatPassword.getText().toString())
                         ){
                     errorMessage.setText("Passwords does not match!");
 
-                    if( !uis.checkEmail(mail.getText().toString())) {
+                    if( !registerService.checkEmail(mail.getText().toString())) {
 
                         errorMessage.setText("Not a valid email!");
                     }

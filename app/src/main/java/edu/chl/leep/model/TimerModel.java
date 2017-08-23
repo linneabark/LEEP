@@ -2,6 +2,9 @@ package edu.chl.leep.model;
 
 import android.app.Activity;
 import android.widget.TextView;
+
+import edu.chl.leep.ctrl.MainActivityController;
+import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.ConvertUtils;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -87,5 +90,11 @@ public class TimerModel {
                 }
             });
         }
+    }
+
+    public void cleanTimer(){
+        //UserLoggedInService.setKeepLoginStateToFalse();
+        TimerModel time = TimerModel.getInstance((MainActivityController) Contexts.getContexts()); //TODO bort med ctrl
+        time.stopTimer();
     }
 }

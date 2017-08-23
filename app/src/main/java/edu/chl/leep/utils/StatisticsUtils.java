@@ -1,14 +1,14 @@
-package edu.chl.leep.service;
+package edu.chl.leep.utils;
 
 import java.util.List;
 
 import edu.chl.leep.model.ActivityObject;
 
 /**
- * Created by Evelinas on 2017-08-20.
+ * Created by linneabark on 2017-08-22.
  */
 
-public class StatisticsModelService {
+public class StatisticsUtils {
     //Metoden anv'nds för att ta bort nollan på knappen som läses av. För att veta vilken
     public String takeAwayFirstZeros (String string) { //TODO, spara månader i int , representationen kanändras med nolla innan.
         string = string.replaceFirst("^0+(?!$)", "");

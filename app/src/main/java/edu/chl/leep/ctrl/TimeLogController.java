@@ -18,13 +18,13 @@ import edu.chl.leep.model.ActivityObject;
 import edu.chl.leep.model.LeepModel;
 
 import edu.chl.leep.model.TimerModel;
+import edu.chl.leep.service.CategoryService;
 import edu.chl.leep.service.FileService;
 import edu.chl.leep.service.QuotesService;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.service.SaveActivity;
-import edu.chl.leep.service.UserInfoService;
+import edu.chl.leep.service.SaveActivityService;
 import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.ConvertUtils;
 
@@ -36,6 +36,7 @@ public class TimeLogController extends Fragment {
 
     private TextView quoteDisplay;
     private QuotesService quote;
+    private CategoryService category;
     private ConvertUtils convertUtils;
 
     public long stopActivity;
@@ -66,12 +67,12 @@ public class TimeLogController extends Fragment {
 
         fileService = new FileService();
         convertUtils = new ConvertUtils();
-        UserInfoService uis = new UserInfoService();
-
-        uis.checkCategoryStatus();
-        uis.checkQuoteStatus();
-
         quote = new QuotesService(getContext());
+        category = new CategoryService();
+
+        category.checkCategoryStatus();
+        quote.checkQuoteStatus();
+
 
         /**SPINNER **/
         spinner = (Spinner)rootView.findViewById(R.id.spinner);
@@ -121,7 +122,7 @@ public class TimeLogController extends Fragment {
                 time.stopTimer();
 
                 stopActivity = System.currentTimeMillis();
-                SaveActivity.addActivity(new ActivityObject(
+                SaveActivityService.addActivity(new ActivityObject(
                         LeepModel.getUSER(),
                         Integer.valueOf(convertUtils.calculateYearToString()),
                         Integer.valueOf(convertUtils.calculateMonthToString()),
@@ -131,7 +132,7 @@ public class TimeLogController extends Fragment {
                         LeepModel.getCategory(getPosition())));
 
                 //save the list with SharedPrefs.
-                fileService.saveActivityRowListSharedPref(mContext, SaveActivity.activityRowList);
+                fileService.saveActivityRowListSharedPref(mContext, SaveActivityService.activityRowList);
 
                 Toast.makeText(mContext, "Activity saved. Duration: " + convertUtils.calculateTimeToString(time.getTotalTime()), Toast.LENGTH_SHORT).show();
             }

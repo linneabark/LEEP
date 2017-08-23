@@ -11,7 +11,7 @@ import java.util.List;
  *  A class which contains the list of the activities and a method to add an activity
  */
 
-public class SaveActivity {
+public class SaveActivityService {
 
     public static List<ActivityObject> activityRowList = new ArrayList<>();
 

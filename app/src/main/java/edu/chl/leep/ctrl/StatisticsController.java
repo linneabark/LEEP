@@ -10,7 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import edu.chl.leep.model.ActivityObject;
 import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.service.SaveActivityService;
+import edu.chl.leep.service.StatisticService;
+import edu.chl.leep.service.StatisticsDisplayService;
 import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.FindWhichMonth;
 import com.example.linneabark.test.R;
@@ -20,6 +24,8 @@ import android.widget.Button;
 import edu.chl.leep.adapter.StatisticsActivityAdapter;
 import edu.chl.leep.adapter.StatisticsDateAdapter;
 import edu.chl.leep.adapter.StatisticsMonthAdapter;
+import edu.chl.leep.utils.StatisticsUtils;
+
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -35,8 +41,8 @@ import java.util.List;
  * A controller class which are making the view look at it is supposed to be.
  */
 public class StatisticsController extends Fragment {
-    private FindWhichMonth findWhichMonth;
-    private StatisticsModel statisticsModel;
+    private StatisticsUtils statisticsUtils;
+    private StatisticService statisticsService;
 
     private RecyclerView recyclerMonth;
     private RecyclerView recyclerDate;
@@ -52,15 +58,39 @@ public class StatisticsController extends Fragment {
     private StatisticsActivityAdapter statisticsActivityAdapter;
     private StatisticsDateAdapter statisticsDateAdapter;
     private StatisticsMonthAdapter statisticsMonthAdapter;
+    private StatisticsDisplayService statisticsDisplayService;
+
     Context mContext;
+
+    private FindWhichMonth findWhichMonth;
+    private List <ActivityObject> defaultStatisticList;
+    private List<ActivityObject> userActivityList;
+    private List <ActivityObject> allActivityRowsForSpecificMonth;
+    private List<String> totalOfCategoryList;
+    private List<Long> totalTimeList;
+
+    private long oldTimeOfActivity = 0;
+
+    public List<ActivityObject> getDefaultStatisticsList(){
+        return defaultStatisticList;
+    }
+    public List<ActivityObject> getUserActivityList(){
+        return userActivityList;
+    }
+    public List<ActivityObject> getAllActivityRowsForSpecificMonth(){
+        return allActivityRowsForSpecificMonth;
+    }
+    public List<String> getTotalOfCategoryList(){
+        return totalOfCategoryList;
+    }
+    public List<Long> getTotalTimeList(){
+        return totalTimeList;
+    }
 
     public StatisticsController() {
         // Required empty public constructor
     }
 
-    public void hej() {
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,17 +102,25 @@ public class StatisticsController extends Fragment {
 
        Contexts.setContexts(mContext);
 
-
+        defaultStatisticList = new ArrayList<>();
+        userActivityList = SaveActivityService.activityRowList;
+        allActivityRowsForSpecificMonth = new ArrayList<>();
+        totalOfCategoryList = new ArrayList<>();
+        totalTimeList = new ArrayList<>();
 
         findWhichMonth = new FindWhichMonth();
-        statisticsModel = new StatisticsModel();
+        statisticsService = new StatisticService();
+        statisticsDisplayService = new StatisticsDisplayService();
+
+
+
 
         List<String> hej = new ArrayList<>();
         hej.add("heeej");
         hej.add("pååååå");
 
-        statisticsActivityAdapter  = new StatisticsActivityAdapter(statisticsModel.reformListToDisplay());
-        statisticsDateAdapter = new StatisticsDateAdapter(statisticsModel.getAllDays(), statisticsActivityAdapter);
+        statisticsActivityAdapter = new StatisticsActivityAdapter(statisticsDisplayService.reformListToDisplay(statisticsService));
+        statisticsDateAdapter = new StatisticsDateAdapter(statisticsService.getAllDays(), statisticsActivityAdapter);
         statisticsMonthAdapter = new StatisticsMonthAdapter(findWhichMonth.months, statisticsDateAdapter);
 
         recyclerMonth = (RecyclerView) rootview.findViewById(R.id.recyclerMonth);
@@ -105,7 +143,7 @@ public class StatisticsController extends Fragment {
             public void onClick(View v) {
                 doButtonsWhite();
                 giveButtonColor(v,btnDay);
-                statisticsModel.setWhichBtn("btnDay");
+                statisticsService.setWhichBtn("btnDay");
             }
         });
 
@@ -114,7 +152,7 @@ public class StatisticsController extends Fragment {
             public void onClick(View v) {
                 doButtonsWhite();
                 giveButtonColor(v,btnMonth);
-                statisticsModel.setWhichBtn("btnMonth");
+                statisticsService.setWhichBtn("btnMonth");
             }
         });
 
@@ -122,8 +160,8 @@ public class StatisticsController extends Fragment {
         recyclerActivity.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         recyclerActivity.setAdapter(statisticsActivityAdapter);
 
-        insertCategoryPieChart(statisticsModel.getTotalOfCategoryList());
-        insertTotalTimePieChart(statisticsModel.getTotalTimeList());
+        insertCategoryPieChart(getTotalOfCategoryList());
+        insertTotalTimePieChart(getTotalTimeList());
 
         pieChart = (PieChart) rootview.findViewById(R.id.pieChart);
         pieChart.setRotationEnabled(true);
@@ -181,7 +219,7 @@ public class StatisticsController extends Fragment {
     }
 
     public String [] insertCategoryPieChart (List<String> categoryList){
-        xcategory = new String [statisticsModel.getTotalOfCategoryList().size()];
+        xcategory = new String [getTotalOfCategoryList().size()];
         for (int i = 0; i < categoryList.size(); i++) {
             xcategory [i] = categoryList.get(i);
         }
@@ -195,5 +233,35 @@ public class StatisticsController extends Fragment {
             yvalue [i] = totalTimeValue;
         }
         return yvalue;
+    }
+    //metod för att potionera piecharten
+    public void totalForActivity (List<ActivityObject> oneList) {
+        long totalTimeOfEveryting = 0;
+
+        for (int i = 0; i < oneList.size(); i++){
+            String categoryName = oneList.get(i).getCategoryName();
+
+            long totalTimeOfActivity = oneList.get(i).getTotalTime();
+
+            if (!(totalOfCategoryList.contains(categoryName))) {
+                totalOfCategoryList.add(categoryName);
+                totalTimeList.add(totalOfCategoryList.indexOf(categoryName),totalTimeOfActivity);
+            }
+            else {
+                int indexOfCategory = totalOfCategoryList.indexOf(categoryName);
+                incActivityTotalTime(indexOfCategory, totalTimeOfActivity, totalTimeList.get(indexOfCategory));
+            }
+            totalTimeOfEveryting = totalTimeOfEveryting + oldTimeOfActivity;
+        }
+    }
+
+    //For the pieChart
+    private void incActivityTotalTime (int indexOfCategory, long totalTimeOfActivity, long oldTime) {
+        totalTimeOfActivity = totalTimeOfActivity + oldTime;
+
+        totalTimeList.remove(indexOfCategory);
+        totalTimeList.add(indexOfCategory, totalTimeOfActivity);
+
+        oldTimeOfActivity = totalTimeOfActivity;
     }
 }

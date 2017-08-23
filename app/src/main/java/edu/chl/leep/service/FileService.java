@@ -61,7 +61,7 @@ public class FileService implements Serializable {
         loadActivityRowListSharedPref(context);
 
         for (int i = 0; i < loadSharedList.size(); i++) {
-            SaveActivity.addActivity(loadSharedList.get(i));
+            SaveActivityService.addActivity(loadSharedList.get(i));
         }
     }
 

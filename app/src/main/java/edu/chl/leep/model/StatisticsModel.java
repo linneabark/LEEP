@@ -5,10 +5,9 @@ import edu.chl.leep.adapter.StatisticsActivityAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.leep.service.SaveActivity;
-import edu.chl.leep.service.StatisticsModelService;
+import edu.chl.leep.service.SaveActivityService;
+import edu.chl.leep.service.StatisticService;
 import edu.chl.leep.utils.FindWhichMonth;
-import edu.chl.leep.utils.ConvertUtils;
 
 /**
  * Created by Evelinas on 2017-05-26.
@@ -17,7 +16,7 @@ import edu.chl.leep.utils.ConvertUtils;
  */
 
 public class StatisticsModel { //TODO transform to service, skala av
-
+/*
     private long oldTimeOfActivity = 0;
 
     private String whichBtn = "btnDay";
@@ -37,16 +36,16 @@ public class StatisticsModel { //TODO transform to service, skala av
     private List<String> totalOfCategoryList;
     private List<Long> totalTimeList;
 
-    StatisticsModelService  sMS = new StatisticsModelService();
-
+    StatisticService sMS = new StatisticService();
+*/
 
     public StatisticsModel(){
-        findWhichMonth = new FindWhichMonth();
+        /*findWhichMonth = new FindWhichMonth();
         defaultStatisticList = new ArrayList<>();
-        userActivityList = SaveActivity.activityRowList;
+        userActivityList = SaveActivityService.activityRowList;
         allActivityRowsForSpecificMonth = new ArrayList<>();
         totalOfCategoryList = new ArrayList<>();
-        totalTimeList = new ArrayList<>();
+        totalTimeList = new ArrayList<>();*/
     }
     /*//Metoden anv'nds för att ta bort nollan på knappen som läses av. För att veta vilken
     private String takeAwayFirstZeros (String string) { //TODO, spara månader i int , representationen kanändras med nolla innan.
@@ -63,7 +62,7 @@ public class StatisticsModel { //TODO transform to service, skala av
     private int intDayFromList (List<ActivityObject> list, int positionInList) {
         return Integer.valueOf(takeAwayFirstZeros(list.get(positionInList).getDay()));
     }*/
-
+/*
     public void setDateBtn(String dateBtn) {
         this.dateBtn = dateBtn;
     }
@@ -84,23 +83,24 @@ public class StatisticsModel { //TODO transform to service, skala av
         return totalTimeList;
     }
 
+*/
 
     //kanske för klassen som hanterar view
-    public List <String> reformListToDisplay () {
+   /* public List <String> reformListToDisplay () {
         giveValuesToDefaultStatisticList();
         List<String>listToDisplay = new ArrayList<>();
 
         for(int i = 0; i < defaultStatisticList.size(); i++) {
-            /*long stopTime = Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getStartTime()))
+           */ /*long stopTime = Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getStartTime()))
                     + Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getTotalTime()));
             String s = defaultStatisticList.get(i).getCategoryName() + "    " + defaultStatisticList.get(i).getStartTime() + " - " + stopTime;
             listToDisplay.add(s);*/
-            long stopTime = defaultStatisticList.get(i).getStartTime() + defaultStatisticList.get(i).getTotalTime();
+          /*  long stopTime = defaultStatisticList.get(i).getStartTime() + defaultStatisticList.get(i).getTotalTime();
             String s = defaultStatisticList.get(i).getCategoryName() + "    " + defaultStatisticList.get(i).getStartTime() + " - " + stopTime;
             listToDisplay.add(s);
         }
         return listToDisplay;
-    }
+    }*/
     //TODO serivice som stuvar om datan. service klass har ej instance variabler men bara beräkningar
     /*private int greatestYear(List<ActivityObject> list, int year){
         for (int i = 0; i < list.size(); i++) {
@@ -137,7 +137,7 @@ public class StatisticsModel { //TODO transform to service, skala av
     }*/
     //TODO view delarna hanterar datan för att se bra ut på utskrift
 
-    private List<ActivityObject> giveValuesToDefaultStatisticList () {
+    /*private List<ActivityObject> giveValuesToDefaultStatisticList () {
         //Find the greatest year in the list
         year = sMS.greatestYear(userActivityList, year);
 
@@ -186,9 +186,9 @@ public class StatisticsModel { //TODO transform to service, skala av
         totalTimeList.add(indexOfCategory, totalTimeOfActivity);
 
         oldTimeOfActivity = totalTimeOfActivity;
-    }
+    }*/
     //TODO, model och statistic skall ej jobba tsm. CONTROLLERN hanterar listorna och skickar dem vidare. Rådatan i modelen
-    public List<Integer> getAllDays () {
+    /*public List<Integer> getAllDays () {
         int count = 0;
         int intMonth;
         List <Integer> allDays = new ArrayList<>();
@@ -263,7 +263,7 @@ public class StatisticsModel { //TODO transform to service, skala av
         allActivitys.add(s);
 
         activityRowList.add(allActivityRowsForSpecificMonth.get(indexFromForLoop));
-    }
+    }*/
 
 
 }

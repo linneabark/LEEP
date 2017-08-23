@@ -13,7 +13,10 @@ import android.widget.Toast;
 
 import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
-import edu.chl.leep.service.UserInfoService;
+import edu.chl.leep.model.TimerModel;
+import edu.chl.leep.service.TimerService;
+import edu.chl.leep.service.UserLoggedInService;
+import edu.chl.leep.service.UserStateService;
 import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.Fragments;
 import edu.chl.leep.utils.Intents;
@@ -23,10 +26,9 @@ import edu.chl.leep.utils.Intents;
  */
 public class MainActivityController extends AppCompatActivity {
 
-    public static LeepModel leep;
     private Context mContext;
     //private SettingsController settings;
-    Fragments fragments = new Fragments();
+    private TimerService ts;
 
 
 
@@ -38,10 +40,6 @@ public class MainActivityController extends AppCompatActivity {
         mContext = this.getApplicationContext();
         Contexts.setContexts(mContext);
         //settings = new SettingsController();
-
-        leep = new LeepModel();
-
-
 
         Fragments.setFragmentManager(getSupportFragmentManager());
 
@@ -71,11 +69,13 @@ public class MainActivityController extends AppCompatActivity {
     }
 
     public void logOut(){
-        UserInfoService uis = new UserInfoService();
-        uis.cleanTimer();
+        ts = new TimerService();
+        ts.cleanTimer();
+
+        UserLoggedInService.setKeepLoginStateToFalse();
+
         Contexts.getContexts().startActivity(Intents.ToLogIn(Contexts.getContexts()));
         Toast.makeText(Contexts.getContexts(), ("Logged out " + LeepModel.getUsername()+"!"),Toast.LENGTH_SHORT).show();
 
     }
-
 }

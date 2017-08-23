@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.service.StatisticService;
 
 /**
  * Created by Evelina on 2017-05-12.
@@ -26,7 +27,7 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
     private List<Integer> date;
 
     private StatisticsActivityAdapter statisticsActivityAdapter;
-    private StatisticsModel statisticsModel;
+    private StatisticService statisticService;
 
 
 
@@ -40,7 +41,7 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.costume_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
-        statisticsModel = new StatisticsModel();
+        statisticService = new StatisticService();
 
         return viewHolder;
     }
@@ -52,8 +53,8 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
-                statisticsModel.setDateBtn(String.valueOf(date.get(position)));
-                statisticsActivityAdapter.swapList(statisticsModel.getAllActivitys(statisticsActivityAdapter));
+                statisticService.setDateBtn(String.valueOf(date.get(position)));
+                statisticsActivityAdapter.swapList(statisticService.getAllActivitys(statisticsActivityAdapter));
                 notifyDataSetChanged();
             }
         });

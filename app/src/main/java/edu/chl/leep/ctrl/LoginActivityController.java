@@ -14,8 +14,9 @@ import com.example.linneabark.test.R;
 import edu.chl.leep.model.LeepModel;
 import edu.chl.leep.model.UserModel;
 import edu.chl.leep.service.FileService;
-import edu.chl.leep.service.SaveActivity;
-import edu.chl.leep.service.UserInfoService;
+import edu.chl.leep.service.LoginService;
+import edu.chl.leep.service.SaveActivityService;
+import edu.chl.leep.service.UserStateService;
 import edu.chl.leep.utils.Contexts;
 import edu.chl.leep.utils.Intents;
 
@@ -30,10 +31,14 @@ public class LoginActivityController extends AppCompatActivity {
     private RadioButton rB; //keep the login
     private Context mContext;
     private static LeepModel leep;
-    private UserInfoService uis;
+    private UserStateService uis;
+    private LoginService loginService;
     private FileService fileService;
     private Button registerButton;
     private Button loginButton;
+
+    private String SPUserName;
+    private String SPPassword;
 
 
 
@@ -46,14 +51,13 @@ public class LoginActivityController extends AppCompatActivity {
         mContext = this;
         Contexts.setContexts(mContext);
 
-        uis = new UserInfoService();
+        uis = new UserStateService();
         fileService = new FileService();
+        loginService = new LoginService();
 
         if(LeepModel.getUSER() == null) {
             LeepModel.register(new UserModel("","",""));
         }
-
-
 
         if(uis.userWasLoggedIn()){
             getSavedActivitys();
@@ -71,8 +75,11 @@ public class LoginActivityController extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                SPUserName = LeepModel.getUsername();
+                SPPassword = LeepModel.getPassword();
+
                 LeepModel.checkUser(userName.getText().toString());
-                if (!uis.compareUserInfo(userName.getText().toString(), passWord.getText().toString())) {
+                if (!loginService.compareUserInfo(userName.getText().toString(), passWord.getText().toString(), SPUserName, SPPassword)) {
                     eM.setText("Password or username does not match!");
                 } else {
 
@@ -114,7 +121,7 @@ public class LoginActivityController extends AppCompatActivity {
 
     private void getSavedActivitys(){
         //rensa lista om det fanns något innan man loggade ut.
-        SaveActivity.activityRowList.clear();
+        SaveActivityService.activityRowList.clear();
         //load the list from SharedPrefs.
         fileService.putTheValuesInActivityRowList(Contexts.getContexts());
     }

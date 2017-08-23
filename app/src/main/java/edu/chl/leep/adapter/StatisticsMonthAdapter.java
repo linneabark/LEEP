@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.linneabark.test.R;
 
 import edu.chl.leep.model.StatisticsModel;
+import edu.chl.leep.service.StatisticService;
 
 /**
  * Created by Evelina on 2017-05-12.
@@ -21,7 +22,7 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
     private String [] months;
     private int recyclerItemIndex = 0;
     private StatisticsDateAdapter statisticsDateAdapter;
-    private StatisticsModel statisticsModel;
+    private StatisticService statisticService;
 
     public StatisticsMonthAdapter (String [] monthsList, StatisticsDateAdapter sDA) {
         months = monthsList;
@@ -33,7 +34,8 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.costume_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
-        statisticsModel = new StatisticsModel();
+
+        statisticService = new StatisticService();
 
         return viewHolder;
     }
@@ -45,8 +47,8 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
-                statisticsModel.setMonthBtn(String.valueOf(months[position]));
-                statisticsDateAdapter.swapList(statisticsModel.getAllDays());
+                statisticService.setMonthBtn(String.valueOf(months[position]));
+                statisticsDateAdapter.swapList(statisticService.getAllDays());
                 notifyDataSetChanged();
             }
         });
