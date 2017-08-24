@@ -11,8 +11,6 @@ public class Category {
     private String category3 = "Category 3";
 
     public Category(){
-        
-
     }
 
     public String getCategory1(){
