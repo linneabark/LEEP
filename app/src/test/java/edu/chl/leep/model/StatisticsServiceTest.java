@@ -7,12 +7,10 @@ import static org.junit.Assert.assertTrue;
  * Created by Evelinas on 2017-08-12.
  */
 
-public class StatisticsModelTest {
-
-    StatisticsModel sM = new StatisticsModel();
+public class StatisticsServiceTest {
 
     @Test
-    public void testGreatestYear () throws Exception {
+    public void greatestYearTest() throws Exception {
         int [] year = {2017,2016,2018};
         int greatestYear = 0;
         for (int i = 0; i < year.length; i++) {
@@ -24,7 +22,7 @@ public class StatisticsModelTest {
     }
 
     @Test
-    public void testGreatestMonth () throws Exception {
+    public void greatestMonthTest() throws Exception {
         int greatestYear = 0;
         int greatestMonth = 0;
         int[][] yearAndMonth = {
@@ -50,7 +48,7 @@ public class StatisticsModelTest {
     }
 
     @Test
-    public void testGreatestDay () throws  Exception {
+    public void greatestDayTest() throws  Exception {
         int greatestYear = 0;
         int greatestMonth = 0;
         int greatestDay = 0;
@@ -84,5 +82,4 @@ public class StatisticsModelTest {
         assertTrue(String.valueOf(greatestYear), true);
         assertTrue(String.valueOf(greatestMonth), true);
         assertTrue(String.valueOf(greatestDay), true);
-    }
-}
+    }}

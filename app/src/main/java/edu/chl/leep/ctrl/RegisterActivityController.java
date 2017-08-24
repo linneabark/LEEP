@@ -62,7 +62,7 @@ public class RegisterActivityController extends AppCompatActivity {
                 } else if (!registerService.checkEmail(mail.getText().toString())) {
 
                     errorMessage.setText("Not a valid email!");
-                
+
 
 
                 } else{

@@ -2,6 +2,8 @@ package edu.chl.leep.model;
 
 import org.junit.Test;
 
+import edu.chl.leep.service.RegisterService;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -10,23 +12,23 @@ import static org.junit.Assert.assertEquals;
 
 public class RegisterActivityModelTest {
 
-    RegisterActivityModel rAM = new RegisterActivityModel();
+    RegisterService rs = new RegisterService();
 
     @Test
     public void testComparePasswords () throws Exception {
-        boolean notSamePassword = rAM.comparePasswords("password", "password11");
+        boolean notSamePassword = rs.comparePasswords("password", "password11");
         assertEquals(false, notSamePassword);
 
-        boolean samePassword = rAM.comparePasswords("password", "password");
+        boolean samePassword = rs.comparePasswords("password", "password");
         assertEquals(true, samePassword);
     }
 
     @Test
     public void testCheckEmail () throws Exception {
-        boolean trueEmail = rAM.checkEmail("greg@gmail.se");
+        boolean trueEmail = rs.checkEmail("greg@gmail.se");
         assertEquals(true, trueEmail);
 
-        boolean falseEmail = rAM.checkEmail("greg.gmail.se");
+        boolean falseEmail = rs.checkEmail("greg.gmail.se");
         assertEquals(false, falseEmail);
     }
 }
