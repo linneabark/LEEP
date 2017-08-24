@@ -9,8 +9,9 @@ import android.widget.Button;
 
 import com.example.linneabark.test.R;
 
-import edu.chl.leep.model.StatisticsModel;
-import edu.chl.leep.service.StatisticService;
+import edu.chl.leep.ctrl.StatisticsController;
+import edu.chl.leep.service.StatisticsDisplayService;
+import edu.chl.leep.service.StatisticsService;
 
 /**
  * Created by Evelina on 2017-05-12.
@@ -21,12 +22,20 @@ import edu.chl.leep.service.StatisticService;
 public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonthAdapter.ViewHolder> {
     private String [] months;
     private int recyclerItemIndex = 0;
-    private StatisticsDateAdapter statisticsDateAdapter;
-    private StatisticService statisticService;
 
-    public StatisticsMonthAdapter (String [] monthsList, StatisticsDateAdapter sDA) {
+    private StatisticsDateAdapter statisticsDateAdapter;
+    private StatisticsController statisticsController;
+    private StatisticsService statisticsService;
+    private StatisticsActivityAdapter statisticsActivityAdapter;
+    private StatisticsDisplayService statisticsDisplayService;
+
+    public StatisticsMonthAdapter (String [] monthsList, StatisticsDateAdapter sDA, StatisticsActivityAdapter sAA, StatisticsService sS, StatisticsController sC, StatisticsDisplayService sDS) {
         months = monthsList;
         statisticsDateAdapter = sDA;
+        statisticsActivityAdapter = sAA;
+        statisticsController = sC;
+        statisticsService = sS;
+        statisticsDisplayService = sDS;
     }
 
     @Override
@@ -34,8 +43,6 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.costume_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
-
-        statisticService = new StatisticService();
 
         return viewHolder;
     }
@@ -47,8 +54,9 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
-                statisticService.setMonthBtn(String.valueOf(months[position]));
-                statisticsDateAdapter.swapList(statisticService.getAllDays());
+                statisticsController.setMonthBtn(String.valueOf(months[position]));
+                statisticsDateAdapter.swapList(statisticsService.getAllDays(statisticsController));
+                statisticsActivityAdapter.swapList(statisticsService.getActivitysToDisplay(statisticsDisplayService, statisticsController));
                 notifyDataSetChanged();
             }
         });
@@ -71,6 +79,5 @@ public class StatisticsMonthAdapter extends RecyclerView.Adapter<StatisticsMonth
             super(v);
             btn = (Button) itemView.findViewById(R.id.item);
         }
-
     }
 }

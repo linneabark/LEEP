@@ -55,14 +55,15 @@ public class RegisterActivityController extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if(!registerService.comparePasswords(password.getText().toString(), repeatPassword.getText().toString())
-                        ){
+                if (!registerService.comparePasswords(password.getText().toString(), repeatPassword.getText().toString())
+                        ) {
                     errorMessage.setText("Passwords does not match!");
 
-                    if( !registerService.checkEmail(mail.getText().toString())) {
+                } else if (!registerService.checkEmail(mail.getText().toString())) {
 
-                        errorMessage.setText("Not a valid email!");
-                    }
+                    errorMessage.setText("Not a valid email!");
+                
+
 
                 } else{
 

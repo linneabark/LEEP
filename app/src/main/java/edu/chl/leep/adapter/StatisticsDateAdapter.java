@@ -12,8 +12,9 @@ import com.example.linneabark.test.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.leep.model.StatisticsModel;
-import edu.chl.leep.service.StatisticService;
+import edu.chl.leep.ctrl.StatisticsController;
+import edu.chl.leep.service.StatisticsDisplayService;
+import edu.chl.leep.service.StatisticsService;
 
 /**
  * Created by Evelina on 2017-05-12.
@@ -27,13 +28,16 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
     private List<Integer> date;
 
     private StatisticsActivityAdapter statisticsActivityAdapter;
-    private StatisticService statisticService;
+    private StatisticsController statisticsController;
+    private StatisticsService statisticsService;
+    private StatisticsDisplayService statisticsDisplayService;
 
-
-
-    public StatisticsDateAdapter (List<Integer> dateList, StatisticsActivityAdapter sAA) {
+    public StatisticsDateAdapter (List<Integer> dateList, StatisticsActivityAdapter sAA, StatisticsDisplayService sDS, StatisticsController sC, StatisticsService sS) {
         date = dateList;
         statisticsActivityAdapter = sAA;
+        statisticsDisplayService = sDS;
+        statisticsController = sC;
+        statisticsService = sS;
     }
 
     @Override
@@ -41,7 +45,6 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
         LayoutInflater inflater  = LayoutInflater.from(parent.getContext());
         View row = inflater.inflate(R.layout.costume_row,parent,false);
         ViewHolder viewHolder = new ViewHolder(row);
-        statisticService = new StatisticService();
 
         return viewHolder;
     }
@@ -53,8 +56,8 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
             @Override
             public void onClick(View view){
                 recyclerItemIndex = position;
-                statisticService.setDateBtn(String.valueOf(date.get(position)));
-                statisticsActivityAdapter.swapList(statisticService.getAllActivitys(statisticsActivityAdapter));
+                statisticsController.setDateBtn(String.valueOf(date.get(position)));
+                statisticsActivityAdapter.swapList(statisticsService.getActivitysToDisplay(statisticsDisplayService, statisticsController));
                 notifyDataSetChanged();
             }
         });
@@ -80,10 +83,6 @@ public class StatisticsDateAdapter extends RecyclerView.Adapter<StatisticsDateAd
     }
 
     public void swapList (List<Integer> changedList) {
-        List <String> stringList = new ArrayList<>();
-        for(int i = 0; i < changedList.size(); i++){
-            stringList.add(String.valueOf(changedList.get(i)));
-        }
         if(date != null) {
             date.clear();
             date.addAll(changedList);

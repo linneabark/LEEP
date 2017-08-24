@@ -5,6 +5,8 @@ import java.util.List;
 
 import edu.chl.leep.ctrl.StatisticsController;
 import edu.chl.leep.model.ActivityObject;
+import edu.chl.leep.utils.ConvertUtils;
+import edu.chl.leep.utils.FindWhichMonth;
 
 /**
  * Created by linneabark on 2017-08-22.
@@ -12,40 +14,75 @@ import edu.chl.leep.model.ActivityObject;
 
 public class StatisticsDisplayService {
 
-    private StatisticService sS;
+    private ConvertUtils convertUtils = new ConvertUtils();
 
+    private List<ActivityObject> giveValuesToDefaultStatisticList (StatisticsController sC, StatisticsService sS) {
+        //Find the greatest year in the list
+        sC.setYear(sS.greatestYear(sC.getYear(), sC.getUserActivityList()));
 
-    private StatisticsController sC = new StatisticsController();
+        //Find the greatest month in the greatest year
+        sC.setMonth(sS.greatestMonth(sC.getYear(), sC.getMonth(), sC.getUserActivityList()));
 
-    //handlar bara om vyn från listor med rätt information
-    public void activityToString (List<String> allActivitys, List<ActivityObject> activityRowList, int indexFromForLoop){
-        long stopTime = sC.getAllActivityRowsForSpecificMonth().get(indexFromForLoop).getStartTime()
-                + sC.getAllActivityRowsForSpecificMonth().get(indexFromForLoop).getTotalTime();
+        //find the greatest day in the greatest month and year
+        sC.setDay(sS.greatestDay(sC.getYear(), sC.getMonth(), sC.getDay(), sC.getUserActivityList()));
 
-        String s = sC.getAllActivityRowsForSpecificMonth().get(indexFromForLoop).getCategoryName()
-                + "          " +
-                (sC.getAllActivityRowsForSpecificMonth().get(indexFromForLoop).getStartTime()) + " - " + stopTime;
-
-        allActivitys.add(s);
-
-        activityRowList.add(sC.getAllActivityRowsForSpecificMonth().get(indexFromForLoop));
+        //Insert all the activitys from the greatest date
+        for(int i = 0; i < sC.getUserActivityList().size(); i++) {
+            if(sC.getYear() == sS.intYearFromList(sC.getUserActivityList(), i) &&
+                    sC.getMonth() == sS.intMonthFromList(sC.getUserActivityList(), i) &&
+                    sC.getDay() == sS.intDayFromList(sC.getUserActivityList(), i)) {
+                sC.getDefaultStatisticList().add(sC.getUserActivityList().get(i));
+            }
+        }
+        return sC.getDefaultStatisticList();
     }
 
-    //kanske för klassen som hanterar view
-    public List <String> reformListToDisplay (StatisticService sS) {
-
-        sS.giveValuesToDefaultStatisticList(sC);
+    public List <String> reformListToDisplay (StatisticsController sC, StatisticsService sS) {
+        giveValuesToDefaultStatisticList(sC, sS);
         List<String>listToDisplay = new ArrayList<>();
 
-        for(int i = 0; i < sC.getDefaultStatisticsList().size(); i++) {
-            /*long stopTime = Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getStartTime()))
-                    + Long.valueOf(takeAwayFirstZeros(defaultStatisticList.get(i).getTotalTime()));
-            String s = defaultStatisticList.get(i).getCategoryName() + "    " + defaultStatisticList.get(i).getStartTime() + " - " + stopTime;
-            listToDisplay.add(s);*/
-            long stopTime = sC.getDefaultStatisticsList().get(i).getStartTime() + sC.getDefaultStatisticsList().get(i).getTotalTime();
-            String s = sC.getDefaultStatisticsList().get(i).getCategoryName() + "    " + sC.getDefaultStatisticsList().get(i).getStartTime() + " - " + stopTime;
-            listToDisplay.add(s);
+        for(int i = 0; i < sC.getDefaultStatisticList().size(); i++) {
+            String whatToDisplay = displayString(sC.getDefaultStatisticList(), i);
+            listToDisplay.add(whatToDisplay);
         }
         return listToDisplay;
     }
+
+    public String displayString(List<ActivityObject> list, int indexFromLoop) {
+        long stopTime = list.get(indexFromLoop).getStartTime()
+                + list.get(indexFromLoop).getTotalTime();
+
+        String s = list.get(indexFromLoop).getCategoryName()
+                + "    "
+                + convertUtils.timeMillisToString(list.get(indexFromLoop).getStartTime())
+                + " - "
+                + convertUtils.timeMillisToString(stopTime);
+
+        return s;
+    }
+
+    public String [] monthsInOrder (StatisticsController sC, FindWhichMonth fWM) {
+        int [] numbers = {1, 2, 3, 4, 5,
+                6, 7, 8, 9, 10, 11, 12};
+        int month = sC.getMonth();
+
+        String [] monthsInOrder = new String [12];
+        int index = 0;
+
+        for (int i = 0; i < numbers.length; i++){
+            if(month == numbers[i]){
+                int n = i;
+                for(int k = 0 ; k < fWM.months.length; k++){
+                    monthsInOrder[index] = fWM.months[n];
+                    index ++;
+                    n++;
+                    if (fWM.months[n].equals("Dec.")) {
+                        n = 0;
+                    }
+                }
+            }
+        }
+        return monthsInOrder;
+    }
+
 }
